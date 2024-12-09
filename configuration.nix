@@ -106,6 +106,7 @@
       userEmail = "sheikh@cybar.dev";
       extraConfig = {
         init.defaultBranch = "main";
+        credential.helper = "store";
       };
     };
 
@@ -135,7 +136,7 @@
         path = "$ZDOTDIR/history";
       };
       initExtra = ''
-        path+=$HOME/.local/bin
+        path+=( "$HOME/go/bin" "$HOME/.local/bin" )
         cutefetch
 
         fpath+="$ZDOTDIR/zen"
@@ -144,15 +145,25 @@
         prompt zen
       '';
       shellAliases = {
+        # shell conveniences
         x = "exit";
         cf = "cutefetch";
         clr = "clear";
         cls = "clear";
+
+        # editing related
         edit = "nvim";
         edit-vim = "nvim ~/.config/nvim/lua/plugins/user.lua";
         edit-os = "nvim ~/.config/nixos/configuration.nix";
+
+        # reloading configs
         rebuild-os = "sudo nixos-rebuild switch";
         zrc = ". $ZDOTDIR/.zshrc";
+
+        # package management
+        yin = "nix-shell -p";
+        yang = "nix-search";
+        yup = "sudo nixos-rebuild switch --upgrade";
       };
     };
 
