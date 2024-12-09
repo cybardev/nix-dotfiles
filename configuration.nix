@@ -150,6 +150,7 @@
         edit-vim = "nvim ~/.config/nvim/lua/plugins/user.lua";
         edit-os = "nvim ~/.config/nixos/configuration.nix";
         rebuild-os = "sudo nixos-rebuild switch";
+        zrc = ". $ZDOTDIR/.zshrc";
       };
     };
 
