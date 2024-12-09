@@ -87,12 +87,19 @@
       gitui
       rustc
       brave
+      pipx
       bat
       go
     ];
 
     # set $EDITOR to nvim
     home.sessionVariables.EDITOR = "nvim";
+
+    # Poetry for Python
+    programs.poetry = {
+      enable = true;
+      settings.virtualenvs.in-project = true;
+    };
 
     # Bottom
     programs.bottom = {
@@ -173,11 +180,9 @@
           sort_by = "extension";
           sort_dir_first = true;
         };
-        opener = {
-          text = [
-            { run = "$EDITOR '$@'"; block = true; for = "unix"; }
-          ];
-        };
+        opener.text = [
+          { run = "$EDITOR '$@'"; block = true; for = "unix"; }
+        ];
       };
       initLua = ''
         require("relative-motions"):setup({ show_numbers="relative_absolute", show_motion = true })
