@@ -136,6 +136,8 @@
       };
       initExtra = ''
         path+=$HOME/.local/bin
+        cutefetch
+
         fpath+="$ZDOTDIR/zen"
         autoload -Uz promptinit
         promptinit
