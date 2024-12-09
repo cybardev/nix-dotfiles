@@ -80,6 +80,8 @@
   home-manager.users.sage = { ... }: {
     home.packages = with pkgs; [
       xorg.xdpyinfo
+      qogir-icon-theme
+      qogir-theme
       nerdfonts
       neovim
       gitui
@@ -90,7 +92,7 @@
     ];
 
     # set $EDITOR to nvim
-    programs.neovim.defaultEditor = true;
+    home.sessionVariables.EDITOR = "nvim";
 
     # Bottom
     programs.bottom = {
@@ -121,12 +123,6 @@
       autosuggestion.strategy = [ "history" "completion" "match_prev_cmd" ];
       syntaxHighlighting.enable = true;
       historySubstringSearch.enable = true;
-      dirHashes = {
-        dl    = "$HOME/Downloads";
-        docs  = "$HOME/Documents";
-        pics  = "$HOME/Pictures";
-        vids  = "$HOME/Videos";
-      };
       history = {
         save = 1024;
         size = 2048;
@@ -176,6 +172,11 @@
         manager = {
           sort_by = "extension";
           sort_dir_first = true;
+        };
+        opener = {
+          text = [
+            { run = "$EDITOR '$@'"; block = true; for = "unix"; }
+          ];
         };
       };
       initLua = ''
