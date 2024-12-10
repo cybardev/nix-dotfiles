@@ -77,8 +77,10 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  home-manager.users.sage = { lib, ... }: {
+  home-manager.users.sage = { ... }: {
     home.packages = with pkgs; [
+      (callPackage ./packages/cutefetch.nix {})
+      (callPackage ./packages/ytgo.nix {})
       xorg.xdpyinfo
       qogir-icon-theme
       qogir-theme
@@ -92,6 +94,7 @@
       pipx
       mpv
       bat
+      eza
       go
     ];
 
@@ -160,6 +163,7 @@
         cf = "cutefetch";
         clr = "clear";
         cls = "clear";
+        tree = "eza --tree --group-directories-last --sort=extension";
 
         # editing related
         edit = "nvim";
@@ -174,6 +178,9 @@
         yin = "nix-shell -p";
         yang = "nix-search";
         yup = "sudo nixos-rebuild switch --upgrade";
+
+        # utilities
+        yt = "ytgo -i -m -p";
       };
     };
 
@@ -232,27 +239,12 @@
       ];
     };
 
-    # Utilities
-    home.file = {
-      ".config/zsh/zen".source = pkgs.fetchFromGitHub {
-        owner = "cybardev";
-        repo = "zen.zsh";
-        rev = "2a9f44a19c8fc9c399f2d6a62f4998fffc908145";
-      };
-      ".local/lib/cutefetch".source = pkgs.fetchFromGitHub {
-        owner = "cybardev";
-        repo = "cutefetch";
-        rev = "e2462c64926f405f3c840efb37803def97c145ed";
-      };
-      ".local/bin/cutefetch".source = config.lib.file.mkOutOfStoreSymlynk "$HOME/.local/lib/cutefetch/cutefetch";
-    };
-    home.activation = {
-      mkExecutable = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        run chmod $VERBOSE_ARG +x $HOME/.local/lib/cutefetch/cutefetch
-      '';
-      installYTGO = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        run go $VERBOSE_ARG install github.com/cybardev/ytgo/v3/cmd/ytgo@latest
-      '';
+    # Zen.zsh shell prompt
+    home.file.".config/zsh/zen".source = pkgs.fetchFromGitHub {
+      owner = "cybardev";
+      repo = "zen.zsh";
+      rev = "2a9f44a19c8fc9c399f2d6a62f4998fffc908145";
+      hash = "sha256-s/YLFdhCrJjcqvA6HuQtP0ADjBtOqAP+arjpFM2m4oQ=";
     };
 
     # This value determines the Home Manager release that your
