@@ -19,7 +19,9 @@ buildGoModule rec {
 
   ldflags = [ "-s" "-w" ];
 
+  # checks fail cuz needs internet
   doCheck = false;
+  # tests run in project repo pipeline
 
   meta = {
     description = "A Go program to find and watch YouTube videos from the terminal without requiring API keys";
