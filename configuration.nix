@@ -79,16 +79,22 @@
 
   home-manager.users.sage = { ... }: {
     home.packages = with pkgs; [
+      (callPackage ./packages/cutefetch.nix {})
+      (callPackage ./packages/ytgo.nix {})
       xorg.xdpyinfo
       qogir-icon-theme
       qogir-theme
       nerdfonts
+      ffmpeg
+      yt-dlp
       neovim
       gitui
       rustc
       brave
       pipx
+      mpv
       bat
+      eza
       go
     ];
 
@@ -139,13 +145,17 @@
         path = "$ZDOTDIR/history";
       };
       initExtra = ''
-        path+=( "$HOME/go/bin" "$HOME/.local/bin" )
+        path+=( "$(go env GOPATH)/bin" "$HOME/.local/bin" )
         cutefetch
 
         fpath+="$ZDOTDIR/zen"
         autoload -Uz promptinit
         promptinit
         prompt zen
+
+        function etch() {
+          sudo dd bs=4M if=$2 of=/dev/$1 status=progress oflag=sync
+        }
       '';
       shellAliases = {
         # shell conveniences
@@ -153,6 +163,7 @@
         cf = "cutefetch";
         clr = "clear";
         cls = "clear";
+        tree = "eza --tree --group-directories-last --sort=extension";
 
         # editing related
         edit = "nvim";
@@ -167,6 +178,9 @@
         yin = "nix-shell -p";
         yang = "nix-search";
         yup = "sudo nixos-rebuild switch --upgrade";
+
+        # utilities
+        yt = "ytgo -i -m -p";
       };
     };
 
@@ -223,6 +237,14 @@
         zhuangtongfa.material-theme
         vscodevim.vim
       ];
+    };
+
+    # Zen.zsh shell prompt
+    home.file.".config/zsh/zen".source = pkgs.fetchFromGitHub {
+      owner = "cybardev";
+      repo = "zen.zsh";
+      rev = "2a9f44a19c8fc9c399f2d6a62f4998fffc908145";
+      hash = "sha256-s/YLFdhCrJjcqvA6HuQtP0ADjBtOqAP+arjpFM2m4oQ=";
     };
 
     # This value determines the Home Manager release that your
