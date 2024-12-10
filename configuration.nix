@@ -77,17 +77,20 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  home-manager.users.sage = { ... }: {
+  home-manager.users.sage = { lib, ... }: {
     home.packages = with pkgs; [
       xorg.xdpyinfo
       qogir-icon-theme
       qogir-theme
       nerdfonts
+      ffmpeg
+      yt-dlp
       neovim
       gitui
       rustc
       brave
       pipx
+      mpv
       bat
       go
     ];
@@ -139,13 +142,17 @@
         path = "$ZDOTDIR/history";
       };
       initExtra = ''
-        path+=( "$HOME/go/bin" "$HOME/.local/bin" )
+        path+=( "$(go env GOPATH)/bin" "$HOME/.local/bin" )
         cutefetch
 
         fpath+="$ZDOTDIR/zen"
         autoload -Uz promptinit
         promptinit
         prompt zen
+
+        function etch() {
+          sudo dd bs=4M if=$2 of=/dev/$1 status=progress oflag=sync
+        }
       '';
       shellAliases = {
         # shell conveniences
@@ -223,6 +230,29 @@
         zhuangtongfa.material-theme
         vscodevim.vim
       ];
+    };
+
+    # Utilities
+    home.file = {
+      ".config/zsh/zen".source = pkgs.fetchFromGitHub {
+        owner = "cybardev";
+        repo = "zen.zsh";
+        rev = "2a9f44a19c8fc9c399f2d6a62f4998fffc908145";
+      };
+      ".local/lib/cutefetch".source = pkgs.fetchFromGitHub {
+        owner = "cybardev";
+        repo = "cutefetch";
+        rev = "e2462c64926f405f3c840efb37803def97c145ed";
+      };
+      ".local/bin/cutefetch".source = config.lib.file.mkOutOfStoreSymlynk "$HOME/.local/lib/cutefetch/cutefetch";
+    };
+    home.activation = {
+      mkExecutable = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        run chmod $VERBOSE_ARG +x $HOME/.local/lib/cutefetch/cutefetch
+      '';
+      installYTGO = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        run go $VERBOSE_ARG install github.com/cybardev/ytgo/v3/cmd/ytgo@latest
+      '';
     };
 
     # This value determines the Home Manager release that your
