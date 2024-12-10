@@ -7,7 +7,7 @@
 
 stdenv.mkDerivation rec {
   pname = "cutefetch";
-  version = "0.2";
+  version = "0.3";
 
   src = fetchFromGitHub {
     owner = "cybardev";
@@ -16,23 +16,24 @@ stdenv.mkDerivation rec {
     hash = "sha256-DMp8tc1r5g3kHtboRp2xmx1o3Ze5UMqoYUHQwlT/gbI=";
   };
 
-  # specify runtime dependencies
-  buildInputs = with pkgs; [ networkmanager xorg.xprop xorg.xdpyinfo ];
+  nativeBuildInputs = [ pkgs.makeWrapper ];
+
   buildPhase = ''
     runHook preBuild
-    echo "${pkgs.networkmanager}/bin/nmcli" >> .deps
-    echo "${pkgs.xorg.xdpyinfo}/bin/xdpyinfo" >> .deps
-    echo "${pkgs.xorg.xprop}/bin/xprop" >> .deps
+    chmod +x cutefetch
     runHook postBuild
   '';
 
   installPhase = ''
     runHook preInstall
     mkdir -p $out/bin
-    cp .deps $out/
-    chmod +x cutefetch
     cp cutefetch $out/bin/
     runHook postInstall
+  '';
+
+  postInstall = with pkgs; ''
+    wrapProgram $out/bin/cutefetch \
+      --prefix PATH : ${lib.makeBinPath [ networkmanager xorg.xprop xorg.xdpyinfo ]}
   '';
 
   meta = {
