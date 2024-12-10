@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   buildGoModule,
   fetchFromGitHub,
 }:
@@ -15,6 +16,8 @@ buildGoModule rec {
     hash = "sha256-cAnZfXwk4zv9I8FDDe+xpR3TxlMgJjiLPT9h61iEqVY=";
   };
 
+  nativeBuildInputs = [ pkgs.makeWrapper ];
+
   vendorHash = "sha256-62bDFcunLygMpAY63C/b3g9L97XZ9HZbmz4RMecJwO4=";
 
   ldflags = [ "-s" "-w" ];
@@ -22,6 +25,11 @@ buildGoModule rec {
   # checks fail cuz needs internet
   doCheck = false;
   # tests run in project repo pipeline
+
+  postFixup = with pkgs; ''
+    wrapProgram $out/bin/ytgo \
+      --prefix PATH : ${lib.makeBinPath [ ffmpeg yt-dlp mpv ]}
+  '';
 
   meta = {
     description = "A Go program to find and watch YouTube videos from the terminal without requiring API keys";
