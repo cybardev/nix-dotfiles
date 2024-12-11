@@ -74,8 +74,9 @@
   users.users.sage = {
     isNormalUser = true;
     description = "Sheikh";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "uinput" ];
   };
+  hardware.uinput.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -88,6 +89,7 @@
     p7zip
     wget
     gcc
+    kanata # keyboard remapper
   ];
 
   # for Zsh completions of system packages
@@ -105,6 +107,17 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # Enable and configure kanata
+  services.kanata = {
+    enable = true;
+    keyboards = {
+      "kbd".config = ''
+        (defsrc esc caps)
+        (deflayer default caps esc)
+      '';
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
