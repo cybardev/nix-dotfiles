@@ -239,6 +239,14 @@
       ];
     };
 
+    # AstroNvim config
+    home.file.".config/nvim".source = pkgs.fetchFromGitHub {
+      owner = "cybardev";
+      repo = "astronvim_config";
+      rev = "5fa712012937324f2c87eb720514a6a5090a5357";
+      hash = "sha256-s1qKv5BoHmc5aNWdVOx47SiYnfSVFgHWG43BVHFR644=";
+    };
+
     # Zen.zsh shell prompt
     home.file.".config/zsh/zen".source = pkgs.fetchFromGitHub {
       owner = "cybardev";
