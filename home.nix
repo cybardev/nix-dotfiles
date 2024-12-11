@@ -93,7 +93,7 @@
         # editing related
         edit = "nvim";
         edit-vim = "nvim ~/.config/nvim/lua/plugins/user.lua";
-        edit-os = "nvim ~/.config/nixos/configuration.nix";
+        edit-os = "nvim ~/.config/nixos/home.nix";
 
         # reloading configs
         rebuild-os = "sudo nixos-rebuild switch";
