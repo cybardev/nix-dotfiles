@@ -6,6 +6,7 @@
     home.packages = with pkgs; [
       (callPackage ./packages/cutefetch.nix {})
       (callPackage ./packages/ytgo.nix {})
+      nix-search-cli
       xorg.xdpyinfo
       qogir-icon-theme
       qogir-theme
