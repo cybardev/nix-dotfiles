@@ -112,10 +112,21 @@
   services.kanata = {
     enable = true;
     keyboards = {
-      "kbd".config = ''
-        (defsrc esc caps)
-        (deflayer default caps esc)
-      '';
+      "kbd" = {
+        config = ''
+          (defsrc)
+          (deflayer default)
+          (defoverrides
+            (esc) (caps)
+            (caps) (esc)
+            (lsft spc) (bspc)
+            (rsft spc) (del)
+          )
+        '';
+        extraDefCfg = ''
+          process-unmapped-keys yes
+        '';
+      };
     };
   };
 
