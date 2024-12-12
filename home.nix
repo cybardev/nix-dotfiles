@@ -21,6 +21,7 @@
       mpv
       bat
       eza
+      feh
       go
     ];
 
@@ -165,20 +166,33 @@
       ];
     };
 
-    # AstroNvim config
-    home.file.".config/nvim".source = pkgs.fetchFromGitHub {
-      owner = "cybardev";
-      repo = "astronvim_config";
-      rev = "5fa712012937324f2c87eb720514a6a5090a5357";
-      hash = "sha256-s1qKv5BoHmc5aNWdVOx47SiYnfSVFgHWG43BVHFR644=";
+    # Rofi menu daemon
+    programs.rofi = {
+      enable = true;
     };
 
-    # Zen.zsh shell prompt
-    home.file.".config/zsh/zen".source = pkgs.fetchFromGitHub {
-      owner = "cybardev";
-      repo = "zen.zsh";
-      rev = "2a9f44a19c8fc9c399f2d6a62f4998fffc908145";
-      hash = "sha256-s/YLFdhCrJjcqvA6HuQtP0ADjBtOqAP+arjpFM2m4oQ=";
+    # Dotfiles
+    home.file = {
+      # AstroNvim config
+      ".config/nvim".source = pkgs.fetchFromGitHub {
+        owner = "cybardev";
+        repo = "astronvim_config";
+        rev = "5fa712012937324f2c87eb720514a6a5090a5357";
+        hash = "sha256-s1qKv5BoHmc5aNWdVOx47SiYnfSVFgHWG43BVHFR644=";
+      };
+
+      # Zen.zsh shell prompt
+      ".config/zsh/zen".source = pkgs.fetchFromGitHub {
+        owner = "cybardev";
+        repo = "zen.zsh";
+        rev = "2a9f44a19c8fc9c399f2d6a62f4998fffc908145";
+        hash = "sha256-s/YLFdhCrJjcqvA6HuQtP0ADjBtOqAP+arjpFM2m4oQ=";
+      };
+
+      # TODO: replace local files with Git resources
+      ".config/picom.conf".source = /home/sage/Documents/dotfiles/config/picom.conf;
+      ".config/qtile".source = /home/sage/Documents/dotfiles/config/qtile;
+      ".config/rofi".source = /home/sage/Documents/dotfiles/config/rofi;
     };
 
     # This value determines the Home Manager release that your
