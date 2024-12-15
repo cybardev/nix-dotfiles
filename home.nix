@@ -15,6 +15,7 @@
       ffmpeg
       yt-dlp
       neovim
+      fondo
       gitui
       rustc
       brave
