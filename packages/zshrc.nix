@@ -40,11 +40,12 @@
         clr = "clear";
         cls = "clear";
         tree = "eza --tree --group-directories-last --sort=extension";
+        cd-os = "cd ~/.config/nixos";
 
         # editing related
         edit = "nvim";
         edit-vim = "nvim ~/.config/nvim/lua/plugins/user.lua";
-        edit-os = "nvim ~/.config/nixos/home.nix";
+        edit-os = "nvim ~/.config/nixos";
 
         # reloading configs
         rebuild-os = "sudo nixos-rebuild switch";
