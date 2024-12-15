@@ -39,7 +39,10 @@
       };
       rules = {
         "xfce4-appfinder".state = "floating";
-        "xfce4-panel".state = "floating";
+        "xfce4-panel" = {
+          state = "floating";
+          layer = "above";
+        };
       };
     };
 
