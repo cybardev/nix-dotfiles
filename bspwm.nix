@@ -7,6 +7,16 @@
     # config $XDG_CONFIG_HOME and such
     xdg.userDirs.enable = true;
 
+    dconf.settings = {
+      "org/gnome/desktop/wm/preferences".theme = "Qogir-dark";
+      "org/gnome/desktop/interface" = {
+        gtk-theme = "Qogir-dark";
+        icon-theme = "WhiteSur-dark";
+        cursor-theme = "Qogir-dark";
+        cursor-size = 64;
+      };
+    };
+
     xsession.windowManager.bspwm = {
       enable = true;
       monitors = {
