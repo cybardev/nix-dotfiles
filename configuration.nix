@@ -43,12 +43,19 @@
       enable = true;
       greeters.gtk = {
         enable = true;
-        theme.package = pkgs.qogir-theme;
-        cursorTheme = {
-          package = pkgs.qogir-icon-theme;
-          size = 42;
+        theme = {
+          name = "Qogir-Dark";
+          package = pkgs.qogir-theme;
         };
-        iconTheme.package = pkgs.qogir-icon-theme;
+        cursorTheme = {
+          name = "Qogir-manjaro-dark";
+          package = pkgs.qogir-icon-theme;
+          size = 64;
+        };
+        iconTheme = {
+          name = "Qogir-manjaro-dark";
+          package = pkgs.qogir-icon-theme;
+        };
       };
     };
     desktopManager = {
@@ -57,6 +64,7 @@
         enable = true;
         # noDesktop = true;
         enableXfwm = false;
+        enableScreensaver = false;
       };
     };
 
@@ -69,7 +77,7 @@
 
   # HiDPI display config
   services.xserver = {
-    dpi = 104;
+    dpi = 148;
     upscaleDefaultCursor = true;
   };
   environment.variables = {

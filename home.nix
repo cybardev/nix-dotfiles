@@ -151,8 +151,7 @@
       settings = {
         shell = "zsh";
         font_family = "CaskaydiaCove Nerd Font Mono";
-        # font_size = 14; # normal
-        font_size = 20; # HiDPI
+        font_size = 14;
         enable_audio_bell = false;
         tab_bar_edge = "top";
       };
@@ -193,9 +192,8 @@
         eDP-1 = [ "m" "e" "n" "u" ];
       };
       startupPrograms = [
-        "xfce4-panel --disable-wm-check"
         "xfce4-power-manager --daemon"
-        "nm-applet"
+        "xfce4-session"
       ];
       settings = {
         border_width = 2;
