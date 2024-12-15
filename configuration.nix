@@ -53,8 +53,8 @@
           size = 64;
         };
         iconTheme = {
-          name = "Qogir-manjaro-dark";
-          package = pkgs.qogir-icon-theme;
+          name = "WhiteSur-dark";
+          package = pkgs.whitesur-icon-theme;
         };
       };
     };

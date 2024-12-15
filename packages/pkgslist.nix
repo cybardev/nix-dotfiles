@@ -7,6 +7,7 @@
       (callPackage ./ytgo.nix {})
       nix-search-cli
       xorg.xdpyinfo
+      whitesur-icon-theme
       qogir-icon-theme
       qogir-theme
       nerdfonts
