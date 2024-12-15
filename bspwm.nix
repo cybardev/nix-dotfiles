@@ -61,28 +61,51 @@
     services.sxhkd = {
       enable = true;
       keybindings = {
+        # terminal
         "super + grave" = "kitty";
+        # app launcher
         "super + space" = "xfce4-appfinder";
+        # restart hotkey daemon
         "super + Escape" = "pkill -USR1 -x sxhkd";
+        # logoff dialogue
         "super + alt + Escape" = "xfce4-session-logout";
+        # quit/restart bspwm
         "super + alt + {q,r}" = "bspc {quit,wm -r}";
+        # quit/kill window
         "super + {_,shift + }w" = "bspc node -{c,k}";
+        # switch tiled/monocle layout
         "super + m" = "bspc desktop -l next";
+        # send the newest marked node to the newest preselected node
         "super + y" = "bspc node newest.marked.local -n newest.!automatic.local";
+        # swap the current node and the biggest window
         "super + g" = "bspc node -s biggest.window";
+        # set window state
         "super + {t,shift + t,s,f}" = "bspc node -t {tiled,pseudo_tiled,floating,fullscreen}";
+        # set node flags
         "super + {_,shift + }{h,j,k,l}" = "bspc node -{f,s} {west,south,north,east}";
+        # focus the next/previous window in the current desktop
         "super + {_,shift + }c" = "bspc node -f {next,prev}.local.!hidden.window";
+        # focus the next/previous desktop in the current monitor
         "super + bracket{left,right}" = "bspc desktop -f {prev,next}.local";
+        # focus the last node/desktop
         "super + {Return,Tab}" = "bspc {node,desktop} -f last";
+        # focus the older or newer node in the focus history
         "super + {o,i}" = "bspc wm -h off; bspc node {older,newer} -f; bspc wm -h on";
+        # focus or send to the given desktop
         "super + {_,shift + }{1-9,0}" = "bspc {desktop -f,node -d} '^{1-9,10}'";
+        # preselect the direction
         "super + ctrl + {h,j,k,l}" = "bspc node -p {west,south,north,east}";
+        # preselect the ratio
         "super + ctrl + {1-9}" = "bspc node -o 0.{1-9}";
+        # cancel the preselection for the focused node
         "super + ctrl + space" = "bspc node -p cancel";
+        # cancel the preselection for the focused desktop
         "super + ctrl + shift + space" = "bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel";
+        # expand a window by moving one of its side outward
         "super + alt + {h,j,k,l}" = "bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}";
+        # contract a window by moving one of its side inward
         "super + alt + shift + {h,j,k,l}" = "bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}";
+        # move a floating window
         "super + {Left,Down,Up,Right}" = "bspc node -v {-20 0,0 20,0 -20,20 0}";
       };
     };
