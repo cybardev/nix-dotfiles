@@ -202,6 +202,10 @@
         split_ratio = 0.52;
         gapless_monocle = true;
         borderless_monocle = true;
+        normal_border_color = "#44475a"
+        active_border_color = "#bd93f9"
+        focused_border_color = "#ff79c6"
+        presel_feedback_color = "#6272a4"
       };
       rules = {
         "xfce4-appfinder".state = "floating";
