@@ -34,18 +34,50 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    # Enable the X11 windowing system.
+    enable = true;
 
-  # Enable the XFCE Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.windowManager.qtile.enable = true;
+    # Enable the XFCE Desktop Environment.
+    displayManager.lightdm = {
+      enable = true;
+      greeters.gtk = {
+        enable = true;
+        theme.package = pkgs.qogir-theme;
+        cursorTheme = {
+          package = pkgs.qogir-icon-theme;
+          size = 42;
+        };
+        iconTheme.package = pkgs.qogir-icon-theme;
+      };
+    };
+    desktopManager = {
+      xterm.enable = false;
+      xfce = {
+        enable = true;
+        # noDesktop = true;
+        enableXfwm = false;
+      };
+    };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    # Configure keymap in X11
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
+  };
+
+  # HiDPI display config
+  services.xserver = {
+    dpi = 104;
+    upscaleDefaultCursor = true;
+  };
+  environment.variables = {
+    # GDK_SCALE = "2.2";
+    # GDK_DPI_SCALE = "0.4";
+    # _JAVA_OPTIONS = "-sun.java2d.uiScale=2.2";
+    # QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    XCURSOR_SIZE = 42;
   };
 
   # Enable CUPS to print documents.
