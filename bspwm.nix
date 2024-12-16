@@ -68,10 +68,10 @@
         "super + grave" = "kitty";
         # app launcher
         "super + space" = "xfce4-appfinder";
-        # restart hotkey daemon
-        "super + Escape" = "pkill -USR1 -x sxhkd";
         # logoff dialogue
-        "super + alt + Escape" = "xfce4-session-logout";
+        "super + Escape" = "xfce4-session-logout";
+        # restart hotkey daemon
+        "super + alt + Escape" = "pkill -USR1 -x sxhkd";
         # quit/restart bspwm
         "super + alt + {q,r}" = "bspc {quit,wm -r}";
         # quit/kill window
