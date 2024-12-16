@@ -86,7 +86,7 @@
 4. Replace `hardware-configuration.nix` with one appropriate for your system
     ```sh
     mv ~/.config/nixos/hardware-configuration.nix ~/.config/nixos/hardware-configuration.nix.bak
-    cp /etc/nixos/hardware-configuration.nix ~/.config/nixos/
+    cp /etc/nixos.bak/hardware-configuration.nix ~/.config/nixos/
     ```
 
 5. Add the `home-manager` channel
