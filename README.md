@@ -9,60 +9,66 @@
 
 ### Modules
 - [`configuration.nix`](./configuration.nix)
-  
+
   _**System config**_: I don't usually modify unless I want something done system-wide rather than for my user.
-  
+
 - [`hardware-configuration.nix`](./hardware-configuration.nix)
-  
+
   _**Hardware config**_: Created during system installation. Did not modify it since.
-  
+
 - [`home.nix`](./home.nix)
-  
+
   _**`home-manager` config**_: `home-manager` related config goes here. Also whatever files need to be directly sourced to somewhere in the `HOME` directory _(like a `neovim` config for which I have a separate repository)_.
-  
+
 - [`bspwm.nix`](./bspwm.nix)
-  
+
   _**BSPWM config**_: Window manager, startup programs, keybinds, themes, etc. configured here.
-  
+
 - [`packages/`](./packages/) (directory)
-  
+
   _**Installed software config**_: Install and configure various software for the user.
-  
+
+<details>
+
+<summary>**`packages` submodules** _(click to expand)_</summary>
+
 - [`packages/pkgslist.nix`](./packages/pkgslist.nix)
-  
+
   _**List of packages to install**_: Software to install that need no further configuration.
-  
+
 - [`packages/utils.nix`](./packages/utils.nix)
-  
+
   _**Utility packages**_: Small utility programs that need _some_ configuration _(like Git, cava, etc.)_.
-  
+
 - [`packages/zshrc.nix`](./packages/zshrc.nix)
-  
+
   _**Z-shell config**_: Declarative equivalent of a `.zshrc` file, in the Nix language.
-  
+
 - [`packages/kitty.nix`](./packages/kitty.nix)
-  
+
   _**Kitty terminal config**_: Configure the Kitty terminal emulator in Nix.
-  
+
 - [`packages/vscode.nix`](./packages/vscode.nix)
-  
+
   _**Visual Studio Code config**_: Configure VS Code text editor in Nix.
-  
+
 - [`packages/yazi.nix`](./packages/yazi.nix)
-  
+
   _**Yazi (TUI file manager) config**_: Configure the yazi file manager in Nix.
-  
+
 - [`packages/ptpython.nix`](./packages/ptpython.nix)
-  
+
   _**`ptpython` package**_: Custom Nix package for `ptpython` - a Python interpreter with various convenience features like inline documentation, syntax highlighting, modal editing, etc. Source: [prompt-toolkit/ptpython](https://github.com/prompt-toolkit/ptpython)
-  
+
 - [`packages/cutefetch.nix`](./packages/cutefetch.nix)
-  
+
   _**`cutefetch` package**_: Custom Nix package for my `cutefetch` program - a minimalistic sysinfo fetch script featuring cute animals. Source: [cybardev/cutefetch](https://github.com/cybardev/cutefetch)
-  
+
 - [`packages/ytgo.nix`](./packages/ytgo.nix)
-  
+
   _**`ytgo` package**_: Custom Nix package for my `ytgo` program - a terminal media player which I mainly use for background music while coding. Source: [cybardev/ytgo](https://github.com/cybardev/ytgo)
+
+</details>
 
 ---
 
