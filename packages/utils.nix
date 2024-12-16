@@ -28,6 +28,25 @@
         credential.helper = "store";
       };
     };
+
+    # Cava
+    programs.cava = {
+      enable = true;
+      settings = {
+        general = {
+          bars = 0;
+          bar_width = 6;
+          bar_spacing = 2;
+        };
+        color = {
+          gradient = 1;
+          gradient_count = 2;
+          gradient_color_1 = "'#ffbeff'";
+          gradient_color_2 = "'#bb7ebb'";
+        };
+        output.method = "ncurses";
+        smoothing.gravity = 42;
+      };
+    };
   };
 }
-
