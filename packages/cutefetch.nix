@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
 
   src = fetchFromGitHub {
     owner = "cybardev";
-    repo = "cutefetch";
+    repo = pname;
     rev = "e2462c64926f405f3c840efb37803def97c145ed";
     hash = "sha256-DMp8tc1r5g3kHtboRp2xmx1o3Ze5UMqoYUHQwlT/gbI=";
   };

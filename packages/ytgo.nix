@@ -11,7 +11,7 @@ buildGoModule rec {
 
   src = fetchFromGitHub {
     owner = "cybardev";
-    repo = "ytgo";
+    repo = pname;
     rev = "v${version}";
     hash = "sha256-cAnZfXwk4zv9I8FDDe+xpR3TxlMgJjiLPT9h61iEqVY=";
   };
@@ -27,15 +27,15 @@ buildGoModule rec {
   # tests run in project repo pipeline
 
   postFixup = with pkgs; ''
-    wrapProgram $out/bin/ytgo \
+    wrapProgram $out/bin/${pname} \
       --prefix PATH : ${lib.makeBinPath [ ffmpeg yt-dlp mpv ]}
   '';
 
   meta = {
     description = "A Go program to find and watch YouTube videos from the terminal without requiring API keys";
-    homepage = "https://github.com/cybardev/ytgo";
+    homepage = "https://github.com/cybardev/${pname}";
     license = lib.licenses.gpl3Only;
     maintainers = with lib.maintainers; [ ];
-    mainProgram = "ytgo";
+    mainProgram = pname;
   };
 }
