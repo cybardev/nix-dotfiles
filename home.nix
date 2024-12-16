@@ -31,6 +31,12 @@
         rev = "2a9f44a19c8fc9c399f2d6a62f4998fffc908145";
         hash = "sha256-s/YLFdhCrJjcqvA6HuQtP0ADjBtOqAP+arjpFM2m4oQ=";
       };
+
+      # ptpython config
+      ".config/ptpython/config.py".text = builtins.readFile(pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/cybardev/dotfiles/d1c0266755b4f31b9e828884a7ee5b9fb12964f2/config/ptpython/config.py";
+        hash = "sha256-c917shJDEotfSSbXIi+m3Q/KioKkf20YG82UyhUu3lI=";
+      });
     };
 
     # This value determines the Home Manager release that your

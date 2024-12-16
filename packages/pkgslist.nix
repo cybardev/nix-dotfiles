@@ -3,6 +3,7 @@
 
   home-manager.users.sage = { ... }: {
     home.packages = with pkgs; [
+      (callPackage ./ptpython.nix {})
       (callPackage ./cutefetch.nix {})
       (callPackage ./ytgo.nix {})
       nix-search-cli
