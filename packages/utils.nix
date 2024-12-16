@@ -41,8 +41,8 @@
         color = {
           gradient = 1;
           gradient_count = 2;
-          gradient_color_1 = "'#ffbeff'";
-          gradient_color_2 = "'#bb7ebb'";
+          gradient_color_1 = "'#bb7ebb'";
+          gradient_color_2 = "'#ffbeff'";
         };
         output.method = "ncurses";
         smoothing.gravity = 42;
