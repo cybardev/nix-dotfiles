@@ -30,7 +30,7 @@
 
 <details>
 
-<summary>**`packages` submodules** _(click to expand)_</summary>
+<summary><b><code>packages</course> submodules</b> <i>(click to expand)</i></summary>
 
 - [`packages/pkgslist.nix`](./packages/pkgslist.nix)
 
