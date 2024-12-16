@@ -85,7 +85,7 @@
     # GDK_DPI_SCALE = "0.4";
     # _JAVA_OPTIONS = "-sun.java2d.uiScale=2.2";
     # QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    XCURSOR_SIZE = 42;
+    XCURSOR_SIZE = 64;
   };
 
   # Enable CUPS to print documents.
