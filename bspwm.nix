@@ -48,7 +48,6 @@
 
     services.picom = {
       enable = true;
-      package = pkgs.picom-pijulius;
       backend = "glx";
       fade = true;
       fadeDelta = 4;
@@ -84,7 +83,7 @@
         # swap the current node and the biggest window
         "super + g" = "bspc node -s biggest.window";
         # set window state
-        "super + {t,shift + t,s,f}" = "bspc node -t {tiled,pseudo_tiled,floating,fullscreen}";
+        "super + shift + {t,s,f,m}" = "bspc node -t {tiled,pseudo_tiled,floating,fullscreen}";
         # focus the node in the given direction
         "super + {_,shift + }{Left,Down,Up,Right}" = "bspc node -{f,s} {west,south,north,east}";
         # focus the next/previous window in the current desktop
