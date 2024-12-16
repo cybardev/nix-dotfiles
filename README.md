@@ -100,7 +100,8 @@
       sudo nix-channel --add "https://github.com/NixOS/nixos-hardware/archive/b12e314726a4226298fe82776b4baeaa7bcf3dcd.tar.gz" nixos-hardware
       ```
     - _For non-Surface_:
-      Remove/Comment [the `linux-surface` module import](https://github.com/cybardev/nixos-dotfiles/blob/b24d55392f9652c355f5b31f4e620dbaf5d210a9/configuration.nix#L8) in `configuration.nix`
+      
+      > Remove/Comment [the `linux-surface` module import](https://github.com/cybardev/nixos-dotfiles/blob/b24d55392f9652c355f5b31f4e620dbaf5d210a9/configuration.nix#L8) in `configuration.nix`
 
 7. Update added channel(s)
     ```sh
