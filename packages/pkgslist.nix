@@ -8,10 +8,6 @@
       (callPackage ./ytgo.nix {})
       nix-search-cli
       xorg.xdpyinfo
-      xfce.xfce4-verve-plugin
-      xfce.xfce4-systemload-plugin
-      xfce.xfce4-whiskermenu-plugin
-      xfce.xfce4-weather-plugin
       whitesur-icon-theme
       qogir-icon-theme
       qogir-theme

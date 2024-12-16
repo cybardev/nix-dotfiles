@@ -130,6 +130,12 @@
     wget
     gcc
     kanata # keyboard remapper
+
+    # XFCE panel plugins
+    xfce.xfce4-verve-plugin
+    xfce.xfce4-systemload-plugin
+    xfce.xfce4-whiskermenu-plugin
+    xfce.xfce4-weather-plugin
   ];
 
   # for Zsh completions of system packages
