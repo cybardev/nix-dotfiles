@@ -48,6 +48,7 @@
 
     services.picom = {
       enable = true;
+      package = pkgs.picom-pijulius;
       backend = "glx";
       fade = true;
       fadeDelta = 4;
