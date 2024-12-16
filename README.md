@@ -26,7 +26,7 @@
 
 ---
 > [!IMPORTANT]
-> at this stage compare `/etc/nixos.bak/hardware-configuration.nix` and `~/.config/nixos/hardware-configuration.nix` and edit the file as needed, since it can vary based on hardware
+> At this stage compare `/etc/nixos.bak/hardware-configuration.nix` and `~/.config/nixos/hardware-configuration.nix` and edit the file as needed, since it can vary based on hardware. Also, remove the `linux-surface` import in [`configuration.nix`](./configuration.nix) if not using a Surface device.
 ---
 
 4. Rebuild system from new config
