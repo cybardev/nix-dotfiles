@@ -54,15 +54,15 @@
   
 - [`packages/ptpython.nix`](./packages/ptpython.nix)
   
-  _**`ptpython` package**_: Custom package for `ptpython` - a Python interpreter with various convenience features like inline documentation, syntax highlighting, modal editing, etc.
+  _**`ptpython` package**_: Custom Nix package for `ptpython` - a Python interpreter with various convenience features like inline documentation, syntax highlighting, modal editing, etc. Source: [prompt-toolkit/ptpython](https://github.com/prompt-toolkit/ptpython)
   
 - [`packages/cutefetch.nix`](./packages/cutefetch.nix)
   
-  _**`cutefetch` package**_: Nix package for my `cutefetch` program - a minimalistic sysinfo fetch script featuring cute animals. Source: [cybardev/cutefetch](https://github.com/cybardev/cutefetch)
+  _**`cutefetch` package**_: Custom Nix package for my `cutefetch` program - a minimalistic sysinfo fetch script featuring cute animals. Source: [cybardev/cutefetch](https://github.com/cybardev/cutefetch)
   
 - [`packages/ytgo.nix`](./packages/ytgo.nix)
   
-  _**`ytgo` package**_: Nix package for my `ytgo` program - a terminal media player which I mainly use for background music while coding. Source: [cybardev/ytgo](https://github.com/cybardev/ytgo)
+  _**`ytgo` package**_: Custom Nix package for my `ytgo` program - a terminal media player which I mainly use for background music while coding. Source: [cybardev/ytgo](https://github.com/cybardev/ytgo)
 
 ---
 
