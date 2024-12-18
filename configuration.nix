@@ -4,9 +4,9 @@
 
 { config, pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz"), ... }: {
   imports = [
-    # linux-surface
-    <nixos-hardware/microsoft/surface/common>
-
+    # device-specific configuration
+    ./system.nix
+ 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
@@ -18,7 +18,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "azure"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary

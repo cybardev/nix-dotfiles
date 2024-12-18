@@ -74,14 +74,27 @@
 
 ### Installation
 
-1. Make backup of current config
-    ```sh
-    sudo mv /etc/nixos /etc/nixos.bak
-    ```
+> [!NOTE]
+> Run `export SURFACE_KERNEL=1` before running the following script _**if you’re using a Surface device**_.
 
-2. Clone into `~/.config`
+Run the [install.sh](./install.sh) script:
+
+```sh
+curl -sS “https://raw.githubusercontent.com/cybardev/nixos-dotfiles/refs/heads/main/install.sh“ | bash -e
+```
+
+<details>
+
+<summary><b>Individual steps to install</b> <i>(click to expand)</i></summary>
+
+1. Clone into `~/.config`
     ```sh
     git clone "https://github.com/cybardev/nixos-dotfiles.git" ~/.config/nixos
+    ```
+
+2. Make backup of current config
+    ```sh
+    sudo mv /etc/nixos /etc/nixos.bak
     ```
 
 3. Soft-link to NixOS config directory
@@ -118,6 +131,8 @@
     ```sh
     sudo nixos-rebuild switch
     ```
+
+</details>
 
 ---
 
