@@ -4,7 +4,7 @@ git clone "https://github.com/cybardev/nixos-dotfiles.git" ~/.config/nixos
 
 sudo mv /etc/nixos /etc/nixos.bak
 
-sudo ln -s $HOME/.config/nixos /etc/nixos
+sudo ln -s "$HOME/.config/nixos" /etc/nixos
 
 mv ~/.config/nixos/hardware-configuration.nix ~/.config/nixos/hardware-configuration.nix.bak
 cp /etc/nixos.bak/hardware-configuration.nix ~/.config/nixos/
