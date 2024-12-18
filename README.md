@@ -18,7 +18,7 @@
 
 - [`system.nix`](./system.nix) | [`system-surface.nix`](./system-surface.nix)
 
-  _**device-specific config**_: Specify device hostname here. The `-surface` file is used in the installer script to build the Linux Surface kernel if desired.
+  _**Device-specific config**_: Specify device hostname here. The `-surface` file is used in the installer script to build the Linux Surface kernel if desired.
 
 - [`home.nix`](./home.nix)
 
