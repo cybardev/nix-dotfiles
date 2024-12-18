@@ -75,17 +75,17 @@
 ### Installation
 
 > [!NOTE]
-> Run `export SURFACE_KERNEL=1` before running the following script _**if you’re using a Surface device**_.
+> Run `export SURFACE_KERNEL=1` _before_ running the following script **if you’re using a Surface device**.
 
 Run the [install.sh](./install.sh) script:
 
 ```sh
-curl -sS “https://raw.githubusercontent.com/cybardev/nixos-dotfiles/refs/heads/main/install.sh“ | bash -e
+curl -sS "https://raw.githubusercontent.com/cybardev/nixos-dotfiles/refs/heads/main/install.sh" | bash -e
 ```
 
 <details>
 
-<summary><b>Individual steps to install</b> <i>(click to expand)</i></summary>
+<summary><b>Individual installation steps</b> <i>(click to expand)</i></summary>
 
 1. Clone into `~/.config`
     ```sh
