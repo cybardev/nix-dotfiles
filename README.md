@@ -16,6 +16,10 @@
 
   _**Hardware config**_: Created during system installation. Did not modify it since.
 
+- [`system.nix`](./system.nix) | [`system-surface.nix`](./system-surface.nix)
+
+  _**device-specific config**_: Specify device hostname here. The `-surface` file is used in the installer script to build the Linux Surface kernel if desired.
+
 - [`home.nix`](./home.nix)
 
   _**`home-manager` config**_: `home-manager` related config goes here. Also whatever files need to be directly sourced to somewhere in the `HOME` directory _(like a `neovim` config for which I have a separate repository)_.
