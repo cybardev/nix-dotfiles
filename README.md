@@ -117,14 +117,14 @@ curl -sS "https://raw.githubusercontent.com/cybardev/nixos-dotfiles/refs/heads/m
     sudo nix-channel --add "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz" home-manager
     ```
 
-6. Enable/Disable `linux-surface` kernel _(depending on if you have a Surface device)_
-    - _For Surface_:
+6. **[OPTIONAL]** Enable `linux-surface` kernel _(if you have a Surface device)_
+    - _Add the `nixos-hardware` channel_:
       ```sh
       sudo nix-channel --add "https://github.com/NixOS/nixos-hardware/archive/b12e314726a4226298fe82776b4baeaa7bcf3dcd.tar.gz" nixos-hardware
       ```
-    - _For non-Surface_:
+    - _Use Surface-specific configuration file_:
       
-      > Remove/Comment [the `linux-surface` module import](https://github.com/cybardev/nixos-dotfiles/blob/b24d55392f9652c355f5b31f4e620dbaf5d210a9/configuration.nix#L8) in `configuration.nix`
+      > Change the `system.nix` import to `system-surface.nix` in [`configuration.nix`](./configuration.nix)
 
 7. Update added channel(s)
     ```sh
