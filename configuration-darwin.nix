@@ -9,6 +9,13 @@
     name = "sage";
     home = /Users/sage;
   };
+
+  # this allows sharing between nixos and darwin:
+
+  # home-manager.users.sage.imports = [
+  #   ./packages/zshrc.nix
+  # ];
+
   home-manager.users.sage = { pkgs, ... }: {
     home.packages = with pkgs; [
       nix-search-cli
