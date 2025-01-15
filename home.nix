@@ -4,9 +4,9 @@
     <home-manager/nixos>
 
     # User config modules
-    ./bspwm.nix
     ./packages/pkgslist.nix
     ./packages/utils.nix
+    ./packages/bspwm.nix
     ./packages/kitty.nix
     ./packages/vscode.nix
     ./packages/yazi.nix
