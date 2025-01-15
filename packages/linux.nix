@@ -17,6 +17,7 @@
         qogir-theme
         nerdfonts
         brave
+        unzip
         rustc
         fondo
         feh

@@ -24,6 +24,7 @@
     gitui
     p7zip
     hugo
+    wget
     mpv
     bat
     eza
