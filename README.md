@@ -8,6 +8,7 @@
 ---
 
 ### Modules
+
 - [`configuration.nix`](./configuration.nix)
 
   _**System config**_: I don't usually modify unless I want something done system-wide rather than for my user.
@@ -92,46 +93,55 @@ curl -sS "https://raw.githubusercontent.com/cybardev/nixos-dotfiles/refs/heads/m
 <summary><b>Individual installation steps</b> <i>(click to expand)</i></summary>
 
 1. Clone into `~/.config`
+
     ```sh
     git clone "https://github.com/cybardev/nixos-dotfiles.git" ~/.config/nixos
     ```
 
 2. Make backup of current config
+
     ```sh
     sudo mv /etc/nixos /etc/nixos.bak
     ```
 
 3. Soft-link to NixOS config directory
+
     ```sh
     sudo ln -s $HOME/.config/nixos /etc/nixos
     ```
 
 4. Replace `hardware-configuration.nix` with one appropriate for your system
+
     ```sh
     mv ~/.config/nixos/hardware-configuration.nix ~/.config/nixos/hardware-configuration.nix.bak
     cp /etc/nixos.bak/hardware-configuration.nix ~/.config/nixos/
     ```
 
 5. Add the `home-manager` channel
+
     ```sh
     sudo nix-channel --add "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz" home-manager
     ```
 
 6. **[OPTIONAL]** Enable `linux-surface` kernel _(if you have a Surface device)_
     - _Add the `nixos-hardware` channel_:
+
       ```sh
       sudo nix-channel --add "https://github.com/NixOS/nixos-hardware/archive/b12e314726a4226298fe82776b4baeaa7bcf3dcd.tar.gz" nixos-hardware
       ```
+
     - _Use Surface-specific configuration file_:
-      
+
       > Change the `system.nix` import to `system-surface.nix` in [`configuration.nix`](./configuration.nix)
 
 7. Update added channel(s)
+
     ```sh
     sudo nix-channel --update
     ```
 
 8. Rebuild system from new config
+
     ```sh
     sudo nixos-rebuild switch
     ```
@@ -145,4 +155,3 @@ curl -sS "https://raw.githubusercontent.com/cybardev/nixos-dotfiles/refs/heads/m
 ![NixOS Screenshot, showing desktop with flower background and XFCE panels](./images/screenshot_0.png "NixOS Screenshot 0")
 ![NixOS Screenshot, showing 3 windows of Kitty terminal in BSPWM](./images/screenshot_1.png "NixOS Screenshot 1")
 ![NixOS Screenshot, showing logoff dialog](./images/screenshot_2.png "NixOS Screenshot 2")
-
