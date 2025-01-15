@@ -2,11 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz"), ... }: {
+{
+  config,
+  pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz"),
+  ...
+}:
+{
   imports = [
     # device-specific configuration
     ./system.nix
- 
+
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
@@ -113,7 +118,11 @@
   users.users.sage = {
     isNormalUser = true;
     description = "Sheikh";
-    extraGroups = [ "networkmanager" "wheel" "uinput" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "uinput"
+    ];
   };
   hardware.uinput.enable = true;
 

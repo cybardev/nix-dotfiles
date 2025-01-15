@@ -33,7 +33,13 @@ stdenv.mkDerivation rec {
 
   postInstall = with pkgs; ''
     wrapProgram $out/bin/cutefetch \
-      --prefix PATH : ${lib.makeBinPath [ networkmanager xorg.xprop xorg.xdpyinfo ]}
+      --prefix PATH : ${
+        lib.makeBinPath [
+          networkmanager
+          xorg.xprop
+          xorg.xdpyinfo
+        ]
+      }
   '';
 
   meta = {

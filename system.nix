@@ -1,3 +1,4 @@
-{ ... }: {
-    networking.hostName = "nix-system"; # Define your hostname.
+{ ... }:
+{
+  networking.hostName = "nix-system"; # Define your hostname.
 }

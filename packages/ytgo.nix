@@ -20,7 +20,10 @@ buildGoModule rec {
 
   vendorHash = "sha256-62bDFcunLygMpAY63C/b3g9L97XZ9HZbmz4RMecJwO4=";
 
-  ldflags = [ "-s" "-w" ];
+  ldflags = [
+    "-s"
+    "-w"
+  ];
 
   # checks fail cuz needs internet
   doCheck = false;
@@ -28,7 +31,13 @@ buildGoModule rec {
 
   postFixup = with pkgs; ''
     wrapProgram $out/bin/${pname} \
-      --prefix PATH : ${lib.makeBinPath [ ffmpeg yt-dlp mpv ]}
+      --prefix PATH : ${
+        lib.makeBinPath [
+          ffmpeg
+          yt-dlp
+          mpv
+        ]
+      }
   '';
 
   meta = {

@@ -22,4 +22,3 @@ pkgs.python3Packages.buildPythonApplication rec {
     hash = "sha256-2b2urIjGrdlbekTAsWQS6TB1aknq8fSRNtP/97i+92c=";
   };
 }
-
