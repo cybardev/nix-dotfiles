@@ -1,9 +1,5 @@
 { ... }:
 {
-  imports = [
-    <home-manager/nix-darwin>
-  ];
-
   home-manager.users.sage =
     { pkgs, ... }:
     {
