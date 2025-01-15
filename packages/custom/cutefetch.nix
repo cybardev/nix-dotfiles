@@ -1,53 +1,51 @@
 {
   lib,
   pkgs,
-  stdenv,
+  stdenvNoCC,
   fetchFromGitHub,
 }:
 
-stdenv.mkDerivation rec {
-  pname = "cutefetch";
-  version = "0.3";
+stdenvNoCC.mkDerivation (
+  finalAttrs:
+  let
+    src = fetchFromGitHub {
+      owner = "cybardev";
+      repo = "cutefetch";
+      rev = "e2462c64926f405f3c840efb37803def97c145ed";
+      hash = "sha256-DMp8tc1r5g3kHtboRp2xmx1o3Ze5UMqoYUHQwlT/gbI=";
+    };
+  in
+  {
+    inherit src;
 
-  src = fetchFromGitHub {
-    owner = "cybardev";
-    repo = pname;
-    rev = "e2462c64926f405f3c840efb37803def97c145ed";
-    hash = "sha256-DMp8tc1r5g3kHtboRp2xmx1o3Ze5UMqoYUHQwlT/gbI=";
-  };
+    pname = src.repo;
+    version = "0.3";
 
-  nativeBuildInputs = [ pkgs.makeWrapper ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
 
-  buildPhase = ''
-    runHook preBuild
-    chmod +x cutefetch
-    runHook postBuild
-  '';
+    installPhase = ''
+      runHook preInstall
+      chmod +x cutefetch
+      mkdir -p "$out/bin"
+      cp cutefetch "$out/bin/"
+      runHook postInstall
+    '';
 
-  installPhase = ''
-    runHook preInstall
-    mkdir -p $out/bin
-    cp cutefetch $out/bin/
-    runHook postInstall
-  '';
+    postInstall = with pkgs; ''
+      wrapProgram "$out/bin/cutefetch" \
+        --prefix PATH : ${
+          lib.makeBinPath [ ]
+          ++ lib.optional pkgs.stdenvNoCC.hostPlatform.isLinux networkmanager xorg.xprop xorg.xdpyinfo
+        }
+    '';
 
-  postInstall = with pkgs; ''
-    wrapProgram $out/bin/cutefetch \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          networkmanager
-          xorg.xprop
-          xorg.xdpyinfo
-        ]
-      }
-  '';
-
-  meta = {
-    description = "Tiny coloured fetch script with cute little animals";
-    homepage = "https://github.com/cybardev/cutefetch";
-    license = lib.licenses.gpl3Only;
-    maintainers = with lib.maintainers; [ ];
-    mainProgram = "cutefetch";
-    platforms = lib.platforms.all;
-  };
-}
+    meta = {
+      description = "Tiny coloured fetch script with cute little animals";
+      homepage = "https://github.com/${src.owner}/${src.repo}";
+      license = lib.licenses.gpl3Only;
+      maintainers = with lib.maintainers; [ ];
+      mainProgram = src.repo;
+      platforms = lib.platforms.all;
+    };
+  }
+)
