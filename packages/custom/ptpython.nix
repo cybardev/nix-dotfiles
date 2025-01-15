@@ -3,7 +3,7 @@
   fetchFromGitHub,
 }:
 
-pkgs.python3Packages.buildPythonApplication rec {
+pkgs.python3Packages.buildPythonApplication (finalAttrs: {
   pname = "ptpython";
   version = "3.0.29";
 
@@ -17,8 +17,8 @@ pkgs.python3Packages.buildPythonApplication rec {
 
   src = fetchFromGitHub {
     owner = "prompt-toolkit";
-    repo = pname;
-    rev = version;
+    repo = finalAttrs.pname;
+    rev = finalAttrs.version;
     hash = "sha256-2b2urIjGrdlbekTAsWQS6TB1aknq8fSRNtP/97i+92c=";
   };
-}
+})

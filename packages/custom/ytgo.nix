@@ -5,14 +5,14 @@
   fetchFromGitHub,
 }:
 
-buildGoModule rec {
+buildGoModule (finalAttrs: {
   pname = "ytgo";
   version = "3.1.3";
 
   src = fetchFromGitHub {
     owner = "cybardev";
-    repo = pname;
-    rev = "v${version}";
+    repo = finalAttrs.pname;
+    rev = "v${finalAttrs.version}";
     hash = "sha256-cAnZfXwk4zv9I8FDDe+xpR3TxlMgJjiLPT9h61iEqVY=";
   };
 
@@ -42,9 +42,10 @@ buildGoModule rec {
 
   meta = {
     description = "A Go program to find and watch YouTube videos from the terminal without requiring API keys";
-    homepage = "https://github.com/cybardev/${pname}";
+    homepage = "https://github.com/${finalAttrs.src.owner}/${finalAttrs.pname}";
     license = lib.licenses.gpl3Only;
     maintainers = with lib.maintainers; [ ];
-    mainProgram = pname;
+    mainProgram = finalAttrs.pname;
+    platforms = lib.platforms.all;
   };
-}
+})
