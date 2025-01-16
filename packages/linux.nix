@@ -7,7 +7,6 @@
         ./common.nix
 
         ./config/bspwm.nix
-        ./config/vscode.nix
       ];
 
       home.packages = with pkgs; [

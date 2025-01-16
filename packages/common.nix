@@ -4,6 +4,7 @@
     ./config/zsh.nix
     ./config/yazi.nix
     ./config/kitty.nix
+    ./config/vscode.nix
     ./config/utils.nix
   ];
 
