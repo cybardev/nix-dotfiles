@@ -11,9 +11,6 @@
 
       home.packages = with pkgs; [
         xorg.xdpyinfo
-        whitesur-icon-theme
-        qogir-icon-theme
-        qogir-theme
         nerdfonts
         unzip
         rustc

@@ -28,66 +28,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "America/Halifax";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_CA.UTF-8";
-
-  services.xserver = {
-    # Enable the X11 windowing system.
-    enable = true;
-
-    # Enable the XFCE Desktop Environment.
-    displayManager.lightdm = {
-      enable = true;
-      greeters.gtk = {
-        enable = true;
-        theme = {
-          name = "Qogir-Dark";
-          package = pkgs.qogir-theme;
-        };
-        cursorTheme = {
-          name = "Qogir-manjaro-dark";
-          package = pkgs.qogir-icon-theme;
-          size = 64;
-        };
-        iconTheme = {
-          name = "WhiteSur-dark";
-          package = pkgs.whitesur-icon-theme;
-        };
-      };
-    };
-    desktopManager = {
-      xterm.enable = false;
-      xfce = {
-        enable = true;
-        # noDesktop = true;
-        enableXfwm = false;
-        enableScreensaver = false;
-      };
-    };
-
-    # Configure keymap in X11
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-  };
-
-  # HiDPI display config
-  services.xserver = {
-    dpi = 148;
-    upscaleDefaultCursor = true;
-  };
-  environment.variables = {
-    # GDK_SCALE = "2.2";
-    # GDK_DPI_SCALE = "0.4";
-    # _JAVA_OPTIONS = "-sun.java2d.uiScale=2.2";
-    # QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    XCURSOR_SIZE = 64;
-  };
-
   # Enable CUPS to print documents.
   services.printing.enable = false;
 
@@ -109,17 +49,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.sage = {
-    isNormalUser = true;
-    description = "Sheikh";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "uinput"
-    ];
-  };
   hardware.uinput.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
