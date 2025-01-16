@@ -2,6 +2,9 @@
 
 ## My Personal NixOS Config
 
+> [!CAUTION]
+> **THIS DOCUMENTATION AND THE INSTALLER SCRIPT ARE OBSOLETE.** Will update soon. Meanwhile, check out the code and **PROCEED WITH CAUTION**.
+
 > [!NOTE]
 > **Use at your own risk.** It works _for me_, but it may or may not work _for you_.
 
