@@ -123,10 +123,11 @@
   hardware.uinput.enable = true;
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfreePredicate
-    = pkg: builtins.elem (lib.getName pkg) [
-        "vscode"
-      ];
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "vscode"
+    ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
