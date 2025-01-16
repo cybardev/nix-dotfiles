@@ -11,12 +11,12 @@
             rev = "8b588e6f4abddf424702dee267d9b3159f5d1dd6";
           }
         )).extensions.${system};
-      openvsxExt = with extensions.open-vsx-release; [
+      openvsxExt = with extensions.open-vsx; [
         # add Open VSX Registry extensions
         zhuangtongfa.material-theme
         vscodevim.vim
       ];
-      marketplaceExt = with extensions.vscode-marketplace-release; [
+      marketplaceExt = with extensions.vscode-marketplace; [
         # add VS Code Marketplace extensions
       ];
     in
