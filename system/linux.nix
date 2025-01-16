@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     <home-manager/nixos>
@@ -7,13 +7,6 @@
 
     ../packages/linux.nix
   ];
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "vscode"
-    ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
