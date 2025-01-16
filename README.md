@@ -35,13 +35,13 @@
 
 ### Installation
 
-> [!WARNING]
+> [!CAUTION]
 > The installation scripts use `sudo`. Please **read the scripts and included comments** _before running_ to ensure you understand what they're doing and acknowledge that you trust them. Else, manually run the commands or install otherwise **at your own risk**.
 
 #### NixOS
 
-> [!NOTE]
-> Run `export SURFACE_KERNEL=1` _before_ running the following script **if you’re using a Surface device**.
+> [!IMPORTANT]
+> Run `export SURFACE_KERNEL=1` _before_ running the following script _if you’re using a Surface device_ **and** _you want the `linux-surface` kernel_.
 
 Run the [install.sh](./install.sh) script:
 
