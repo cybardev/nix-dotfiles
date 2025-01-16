@@ -1,16 +1,21 @@
 {
   lib,
   pkgs,
-  stdenv,
+  stdenvNoCC,
   fetchFromGitHub,
 }:
 
-stdenv.mkDerivation rec {
+let
+  author = "cybardev";
   pname = "cutefetch";
   version = "0.3";
+in
+stdenvNoCC.mkDerivation {
+  inherit pname;
+  inherit version;
 
   src = fetchFromGitHub {
-    owner = "cybardev";
+    owner = author;
     repo = pname;
     rev = "e2462c64926f405f3c840efb37803def97c145ed";
     hash = "sha256-DMp8tc1r5g3kHtboRp2xmx1o3Ze5UMqoYUHQwlT/gbI=";
@@ -18,36 +23,34 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkgs.makeWrapper ];
 
-  buildPhase = ''
-    runHook preBuild
-    chmod +x cutefetch
-    runHook postBuild
-  '';
-
   installPhase = ''
     runHook preInstall
-    mkdir -p $out/bin
-    cp cutefetch $out/bin/
+    chmod +x ${pname}
+    mkdir -p "$out/bin"
+    cp ${pname} "$out/bin/"
     runHook postInstall
   '';
 
   postInstall = with pkgs; ''
-    wrapProgram $out/bin/cutefetch \
+    wrapProgram "$out/bin/${pname}" \
       --prefix PATH : ${
-        lib.makeBinPath [
-          networkmanager
-          xorg.xprop
-          xorg.xdpyinfo
-        ]
+        lib.makeBinPath (
+          [ ]
+          ++ lib.optionals pkgs.stdenvNoCC.hostPlatform.isLinux [
+            networkmanager
+            xorg.xprop
+            xorg.xdpyinfo
+          ]
+        )
       }
   '';
 
   meta = {
     description = "Tiny coloured fetch script with cute little animals";
-    homepage = "https://github.com/cybardev/cutefetch";
+    homepage = "https://github.com/${author}/${pname}";
     license = lib.licenses.gpl3Only;
     maintainers = with lib.maintainers; [ ];
-    mainProgram = "cutefetch";
+    mainProgram = pname;
     platforms = lib.platforms.all;
   };
 }

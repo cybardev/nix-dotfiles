@@ -3,9 +3,13 @@
   fetchFromGitHub,
 }:
 
-pkgs.python3Packages.buildPythonApplication rec {
+let
   pname = "ptpython";
   version = "3.0.29";
+in
+pkgs.python3Packages.buildPythonApplication {
+  inherit pname;
+  inherit version;
 
   propagatedBuildInputs = with pkgs.python3Packages; [
     appdirs
