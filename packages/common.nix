@@ -14,8 +14,10 @@
     (callPackage ./custom/ytgo.nix { })
     nixfmt-rfc-style
     nix-search-cli
+    signal-desktop
     imagemagick
     visidata
+    inkscape
     poppler
     cmatrix
     ffmpeg
@@ -23,9 +25,12 @@
     neovim
     gitui
     p7zip
+    brave
+    gimp
     hugo
     wget
     mpv
+    nil
     bat
     eza
     go

@@ -15,7 +15,6 @@
         qogir-icon-theme
         qogir-theme
         nerdfonts
-        brave
         unzip
         rustc
         fondo

@@ -8,8 +8,7 @@
       ];
 
       home.packages = with pkgs; [
-        pnpm
-        pipx
+        iina
       ];
     };
 
@@ -17,29 +16,20 @@
     enable = true;
     brews = [
       "weasyprint"
-      # lua
-      # luarocks
     ];
     casks = [
       "aerospace"
-      "brave-browser"
       "docker"
       "font-caskaydia-cove-nerd-font"
       "font-fira-code-nerd-font"
       "font-jetbrains-mono-nerd-font"
       "font-open-dyslexic-nerd-font"
       "gb-studio"
-      "gimp"
       "hiddenbar"
-      "iina"
-      "inkscape"
-      "kitty"
       "keyclu"
       "mark-text"
       "multipatch"
       "sonic-pi"
-      "signal"
-      "visual-studio-code"
       # "android-studio"
       # "background-music"
       # "basictex"
