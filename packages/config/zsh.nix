@@ -50,7 +50,8 @@
       edit-os = "nvim ~/.config/nixos";
 
       # reloading configs
-      rebuild-os = "sudo nixos-rebuild switch";
+      re-mac = "darwin-rebuild switch";
+      re-nix = "sudo nixos-rebuild switch";
       zrc = ". $ZDOTDIR/.zshrc";
 
       # package management
