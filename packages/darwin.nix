@@ -16,6 +16,7 @@
   homebrew = {
     enable = true;
     brews = [
+      "weasyprint"
       # lua
       # luarocks
     ];

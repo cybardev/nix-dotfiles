@@ -14,7 +14,6 @@
     nixfmt-rfc-style
     nix-search-cli
     imagemagick
-    weasyprint
     visidata
     poppler
     cmatrix

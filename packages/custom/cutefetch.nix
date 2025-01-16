@@ -34,8 +34,14 @@ stdenvNoCC.mkDerivation {
   postInstall = with pkgs; ''
     wrapProgram "$out/bin/${pname}" \
       --prefix PATH : ${
-        lib.makeBinPath [ ]
-        ++ lib.optional pkgs.stdenvNoCC.hostPlatform.isLinux networkmanager xorg.xprop xorg.xdpyinfo
+        lib.makeBinPath (
+          [ ]
+          ++ lib.optional pkgs.stdenvNoCC.hostPlatform.isLinux [
+            networkmanager
+            xorg.xprop
+            xorg.xdpyinfo
+          ]
+        )
       }
   '';
 
