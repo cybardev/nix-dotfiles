@@ -51,7 +51,7 @@
 ### Installation
 
 > [!WARNING]
-> The installation scripts use `sudo`. Please **read the scripts** _before running_ to ensure you understand what they're doing and acknowledge that you trust them. Else, manually run the commands or install otherwise **at your own risk**.
+> The installation scripts use `sudo`. Please **read the scripts and included comments** _before running_ to ensure you understand what they're doing and acknowledge that you trust them. Else, manually run the commands or install otherwise **at your own risk**.
 
 #### NixOS
 
@@ -64,8 +64,6 @@ Run the [install.sh](./install.sh) script:
 curl -sS "https://raw.githubusercontent.com/cybardev/nixos-dotfiles/refs/heads/main/install.sh" | bash -e
 ```
 
-_**PS**: Check the comments in the script to know what it's doing._
-
 #### macOS
 
 Run the [install-mac.sh](./install-mac.sh) script:
@@ -73,8 +71,6 @@ Run the [install-mac.sh](./install-mac.sh) script:
 ```sh
 curl -sS "https://raw.githubusercontent.com/cybardev/nixos-dotfiles/refs/heads/main/install-mac.sh" | bash -e
 ```
-
-_**PS**: Check the comments in the script to know what it's doing._
 
 ---
 
