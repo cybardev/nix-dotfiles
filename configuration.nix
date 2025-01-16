@@ -2,6 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
+  lib,
   config,
   pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz"),
   ...
@@ -122,7 +123,10 @@
   hardware.uinput.enable = true;
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate
+    = pkg: builtins.elem (lib.getName pkg) [
+        "vscode"
+      ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
