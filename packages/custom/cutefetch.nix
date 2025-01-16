@@ -5,13 +5,18 @@
   fetchFromGitHub,
 }:
 
-stdenvNoCC.mkDerivation (finalAttrs: {
+let
+  author = "cybardev";
   pname = "cutefetch";
   version = "0.3";
+in
+stdenvNoCC.mkDerivation {
+  inherit pname;
+  inherit version;
 
   src = fetchFromGitHub {
-    owner = "cybardev";
-    repo = finalAttrs.pname;
+    owner = author;
+    repo = pname;
     rev = "e2462c64926f405f3c840efb37803def97c145ed";
     hash = "sha256-DMp8tc1r5g3kHtboRp2xmx1o3Ze5UMqoYUHQwlT/gbI=";
   };
@@ -20,14 +25,14 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   installPhase = ''
     runHook preInstall
-    chmod +x ${finalAttrs.pname}
+    chmod +x ${pname}
     mkdir -p "$out/bin"
-    cp ${finalAttrs.pname} "$out/bin/"
+    cp ${pname} "$out/bin/"
     runHook postInstall
   '';
 
   postInstall = with pkgs; ''
-    wrapProgram "$out/bin/${finalAttrs.pname}" \
+    wrapProgram "$out/bin/${pname}" \
       --prefix PATH : ${
         lib.makeBinPath [ ]
         ++ lib.optional pkgs.stdenvNoCC.hostPlatform.isLinux networkmanager xorg.xprop xorg.xdpyinfo
@@ -36,10 +41,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   meta = {
     description = "Tiny coloured fetch script with cute little animals";
-    homepage = "https://github.com/${finalAttrs.src.owner}/${finalAttrs.pname}";
+    homepage = "https://github.com/${author}/${pname}";
     license = lib.licenses.gpl3Only;
     maintainers = with lib.maintainers; [ ];
-    mainProgram = finalAttrs.pname;
+    mainProgram = pname;
     platforms = lib.platforms.all;
   };
-})
+}
