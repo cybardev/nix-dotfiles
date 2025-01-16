@@ -2,49 +2,34 @@
 
 ## My Personal NixOS Config
 
-> [!CAUTION]
-> **THIS DOCUMENTATION AND THE INSTALLER SCRIPT ARE OBSOLETE.** Will update soon. Meanwhile, check out the code and **PROCEED WITH CAUTION**.
-
 > [!NOTE]
 > **Use at your own risk.** It works _for me_, but it may or may not work _for you_.
 
 ---
 
-### Modules
+### Features
+
+- XFCE desktop environment
+- BSPWM window manager
+- Kitty terminal
+- Zsh shell
+- etc.
+
+### Components
 
 - [`configuration.nix`](./configuration.nix) (and variants)
 
-  _**System config**_: Avoid modifying unless really needed (like changing username, groups, etc.).
+  _**Root config**_: Avoid modifying unless really needed (like changing username, groups, etc.).
 
-  _**Variants**_: `-darwin` for `nix-darwin`, and `-surface` for Surface devices
+  _**Variants**_: [`-darwin`](./configuration-darwin.nix) for `nix-darwin`, and [`-surface`](./configuration-surface.nix) for Surface devices
 
 - [`system/`](./system/) (directory)
 
-  _**Installed software config**_: Install and configure various software for the user.
+  _**System configs**_: Configure various system components, like home-manager, unfree software, system-wide packages, etc.
 
 - [`packages/`](./packages/) (directory)
 
-  _**Installed software config**_: Install and configure various software for the user.
-
-<details>
-
-<summary><b><code>system</code> submodules</b> <i>(click to expand)</i></summary>
-
-- [`packages/pkgslist.nix`](./packages/pkgslist.nix)
-
-  _**List of packages to install**_: Software to install that need no further configuration.
-
-</details>
-
-<details>
-
-<summary><b><code>packages</code> submodules</b> <i>(click to expand)</i></summary>
-
-- [`packages/pkgslist.nix`](./packages/pkgslist.nix)
-
-  _**List of packages to install**_: Software to install that need no further configuration.
-
-</details>
+  _**Package configs**_: Install and configure various software for the user.
 
 ---
 
