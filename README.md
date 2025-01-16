@@ -11,6 +11,7 @@
 
 - XFCE desktop environment
 - BSPWM window manager
+- Brave browser
 - Kitty terminal
 - Zsh shell
 - etc.
