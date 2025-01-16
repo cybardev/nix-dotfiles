@@ -36,7 +36,7 @@ stdenvNoCC.mkDerivation {
       --prefix PATH : ${
         lib.makeBinPath (
           [ ]
-          ++ lib.optional pkgs.stdenvNoCC.hostPlatform.isLinux [
+          ++ lib.optionals pkgs.stdenvNoCC.hostPlatform.isLinux [
             networkmanager
             xorg.xprop
             xorg.xdpyinfo
