@@ -2,8 +2,8 @@
 
 ## My Personal NixOS Config
 
-> [!NOTE]
-> **Use at your own risk.** It works _for me_, but it may or may not work _for you_.
+> [!WARNING]
+> **Use at your own risk.** It works _for me_, but it may not work _for you_. At least not without adjustments.
 
 ---
 
