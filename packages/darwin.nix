@@ -10,6 +10,17 @@
       home.packages = with pkgs; [
         iina
       ];
+
+      # Dotfiles
+      home.file = {
+        # AeroSpace config
+        ".config/aerospace/aerospace.toml".text = builtins.readFile (
+          pkgs.fetchurl {
+            url = "https://raw.githubusercontent.com/cybardev/dotfiles/a3aa064394034f9b4d3f3e702d470e2d633bd124/config/aerospace/aerospace.toml";
+            hash = "sha256-ZaGhHMYvH/9jGFo7iUiExYZJQjuGXDd89aiUIKKHrZc=";
+          }
+        );
+      };
     };
 
   homebrew = {
