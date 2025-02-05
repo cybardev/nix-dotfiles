@@ -30,10 +30,10 @@
       package = pkgs.vscodium;
       extensions = marketplaceExt ++ openvsxExt;
       userSettings = {
-        "workbench.colorTheme" = "One Dark Pro Darker";
-        "files.autoSave" = "afterDelay";
-        "editor.formatOnSave" = true;
         "editor.fontFamily" = "'CaskaydiaCove Nerd Font', Menlo, Monaco, 'Courier New', monospace";
+        "editor.formatOnSave" = true;
+        "files.autoSave" = "afterDelay";
+        "git.enableSmartCommit" = true;
         "nix.enableLanguageServer" = true;
         "nix.serverSettings" = {
           "nil" = {
@@ -42,6 +42,7 @@
             };
           };
         };
+        "workbench.colorTheme" = "One Dark Pro Darker";
       };
     };
 }

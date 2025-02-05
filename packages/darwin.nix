@@ -39,26 +39,12 @@
       "hiddenbar"
       "keyclu"
       "mark-text"
-      "multipatch"
       "sonic-pi"
-      # "android-studio"
-      # "background-music"
-      # "basictex"
-      # "blender"
-      # "dropzone"
-      # "gamemaker"
-      # "godot"
-      # "obs"
-      # "unity-hub"
-      # "utm"
-      # "zulu"
     ];
     taps = [
       "homebrew/bundle"
       "homebrew/services"
       "nikitabobko/tap"
-      # "hashicorp/tap"
-      # "localstack/tap"
     ];
   };
 }
