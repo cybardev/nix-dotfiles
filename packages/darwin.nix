@@ -44,8 +44,6 @@
     ];
     taps = [
       "homebrew/bundle"
-      "homebrew/cask-fonts"
-      "homebrew/core"
       "homebrew/services"
       "nikitabobko/tap"
       # "hashicorp/tap"
