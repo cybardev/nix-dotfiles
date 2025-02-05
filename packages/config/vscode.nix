@@ -33,6 +33,8 @@
         "editor.fontFamily" = "'CaskaydiaCove Nerd Font', Menlo, Monaco, 'Courier New', monospace";
         "editor.formatOnSave" = true;
         "files.autoSave" = "afterDelay";
+        "git.autofetch" = true;
+        "git.confirmSync" = false;
         "git.enableSmartCommit" = true;
         "nix.enableLanguageServer" = true;
         "nix.serverSettings" = {
