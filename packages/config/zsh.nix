@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.zsh = {
     dotDir = ".config/zsh";
