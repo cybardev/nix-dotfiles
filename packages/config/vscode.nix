@@ -15,6 +15,11 @@
         # add Open VSX Registry extensions
         zhuangtongfa.material-theme
         vscodevim.vim
+        eamodio.gitlens
+        adpyke.codesnap
+        ms-python.python
+        charliermarsh.ruff
+        jnoortheen.nix-ide
       ];
       marketplaceExt = with extensions.vscode-marketplace; [
         # add VS Code Marketplace extensions
