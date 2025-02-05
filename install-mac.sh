@@ -7,10 +7,10 @@ NIXOS_CONFIG_DIR="$HOME/.config/nixos"
 git clone "https://github.com/cybardev/nixos-dotfiles.git" "$NIXOS_CONFIG_DIR"
 
 # add home-manager channel
-sudo nix-channel --add "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz" home-manager
+sudo -H nix-channel --add "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz" home-manager
 
 # update nix channels
-sudo nix-channel --update
+sudo -H nix-channel --update
 
 # rebuild system from config
-sudo darwin-rebuild switch -I "$NIXOS_CONFIG_DIR/configuration-darwin.nix"
+sudo -H darwin-rebuild switch -I "$NIXOS_CONFIG_DIR/configuration-darwin.nix"
