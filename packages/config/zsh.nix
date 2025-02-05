@@ -60,7 +60,7 @@
       yup = "sudo nixos-rebuild switch --upgrade";
 
       # utilities
-      py = "ptpython";
+      py = "ptpython --config-file ~/.config/ptpython/config.py";
       yt = "ytgo -i -m -p";
       fondo = "com.github.calo001.fondo";
     };
