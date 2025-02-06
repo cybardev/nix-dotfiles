@@ -41,9 +41,6 @@
 
   # Dotfiles
   home.file = {
-    # LunarVim config
-    ".config/lvim/config.lua".text = builtins.readFile ./config/lvim.lua;
-
     # Zen.zsh shell prompt
     ".config/zsh/zen".source = pkgs.fetchFromGitHub {
       owner = "cybardev";
@@ -52,13 +49,11 @@
       hash = "sha256-s/YLFdhCrJjcqvA6HuQtP0ADjBtOqAP+arjpFM2m4oQ=";
     };
 
+    # LunarVim config
+    ".config/lvim/config.lua".source = ./config/lvim.lua;
+
     # ptpython config
-    ".config/ptpython/config.py".text = builtins.readFile (
-      pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/cybardev/dotfiles/d1c0266755b4f31b9e828884a7ee5b9fb12964f2/config/ptpython/config.py";
-        hash = "sha256-c917shJDEotfSSbXIi+m3Q/KioKkf20YG82UyhUu3lI=";
-      }
-    );
+    ".config/ptpython/config.py".source = ./config/ptpython.py;
   };
 
   # set $EDITOR to nvim (LunarVim)
