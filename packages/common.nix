@@ -56,8 +56,11 @@
     ".config/ptpython/config.py".source = ./config/ptpython.py;
   };
 
-  # set $EDITOR to nvim (LunarVim)
-  home.sessionVariables.EDITOR = "lvim";
+  # set environment variables
+  home.sessionVariables = {
+    EDITOR = "lvim";
+    PTPYTHON_CONFIG_HOME = "$HOME/.config/ptpython/";
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
