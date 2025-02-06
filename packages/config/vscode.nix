@@ -32,6 +32,7 @@
       userSettings = {
         "editor.fontFamily" = "'CaskaydiaCove Nerd Font', Menlo, Monaco, 'Courier New', monospace";
         "editor.formatOnSave" = true;
+        "explorer.sortOrder" = "type";
         "files.autoSave" = "afterDelay";
         "git.autofetch" = true;
         "git.confirmSync" = false;
