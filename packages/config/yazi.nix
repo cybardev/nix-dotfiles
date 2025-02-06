@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.yazi = {
     enable = true;
@@ -16,6 +16,14 @@
           for = "unix";
         }
       ];
+    };
+    plugins = {
+      relative-motions = pkgs.fetchFromGitHub {
+        owner = "dedukun";
+        repo = "relative-motions.yazi";
+        rev = "4244639d480e797a43d6514ddee021a0cb6d1cd6";
+        hash = "sha256-83cTNxGbPzzWEGTwkpf/WweHuKJSAPIGLf4DzY9vqog=";
+      };
     };
     initLua = ''
       require("relative-motions"):setup({ show_numbers="relative_absolute", show_motion = true })
