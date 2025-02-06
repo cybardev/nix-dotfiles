@@ -9,6 +9,7 @@
       font_size = 14;
       enable_audio_bell = false;
       tab_bar_edge = "top";
+      background_opacity = 0.96;
     };
   };
 }
