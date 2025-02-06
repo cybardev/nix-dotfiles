@@ -26,6 +26,11 @@
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap";
+    masApps = {
+      "OwlFiles" = 510282524;
+      "MuteKey" = 1509590766;
+      "KeyNote" = 409183694;
+    };
     brews = [
       "weasyprint"
     ];
