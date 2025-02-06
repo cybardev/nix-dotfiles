@@ -13,5 +13,5 @@ sudo -H nix-channel --add "https://github.com/nix-community/home-manager/archive
 sudo -H nix-channel --update
 
 # rebuild system from config
-nix-build '<darwin>' -A darwin-rebuild
+nix-build "<darwin>" -A darwin-rebuild
 ./result/bin/darwin-rebuild switch -I "darwin-config=$NIXOS_CONFIG_DIR/configuration-darwin.nix"
