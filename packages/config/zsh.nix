@@ -38,11 +38,16 @@
     shellAliases = {
       # shell conveniences
       x = "exit";
-      cf = "cutefetch";
       clr = "clear";
       cls = "clear";
       tree = "eza --tree --group-directories-last --sort=extension";
+      py = "ptpython --config-file ~/.config/ptpython/config.py";
+      yt = "ytgo -i -m -p";
+      cf = "cutefetch";
+      nvim = "lvim";
+      fondo = "com.github.calo001.fondo";
       cd-os = "cd ~/.config/nixos";
+      nix-gc = "nix-collect-garbage -d";
 
       # editing related
       edit = "nvim";
@@ -58,12 +63,6 @@
       yin = "nix-shell -p";
       yang = "nix-search";
       yup = "sudo nixos-rebuild switch --upgrade";
-
-      # utilities
-      nix-gc = "nix-collect-garbage -d";
-      py = "ptpython --config-file ~/.config/ptpython/config.py";
-      yt = "ytgo -i -m -p";
-      fondo = "com.github.calo001.fondo";
     };
   };
 }
