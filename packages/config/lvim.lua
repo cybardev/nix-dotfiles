@@ -5,8 +5,8 @@
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
 lvim.plugins = {
-    { "lunarvim/colorschemes" },
-    { "olimorris/onedarkpro.nvim" },
+  { "lunarvim/colorschemes" },
+  { "olimorris/onedarkpro.nvim" },
 }
 
 lvim.colorscheme = "onedark_dark"
