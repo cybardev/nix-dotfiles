@@ -10,3 +10,6 @@ lvim.plugins = {
 }
 
 lvim.colorscheme = "onedark_dark"
+
+vim.opt.relativenumber = true
+
