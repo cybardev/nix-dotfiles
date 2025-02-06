@@ -40,6 +40,8 @@
       x = "exit";
       clr = "clear";
       cls = "clear";
+      ls = "eza -1 --group-directories-last --sort=extension";
+      ll = "eza -1l --group-directories-last --sort=extension";
       tree = "eza --tree --group-directories-last --sort=extension";
       py = "ptpython --config-file ~/.config/ptpython/config.py";
       yt = "ytgo -i -m -p";
