@@ -50,10 +50,8 @@
         hash = "sha256-s/YLFdhCrJjcqvA6HuQtP0ADjBtOqAP+arjpFM2m4oQ=";
       };
 
-      # LunarVim config
+      # config files
       ".config/lvim/config.lua".source = ./config/lvim.lua;
-
-      # ptpython config
       ".config/ptpython/config.py".source = ./config/ptpython.py;
     };
 
