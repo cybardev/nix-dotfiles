@@ -41,6 +41,9 @@
 
   # Dotfiles
   home.file = {
+    # LunarVim config
+    ".config/lvim/config.lua".text = builtins.readFile ./config/lvim.lua;
+
     # Zen.zsh shell prompt
     ".config/zsh/zen".source = pkgs.fetchFromGitHub {
       owner = "cybardev";
