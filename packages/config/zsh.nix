@@ -54,7 +54,7 @@
 
       # editing related
       edit = "nvim";
-      edit-vim = "nvim ~/.config/nvim/lua/plugins/user.lua";
+      edit-vim = "nvim ~/.config/nixos/packages/config/lvim.lua";
       edit-os = "nvim ~/.config/nixos";
 
       # reloading configs
