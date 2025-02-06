@@ -44,6 +44,7 @@
             };
           };
         };
+        "vim.smartRelativeLine" = true;
         "workbench.colorTheme" = "One Dark Pro Darker";
       };
     };
