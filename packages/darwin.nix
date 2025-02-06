@@ -41,6 +41,7 @@
       "font-fira-code-nerd-font"
       "font-jetbrains-mono-nerd-font"
       "font-open-dyslexic-nerd-font"
+      "karabiner-elements"
       "gb-studio"
       "hiddenbar"
       "keyclu"
