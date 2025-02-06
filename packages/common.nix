@@ -16,13 +16,13 @@
     nix-search-cli
     signal-desktop
     imagemagick
+    lunarvim
     visidata
     inkscape
     poppler
     cmatrix
     ffmpeg
     yt-dlp
-    neovim
     gitui
     p7zip
     brave
@@ -41,14 +41,6 @@
 
   # Dotfiles
   home.file = {
-    # AstroNvim config
-    ".config/nvim".source = pkgs.fetchFromGitHub {
-      owner = "cybardev";
-      repo = "astronvim_config";
-      rev = "5fa712012937324f2c87eb720514a6a5090a5357";
-      hash = "sha256-s1qKv5BoHmc5aNWdVOx47SiYnfSVFgHWG43BVHFR644=";
-    };
-
     # Zen.zsh shell prompt
     ".config/zsh/zen".source = pkgs.fetchFromGitHub {
       owner = "cybardev";
@@ -66,8 +58,8 @@
     );
   };
 
-  # set $EDITOR to nvim
-  home.sessionVariables.EDITOR = "nvim";
+  # set $EDITOR to nvim (LunarVim)
+  home.sessionVariables.EDITOR = "lvim";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
