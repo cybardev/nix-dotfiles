@@ -12,9 +12,7 @@
           iina
         ];
 
-        # Dotfiles
         file = {
-          # config files
           ".config/aerospace/aerospace.toml".source = ./config/aerospace.toml;
           ".config/karabiner".source = ./config/karabiner;
         };

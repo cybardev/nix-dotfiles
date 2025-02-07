@@ -37,22 +37,18 @@
       luajitPackages.luarocks
     ];
 
-    # Dotfiles
     file = {
-      # Zen.zsh shell prompt
+      ".config/lvim/config.lua".source = ./config/lvim.lua;
+      ".config/ptpython/config.py".source = ./config/ptpython.py;
       ".config/zsh/zen".source = pkgs.fetchFromGitHub {
         owner = "cybardev";
         repo = "zen.zsh";
         rev = "2a9f44a19c8fc9c399f2d6a62f4998fffc908145";
         hash = "sha256-s/YLFdhCrJjcqvA6HuQtP0ADjBtOqAP+arjpFM2m4oQ=";
       };
-
-      # config files
-      ".config/lvim/config.lua".source = ./config/lvim.lua;
-      ".config/ptpython/config.py".source = ./config/ptpython.py;
     };
 
-    # set environment variables
+    # environment variables
     sessionVariables = {
       EDITOR = "lvim";
       PTPYTHON_CONFIG_HOME = "$HOME/.config/ptpython/";
