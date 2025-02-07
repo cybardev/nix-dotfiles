@@ -24,7 +24,6 @@
       cmatrix
       ffmpeg
       yt-dlp
-      gitui
       p7zip
       brave
       gimp
@@ -32,8 +31,6 @@
       wget
       mpv
       nil
-      bat
-      eza
       go
       # love
       luajit

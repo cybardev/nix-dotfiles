@@ -40,10 +40,10 @@
       x = "exit";
       clr = "clear";
       cls = "clear";
-      cat = "bat -pp --theme=OneHalfDark";
-      ls = "eza -1 --group-directories-last --sort=extension";
-      ll = "eza -1l --group-directories-last --sort=extension";
-      tree = "eza --tree --group-directories-last --sort=extension";
+      cat = "bat -pp";
+      ls = "eza -1 --icons=never";
+      ll = "eza -1l";
+      tree = "eza --tree";
       py = "ptpython";
       yt = "ytgo -i -m -p";
       cf = "cutefetch";

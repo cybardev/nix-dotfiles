@@ -1,30 +1,26 @@
 { pkgs, ... }:
 {
-  # Poetry for Python
-  programs.poetry = {
+  programs.bat = {
     enable = true;
-    settings.virtualenvs.in-project = true;
+    config.theme = "OneHalfDark";
   };
 
-  # Bottom
+  programs.eza = {
+    enable = true;
+    colors = "auto";
+    git = true;
+    icons = "auto";
+    extraOptions = [
+      "--group-directories-last"
+      "--sort=extension"
+    ];
+  };
+
   programs.bottom = {
     enable = true;
     settings.styles.theme = "nord";
   };
 
-  # Git
-  programs.git = {
-    enable = true;
-    package = pkgs.gitFull;
-    userName = "cybardev";
-    userEmail = "sheikh@cybar.dev";
-    extraConfig = {
-      init.defaultBranch = "main";
-      credential.helper = "store";
-    };
-  };
-
-  # Cava
   programs.cava = {
     enable = true;
     settings = {
@@ -42,5 +38,26 @@
       output.method = "ncurses";
       smoothing.gravity = 42;
     };
+  };
+ 
+  programs.poetry = {
+    enable = true;
+    settings.virtualenvs.in-project = true;
+  };
+
+  programs.git = {
+    enable = true;
+    package = pkgs.gitFull;
+    userName = "cybardev";
+    userEmail = "sheikh@cybar.dev";
+    extraConfig = {
+      init.defaultBranch = "main";
+      credential.helper = "store";
+    };
+  };
+
+  programs.gitui = {
+    enable = true;
+    theme = ./gitui-catppuccin.ron;
   };
 }
