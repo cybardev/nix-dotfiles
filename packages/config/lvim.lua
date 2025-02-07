@@ -11,5 +11,6 @@ lvim.plugins = {
 
 lvim.colorscheme = "onedark_dark"
 lvim.format_on_save.enabled = true
+lvim.builtin.terminal.open_mapping = "<C-`>"
 
 vim.opt.relativenumber = true
