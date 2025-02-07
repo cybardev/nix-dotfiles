@@ -41,6 +41,7 @@
       clr = "clear";
       cls = "clear";
       cat = "bat -pp";
+      icat = "kitten icat";
       ls = "eza -1 --icons=never";
       ll = "eza -1l";
       tree = "eza --tree";
