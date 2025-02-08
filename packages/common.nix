@@ -22,6 +22,7 @@
       inkscape
       poppler
       cmatrix
+      thonny
       ffmpeg
       yt-dlp
       p7zip
