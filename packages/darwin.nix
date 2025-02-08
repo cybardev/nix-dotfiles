@@ -41,6 +41,7 @@
       "hiddenbar"
       "karabiner-elements"
       "keyclu"
+      "maccy"
       "mark-text"
       "sonic-pi"
     ];
