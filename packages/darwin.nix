@@ -43,6 +43,7 @@
       "keyclu"
       "maccy"
       "mark-text"
+      # "prusaslicer"
       "sonic-pi"
       {
         name = "wine@staging";
