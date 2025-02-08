@@ -44,6 +44,10 @@
       "maccy"
       "mark-text"
       "sonic-pi"
+      {
+        name = "wine-stable";
+        no_quarantine = false;
+      }
     ];
     taps = [
       "homebrew/bundle"
