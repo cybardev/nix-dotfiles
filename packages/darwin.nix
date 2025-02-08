@@ -45,8 +45,10 @@
       "mark-text"
       "sonic-pi"
       {
-        name = "wine-stable";
-        no_quarantine = false;
+        name = "wine@staging";
+        args = {
+          no_quarantine = false;
+        };
       }
     ];
     taps = [
