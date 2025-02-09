@@ -48,7 +48,7 @@
       {
         name = "wine@staging";
         args = {
-          no_quarantine = false;
+          no_quarantine = true;
         };
       }
     ];
