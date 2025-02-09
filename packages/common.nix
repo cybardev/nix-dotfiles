@@ -18,14 +18,18 @@
       signal-desktop
       imagemagick
       lunarvim
+      dfu-util
       visidata
       inkscape
       poppler
       cmatrix
       thonny
+      ccache
       ffmpeg
       yt-dlp
       p7zip
+      cmake
+      ninja
       brave
       gimp
       hugo

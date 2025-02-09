@@ -20,6 +20,7 @@
         ms-python.python
         charliermarsh.ruff
         jnoortheen.nix-ide
+        espressif.esp-idf-extension
       ];
       marketplaceExt = with extensions.vscode-marketplace; [
         # add VS Code Marketplace extensions
@@ -37,6 +38,11 @@
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "git.enableSmartCommit" = true;
+        "idf.espIdfPath" = "/Users/sage/Documents/Git/esp/v5.4/esp-idf";
+        "idf.gitPath" = "git";
+        "idf.hasWalkthroughBeenShown" = true;
+        "idf.pythonInstallPath" = "/usr/bin/python3";
+        "idf.toolsPath" = "/Users/sage/Documents/Git/esp/.espressif";
         "nix.enableLanguageServer" = true;
         "nix.serverSettings" = {
           "nil" = {
