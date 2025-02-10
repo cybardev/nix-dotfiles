@@ -45,12 +45,13 @@
       "mark-text"
       # "prusaslicer"
       "sonic-pi"
-      {
-        name = "wine@staging";
-        args = {
-          no_quarantine = true;
-        };
-      }
+      # "whisky"
+      # {
+      #   name = "wine@staging";
+      #   args = {
+      #     no_quarantine = true;
+      #   };
+      # }
     ];
     taps = [
       "homebrew/bundle"
