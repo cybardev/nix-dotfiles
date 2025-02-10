@@ -20,6 +20,7 @@
         ms-python.python
         charliermarsh.ruff
         jnoortheen.nix-ide
+        ms-vscode.live-server
         espressif.esp-idf-extension
       ];
       marketplaceExt = with extensions.vscode-marketplace; [
