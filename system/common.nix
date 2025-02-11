@@ -5,6 +5,7 @@
     pkg:
     builtins.elem (lib.getName pkg) [
       "signal-desktop"
+      "aseprite"
       "vscode"
     ];
 
