@@ -18,7 +18,7 @@ clangStdenv.mkDerivation {
     fetchSubmodules = true;
     owner = author;
     repo = pname;
-    rev = "v" + version;
+    tag = "v${version}";
     hash = "sha256-hs+pKk7GcVGVyelRfipy5JQCgygrBhPb7E5uXVapflw=";
   };
 
