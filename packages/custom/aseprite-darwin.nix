@@ -24,21 +24,20 @@ clangStdenv.mkDerivation {
 
   nativeBuildInputs = with pkgs; [
     apple-sdk_11
-    libtool
   ];
   buildInputs = with pkgs; [
     skia-aseprite
   ];
 
-  cmakeFlags = [
+  cmakeFlags = with pkgs; [
     "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
     "-DCMAKE_OSX_ARCHITECTURES=arm64"
     "-DCMAKE_OSX_DEPLOYMENT_TARGET=11.0"
-    "-DCMAKE_OSX_SYSROOT=${pkgs.apple-sdk_11}/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+    "-DCMAKE_OSX_SYSROOT=${apple-sdk_11}/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
     "-DLAF_BACKEND=skia"
-    "-DSKIA_DIR=${pkgs.skia-aseprite}"
-    "-DSKIA_LIBRARY_DIR=${pkgs.skia-aseprite}/lib"
-    "-DSKIA_LIBRARY=${pkgs.skia-aseprite}/lib/libskia.a"
+    "-DSKIA_DIR=${skia-aseprite}"
+    "-DSKIA_LIBRARY_DIR=${skia-aseprite}/lib"
+    "-DSKIA_LIBRARY=${skia-aseprite}/lib/libskia.a"
     "-DPNG_ARM_NEON:STRING=on"
   ];
 
