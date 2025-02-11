@@ -26,6 +26,7 @@ clangStdenv.mkDerivation {
 
   nativeBuildInputs = with pkgs; [
     apple-sdk_11
+    pkg-config
   ];
   buildInputs = with pkgs; [
     skia-aseprite
