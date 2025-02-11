@@ -16,6 +16,7 @@
         rustc
         fondo
         feh
+        aseprite
       ];
     };
 }
