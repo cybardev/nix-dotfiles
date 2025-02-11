@@ -9,6 +9,7 @@
 
       home = {
         packages = with pkgs; [
+          # (callPackage ./custom/aseprite-darwin.nix { })
           iina
         ];
 
