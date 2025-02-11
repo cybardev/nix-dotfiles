@@ -65,6 +65,7 @@ clangStdenv.mkDerivation {
     "-DSKIA_LIBRARY_DIR=${skia-aseprite}/lib"
     "-DSKIA_LIBRARY=${skia-aseprite}/lib/libskia.a"
     "-DPNG_ARM_NEON:STRING=on"
+    "-G Ninja"
   ];
 
   passthru.updateScript = gitUpdater { rev-prefix = "v"; };
