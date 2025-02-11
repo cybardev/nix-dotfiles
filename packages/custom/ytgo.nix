@@ -49,7 +49,6 @@ buildGoModule {
     description = "A Go program to find and watch YouTube videos from the terminal without requiring API keys";
     homepage = "https://github.com/${author}/${pname}";
     license = lib.licenses.gpl3Only;
-    maintainers = with lib.maintainers; [ ];
     mainProgram = pname;
     platforms = lib.platforms.all;
   };

@@ -49,7 +49,6 @@ stdenvNoCC.mkDerivation {
     description = "Tiny coloured fetch script with cute little animals";
     homepage = "https://github.com/${author}/${pname}";
     license = lib.licenses.gpl3Only;
-    maintainers = with lib.maintainers; [ ];
     mainProgram = pname;
     platforms = lib.platforms.all;
   };

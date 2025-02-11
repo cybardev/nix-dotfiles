@@ -45,7 +45,6 @@ clangStdenv.mkDerivation {
     homepage = "https://www.aseprite.org/";
     description = "Animated sprite editor & pixel art tool";
     license = lib.licenses.unfree;
-    maintainers = with lib.maintainers; [ ];
     platforms = lib.platforms.darwin;
     mainProgram = pname;
   };
