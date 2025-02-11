@@ -27,7 +27,7 @@
       "KeyNote" = 409183694;
       "MuteKey" = 1509590766;
       "OwlFiles" = 510282524;
-      # "Xcode" = 497799835;
+      "Xcode" = 497799835;
     };
     brews = [
       "weasyprint"
