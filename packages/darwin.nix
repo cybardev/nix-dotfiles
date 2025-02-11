@@ -46,6 +46,7 @@
       # "prusaslicer"
       "sonic-pi"
       # "whisky"
+      "zoom"
       # {
       #   name = "wine@staging";
       #   args = {
