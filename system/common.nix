@@ -7,6 +7,7 @@
       "signal-desktop"
       "aseprite"
       "vscode"
+      "zoom"
     ];
 
   home-manager.backupFileExtension = "hm.bak";

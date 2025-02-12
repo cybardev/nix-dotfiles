@@ -9,7 +9,7 @@
 
       home = {
         packages = with pkgs; [
-          iina
+          zoom-us
         ];
 
         file = {
@@ -26,7 +26,7 @@
       "KeyNote" = 409183694;
       "MuteKey" = 1509590766;
       "OwlFiles" = 510282524;
-      "Xcode" = 497799835;
+      # "Xcode" = 497799835;
     };
     brews = [
       "weasyprint"
@@ -47,7 +47,6 @@
       # "prusaslicer"
       "sonic-pi"
       # "whisky"
-      "zoom"
       # {
       #   name = "wine@staging";
       #   args = {
