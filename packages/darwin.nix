@@ -47,12 +47,6 @@
       # "prusaslicer"
       "sonic-pi"
       # "whisky"
-      # {
-      #   name = "wine@staging";
-      #   args = {
-      #     no_quarantine = true;
-      #   };
-      # }
     ];
     taps = [
       "homebrew/bundle"
