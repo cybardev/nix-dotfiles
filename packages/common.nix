@@ -32,6 +32,7 @@
       ninja
       brave
       gimp
+      ncdu
       hugo
       wget
       mpv
