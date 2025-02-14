@@ -42,6 +42,7 @@
       "hiddenbar"
       "karabiner-elements"
       "keyclu"
+      "lulu"
       "maccy"
       "mark-text"
       # "prusaslicer"
