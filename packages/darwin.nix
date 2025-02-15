@@ -47,7 +47,7 @@
       "mark-text"
       # "prusaslicer"
       "sonic-pi"
-      # "whisky"
+      "whisky"
     ];
     taps = [
       "homebrew/bundle"
