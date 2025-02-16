@@ -35,6 +35,7 @@
       ncdu
       hugo
       wget
+      rar
       mpv
       nil
       go

@@ -8,6 +8,7 @@
       "aseprite"
       "vscode"
       "zoom"
+      "rar"
     ];
 
   home-manager.backupFileExtension = "hm.bak";
