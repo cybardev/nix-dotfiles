@@ -48,6 +48,7 @@
       py = "ptpython";
       yt = "ytgo -i -m -p";
       cf = "cutefetch";
+      tf = "cutefetch -m text";
       nvim = "lvim";
       fondo = "com.github.calo001.fondo";
       cd-os = "cd ~/.config/nixos";
