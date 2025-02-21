@@ -6,6 +6,7 @@
     builtins.elem (lib.getName pkg) [
       "signal-desktop"
       "aseprite"
+      "freej2me"
       "vscode"
       "zoom"
       "rar"
