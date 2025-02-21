@@ -58,7 +58,7 @@ stdenvNoCC.mkDerivation {
   meta = {
     description = "A free J2ME emulator with libretro, awt and sdl2 frontends.";
     homepage = "https://github.com/${author}/${repo}";
-    license = lib.licenses.gpl3Only;
+    license = lib.licenses.unfreeRedistributable;
     mainProgram = pname;
     platforms = lib.platforms.all;
   };
