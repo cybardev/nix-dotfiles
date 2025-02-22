@@ -24,6 +24,7 @@
       inkscape
       poppler
       cmatrix
+      zoom-us
       thonny
       ccache
       ffmpeg
