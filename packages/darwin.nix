@@ -9,7 +9,6 @@
 
       home = {
         packages = with pkgs; [
-          raycast
           iina
         ];
 
@@ -47,6 +46,7 @@
       "maccy"
       "mark-text"
       # "prusaslicer"
+      "raycast"
       "sonic-pi"
       "whisky"
     ];
