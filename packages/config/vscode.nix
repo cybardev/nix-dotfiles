@@ -44,13 +44,7 @@ in
       "idf.pythonInstallPath" = "/usr/bin/python3";
       "idf.toolsPath" = "/Users/sage/Documents/Git/esp/.espressif";
       "nix.enableLanguageServer" = true;
-      "nix.serverSettings" = {
-        "nil" = {
-          "formatting" = {
-            "command" = [ "nixfmt" ];
-          };
-        };
-      };
+      "nix.serverPath" = "nixd";
       "python.languageServer" = "Jedi";
       "vim.smartRelativeLine" = true;
       "workbench.colorTheme" = "One Dark Pro Darker";

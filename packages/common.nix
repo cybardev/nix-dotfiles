@@ -36,11 +36,11 @@
       brave
       gimp
       ncdu
+      nixd
       hugo
       wget
       rar
       mpv
-      nil
       go
       # love
       luajit
