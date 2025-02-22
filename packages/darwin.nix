@@ -9,7 +9,7 @@
 
       home = {
         packages = with pkgs; [
-          iina
+          # TIP: don't add GUI apps here; use brew instead
         ];
 
         file = {
