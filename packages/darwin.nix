@@ -10,7 +10,6 @@
       home = {
         packages = with pkgs; [
           raycast
-          zoom-us
         ];
 
         file = {
