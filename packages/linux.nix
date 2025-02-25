@@ -12,6 +12,7 @@
       home.packages = with pkgs; [
         xorg.xdpyinfo
         nerdfonts
+        docker
         unzip
         rustc
         fondo
