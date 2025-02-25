@@ -19,6 +19,7 @@
       nix-search-cli
       signal-desktop
       imagemagick
+      lazydocker
       lunarvim
       dfu-util
       visidata
