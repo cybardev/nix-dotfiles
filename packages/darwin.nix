@@ -43,7 +43,6 @@
       "karabiner-elements"
       "keyclu"
       "lulu"
-      "mark-text"
       # "prusaslicer"
       "raycast"
       "sonic-pi"

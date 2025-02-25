@@ -26,6 +26,7 @@
       poppler
       cmatrix
       zoom-us
+      logseq
       thonny
       ccache
       ffmpeg
