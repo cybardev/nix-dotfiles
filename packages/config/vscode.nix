@@ -10,10 +10,9 @@ let
       }
     )).extensions.${system};
   openvsxExt = with extensions.open-vsx; [
-    # add Open VSX Registry extensions
+    # add Open VSX Registry extensions (pre-release)
     zhuangtongfa.material-theme
     vscodevim.vim
-    eamodio.gitlens
     adpyke.codesnap
     ms-python.python
     charliermarsh.ruff
@@ -21,15 +20,22 @@ let
     ms-vscode.live-server
     espressif.esp-idf-extension
   ];
+  openvsxReleaseExt = with extensions.open-vsx-release; [
+    # add Open VSX Registry extensions (release)
+    eamodio.gitlens
+  ];
   marketplaceExt = with extensions.vscode-marketplace; [
-    # add VS Code Marketplace extensions
+    # add VS Code Marketplace extensions (pre-release)
+  ];
+  marketplaceReleaseExt = with extensions.vscode-marketplace-release; [
+    # add VS Code Marketplace extensions (release)
   ];
 in
 {
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    extensions = marketplaceExt ++ openvsxExt;
+    extensions = marketplaceReleaseExt ++ marketplaceExt ++ openvsxReleaseExt ++ openvsxExt;
     userSettings = {
       "editor.fontFamily" = "'CaskaydiaCove Nerd Font', Menlo, Monaco, 'Courier New', monospace";
       "editor.formatOnSave" = true;
