@@ -47,7 +47,7 @@
 Run the [install.sh](./install.sh) script:
 
 ```sh
-curl -sS "https://raw.githubusercontent.com/cybardev/nixos-dotfiles/refs/heads/main/install.sh" | bash -e
+curl -sS "https://raw.githubusercontent.com/cybardev/nix-dotfiles/refs/heads/main/install.sh" | bash -e
 ```
 
 #### macOS
@@ -55,7 +55,7 @@ curl -sS "https://raw.githubusercontent.com/cybardev/nixos-dotfiles/refs/heads/m
 Run the [install-mac.sh](./install-mac.sh) script:
 
 ```sh
-curl -sS "https://raw.githubusercontent.com/cybardev/nixos-dotfiles/refs/heads/main/install-mac.sh" | bash -e
+curl -sS "https://raw.githubusercontent.com/cybardev/nix-dotfiles/refs/heads/main/install-mac.sh" | bash -e
 ```
 
 ---

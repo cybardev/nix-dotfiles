@@ -4,7 +4,7 @@
 NIXOS_CONFIG_DIR="$HOME/.config/nixos"
 
 # clone into nixos config directory
-git clone "https://github.com/cybardev/nixos-dotfiles.git" "$NIXOS_CONFIG_DIR"
+git clone "https://github.com/cybardev/nix-dotfiles.git" "$NIXOS_CONFIG_DIR"
 
 # add required package channels channels
 sudo -H nix-channel --add "https://nixos.org/channels/nixpkgs-24.11-darwin" nixpkgs
