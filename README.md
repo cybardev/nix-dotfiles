@@ -1,6 +1,6 @@
-# NixOS Dotfiles
+# Nix Dotfiles
 
-## My Personal NixOS Config
+## My Personal Nix Config
 
 > [!WARNING]
 > **Use at your own risk.** It works _for me_, but it may not work _for you_. At least not without adjustments.
