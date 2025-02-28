@@ -6,7 +6,7 @@ let
       builtins.fetchGit {
         url = "https://github.com/nix-community/nix-vscode-extensions";
         ref = "refs/heads/master";
-        rev = "8b588e6f4abddf424702dee267d9b3159f5d1dd6";
+        rev = "780a1d35ccd6158ed2c7d10d87c02825e97b4c89";
       }
     )).extensions.${system};
   openvsxExt = with extensions.open-vsx; [
