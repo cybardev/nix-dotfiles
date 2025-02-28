@@ -18,6 +18,7 @@ let
     charliermarsh.ruff
     jnoortheen.nix-ide
     ms-vscode.live-server
+    # EchoAPI.echoapi-for-vscode
     espressif.esp-idf-extension
   ];
   openvsxReleaseExt = with extensions.open-vsx-release; [
