@@ -35,6 +35,7 @@
       p7zip
       cmake
       ninja
+      bruno
       brave
       gimp
       ncdu
