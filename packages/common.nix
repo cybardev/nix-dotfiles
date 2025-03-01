@@ -17,6 +17,7 @@
       (callPackage ./custom/ytgo.nix { })
       nixfmt-rfc-style
       nix-search-cli
+      gnome-mahjongg
       signal-desktop
       imagemagick
       lazydocker
