@@ -33,6 +33,7 @@
     ];
     casks = [
       "aerospace"
+      "altserver"
       "docker"
       "font-caskaydia-cove-nerd-font"
       "font-fira-code-nerd-font"

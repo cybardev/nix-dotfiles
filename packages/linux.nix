@@ -18,6 +18,7 @@
         fondo
         feh
         aseprite
+        altserver-linux
       ];
     };
 }
