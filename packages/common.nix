@@ -53,6 +53,7 @@
 
     file = {
       ".config/lvim/config.lua".source = ./config/lvim.lua;
+      ".config/lvim/ftplugin/nix.lua".source = ./config/lvim-nix.lua;
       ".config/ptpython/config.py".source = ./config/ptpython.py;
       ".config/zsh/zen".source = pkgs.fetchFromGitHub {
         owner = "cybardev";

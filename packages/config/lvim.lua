@@ -15,6 +15,8 @@ lvim.colorscheme = "onedark_dark"
 lvim.format_on_save.enabled = true
 lvim.builtin.terminal.open_mapping = "<C-`>"
 
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "nil_ls" })
+
 -- swap ; and : in normal mode
 vim.keymap.set("n", ";", ":", { noremap = true })
 vim.keymap.set("n", ":", ";", { noremap = true })
