@@ -2,7 +2,7 @@
 {
   programs.kitty = {
     enable = true;
-    themeFile = "DarkOneNuanced";
+    themeFile = "Doom_Vibrant";
     settings = {
       shell = "zsh";
       font_family = "CaskaydiaCove Nerd Font Mono";
