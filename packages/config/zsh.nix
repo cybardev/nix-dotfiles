@@ -24,7 +24,7 @@
     };
     initExtra = ''
       path+=( "$(go env GOPATH)/bin" "$HOME/.local/bin" )
-      cutefetch
+      cutefetch -m text
 
       fpath+="$ZDOTDIR/zen"
       autoload -Uz promptinit
