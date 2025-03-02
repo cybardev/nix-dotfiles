@@ -4,6 +4,8 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
+vim.opt.relativenumber = true
+
 lvim.plugins = {
   { "lunarvim/colorschemes" },
   { "olimorris/onedarkpro.nvim" },
@@ -13,4 +15,6 @@ lvim.colorscheme = "onedark_dark"
 lvim.format_on_save.enabled = true
 lvim.builtin.terminal.open_mapping = "<C-`>"
 
-vim.opt.relativenumber = true
+-- swap ; and : in normal mode
+vim.keymap.set("n", ";", ":", { noremap = true })
+vim.keymap.set("n", ":", ";", { noremap = true })
