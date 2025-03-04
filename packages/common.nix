@@ -23,6 +23,7 @@
       imagemagick
       lazydocker
       lunarvim
+      babashka
       dfu-util
       visidata
       inkscape
