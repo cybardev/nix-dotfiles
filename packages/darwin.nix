@@ -7,6 +7,11 @@
         ./common.nix
       ];
 
+      programs.cava.settings.input = {
+        method = "portaudio";
+        source = "'Background Music'";
+      };
+
       home = {
         packages = with pkgs; [
           # TIP: don't add GUI apps here; use brew instead
@@ -34,6 +39,7 @@
     casks = [
       "aerospace"
       "altserver"
+      # "background-music"
       "docker"
       "font-caskaydia-cove-nerd-font"
       "font-fira-code-nerd-font"

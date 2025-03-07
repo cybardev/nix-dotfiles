@@ -39,7 +39,7 @@
       smoothing.gravity = 42;
     };
   };
- 
+
   programs.poetry = {
     enable = true;
     settings.virtualenvs.in-project = true;
