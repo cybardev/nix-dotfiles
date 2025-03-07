@@ -18,6 +18,7 @@
         fondo
         feh
         aseprite
+        lunar-client
         altserver-linux
       ];
     };

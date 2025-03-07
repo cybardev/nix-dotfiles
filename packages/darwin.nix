@@ -50,6 +50,7 @@
       "karabiner-elements"
       "keyclu"
       "lulu"
+      "lunar-client"
       # "prusaslicer"
       "raycast"
       "sonic-pi"
