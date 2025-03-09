@@ -21,5 +21,11 @@
         lunar-client
         altserver-linux
       ];
+
+      programs.zsh.shellAliases = {
+        fondo = "com.github.calo001.fondo";
+        re-nix = "sudo nixos-rebuild switch";
+        yup = "sudo nixos-rebuild switch --upgrade";
+      };
     };
 }

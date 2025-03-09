@@ -7,11 +7,6 @@
         ./common.nix
       ];
 
-      programs.cava.settings.input = {
-        method = "portaudio";
-        source = "'Background Music'";
-      };
-
       home = {
         packages = with pkgs; [
           # TIP: don't add GUI apps here; use brew instead
@@ -21,6 +16,15 @@
           ".config/aerospace/aerospace.toml".source = ./config/aerospace.toml;
           ".config/karabiner".source = ./config/karabiner;
         };
+      };
+
+      programs.zsh.shellAliases = {
+        re-nix = "darwin-rebuild switch";
+      };
+
+      programs.cava.settings.input = {
+        method = "portaudio";
+        source = "'Background Music'";
       };
     };
 
@@ -51,7 +55,7 @@
       "keyclu"
       "lulu"
       "lunar-client"
-      # "prusaslicer"
+      "prusaslicer"
       "raycast"
       "sonic-pi"
       "whisky"

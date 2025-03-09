@@ -50,9 +50,7 @@
       cf = "cutefetch";
       tf = "cutefetch -m text";
       nvim = "lvim";
-      fondo = "com.github.calo001.fondo";
       cd-os = "cd ~/.config/nixos";
-      nix-gc = "nix-collect-garbage -d";
 
       # editing related
       edit = "nvim";
@@ -60,14 +58,12 @@
       edit-os = "nvim ~/.config/nixos";
 
       # reloading configs
-      re-mac = "darwin-rebuild switch";
-      re-nix = "sudo nixos-rebuild switch";
       zrc = ". $ZDOTDIR/.zshrc";
 
       # package management
       yin = "nix-shell -p";
       yang = "nix-search";
-      yup = "sudo nixos-rebuild switch --upgrade";
+      wuji = "nix-collect-garbage -d";
     };
   };
 }
