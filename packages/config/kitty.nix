@@ -1,6 +1,5 @@
 { ... }:
 {
-  home.file.".config/kitty/kitty.app.png".source = ./kitty.app.png;
   programs.kitty = {
     enable = true;
     themeFile = "Doom_Vibrant";
@@ -13,4 +12,8 @@
       background_opacity = 0.96;
     };
   };
+
+  # Custom Icon
+  # License: MIT Copyright: 2024, Andrew Haust <https://github.com/sodapopcan/kitty-icon>
+  home.file.".config/kitty/kitty.app.png".source = ./kitty.app.png;
 }
