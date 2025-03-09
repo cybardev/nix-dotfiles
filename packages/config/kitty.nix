@@ -1,5 +1,6 @@
 { ... }:
 {
+  home.file.".config/kitty/kitty.app.png".source = ./kitty.app.png;
   programs.kitty = {
     enable = true;
     themeFile = "Doom_Vibrant";
