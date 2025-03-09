@@ -1,6 +1,13 @@
 { pkgs, ... }:
 {
   programs = {
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
+
     bat = {
       enable = true;
       config.theme = "OneHalfDark";
