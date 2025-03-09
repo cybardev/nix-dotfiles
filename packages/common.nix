@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./config/zsh.nix
@@ -7,6 +7,14 @@
     ./config/vscode.nix
     ./config/utils.nix
   ];
+
+  nix = {
+    package = lib.mkDefault pkgs.nixFlakes;
+    gc = {
+      automatic = true;
+      frequency = "monthly";
+    };
+  };
 
   home = {
     packages = with pkgs; [
