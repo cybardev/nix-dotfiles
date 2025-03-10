@@ -35,6 +35,7 @@
       "KeyNote" = 409183694;
       "MuteKey" = 1509590766;
       "OwlFiles" = 510282524;
+      "Wavebar" = 6450398808;
       # "Xcode" = 497799835;
     };
     brews = [
