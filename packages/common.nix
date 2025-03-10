@@ -46,8 +46,6 @@
       logseq
       thonny
       ccache
-      ffmpeg
-      yt-dlp
       p7zip
       cmake
       ninja

@@ -31,9 +31,19 @@
 
     mpv = {
       enable = true;
-      scripts = with pkgs.mpvScripts; [
-        visualizer
-      ];
+      package = (
+        pkgs.mpv-unwrapped.wrapper {
+          mpv = pkgs.mpv-unwrapped.override {
+            ffmpeg = pkgs.ffmpeg-full;
+          };
+
+          scripts = with pkgs.mpvScripts; [
+            visualizer
+          ];
+
+          youtubeSupport = true;
+        }
+      );
     };
 
     cava = {
