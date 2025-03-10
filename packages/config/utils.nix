@@ -29,6 +29,13 @@
       settings.styles.theme = "nord";
     };
 
+    mpv = {
+      enable = true;
+      scripts = with pkgs.mpvScripts; [
+        visualizer
+      ];
+    };
+
     cava = {
       enable = true;
       settings = {

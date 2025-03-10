@@ -59,7 +59,6 @@
       hugo
       wget
       rar
-      mpv
       go
       # love
       luajit
