@@ -36,12 +36,10 @@
           mpv = pkgs.mpv-unwrapped.override {
             ffmpeg = pkgs.ffmpeg-full;
           };
-
+          youtubeSupport = true;
           scripts = with pkgs.mpvScripts; [
             visualizer
           ];
-
-          youtubeSupport = true;
         }
       );
     };
