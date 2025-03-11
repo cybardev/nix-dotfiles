@@ -67,12 +67,6 @@
       ".config/lvim/config.lua".source = ./config/lvim.lua;
       ".config/lvim/ftplugin/nix.lua".source = ./config/lvim-nix.lua;
       ".config/ptpython/config.py".source = ./config/ptpython.py;
-      ".config/zsh/zen".source = pkgs.fetchFromGitHub {
-        owner = "cybardev";
-        repo = "zen.zsh";
-        rev = "2a9f44a19c8fc9c399f2d6a62f4998fffc908145";
-        hash = "sha256-s/YLFdhCrJjcqvA6HuQtP0ADjBtOqAP+arjpFM2m4oQ=";
-      };
     };
 
     # environment variables
