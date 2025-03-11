@@ -18,13 +18,15 @@
         };
       };
 
-      programs.zsh.shellAliases = {
-        re-nix = "darwin-rebuild switch";
-      };
+      programs = {
+        zsh.shellAliases = {
+          re-nix = "darwin-rebuild switch";
+        };
 
-      programs.cava.settings.input = {
-        method = "portaudio";
-        source = "'Background Music'";
+        cava.settings.input = {
+          method = "portaudio";
+          source = "'Background Music'";
+        };
       };
     };
 
