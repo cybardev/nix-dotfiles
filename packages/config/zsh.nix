@@ -4,7 +4,7 @@
   home.file.".config/zsh/zen".source = pkgs.fetchFromGitHub {
     owner = "cybardev";
     repo = "zen.zsh";
-    rev = "2a9f44a19c8fc9c399f2d6a62f4998fffc908145";
+    rev = "v2.0";
     hash = "sha256-s/YLFdhCrJjcqvA6HuQtP0ADjBtOqAP+arjpFM2m4oQ=";
   };
 
