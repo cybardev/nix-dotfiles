@@ -34,6 +34,7 @@
     enable = true;
     onActivation.cleanup = "zap";
     masApps = {
+      "iMovie" = 408981434;
       "KeyNote" = 409183694;
       "MuteKey" = 1509590766;
       "OwlFiles" = 510282524;
