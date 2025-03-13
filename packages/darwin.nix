@@ -63,6 +63,7 @@
       "prusaslicer"
       "raycast"
       "sonic-pi"
+      "steam"
       "whisky"
     ];
     taps = [
