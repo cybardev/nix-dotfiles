@@ -1,11 +1,6 @@
-{
-  lib,
-  pkgs,
-  ...
-}:
+{ lib, pkgs, ... }:
 let
   cypkgs = import <cypkgs> {
-    inherit lib;
     inherit pkgs;
   };
 in
