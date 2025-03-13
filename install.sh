@@ -25,6 +25,9 @@ if [[ "$SURFACE_KERNEL" -eq 1 ]]; then
     SURFACE_CONFIG="-I nixos-config=$NIXOS_CONFIG_DIR"
 fi
 
+# add my own channel
+sudo -H nix-channel --add "https://github.com/cybardev/nix-channel/archive/main.tar.gz" cypkgs
+
 # update nix channels
 sudo nix-channel --update
 
