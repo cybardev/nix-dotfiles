@@ -21,6 +21,7 @@
       programs = {
         zsh.shellAliases = {
           re-nix = "darwin-rebuild switch";
+          yup = "sudo -H nix-channel --update";
         };
 
         cava.settings.input = {
