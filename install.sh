@@ -17,11 +17,11 @@ mv "$NIXOS_CONFIG_DIR/system/hardware-configuration.nix" "$NIXOS_CONFIG_DIR/syst
 cp "/etc/nixos.bak/hardware-configuration.nix" "$NIXOS_CONFIG_DIR/system/"
 
 # add home-manager channel
-sudo nix-channel --add "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz" home-manager
+sudo -H nix-channel --add "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz" home-manager
 
 # add linux-surface kernel if env var set
 if [[ "$SURFACE_KERNEL" -eq 1 ]]; then
-    sudo nix-channel --add "https://github.com/NixOS/nixos-hardware/archive/b12e314726a4226298fe82776b4baeaa7bcf3dcd.tar.gz" nixos-hardware
+    sudo -H nix-channel --add "https://github.com/NixOS/nixos-hardware/archive/b12e314726a4226298fe82776b4baeaa7bcf3dcd.tar.gz" nixos-hardware
     SURFACE_CONFIG="-I nixos-config=$NIXOS_CONFIG_DIR"
 fi
 
@@ -29,7 +29,7 @@ fi
 sudo -H nix-channel --add "https://github.com/cybardev/nix-channel/archive/main.tar.gz" cypkgs
 
 # update nix channels
-sudo nix-channel --update
+sudo -H nix-channel --update
 
 # rebuild system from config
 sudo nixos-rebuild switch $SURFACE_CONFIG
