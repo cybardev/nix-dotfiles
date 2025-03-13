@@ -22,12 +22,6 @@
 
   home = {
     packages = with pkgs; [
-      (callPackage ./custom/ptpython.nix { })
-      (callPackage ./custom/cutefetch.nix { })
-      (callPackage ./custom/jitterbugpair.nix { })
-      (callPackage ./custom/freej2me.nix { })
-      # (callPackage ./custom/ueli.nix { })
-      (callPackage ./custom/ytgo.nix { })
       nixfmt-rfc-style
       nix-search-cli
       gnome-mahjongg
