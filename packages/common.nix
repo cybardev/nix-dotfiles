@@ -36,7 +36,6 @@ in
       cypkgs.cutefetch
       cypkgs.jitterbugpair
       cypkgs.freej2me
-      # cypkgs.ueli
       cypkgs.ytgo
 
       # nixpkgs
