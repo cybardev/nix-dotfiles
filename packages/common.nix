@@ -1,4 +1,14 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cypkgs = import <cypkgs> {
+    inherit lib;
+    inherit pkgs;
+  };
+in
 {
   imports = [
     ./config/zsh.nix
@@ -22,6 +32,15 @@
 
   home = {
     packages = with pkgs; [
+      # cypkgs
+      cypkgs.cutefetch
+      cypkgs.jitterbugpair
+      cypkgs.freej2me
+      # cypkgs.ueli
+      cypkgs.ytgo
+
+      # nixpkgs
+      python3Packages.ptpython
       nixfmt-rfc-style
       nix-search-cli
       gnome-mahjongg
