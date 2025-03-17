@@ -38,7 +38,9 @@
           };
           youtubeSupport = true;
           scripts = with pkgs.mpvScripts; [
+            sponsorblock-minimal
             visualizer
+            uosc
           ];
         }
       );
