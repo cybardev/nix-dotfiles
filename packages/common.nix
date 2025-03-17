@@ -19,10 +19,10 @@ in
       automatic = true;
       frequency = "monthly";
     };
-    # settings.experimental-features = [
-    #   "nix-command"
-    #   "flakes"
-    # ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   home = {
