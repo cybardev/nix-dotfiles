@@ -63,7 +63,7 @@ in
       nixd
       hugo
       wget
-      rar
+      unar
       go
       # love
       luajit
