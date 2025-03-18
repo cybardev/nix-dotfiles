@@ -1,8 +1,10 @@
-{ lib, pkgs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 let
-  cypkgs = import <cypkgs> {
-    inherit pkgs;
-  };
+  cypkgs = inputs.cypkgs;
 in
 {
   imports = [
@@ -12,18 +14,6 @@ in
     ./config/vscode.nix
     ./config/utils.nix
   ];
-
-  nix = {
-    package = lib.mkDefault pkgs.nixFlakes;
-    gc = {
-      automatic = true;
-      frequency = "monthly";
-    };
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
 
   home = {
     packages = with pkgs; [
@@ -50,7 +40,7 @@ in
       cmatrix
       openssl
       zoom-us
-      logseq
+      # logseq
       thonny
       ccache
       p7zip
@@ -81,15 +71,5 @@ in
       EDITOR = "lvim";
       PTPYTHON_CONFIG_HOME = "$HOME/.config/ptpython/";
     };
-
-    # This value determines the Home Manager release that your
-    # configuration is compatible with. This helps avoid breakage
-    # when a new Home Manager release introduces backwards
-    # incompatible changes.
-    #
-    # You can update Home Manager without changing this value. See
-    # the Home Manager release notes for a list of state version
-    # changes in each release.
-    stateVersion = "24.11";
   };
 }

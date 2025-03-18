@@ -1,15 +1,12 @@
 { pkgs, ... }:
 {
   imports = [
-    <home-manager/nixos>
-
     ./common.nix
-
-    ../packages/linux.nix
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sage = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     description = "Sheikh";
     extraGroups = [

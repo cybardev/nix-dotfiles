@@ -2,16 +2,22 @@
   description = "cybardev/nix-dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -23,27 +29,49 @@
 
   outputs =
     {
-      nixpkgs-darwin,
+      nixpkgs,
+      nix-darwin,
+      home-manager,
       ...
     }@inputs:
-    let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs-darwin.legacyPackages.${system};
-    in
     {
-      homeConfigurations."sage" = inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+      darwinConfigurations = {
+        blade = nix-darwin.lib.darwinSystem {
+          modules = [
+            ./configuration-darwin.nix
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                backupFileExtension = "hm.bak";
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.sage = ./system/home-darwin.nix;
+                extraSpecialArgs = { inherit inputs; };
+              };
+            }
+          ];
+          specialArgs = { inherit inputs; };
+        };
       };
 
-      darwinConfigurations."blade" = inputs.nix-darwin.lib.darwinSystem {
-        modules = [ ./configuration-darwin.nix ];
+      nixosConfigurations = {
+        linux = nixpkgs.lib.nixosSystem {
+          modules = [
+            ./configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                backupFileExtension = "hm.bak";
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.sage = ./system/home-linux.nix;
+                extraSpecialArgs = { inherit inputs; };
+              };
+            }
+            # inputs.nixos-hardware.nixosModules.microsoft-surface-common
+          ];
+          specialArgs = { inherit inputs; };
+        };
       };
     };
 }
