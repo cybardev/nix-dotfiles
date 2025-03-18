@@ -8,6 +8,16 @@
       nix-direnv.enable = true;
     };
 
+    zoxide = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      options = [
+        "--cmd"
+        "c"
+      ];
+    };
+
     bat = {
       enable = true;
       config.theme = "OneHalfDark";
