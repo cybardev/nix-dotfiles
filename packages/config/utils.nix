@@ -74,7 +74,7 @@
       enable = true;
       package = pkgs.gitFull;
       userName = "cybardev";
-      userEmail = "sheikh@cybar.dev";
+      userEmail = "50134239+cybardev@users.noreply.github.com";
       extraConfig = {
         init.defaultBranch = "main";
         credential.helper = "store";
