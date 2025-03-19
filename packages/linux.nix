@@ -12,7 +12,7 @@ in
   home = {
     packages = with pkgs; [
       # cypkgs
-      # cypkgs.logseq
+      cypkgs.logseq
 
       # nixpkgs
       xorg.xdpyinfo
