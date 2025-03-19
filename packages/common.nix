@@ -20,7 +20,7 @@ in
       # cypkgs
       cypkgs.cutefetch
       cypkgs.jitterbugpair
-      cypkgs.freej2me
+      # cypkgs.freej2me
       cypkgs.ytgo
 
       # nixpkgs
