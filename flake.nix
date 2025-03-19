@@ -35,6 +35,7 @@
       ...
     }@inputs:
     let
+      userName = "sage";
       darwinHost = "blade";
       linuxHost = "forest";
       nix-config-dir = "~/.config/nixos";
@@ -54,6 +55,7 @@
                 extraSpecialArgs = {
                   inherit inputs;
                   inherit nix-config-dir;
+                  inherit userName;
                   hostName = darwinHost;
                 };
               };
@@ -62,6 +64,7 @@
           specialArgs = {
             inherit inputs;
             inherit nix-config-dir;
+            inherit userName;
             hostName = darwinHost;
           };
         };
@@ -81,6 +84,7 @@
                 extraSpecialArgs = {
                   inherit inputs;
                   inherit nix-config-dir;
+                  inherit userName;
                   hostName = linuxHost;
                 };
               };
@@ -90,6 +94,7 @@
           specialArgs = {
             inherit inputs;
             inherit nix-config-dir;
+            inherit userName;
             hostName = linuxHost;
           };
         };
