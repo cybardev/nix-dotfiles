@@ -4,7 +4,7 @@
   ...
 }:
 let
-  cypkgs = inputs.cypkgs;
+  cypkgs = inputs.cypkgs.packages.${pkgs.system};
 in
 {
   imports = [
