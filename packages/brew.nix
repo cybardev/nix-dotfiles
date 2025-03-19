@@ -10,10 +10,9 @@
       "Wavebar" = 6450398808;
       # "Xcode" = 497799835;
     };
-    brews = [
-      "mas"
-      "weasyprint"
-    ];
+    # brews = [
+    #   "weasyprint"
+    # ];
     casks = [
       "aerospace"
       "altserver"
