@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+let
+  cypkgs = inputs.cypkgs.packages.${pkgs.system};
+in
 {
   imports = [
     ./common.nix
@@ -8,6 +11,10 @@
 
   home = {
     packages = with pkgs; [
+      # cypkgs
+      # cypkgs.logseq
+
+      # nixpkgs
       xorg.xdpyinfo
       nerdfonts
       docker

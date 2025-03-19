@@ -40,7 +40,6 @@ in
       cmatrix
       openssl
       zoom-us
-      # logseq
       thonny
       ccache
       p7zip
