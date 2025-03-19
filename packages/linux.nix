@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  nix-config-dir,
+  inputs,
+  ...
+}:
 let
   cypkgs = inputs.cypkgs.packages.${pkgs.system};
 in
@@ -31,8 +36,7 @@ in
   programs = {
     zsh.shellAliases = {
       fondo = "com.github.calo001.fondo";
-      re-nix = "sudo nixos-rebuild switch";
-      yup = "sudo nixos-rebuild switch --upgrade";
+      re-nix = "sudo nixos-rebuild switch --flake ${nix-config-dir}#linux";
     };
   };
 }

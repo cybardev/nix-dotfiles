@@ -34,9 +34,14 @@
       home-manager,
       ...
     }@inputs:
+    let
+      darwinHost = "blade";
+      linuxHost = "forest";
+      nix-config-dir = "~/.config/nixos";
+    in
     {
       darwinConfigurations = {
-        blade = nix-darwin.lib.darwinSystem {
+        darwin = nix-darwin.lib.darwinSystem {
           modules = [
             ./configuration-darwin.nix
             home-manager.darwinModules.home-manager
@@ -46,11 +51,19 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.sage = ./system/home-darwin.nix;
-                extraSpecialArgs = { inherit inputs; };
+                extraSpecialArgs = {
+                  inherit inputs;
+                  inherit nix-config-dir;
+                  hostName = darwinHost;
+                };
               };
             }
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            inherit nix-config-dir;
+            hostName = darwinHost;
+          };
         };
       };
 
@@ -65,12 +78,20 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.sage = ./system/home-linux.nix;
-                extraSpecialArgs = { inherit inputs; };
+                extraSpecialArgs = {
+                  inherit inputs;
+                  inherit nix-config-dir;
+                  hostName = linuxHost;
+                };
               };
             }
             # inputs.nixos-hardware.nixosModules.microsoft-surface-common
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            inherit nix-config-dir;
+            hostName = linuxHost;
+          };
         };
       };
     };

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nix-config-dir, ... }:
 {
   # custom prompt
   home.file.".config/zsh/zen".source = pkgs.fetchFromGitHub {
@@ -67,8 +67,8 @@
 
       # editing related
       edit = "nvim";
-      edit-vim = "nvim ~/.config/nixos/packages/config/lvim.lua";
-      edit-os = "nvim ~/.config/nixos";
+      edit-vim = "nvim ${nix-config-dir}/packages/config/lvim.lua";
+      edit-os = "nvim ${nix-config-dir}";
 
       # reloading configs
       zrc = ". $ZDOTDIR/.zshrc";
@@ -76,7 +76,8 @@
       # package management
       yin = "nix-shell -p";
       yang = "nix-search";
-      wuji = "nix-collect-garbage -d";
+      wuji = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
+      yup = "nix flake update --flake ${nix-config-dir} && re-nix";
     };
   };
 }

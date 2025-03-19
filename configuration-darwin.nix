@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  hostName,
   ...
 }:
 {
@@ -11,6 +12,8 @@
   nixpkgs.hostPlatform = {
     system = "aarch64-darwin";
   };
+  networking.computerName = hostName;
+  networking.hostName = hostName;
 
   users.users.sage = {
     name = "sage";
