@@ -49,6 +49,7 @@ in
         "nix.serverPath" = "nixd";
         "python.languageServer" = "Jedi";
         "vim.smartRelativeLine" = true;
+        "update.showReleaseNotes" = false;
         "workbench.colorTheme" = "One Dark Pro Darker";
       };
     };
