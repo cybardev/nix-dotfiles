@@ -21,8 +21,8 @@
       relative-motions = pkgs.fetchFromGitHub {
         owner = "dedukun";
         repo = "relative-motions.yazi";
-        rev = "4244639d480e797a43d6514ddee021a0cb6d1cd6";
-        hash = "sha256-83cTNxGbPzzWEGTwkpf/WweHuKJSAPIGLf4DzY9vqog=";
+        rev = "810306563e1928855f5cf61f83801544e3eb3788";
+        hash = "sha256-sIS7vtpY8z8D1nHMmr/uZoKREeGsIZuNSG8SnKkjREI=";
       };
     };
     initLua = ''
@@ -31,39 +31,39 @@
     keymap = {
       manager.prepend_keymap = [
         {
-          run = "plugin relative-motions --args=1";
+          run = "plugin relative-motions 1";
           on = [ "1" ];
         }
         {
-          run = "plugin relative-motions --args=2";
+          run = "plugin relative-motions 2";
           on = [ "2" ];
         }
         {
-          run = "plugin relative-motions --args=3";
+          run = "plugin relative-motions 3";
           on = [ "3" ];
         }
         {
-          run = "plugin relative-motions --args=4";
+          run = "plugin relative-motions 4";
           on = [ "4" ];
         }
         {
-          run = "plugin relative-motions --args=5";
+          run = "plugin relative-motions 5";
           on = [ "5" ];
         }
         {
-          run = "plugin relative-motions --args=6";
+          run = "plugin relative-motions 6";
           on = [ "6" ];
         }
         {
-          run = "plugin relative-motions --args=7";
+          run = "plugin relative-motions 7";
           on = [ "7" ];
         }
         {
-          run = "plugin relative-motions --args=8";
+          run = "plugin relative-motions 8";
           on = [ "8" ];
         }
         {
-          run = "plugin relative-motions --args=9";
+          run = "plugin relative-motions 9";
           on = [ "9" ];
         }
       ];
