@@ -76,7 +76,7 @@
       # package management
       yin = "nix-shell -p";
       yang = "nix-search";
-      wuji = "nix-collect-garbage -d && sudo nix-collect-garbage -d";
+      wuji = "nix-collect-garbage -d && sudo -H nix-collect-garbage -d";
       yup = "nix flake update --flake ${nix-config-dir} && re-nix";
     };
   };
