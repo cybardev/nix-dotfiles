@@ -4,7 +4,7 @@
 {
   lib,
   config,
-  pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz"),
+  pkgs,
   ...
 }:
 {
@@ -14,6 +14,10 @@
 
     ./system/linux.nix
   ];
+
+  nixpkgs.hostPlatform = {
+    system = "x86_64-linux";
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

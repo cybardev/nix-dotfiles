@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   # Allow unfree packages
   nixpkgs.config.allowUnfreePredicate =
@@ -12,8 +12,4 @@
       "zoom"
       "rar"
     ];
-
-  home-manager.backupFileExtension = "hm.bak";
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
 }

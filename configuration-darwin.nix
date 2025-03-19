@@ -8,9 +8,14 @@
     ./system/darwin.nix
   ];
 
+  nixpkgs.hostPlatform = {
+    system = "aarch64-darwin";
+  };
+
   users.users.sage = {
     name = "sage";
     home = /Users/sage;
+    shell = pkgs.zsh;
   };
 
   # List packages installed in system profile. To search by name, run:
