@@ -76,17 +76,20 @@
 
       nixosConfigurations = {
         linux = nixpkgs.lib.nixosSystem {
-          modules = [
-            ./configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = hmOpts {
-                host = linuxHost;
-                config = ./system/home-linux.nix;
-              };
-            }
-            # inputs.nixos-hardware.nixosModules.microsoft-surface-common
-          ];
+          modules =
+            [
+              ./configuration.nix
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = hmOpts {
+                  host = linuxHost;
+                  config = ./system/home-linux.nix;
+                };
+              }
+            ]
+            ++ (nixpkgs.lib.optional (
+              builtins.getEnv "SURFACE_KERNEL" == "1"
+            ) inputs.nixos-hardware.nixosModules.microsoft-surface-common);
           specialArgs = genArgs { host = linuxHost; };
         };
       };
