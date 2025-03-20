@@ -2,6 +2,9 @@
 
 ## My Personal Nix Config
 
+> [!CAUTION]
+> **OUTDATED README**: This used to be a channel-based configuration (now it's flake-based), and the installation instructions have become obsolete. Will update sometime in the near future, but until then it's best to refer to source files (except `install*.sh`).
+
 > [!WARNING]
 > **Use at your own risk.** It works _for me_, but it may not work _for you_. At least not without adjustments.
 
