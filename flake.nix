@@ -39,6 +39,23 @@
       darwinHost = "blade";
       linuxHost = "forest";
       nix-config-dir = "~/.config/nixos";
+      genArgs =
+        { host }:
+        {
+          inherit inputs;
+          inherit nix-config-dir;
+          inherit userName;
+          hostName = host;
+        };
+      hmOpts =
+        { host, config }:
+        {
+          backupFileExtension = "hm.bak";
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users.${userName} = config;
+          extraSpecialArgs = genArgs { inherit host; };
+        };
     in
     {
       darwinConfigurations = {
@@ -47,26 +64,13 @@
             ./configuration-darwin.nix
             home-manager.darwinModules.home-manager
             {
-              home-manager = {
-                backupFileExtension = "hm.bak";
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.${userName} = ./system/home-darwin.nix;
-                extraSpecialArgs = {
-                  inherit inputs;
-                  inherit nix-config-dir;
-                  inherit userName;
-                  hostName = darwinHost;
-                };
+              home-manager = hmOpts {
+                host = darwinHost;
+                config = ./system/home-darwin.nix;
               };
             }
           ];
-          specialArgs = {
-            inherit inputs;
-            inherit nix-config-dir;
-            inherit userName;
-            hostName = darwinHost;
-          };
+          specialArgs = genArgs { host = darwinHost; };
         };
       };
 
@@ -76,27 +80,14 @@
             ./configuration.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager = {
-                backupFileExtension = "hm.bak";
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.${userName} = ./system/home-linux.nix;
-                extraSpecialArgs = {
-                  inherit inputs;
-                  inherit nix-config-dir;
-                  inherit userName;
-                  hostName = linuxHost;
-                };
+              home-manager = hmOpts {
+                host = linuxHost;
+                config = ./system/home-linux.nix;
               };
             }
             # inputs.nixos-hardware.nixosModules.microsoft-surface-common
           ];
-          specialArgs = {
-            inherit inputs;
-            inherit nix-config-dir;
-            inherit userName;
-            hostName = linuxHost;
-          };
+          specialArgs = genArgs { host = linuxHost; };
         };
       };
     };
