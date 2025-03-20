@@ -9,6 +9,7 @@
 
 ### Features
 
+- **Flake-based**
 - XFCE desktop environment
 - BSPWM window manager
 - Brave browser
