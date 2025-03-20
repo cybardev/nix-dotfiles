@@ -65,8 +65,10 @@ in
     };
 
     file = {
-      ".config/lvim/config.lua".source = ./config/lvim.lua;
-      ".config/lvim/ftplugin/nix.lua".source = ./config/lvim-nix.lua;
+      ".config/lvim" = {
+        source = ./config/lvim;
+        recursive = true;
+      };
       ".config/ptpython/config.py".source = ./config/ptpython.py;
     };
 
