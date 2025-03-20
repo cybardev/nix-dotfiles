@@ -2,6 +2,7 @@
   config,
   pkgs,
   hostName,
+  userName,
   ...
 }:
 {
@@ -15,9 +16,9 @@
   networking.computerName = hostName;
   networking.hostName = hostName;
 
-  users.users.sage = {
-    name = "sage";
-    home = /Users/sage;
+  users.users.${userName} = {
+    name = userName;
+    home = /Users/${userName};
     shell = pkgs.zsh;
   };
 

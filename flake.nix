@@ -51,7 +51,7 @@
                 backupFileExtension = "hm.bak";
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.sage = ./system/home-darwin.nix;
+                users.${userName} = ./system/home-darwin.nix;
                 extraSpecialArgs = {
                   inherit inputs;
                   inherit nix-config-dir;
@@ -80,7 +80,7 @@
                 backupFileExtension = "hm.bak";
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.sage = ./system/home-linux.nix;
+                users.${userName} = ./system/home-linux.nix;
                 extraSpecialArgs = {
                   inherit inputs;
                   inherit nix-config-dir;

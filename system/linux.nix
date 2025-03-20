@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, userName, ... }:
 {
   imports = [
     ./common.nix
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.sage = {
+  users.users.${userName} = {
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Sheikh";

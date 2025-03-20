@@ -1,8 +1,8 @@
-{ lib, ... }:
+{ lib, userName, ... }:
 {
   imports = [
     ./home.nix
     ../packages/darwin.nix
   ];
-  home.homeDirectory = lib.mkDefault "/Users/sage";
+  home.homeDirectory = lib.mkDefault /Users/${userName};
 }

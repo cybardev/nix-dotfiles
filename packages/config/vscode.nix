@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  userName,
+  ...
+}:
 let
   system = pkgs.system;
   extensions = inputs.nix-vscode-extensions.extensions.${system};
@@ -40,11 +45,11 @@ in
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "git.enableSmartCommit" = true;
-        "idf.espIdfPath" = "/Users/sage/Documents/Git/esp/v5.4/esp-idf";
+        "idf.espIdfPath" = "/Users/${userName}/Documents/Git/esp/v5.4/esp-idf";
         "idf.gitPath" = "git";
         "idf.hasWalkthroughBeenShown" = true;
         "idf.pythonInstallPath" = "/usr/bin/python3";
-        "idf.toolsPath" = "/Users/sage/Documents/Git/esp/.espressif";
+        "idf.toolsPath" = "/Users/${userName}/Documents/Git/esp/.espressif";
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
         "python.languageServer" = "Jedi";

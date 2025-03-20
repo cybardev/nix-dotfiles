@@ -1,8 +1,8 @@
-{ lib, ... }:
+{ lib, userName, ... }:
 {
   imports = [
     ./home.nix
     ../packages/linux.nix
   ];
-  home.homeDirectory = lib.mkDefault "/home/sage";
+  home.homeDirectory = lib.mkDefault /home/${userName};
 }

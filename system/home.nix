@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  userName,
   ...
 }:
 
@@ -21,7 +22,7 @@
   home = {
     # Home Manager needs a bit of information about you and the paths it should
     # manage.
-    username = "sage";
+    username = userName;
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
@@ -82,7 +83,7 @@
     #
     # or
     #
-    #  /etc/profiles/per-user/sage/etc/profile.d/hm-session-vars.sh
+    #  /etc/profiles/per-user/${userName}/etc/profile.d/hm-session-vars.sh
     #
     sessionVariables = {
       # EDITOR = "emacs";
