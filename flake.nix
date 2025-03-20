@@ -2,27 +2,27 @@
   description = "cybardev/nix-dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware?ref=master";
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/master";
+      url = "github:LnL7/nix-darwin?ref=master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager?ref=master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions/master";
+      url = "github:nix-community/nix-vscode-extensions?ref=master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     cypkgs = {
-      url = "github:cybardev/nix-channel/main";
+      url = "github:cybardev/nix-channel?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
