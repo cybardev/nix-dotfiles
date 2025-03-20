@@ -22,11 +22,9 @@
 
 ### Components
 
-- [`configuration.nix`](./configuration.nix) (and variants)
+- [`flake.nix`](./flake.nix)
 
-  _**Root config**_: Avoid modifying unless really needed (like changing username, groups, etc.).
-
-  _**Variants**_: [`-darwin`](./configuration-darwin.nix) for `nix-darwin`, and [`-surface`](./configuration-surface.nix) for Surface devices
+  _**Config entrypoint**_: This flake contains a darwin config and a linux config. Modify username, hostname, and Nix config directory here. There's a line in the linux config to activate on Surface devices that require just the linux-surface kernel. More on that under [NixOS](#nixos).
 
 - [`system/`](./system/) (directory)
 
