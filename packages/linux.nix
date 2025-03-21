@@ -2,10 +2,12 @@
   pkgs,
   nixConfigDir,
   inputs,
+  extraArgs,
   ...
 }:
 let
   cypkgs = inputs.cypkgs.packages.${pkgs.system};
+  linuxFlake = if extraArgs.extraHMOpts.surfaceKernel then "linux-surface" else "linux";
 in
 {
   imports = [
@@ -36,7 +38,7 @@ in
   programs = {
     zsh.shellAliases = {
       fondo = "com.github.calo001.fondo";
-      re-nix = "sudo nixos-rebuild switch --flake ${nixConfigDir}#linux";
+      re-nix = "sudo -H nixos-rebuild switch --flake ${nixConfigDir}#${linuxFlake}";
     };
   };
 }

@@ -40,21 +40,25 @@
       linuxHost = "forest";
       nixConfigDir = "~/.config/nixos";
       genArgs =
-        { host }:
+        { host, ... }@extraArgs:
         {
+          inherit extraArgs;
           inherit inputs;
           inherit nixConfigDir;
           inherit userName;
           hostName = host;
         };
       hmOpts =
-        { host, config }:
+        { host, config, ... }@extraHMOpts:
         {
           backupFileExtension = "hm.bak";
           useGlobalPkgs = true;
           useUserPackages = true;
           users.${userName} = config;
-          extraSpecialArgs = genArgs { inherit host; };
+          extraSpecialArgs = genArgs {
+            inherit host;
+            inherit extraHMOpts;
+          };
         };
     in
     {
@@ -74,24 +78,33 @@
         };
       };
 
-      nixosConfigurations = {
-        linux = nixpkgs.lib.nixosSystem {
-          modules =
-            [
-              ./configuration.nix
-              home-manager.nixosModules.home-manager
-              {
-                home-manager = hmOpts {
-                  host = linuxHost;
-                  config = ./system/home-linux.nix;
-                };
-              }
-            ]
-            ++ (nixpkgs.lib.optional (
-              builtins.getEnv "SURFACE_KERNEL" == "1"
-            ) inputs.nixos-hardware.nixosModules.microsoft-surface-common);
-          specialArgs = genArgs { host = linuxHost; };
+      nixosConfigurations =
+        let
+          makeLinuxConfig =
+            { surfaceKernel }:
+            nixpkgs.lib.nixosSystem {
+              modules =
+                [
+                  ./configuration.nix
+                  home-manager.nixosModules.home-manager
+                  {
+                    home-manager = hmOpts {
+                      host = linuxHost;
+                      config = ./system/home-linux.nix;
+                      inherit surfaceKernel;
+                    };
+                  }
+                ]
+                ++ (nixpkgs.lib.optional surfaceKernel inputs.nixos-hardware.nixosModules.microsoft-surface-common);
+              specialArgs = genArgs {
+                host = linuxHost;
+                inherit surfaceKernel;
+              };
+            };
+        in
+        {
+          linux = makeLinuxConfig { surfaceKernel = false; };
+          linux-surface = makeLinuxConfig { surfaceKernel = true; };
         };
-      };
     };
 }
