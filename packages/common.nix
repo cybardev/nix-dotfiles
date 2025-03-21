@@ -4,7 +4,7 @@
   ...
 }:
 let
-  cypkgs = inputs.cypkgs.packages.${pkgs.system};
+  cypkgs = import inputs.cypkgs { inherit pkgs; };
 in
 {
   imports = [
