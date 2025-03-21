@@ -51,14 +51,14 @@ mv "$NIXOS_CONFIG_DIR/system/hardware-configuration.nix" "$NIXOS_CONFIG_DIR/syst
 cp "/etc/nixos.bak/hardware-configuration.nix" "$NIXOS_CONFIG_DIR/system/"
 
 # rebuild system from config
-sudo -H nixos-rebuild switch --flake "$NIXOS_CONFIG_DIR#linux"
+sudo -H nixos-rebuild --experimental-features "nix-command flakes" switch --flake "$NIXOS_CONFIG_DIR#linux"
 ```
 
 #### macOS
 
 ```sh
 # rebuild system from config
-nix run nix-darwin/master#darwin-rebuild -- switch --flake "$NIXOS_CONFIG_DIR#darwin"
+nix --experimental-features "nix-command flakes" run nix-darwin/master#darwin-rebuild -- switch --flake "$NIXOS_CONFIG_DIR#darwin"
 ```
 
 ---
