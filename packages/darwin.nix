@@ -1,4 +1,4 @@
-{ pkgs, nix-config-dir, ... }:
+{ pkgs, nixConfigDir, ... }:
 {
   imports = [
     ./common.nix
@@ -20,7 +20,7 @@
 
   programs = {
     zsh.shellAliases = {
-      re-nix = "darwin-rebuild switch --flake ${nix-config-dir}#darwin";
+      re-nix = "darwin-rebuild switch --flake ${nixConfigDir}#darwin";
     };
 
     cava.settings.input = {

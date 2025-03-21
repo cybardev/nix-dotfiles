@@ -38,12 +38,12 @@
       userName = "sage";
       darwinHost = "blade";
       linuxHost = "forest";
-      nix-config-dir = "~/.config/nixos";
+      nixConfigDir = "~/.config/nixos";
       genArgs =
         { host }:
         {
           inherit inputs;
-          inherit nix-config-dir;
+          inherit nixConfigDir;
           inherit userName;
           hostName = host;
         };

@@ -1,6 +1,6 @@
 {
   pkgs,
-  nix-config-dir,
+  nixConfigDir,
   inputs,
   ...
 }:
@@ -36,7 +36,7 @@ in
   programs = {
     zsh.shellAliases = {
       fondo = "com.github.calo001.fondo";
-      re-nix = "sudo nixos-rebuild switch --flake ${nix-config-dir}#linux";
+      re-nix = "sudo nixos-rebuild switch --flake ${nixConfigDir}#linux";
     };
   };
 }
