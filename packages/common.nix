@@ -20,7 +20,7 @@ in
       inherit (cypkgs)
         cutefetch
         jitterbugpair
-        # freej2me
+        freej2me
         ytgo
         ;
       inherit (pkgs)
