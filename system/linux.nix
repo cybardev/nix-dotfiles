@@ -1,4 +1,11 @@
-{ pkgs, userName, ... }:
+{
+  pkgs,
+  userTZ,
+  userLocale,
+  userNickname,
+  userName,
+  ...
+}:
 {
   imports = [
     ./common.nix
@@ -8,7 +15,7 @@
   users.users.${userName} = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    description = "Sheikh";
+    description = userNickname;
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -17,10 +24,10 @@
   };
 
   # Set your time zone.
-  time.timeZone = "America/Halifax";
+  time.timeZone = userTZ;
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_CA.UTF-8";
+  i18n.defaultLocale = userLocale;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

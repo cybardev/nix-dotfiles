@@ -35,16 +35,22 @@
       ...
     }@inputs:
     let
+      userNickname = "Sheikh";
       userName = "sage";
       darwinHost = "blade";
       linuxHost = "forest";
+      userLocale = "en_CA.UTF-8";
+      userTZ = "America/Halifax";
       nixConfigDir = "~/.config/nixos";
       genArgs =
         { host, ... }@extraArgs:
         {
           inherit extraArgs;
           inherit inputs;
+          inherit userTZ;
+          inherit userLocale;
           inherit nixConfigDir;
+          inherit userNickname;
           inherit userName;
           hostName = host;
         };
