@@ -18,6 +18,7 @@ let
     ms-vscode.live-server
     echoapi.echoapi-for-vscode
     espressif.esp-idf-extension
+    ms-azuretools.vscode-docker
   ];
   openvsxReleaseExt = with extensions.open-vsx-release; [
     # add Open VSX Registry extensions (release)
