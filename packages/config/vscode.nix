@@ -11,11 +11,13 @@ let
     # add Open VSX Registry extensions (pre-release)
     zhuangtongfa.material-theme
     vscodevim.vim
+    tomoki1207.pdf
     adpyke.codesnap
     ms-python.python
-    charliermarsh.ruff
     jnoortheen.nix-ide
+    charliermarsh.ruff
     ms-vscode.live-server
+    myriad-dreamin.tinymist
     echoapi.echoapi-for-vscode
     espressif.esp-idf-extension
     ms-azuretools.vscode-docker
