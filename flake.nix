@@ -59,12 +59,18 @@
       homeConfigurations = {
         darwin = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { system = "aarch64-darwin"; };
-          modules = [ ./system/home-darwin.nix ];
+          modules = [
+            ./packages/nonfree.nix
+            ./system/home-darwin.nix
+          ];
           extraSpecialArgs = genArgs { host = darwinHost; };
         };
         linux = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { system = "x86_64-linux"; };
-          modules = [ ./system/home-linux.nix ];
+          modules = [
+            ./packages/nonfree.nix
+            ./system/home-linux.nix
+          ];
           extraSpecialArgs = genArgs { host = linuxHost; };
         };
       };
