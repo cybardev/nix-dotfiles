@@ -1,4 +1,7 @@
-{ pkgs, nixConfigDir, ... }:
+{ pkgs, userConfig, ... }:
+let
+  nixConfigDir = userConfig.nixConfigDir;
+in
 {
   imports = [
     ./common.nix

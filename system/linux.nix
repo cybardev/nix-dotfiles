@@ -1,11 +1,14 @@
 {
   pkgs,
-  userTZ,
-  userLocale,
-  userNickname,
-  userName,
+  userConfig,
   ...
 }:
+let
+  userName = userConfig.username;
+  userNickname = userConfig.nickname;
+  userLocale = userConfig.locale;
+  userTZ = userConfig.timezone;
+in
 {
   imports = [
     ./common.nix

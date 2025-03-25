@@ -1,4 +1,7 @@
-{ pkgs, nixConfigDir, ... }:
+{ pkgs, userConfig, ... }:
+let
+  nixConfigDir = userConfig.nixConfigDir;
+in
 {
   # custom prompt
   home.file.".config/zsh/zen".source = pkgs.fetchFromGitHub {

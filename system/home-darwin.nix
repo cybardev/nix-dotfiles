@@ -1,4 +1,7 @@
-{ lib, userName, ... }:
+{ lib, userConfig, ... }:
+let
+  userName = userConfig.username;
+in
 {
   imports = [
     ./home.nix

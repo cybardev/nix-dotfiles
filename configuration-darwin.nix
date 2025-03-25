@@ -2,9 +2,12 @@
   config,
   pkgs,
   hostName,
-  userName,
+  userConfig,
   ...
 }:
+let
+  userName = userConfig.username;
+in
 {
   imports = [
     ./system/darwin.nix

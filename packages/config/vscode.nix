@@ -1,10 +1,11 @@
 {
   pkgs,
   inputs,
-  userName,
+  userConfig,
   ...
 }:
 let
+  userName = userConfig.username;
   system = pkgs.system;
   extensions = inputs.nix-vscode-extensions.extensions.${system};
   openvsxExt = with extensions.open-vsx; [

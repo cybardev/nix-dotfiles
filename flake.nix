@@ -35,23 +35,21 @@
       ...
     }@inputs:
     let
-      userNickname = "Sheikh";
-      userName = "sage";
-      darwinHost = "blade";
-      linuxHost = "forest";
-      userLocale = "en_CA.UTF-8";
-      userTZ = "America/Halifax";
-      nixConfigDir = "~/.config/nixos";
+      userConfig = {
+        nickname = "Sheikh";
+        username = "sage";
+        darwinHost = "blade";
+        linuxHost = "forest";
+        locale = "en_CA.UTF-8";
+        timezone = "America/Halifax";
+        nixConfigDir = "~/.config/nixos";
+      };
       genArgs =
         { host, ... }@extraArgs:
         {
           inherit extraArgs;
           inherit inputs;
-          inherit userTZ;
-          inherit userLocale;
-          inherit nixConfigDir;
-          inherit userNickname;
-          inherit userName;
+          inherit userConfig;
           hostName = host;
         };
       hmConfig =
@@ -77,7 +75,7 @@
         hmConfig {
           system = "x86_64-linux";
           config = ./system/home-linux.nix;
-          host = linuxHost;
+          host = userConfig.linuxHost;
           inherit surfaceKernel;
         };
     in
@@ -86,7 +84,7 @@
         darwin = hmConfig {
           system = "aarch64-darwin";
           config = ./system/home-darwin.nix;
-          host = darwinHost;
+          host = userConfig.darwinHost;
         };
         linux = hmConfigLinux { surfaceKernel = false; };
         linux-surface = hmConfigLinux { surfaceKernel = true; };
@@ -95,7 +93,7 @@
       darwinConfigurations = {
         darwin = nix-darwin.lib.darwinSystem {
           modules = [ ./configuration-darwin.nix ];
-          specialArgs = genArgs { host = darwinHost; };
+          specialArgs = genArgs { host = userConfig.darwinHost; };
         };
       };
 
@@ -108,7 +106,7 @@
                 [ ./configuration.nix ]
                 ++ (nixpkgs.lib.optional surfaceKernel inputs.nixos-hardware.nixosModules.microsoft-surface-common);
               specialArgs = genArgs {
-                host = linuxHost;
+                host = userConfig.linuxHost;
                 inherit surfaceKernel;
               };
             };

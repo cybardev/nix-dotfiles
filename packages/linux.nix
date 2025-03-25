@@ -1,13 +1,14 @@
 {
   pkgs,
-  nixConfigDir,
   inputs,
   extraArgs,
+  userConfig,
   ...
 }:
 let
   cypkgs = import inputs.cypkgs { inherit pkgs; };
   linuxFlake = if extraArgs.surfaceKernel then "linux-surface" else "linux";
+  nixConfigDir = userConfig.nixConfigDir;
 in
 {
   imports = [

@@ -2,10 +2,12 @@
   config,
   lib,
   pkgs,
-  userName,
+  userConfig,
   ...
 }:
-
+let
+  userName = userConfig.username;
+in
 {
   nix = {
     package = lib.mkDefault pkgs.nixVersions.stable;
