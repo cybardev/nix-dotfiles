@@ -54,24 +54,28 @@
           inherit userName;
           hostName = host;
         };
+      hmConfig =
+        args:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = args.system; };
+          modules = [
+            ./packages/nonfree.nix
+            args.config
+          ];
+          extraSpecialArgs = genArgs { host = args.host; };
+        };
     in
     {
       homeConfigurations = {
-        darwin = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = "aarch64-darwin"; };
-          modules = [
-            ./packages/nonfree.nix
-            ./system/home-darwin.nix
-          ];
-          extraSpecialArgs = genArgs { host = darwinHost; };
+        darwin = hmConfig {
+          system = "aarch64-darwin";
+          config = ./system/home-darwin.nix;
+          host = darwinHost;
         };
-        linux = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = "x86_64-linux"; };
-          modules = [
-            ./packages/nonfree.nix
-            ./system/home-linux.nix
-          ];
-          extraSpecialArgs = genArgs { host = linuxHost; };
+        linux = hmConfig {
+          system = "x86_64-linux";
+          config = ./system/home-linux.nix;
+          host = linuxHost;
         };
       };
 
