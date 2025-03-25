@@ -55,7 +55,7 @@
           hostName = host;
         };
       hmConfig =
-        args:
+        { ... }@args:
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { system = args.system; };
           modules = [
