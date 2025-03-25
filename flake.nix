@@ -62,7 +62,23 @@
             ./packages/nonfree.nix
             args.config
           ];
-          extraSpecialArgs = genArgs { host = args.host; };
+          extraSpecialArgs = genArgs (
+            if args ? surfaceKernel then
+              {
+                host = args.host;
+                surfaceKernel = args.surfaceKernel;
+              }
+            else
+              { host = args.host; }
+          );
+        };
+      hmConfigLinux =
+        { surfaceKernel }:
+        hmConfig {
+          system = "x86_64-linux";
+          config = ./system/home-linux.nix;
+          host = linuxHost;
+          inherit surfaceKernel;
         };
     in
     {
@@ -72,11 +88,8 @@
           config = ./system/home-darwin.nix;
           host = darwinHost;
         };
-        linux = hmConfig {
-          system = "x86_64-linux";
-          config = ./system/home-linux.nix;
-          host = linuxHost;
-        };
+        linux = hmConfigLinux { surfaceKernel = false; };
+        linux-surface = hmConfigLinux { surfaceKernel = true; };
       };
 
       darwinConfigurations = {
