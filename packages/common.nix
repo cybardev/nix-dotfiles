@@ -16,14 +16,14 @@ in
   ];
 
   home = {
-    packages = builtins.attrValues {
-      inherit (cypkgs)
+    packages =
+      (with cypkgs; [
         cutefetch
         jitterbugpair
         freej2me
         ytgo
-        ;
-      inherit (pkgs)
+      ])
+      ++ (with pkgs; [
         nixfmt-rfc-style
         nix-search-cli
         gnome-mahjongg
@@ -55,14 +55,13 @@ in
         go
         # love
         luajit
-        ;
-      inherit (pkgs.python3Packages)
+      ])
+      ++ (with pkgs.python3Packages; [
         ptpython
-        ;
-      inherit (pkgs.luajitPackages)
+      ])
+      ++ (with pkgs.luajitPackages; [
         luarocks
-        ;
-    };
+      ]);
 
     file = {
       ".config/lvim" = {
