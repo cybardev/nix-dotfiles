@@ -3,15 +3,11 @@
   programs = {
     direnv = {
       enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
       nix-direnv.enable = true;
     };
 
     zoxide = {
       enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
       options = [
         "--cmd"
         "c"

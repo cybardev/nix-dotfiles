@@ -88,6 +88,8 @@
     sessionVariables = {
       HOME_MANAGER_BACKUP_EXT = "hm.bak";
     };
+
+    shell.enableShellIntegration = true;
   };
 
   # Let Home Manager install and manage itself.
