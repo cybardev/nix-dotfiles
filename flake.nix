@@ -54,32 +54,24 @@
           inherit userName;
           hostName = host;
         };
-      hmOpts =
-        { host, config, ... }@extraHMOpts:
-        {
-          backupFileExtension = "hm.bak";
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          users.${userName} = config;
-          extraSpecialArgs = genArgs {
-            inherit host;
-            inherit extraHMOpts;
-          };
-        };
     in
     {
+      homeConfigurations = {
+        darwin = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = "aarch64-darwin"; };
+          modules = [ ./system/home-darwin.nix ];
+          extraSpecialArgs = genArgs { host = darwinHost; };
+        };
+        linux = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          modules = [ ./system/home-linux.nix ];
+          extraSpecialArgs = genArgs { host = linuxHost; };
+        };
+      };
+
       darwinConfigurations = {
         darwin = nix-darwin.lib.darwinSystem {
-          modules = [
-            ./configuration-darwin.nix
-            home-manager.darwinModules.home-manager
-            {
-              home-manager = hmOpts {
-                host = darwinHost;
-                config = ./system/home-darwin.nix;
-              };
-            }
-          ];
+          modules = [ ./configuration-darwin.nix ];
           specialArgs = genArgs { host = darwinHost; };
         };
       };
@@ -90,17 +82,7 @@
             { surfaceKernel }:
             nixpkgs.lib.nixosSystem {
               modules =
-                [
-                  ./configuration.nix
-                  home-manager.nixosModules.home-manager
-                  {
-                    home-manager = hmOpts {
-                      host = linuxHost;
-                      config = ./system/home-linux.nix;
-                      inherit surfaceKernel;
-                    };
-                  }
-                ]
+                [ ./configuration.nix ]
                 ++ (nixpkgs.lib.optional surfaceKernel inputs.nixos-hardware.nixosModules.microsoft-surface-common);
               specialArgs = genArgs {
                 host = linuxHost;

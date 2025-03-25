@@ -8,7 +8,7 @@
 
 {
   nix = {
-    package = lib.mkDefault pkgs.nixFlakes;
+    package = lib.mkDefault pkgs.nixVersions.stable;
     gc = {
       automatic = true;
       frequency = "monthly";
@@ -86,7 +86,7 @@
     #  /etc/profiles/per-user/${userName}/etc/profile.d/hm-session-vars.sh
     #
     sessionVariables = {
-      # EDITOR = "emacs";
+      HOME_MANAGER_BACKUP_EXT = "hm.bak";
     };
   };
 

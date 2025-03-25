@@ -7,7 +7,7 @@
 }:
 let
   cypkgs = import inputs.cypkgs { inherit pkgs; };
-  linuxFlake = if extraArgs.extraHMOpts.surfaceKernel then "linux-surface" else "linux";
+  linuxFlake = if extraArgs.surfaceKernel then "linux-surface" else "linux";
 in
 {
   imports = [
