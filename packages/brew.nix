@@ -14,7 +14,6 @@
     #   "weasyprint"
     # ];
     casks = [
-      "aerospace"
       "altserver"
       # "background-music"
       "docker"
@@ -38,7 +37,6 @@
     taps = [
       "homebrew/bundle"
       "homebrew/services"
-      "nikitabobko/tap"
     ];
   };
 }
