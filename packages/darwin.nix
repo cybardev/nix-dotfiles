@@ -21,6 +21,7 @@
   programs = {
     zsh.shellAliases = {
       re-nix = "darwin-rebuild switch --flake ${nixConfigDir}#darwin";
+      re-hm = "home-manager switch --flake ${nixConfigDir}#darwin";
     };
 
     cava.settings.input = {
