@@ -38,6 +38,7 @@ in
   programs = {
     zsh.shellAliases = {
       fondo = "com.github.calo001.fondo";
+      edit-wm = "nvim ${nixConfigDir}/packages/config/bspwm.nix";
       re-nix = "sudo -H nixos-rebuild switch --flake ${nixConfigDir}#${linuxFlake}";
       re-hm = "home-manager switch --flake ${nixConfigDir}#linux";
     };
