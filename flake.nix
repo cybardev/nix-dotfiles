@@ -55,22 +55,17 @@
       hmConfig =
         { ... }@args:
         let
-          argParams =
-            if args ? surfaceKernel then
-              {
-                host = args.host;
-                surfaceKernel = args.surfaceKernel;
-              }
-            else
-              { host = args.host; };
+          pkgs = import nixpkgs { system = args.system; };
         in
         home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = args.system; };
+          inherit pkgs;
           modules = [
             ./packages/nonfree.nix
             args.config
           ];
-          extraSpecialArgs = genArgs argParams;
+          extraSpecialArgs =
+            genArgs { host = args.host; }
+            // pkgs.lib.optionalAttrs (args ? surfaceKernel) { surfaceKernel = args.surfaceKernel; };
         };
       hmConfigLinux =
         { surfaceKernel }:
