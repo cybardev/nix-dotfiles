@@ -54,21 +54,23 @@
         };
       hmConfig =
         { ... }@args:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = args.system; };
-          modules = [
-            ./packages/nonfree.nix
-            args.config
-          ];
-          extraSpecialArgs = genArgs (
+        let
+          argParams =
             if args ? surfaceKernel then
               {
                 host = args.host;
                 surfaceKernel = args.surfaceKernel;
               }
             else
-              { host = args.host; }
-          );
+              { host = args.host; };
+        in
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = args.system; };
+          modules = [
+            ./packages/nonfree.nix
+            args.config
+          ];
+          extraSpecialArgs = genArgs argParams;
         };
       hmConfigLinux =
         { surfaceKernel }:
@@ -77,6 +79,17 @@
           config = ./system/home-linux.nix;
           host = userConfig.linuxHost;
           inherit surfaceKernel;
+        };
+      makeLinuxConfig =
+        { surfaceKernel }:
+        nixpkgs.lib.nixosSystem {
+          modules =
+            [ ./configuration.nix ]
+            ++ (nixpkgs.lib.optional surfaceKernel inputs.nixos-hardware.nixosModules.microsoft-surface-common);
+          specialArgs = genArgs {
+            host = userConfig.linuxHost;
+            inherit surfaceKernel;
+          };
         };
     in
     {
@@ -97,23 +110,9 @@
         };
       };
 
-      nixosConfigurations =
-        let
-          makeLinuxConfig =
-            { surfaceKernel }:
-            nixpkgs.lib.nixosSystem {
-              modules =
-                [ ./configuration.nix ]
-                ++ (nixpkgs.lib.optional surfaceKernel inputs.nixos-hardware.nixosModules.microsoft-surface-common);
-              specialArgs = genArgs {
-                host = userConfig.linuxHost;
-                inherit surfaceKernel;
-              };
-            };
-        in
-        {
-          linux = makeLinuxConfig { surfaceKernel = false; };
-          linux-surface = makeLinuxConfig { surfaceKernel = true; };
-        };
+      nixosConfigurations = {
+        linux = makeLinuxConfig { surfaceKernel = false; };
+        linux-surface = makeLinuxConfig { surfaceKernel = true; };
+      };
     };
 }
