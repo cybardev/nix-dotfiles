@@ -19,10 +19,6 @@ in
 
   home = {
     packages = with pkgs; [
-      # cypkgs
-      cypkgs.logseq
-
-      # nixpkgs
       xorg.xdpyinfo
       nerdfonts
       docker

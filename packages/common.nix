@@ -21,6 +21,7 @@ in
         cutefetch
         jitterbugpair
         freej2me
+        logseq
         ytgo
       ])
       ++ (with pkgs; [
