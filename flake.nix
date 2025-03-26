@@ -53,19 +53,31 @@
           hostName = host;
         };
       hmConfig =
-        { ... }@args:
+        {
+          system,
+          config,
+          host,
+          ...
+        }@args:
         let
-          pkgs = import nixpkgs { system = args.system; };
+          pkgs = import nixpkgs { inherit system; };
         in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
             ./packages/nonfree.nix
-            args.config
+            config
           ];
-          extraSpecialArgs =
-            genArgs { host = args.host; }
-            // pkgs.lib.optionalAttrs (args ? surfaceKernel) { surfaceKernel = args.surfaceKernel; };
+          extraSpecialArgs = genArgs (
+            { inherit host; } // pkgs.lib.optionalAttrs (args ? surfaceKernel) { inherit (args) surfaceKernel; }
+          );
+        };
+      hmConfigDarwin =
+        { ... }:
+        hmConfig {
+          system = "aarch64-darwin";
+          config = ./system/home-darwin.nix;
+          host = userConfig.darwinHost;
         };
       hmConfigLinux =
         { surfaceKernel }:
@@ -74,6 +86,12 @@
           config = ./system/home-linux.nix;
           host = userConfig.linuxHost;
           inherit surfaceKernel;
+        };
+      makeDarwinConfig =
+        { ... }:
+        nix-darwin.lib.darwinSystem {
+          modules = [ ./configuration-darwin.nix ];
+          specialArgs = genArgs { host = userConfig.darwinHost; };
         };
       makeLinuxConfig =
         { surfaceKernel }:
@@ -89,20 +107,13 @@
     in
     {
       homeConfigurations = {
-        darwin = hmConfig {
-          system = "aarch64-darwin";
-          config = ./system/home-darwin.nix;
-          host = userConfig.darwinHost;
-        };
+        darwin = hmConfigDarwin { };
         linux = hmConfigLinux { surfaceKernel = false; };
         linux-surface = hmConfigLinux { surfaceKernel = true; };
       };
 
       darwinConfigurations = {
-        darwin = nix-darwin.lib.darwinSystem {
-          modules = [ ./configuration-darwin.nix ];
-          specialArgs = genArgs { host = userConfig.darwinHost; };
-        };
+        darwin = makeDarwinConfig { };
       };
 
       nixosConfigurations = {
