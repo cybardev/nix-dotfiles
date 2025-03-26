@@ -28,6 +28,7 @@
       "logseq"
       "lulu"
       "lunar-client"
+      "obs"
       "prusaslicer"
       "raycast"
       "sonic-pi"
