@@ -47,8 +47,8 @@
       genArgs =
         { host, ... }@extraArgs:
         {
-          inherit extraArgs;
           inherit inputs;
+          inherit extraArgs;
           inherit userConfig;
           hostName = host;
         };
