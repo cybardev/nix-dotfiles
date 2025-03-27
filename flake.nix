@@ -42,7 +42,7 @@
         linuxHost = "forest";
         locale = "en_CA.UTF-8";
         timezone = "America/Halifax";
-        nixConfigDir = "~/.config/nixos";
+        nixos = "~/.config/nixos";
       };
       genArgs =
         { host, ... }@extraArgs:
@@ -56,44 +56,40 @@
         {
           system,
           config,
-          host,
-          ...
-        }@args:
-        let
-          pkgs = import nixpkgs { inherit system; };
-        in
+          args,
+        }:
         home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = import nixpkgs { inherit system; };
           modules = [
             ./packages/nonfree.nix
             config
           ];
-          extraSpecialArgs = genArgs (
-            { inherit host; } // pkgs.lib.optionalAttrs (args ? surfaceKernel) { inherit (args) surfaceKernel; }
-          );
+          extraSpecialArgs = args;
         };
       hmConfigDarwin =
         { ... }:
         hmConfig {
           system = "aarch64-darwin";
           config = ./system/home-darwin.nix;
-          host = userConfig.darwinHost;
+          args = genArgs { host = userConfig.darwinHost; };
         };
       hmConfigLinux =
         { surfaceKernel }:
         hmConfig {
           system = "x86_64-linux";
           config = ./system/home-linux.nix;
-          host = userConfig.linuxHost;
-          inherit surfaceKernel;
+          args = genArgs {
+            host = userConfig.linuxHost;
+            inherit surfaceKernel;
+          };
         };
-      makeDarwinConfig =
+      nixConfigDarwin =
         { ... }:
         nix-darwin.lib.darwinSystem {
           modules = [ ./configuration-darwin.nix ];
           specialArgs = genArgs { host = userConfig.darwinHost; };
         };
-      makeLinuxConfig =
+      nixConfigLinux =
         { surfaceKernel }:
         nixpkgs.lib.nixosSystem {
           modules =
@@ -113,12 +109,12 @@
       };
 
       darwinConfigurations = {
-        darwin = makeDarwinConfig { };
+        darwin = nixConfigDarwin { };
       };
 
       nixosConfigurations = {
-        linux = makeLinuxConfig { surfaceKernel = false; };
-        linux-surface = makeLinuxConfig { surfaceKernel = true; };
+        linux = nixConfigLinux { surfaceKernel = false; };
+        linux-surface = nixConfigLinux { surfaceKernel = true; };
       };
     };
 }

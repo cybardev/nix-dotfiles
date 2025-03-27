@@ -1,6 +1,6 @@
 { pkgs, userConfig, ... }:
 let
-  nixConfigDir = userConfig.nixConfigDir;
+  nixConfigDir = userConfig.nixos;
 in
 {
   # custom prompt
