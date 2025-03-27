@@ -16,6 +16,7 @@
     casks = [
       "altserver"
       # "background-music"
+      "brave-browser"
       "docker"
       "font-caskaydia-cove-nerd-font"
       "font-fira-code-nerd-font"

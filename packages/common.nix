@@ -46,7 +46,6 @@ in
         cmake
         ninja
         bruno
-        brave
         gimp
         ncdu
         nixd

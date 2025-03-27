@@ -24,6 +24,7 @@ in
       rustc
       fondo
       feh
+      brave
       aseprite
       lunar-client
       altserver-linux
