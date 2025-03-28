@@ -39,9 +39,5 @@
       "steam"
       "whisky"
     ];
-    taps = [
-      "homebrew/bundle"
-      "homebrew/services"
-    ];
   };
 }
