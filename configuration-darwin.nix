@@ -7,6 +7,7 @@
 }:
 let
   userName = userConfig.username;
+  nixConfigDir = userConfig.nixos;
 in
 {
   imports = [
@@ -25,14 +26,20 @@ in
     shell = pkgs.zsh;
   };
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [
-    # vim
-  ];
+  environment = {
+    variables = {
+      HOMEBREW_NO_ANALYTICS = 1;
+    };
 
-  # Use custom location for configuration.nix.
-  environment.darwinConfig = "$HOME/.config/nixos/configuration-darwin.nix";
+    # List packages installed in system profile. To search by name, run:
+    # $ nix-env -qaP | grep wget
+    systemPackages = with pkgs; [
+      # vim
+    ];
+
+    # Use custom location for configuration.nix.
+    darwinConfig = "${nixConfigDir}/configuration-darwin.nix";
+  };
 
   # Enable alternative shell support in nix-darwin.
   programs.zsh.enable = true;
