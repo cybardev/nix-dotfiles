@@ -28,7 +28,7 @@ in
 
   environment = {
     variables = {
-      HOMEBREW_NO_ANALYTICS = 1;
+      HOMEBREW_NO_ANALYTICS = "1";
     };
 
     # List packages installed in system profile. To search by name, run:
