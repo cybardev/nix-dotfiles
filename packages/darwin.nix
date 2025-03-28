@@ -25,6 +25,7 @@ in
   programs = {
     zsh = {
       shellAliases = {
+        lsblk = "diskutil list";
         edit-wm = "nvim ${nixConfigDir}/packages/config/aerospace.nix";
         re-nix = "darwin-rebuild switch --flake ${nixConfigDir}#darwin";
         re-hm = "home-manager switch --flake ${nixConfigDir}#darwin";
