@@ -1,7 +1,11 @@
 {
   homebrew = {
     enable = true;
-    onActivation.cleanup = "zap";
+    onActivation = {
+      cleanup = "zap";
+      autoUpdate = true;
+      upgrade = true;
+    };
     masApps = {
       "iMovie" = 408981434;
       "KeyNote" = 409183694;
