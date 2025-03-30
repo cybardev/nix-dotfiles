@@ -31,6 +31,7 @@ in
         signal-desktop
         imagemagick
         lazydocker
+        syncthing
         lunarvim
         babashka
         dfu-util
