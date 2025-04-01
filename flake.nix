@@ -59,7 +59,7 @@
           args,
         }:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = nixpkgs.legacyPackages.${system};
           modules = [
             ./packages/nonfree.nix
             config
