@@ -10,7 +10,7 @@
       enable = true;
       options = [
         "--cmd"
-        "c"
+        "cd"
       ];
     };
 
