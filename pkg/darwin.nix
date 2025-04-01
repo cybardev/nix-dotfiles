@@ -1,14 +1,12 @@
-{ pkgs, userConfig, ... }:
+{
+  pkgs,
+  userConfig,
+  ...
+}:
 let
   nixConfigDir = userConfig.nixos;
 in
 {
-  imports = [
-    ./common.nix
-
-    ./config/aerospace.nix
-  ];
-
   home = {
     packages = with pkgs; [
       # TIP: don't add GUI apps here; use brew instead
@@ -16,7 +14,7 @@ in
 
     file = {
       ".config/karabiner" = {
-        source = ./config/karabiner;
+        source = ../cfg/karabiner;
         recursive = true;
       };
     };

@@ -1,8 +1,10 @@
 {
   config,
+  lib,
   pkgs,
   hostName,
   userConfig,
+  extraArgs,
   ...
 }:
 let
@@ -10,19 +12,15 @@ let
   nixConfigDir = userConfig.nixos;
 in
 {
-  imports = [
-    ./system/darwin.nix
-  ];
-
   nixpkgs.hostPlatform = {
-    system = "aarch64-darwin";
+    system = lib.mkDefault extraArgs.system;
   };
   networking.computerName = hostName;
   networking.hostName = hostName;
 
   users.users.${userName} = {
     name = userName;
-    home = /Users/${userName};
+    home = /. + extraArgs.home;
     shell = pkgs.zsh;
   };
 

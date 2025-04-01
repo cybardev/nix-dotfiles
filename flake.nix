@@ -40,6 +40,8 @@
         username = "sage";
         darwinHost = "blade";
         linuxHost = "forest";
+        darwinSystem = "aarch64-darwin";
+        linuxSystem = "x86_64-linux";
         locale = "en_CA.UTF-8";
         timezone = "America/Halifax";
         nixos = "~/.config/nixos";
@@ -55,48 +57,76 @@
       hmConfig =
         {
           system,
-          config,
+          configs,
           args,
         }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
           modules = [
-            ./packages/nonfree.nix
-            config
-          ];
+            ./sys/nonfree.nix
+            ./sys/home.nix
+            ./pkg/common.nix
+            ./pkg/zsh.nix
+            ./pkg/yazi.nix
+            ./pkg/vscode.nix
+          ] ++ configs;
           extraSpecialArgs = args;
         };
       hmConfigDarwin =
         { ... }:
         hmConfig {
-          system = "aarch64-darwin";
-          config = ./system/home-darwin.nix;
-          args = genArgs { host = userConfig.darwinHost; };
+          system = userConfig.darwinSystem;
+          configs = [
+            ./pkg/darwin.nix
+            ./pkg/aerospace.nix
+          ];
+          args = genArgs {
+            host = userConfig.darwinHost;
+            home = "/Users/${userConfig.username}";
+          };
         };
       hmConfigLinux =
         { surfaceKernel }:
         hmConfig {
-          system = "x86_64-linux";
-          config = ./system/home-linux.nix;
+          system = userConfig.linuxSystem;
+          configs = [
+            ./pkg/linux.nix
+            ./pkg/bspwm.nix
+          ];
           args = genArgs {
             host = userConfig.linuxHost;
+            home = "/home/${userConfig.username}";
             inherit surfaceKernel;
           };
         };
       nixConfigDarwin =
         { ... }:
         nix-darwin.lib.darwinSystem {
-          modules = [ ./configuration-darwin.nix ];
-          specialArgs = genArgs { host = userConfig.darwinHost; };
+          modules = [
+            ./sys/nonfree.nix
+            ./sys/configuration-darwin.nix
+            ./pkg/brew.nix
+          ];
+          specialArgs = genArgs {
+            host = userConfig.darwinHost;
+            home = "/Users/${userConfig.username}";
+            system = userConfig.darwinSystem;
+          };
         };
       nixConfigLinux =
         { surfaceKernel }:
         nixpkgs.lib.nixosSystem {
           modules =
-            [ ./configuration.nix ]
+            [
+              ./sys/nonfree.nix
+              ./sys/configuration.nix
+              ./sys/hardware-configuration.nix
+            ]
             ++ (nixpkgs.lib.optional surfaceKernel inputs.nixos-hardware.nixosModules.microsoft-surface-common);
           specialArgs = genArgs {
             host = userConfig.linuxHost;
+            home = "/home/${userConfig.username}";
+            system = userConfig.linuxSystem;
             inherit surfaceKernel;
           };
         };

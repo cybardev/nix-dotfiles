@@ -23,13 +23,17 @@
 
   _**Config entrypoint**_: This flake contains a darwin config and a linux config. Modify username, hostname, and Nix config directory here. There's a line in the linux config to activate on Surface devices that require just the linux-surface kernel. More on that under [NixOS](#nixos).
 
-- [`system/`](./system/) (directory)
+- [`sys/`](./sys/) (directory)
 
   _**System configs**_: Configure various system components, like home-manager, unfree software, system-wide packages, etc.
 
-- [`packages/`](./packages/) (directory)
+- [`pkg/`](./pkg/) (directory)
 
   _**Package configs**_: Install and configure various software for the user.
+
+- [`cfg/`](./cfg/) (directory)
+
+  _**Configs**_: Manage non-Nix configuration files.
 
 ---
 
@@ -65,6 +69,6 @@ nix --experimental-features "nix-command flakes" run nix-darwin/master#darwin-re
 
 ### Screenshots
 
-![NixOS Screenshot, showing desktop with flower background and XFCE panels](./images/screenshot_0.png "NixOS Screenshot 0")
-![NixOS Screenshot, showing 3 windows of Kitty terminal in BSPWM](./images/screenshot_1.png "NixOS Screenshot 1")
-![NixOS Screenshot, showing logoff dialog](./images/screenshot_2.png "NixOS Screenshot 2")
+![NixOS Screenshot, showing desktop with flower background and XFCE panels](./img/screenshot_0.png "NixOS Screenshot 0")
+![NixOS Screenshot, showing 3 windows of Kitty terminal in BSPWM](./img/screenshot_1.png "NixOS Screenshot 1")
+![NixOS Screenshot, showing logoff dialog](./img/screenshot_2.png "NixOS Screenshot 2")

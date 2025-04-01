@@ -1,4 +1,3 @@
-{ ... }:
 {
   # manage X session in home-manager
   xsession.enable = true;

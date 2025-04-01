@@ -3,6 +3,7 @@
   lib,
   pkgs,
   userConfig,
+  extraArgs,
   ...
 }:
 let
@@ -13,18 +14,23 @@ in
     package = lib.mkDefault pkgs.nixVersions.stable;
     gc = {
       automatic = true;
-      frequency = "monthly";
+      frequency = "weekly";
+      options = "--delete-older-than 14d";
     };
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
   };
 
   home = {
     # Home Manager needs a bit of information about you and the paths it should
     # manage.
     username = userName;
+    homeDirectory = lib.mkDefault extraArgs.home;
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release

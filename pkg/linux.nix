@@ -9,12 +9,6 @@ let
   nixConfigDir = userConfig.nixos;
 in
 {
-  imports = [
-    ./common.nix
-
-    ./config/bspwm.nix
-  ];
-
   home = {
     packages = with pkgs; [
       xorg.xdpyinfo
