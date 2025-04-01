@@ -18,6 +18,7 @@ in
       options = "--delete-older-than 14d";
     };
     settings = {
+      trusted-users = [ userName ];
       auto-optimise-store = true;
       experimental-features = [
         "nix-command"

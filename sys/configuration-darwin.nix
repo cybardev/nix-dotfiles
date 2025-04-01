@@ -24,6 +24,8 @@ in
     shell = pkgs.zsh;
   };
 
+  nix.settings.trusted-users = [ userName ];
+
   environment = {
     variables = {
       HOMEBREW_NO_ANALYTICS = "1";
