@@ -13,7 +13,7 @@ let
 in
 {
   nixpkgs.hostPlatform = {
-    system = lib.mkDefault extraArgs.system;
+    system = extraArgs.system;
   };
   networking.computerName = hostName;
   networking.hostName = hostName;
