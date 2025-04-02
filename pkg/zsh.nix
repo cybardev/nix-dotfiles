@@ -38,10 +38,10 @@ in
       path+=( "$(go env GOPATH)/bin" "$HOME/.local/bin" )
       cutefetch -m text
 
-      # fpath+="$ZDOTDIR/zen"
-      # autoload -Uz promptinit
-      # promptinit
-      # prompt zen
+      fpath+="$ZDOTDIR/zen"
+      autoload -Uz promptinit
+      promptinit
+      prompt zen
 
       function etch() {
         sudo dd bs=4M if=$2 of=/dev/$1 status=progress oflag=sync
@@ -83,30 +83,4 @@ in
       yup = "nix flake update --flake ${nixConfigDir} && re-nix";
     };
   };
-
-  # Enable & Configure Starship
-  programs.starship =
-    let
-      flavour = "mocha"; # latte | frappe | macchiato | mocha
-    in
-    {
-      enable = true;
-      settings =
-        {
-          format = "$all";
-          palette = "catppuccin_${flavour}";
-        }
-        // builtins.fromTOML (
-          builtins.readFile (
-            pkgs.fetchFromGitHub {
-              owner = "catppuccin";
-              repo = "starship";
-              rev = "0cf91419f9649e9a47bb5c85797e4b83ecefe45c";
-              sha256 = "sha256-2JLybPsgFZ/Fzz4e0dd4Vo0lfi4tZVnRbw/jUCmN6Rw=";
-              sparseCheckout = [ "themes" ];
-            }
-            + /themes/${flavour}.toml
-          )
-        );
-    };
 }
