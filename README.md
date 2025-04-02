@@ -53,7 +53,7 @@ cp "/etc/nixos/hardware-configuration.nix" "$NIXOS_CONFIG_DIR/sys/"
 
 # rebuild system from config
 sudo -H nixos-rebuild --experimental-features "nix-command flakes" switch --flake "$NIXOS_CONFIG_DIR#linux" # or linux-surface
-nix run home-manager/master -- --switch --flake "$NIXOS_CONFIG_DIR#linux" # or linux-surface
+nix run home-manager/master -- switch --flake "$NIXOS_CONFIG_DIR#linux" # or linux-surface
 ```
 
 #### macOS
@@ -61,7 +61,7 @@ nix run home-manager/master -- --switch --flake "$NIXOS_CONFIG_DIR#linux" # or l
 ```sh
 # rebuild system from config
 nix --experimental-features "nix-command flakes" run nix-darwin/master#darwin-rebuild -- switch --flake "$NIXOS_CONFIG_DIR#darwin"
-nix run home-manager/master -- --switch --flake "$NIXOS_CONFIG_DIR#darwin"
+nix run home-manager/master -- switch --flake "$NIXOS_CONFIG_DIR#darwin"
 ```
 
 ---
