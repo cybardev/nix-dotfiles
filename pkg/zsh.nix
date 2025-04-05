@@ -75,6 +75,7 @@ in
 
       # reloading configs
       zrc = ". $ZDOTDIR/.zshrc";
+      re-hm = "home-manager switch --flake ${nixConfigDir}";
 
       # package management
       yin = "nix-shell -p";

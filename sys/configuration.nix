@@ -15,7 +15,6 @@ let
   userNickname = userConfig.nickname;
   userLocale = userConfig.locale;
   userTZ = userConfig.timezone;
-  linuxFlake = if extraArgs.surfaceKernel then "linux-surface" else "linux";
 in
 {
   system.autoUpgrade = {
@@ -27,7 +26,7 @@ in
       "nixpkgs"
       "--commit-lock-file"
     ];
-    flake = "path:${extraArgs.home}${builtins.substring 1 (-1) userConfig.nixos}#${linuxFlake}";
+    flake = "path:${extraArgs.home}${builtins.substring 1 (-1) userConfig.nixos}";
   };
   nix = {
     package = lib.mkDefault pkgs.nixVersions.stable;

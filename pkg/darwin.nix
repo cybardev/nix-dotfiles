@@ -25,8 +25,7 @@ in
       shellAliases = {
         lsblk = "diskutil list";
         edit-wm = "nvim ${nixConfigDir}/packages/config/aerospace.nix";
-        re-nix = "darwin-rebuild switch --flake ${nixConfigDir}#darwin";
-        re-hm = "home-manager switch --flake ${nixConfigDir}#darwin";
+        re-nix = "darwin-rebuild switch --flake ${nixConfigDir}";
       };
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
