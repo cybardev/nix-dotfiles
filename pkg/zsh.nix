@@ -69,7 +69,7 @@ in
 
       # editing related
       edit = "nvim";
-      edit-vim = "nvim ${nixConfigDir}/cfg/nvim";
+      edit-vim = "(cd ${nixConfigDir}/cfg/nvim && nvim)";
       edit-os = "nvim ${nixConfigDir}";
 
       # reloading configs
