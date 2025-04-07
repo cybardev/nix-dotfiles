@@ -7,22 +7,21 @@ let
   cypkgs = import inputs.cypkgs { inherit pkgs; };
 in
 {
+  xdg.configFile = {
+    # Custom Kitty Icon
+    # License: MIT Copyright: 2024, Andrew Haust <https://github.com/sodapopcan/kitty-icon>
+    "kitty/kitty.app.png".source = ../cfg/kitty.app.png;
+    "ptpython/config.py".source = ../cfg/ptpython.py;
+    "nvim" = {
+      source = ../cfg/nvim;
+      recursive = true;
+    };
+  };
+
   home = {
     # environment variables
     sessionVariables = {
-      EDITOR = "lvim";
       PTPYTHON_CONFIG_HOME = "$HOME/.config/ptpython/";
-    };
-
-    file = {
-      # Custom Kitty Icon
-      # License: MIT Copyright: 2024, Andrew Haust <https://github.com/sodapopcan/kitty-icon>
-      ".config/kitty/kitty.app.png".source = ../cfg/kitty.app.png;
-      ".config/lvim" = {
-        source = ../cfg/lvim;
-        recursive = true;
-      };
-      ".config/ptpython/config.py".source = ../cfg/ptpython.py;
     };
 
     packages =
@@ -53,7 +52,6 @@ in
         nix-search-cli
         imagemagick
         syncthing
-        lunarvim
         visidata
         poppler
         cmatrix
@@ -93,6 +91,17 @@ in
         tab_bar_edge = "top";
         background_opacity = 0.96;
       };
+    };
+
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      withNodeJs = true;
+      extraPackages = with pkgs; [
+        gcc
+        gnumake
+        ripgrep
+      ];
     };
 
     zoxide = {

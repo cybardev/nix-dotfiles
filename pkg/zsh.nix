@@ -65,12 +65,11 @@ in
       yt = "ytgo -i -m -p";
       cf = "cutefetch";
       tf = "cutefetch -m text";
-      nvim = "lvim";
       cd-os = "cd ~/.config/nixos";
 
       # editing related
       edit = "nvim";
-      edit-vim = "nvim ${nixConfigDir}/packages/config/lvim.lua";
+      edit-vim = "nvim ${nixConfigDir}/cfg/nvim";
       edit-os = "nvim ${nixConfigDir}";
 
       # reloading configs
