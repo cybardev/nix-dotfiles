@@ -18,10 +18,10 @@ in
     autoExpire = {
       enable = true;
       frequency = "weekly";
-      timestamp = "-14 days";
+      timestamp = "-30 days";
       store = {
         cleanup = true;
-        options = "--delete-older-than 14d";
+        options = "--delete-older-than 30d";
       };
     };
   };
@@ -30,7 +30,7 @@ in
     gc = {
       automatic = true;
       frequency = "weekly";
-      options = "--delete-older-than 14d";
+      options = "--delete-older-than 30d";
     };
     settings = {
       trusted-users = [ userName ];
