@@ -30,4 +30,20 @@ in
       re-nix = "sudo -H nixos-rebuild switch --flake ${nixConfigDir}";
     };
   };
+
+  services.home-manager = {
+    autoUpgrade = {
+      enable = true;
+      frequency = "weekly";
+    };
+    autoExpire = {
+      enable = true;
+      frequency = "weekly";
+      timestamp = "-30 days";
+      store = {
+        cleanup = true;
+        options = "--delete-older-than 30d";
+      };
+    };
+  };
 }

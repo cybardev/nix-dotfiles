@@ -10,21 +10,6 @@ let
   userName = userConfig.username;
 in
 {
-  services.home-manager = {
-    autoUpgrade = {
-      enable = true;
-      frequency = "weekly";
-    };
-    autoExpire = {
-      enable = true;
-      frequency = "weekly";
-      timestamp = "-30 days";
-      store = {
-        cleanup = true;
-        options = "--delete-older-than 30d";
-      };
-    };
-  };
   nix = {
     package = lib.mkDefault pkgs.nixVersions.stable;
     gc = {
