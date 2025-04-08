@@ -13,10 +13,7 @@ in
     ];
 
     file = {
-      ".config/karabiner" = {
-        source = ../cfg/karabiner;
-        recursive = true;
-      };
+      ".config/karabiner".source = ../cfg/karabiner;
     };
   };
 
