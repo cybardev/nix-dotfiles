@@ -4,8 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware?ref=master";
-
     nix-darwin = {
       url = "github:LnL7/nix-darwin?ref=master";
       inputs.nixpkgs.follows = "nixpkgs";
