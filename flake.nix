@@ -88,6 +88,7 @@
         };
         "${userConfig.username}@${userConfig.linuxHost}" = hmConfig {
           configs = [
+            ./sys/gtk.nix
             ./pkg/linux.nix
             ./pkg/bspwm.nix
           ];
