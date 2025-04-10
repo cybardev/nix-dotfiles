@@ -9,8 +9,10 @@ in
 {
   home = {
     packages = with pkgs; [
+      nerd-fonts.caskaydia-cove
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.fira-code
       xorg.xdpyinfo
-      nerdfonts
       docker
       unzip
       rustc
