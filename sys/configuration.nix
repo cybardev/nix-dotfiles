@@ -45,6 +45,9 @@ in
     };
   };
 
+  # enable zsh for the system
+  programs.zsh.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${userName} = {
     shell = pkgs.zsh;
