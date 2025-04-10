@@ -28,19 +28,13 @@ let
     # add Open VSX Registry extensions (release)
     eamodio.gitlens
   ];
-  marketplaceExt = with extensions.vscode-marketplace; [
-    # add VS Code Marketplace extensions (pre-release)
-  ];
-  marketplaceReleaseExt = with extensions.vscode-marketplace-release; [
-    # add VS Code Marketplace extensions (release)
-  ];
 in
 {
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
     profiles.default = {
-      extensions = marketplaceReleaseExt ++ marketplaceExt ++ openvsxReleaseExt ++ openvsxExt;
+      extensions = openvsxReleaseExt ++ openvsxExt;
       userSettings = {
         "editor.fontFamily" = "'CaskaydiaCove Nerd Font', Menlo, Monaco, 'Courier New', monospace";
         "editor.formatOnSave" = true;
