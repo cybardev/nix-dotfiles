@@ -10,6 +10,7 @@ let
   openvsxExt = with extensions.open-vsx; [
     # add Open VSX Registry extensions (pre-release)
     zhuangtongfa.material-theme
+    mkhl.direnv
     vscodevim.vim
     tomoki1207.pdf
     adpyke.codesnap
