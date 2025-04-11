@@ -15,6 +15,7 @@ let
     tomoki1207.pdf
     adpyke.codesnap
     ms-python.python
+    ms-toolsai.jupyter
     jnoortheen.nix-ide
     charliermarsh.ruff
     ms-vscode.live-server
