@@ -29,7 +29,7 @@ in
     flake = "path:${extraArgs.home}${builtins.substring 1 (-1) userConfig.nixos}";
   };
   nix = {
-    package = lib.mkDefault pkgs.nixVersions.stable;
+    package = pkgs.nixVersions.stable;
     gc = {
       automatic = true;
       dates = "weekly";

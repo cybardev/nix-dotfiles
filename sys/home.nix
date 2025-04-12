@@ -11,7 +11,7 @@ let
 in
 {
   nix = {
-    package = lib.mkDefault pkgs.nixVersions.stable;
+    package = pkgs.nixVersions.stable;
     gc = {
       automatic = true;
       frequency = "weekly";
