@@ -7,8 +7,8 @@
       package = pkgs.qogir-theme;
     };
     cursorTheme = {
-      name = "Qogir-manjaro-dark";
-      package = pkgs.qogir-icon-theme;
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
       size = 64;
     };
     iconTheme = {
