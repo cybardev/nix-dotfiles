@@ -21,8 +21,8 @@
       relative-motions = pkgs.fetchFromGitHub {
         owner = "dedukun";
         repo = "relative-motions.yazi";
-        rev = "810306563e1928855f5cf61f83801544e3eb3788";
-        hash = "sha256-sIS7vtpY8z8D1nHMmr/uZoKREeGsIZuNSG8SnKkjREI=";
+        rev = "61ae7950daeea3e1d960aa777b7a07cde4539b29";
+        hash = "sha256-L5B5X762rBoxgKrUi0uRLDmAOJ/jPALc2bP9MYLiGYw=";
       };
     };
     initLua = ''
