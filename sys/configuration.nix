@@ -28,6 +28,10 @@ in
     ];
     flake = "path:${extraArgs.home}${builtins.substring 1 (-1) userConfig.nixos}";
   };
+  nix = {
+    optimise.dates = [ "weekly" ];
+    gc.dates = "weekly";
+  };
 
   # enable zsh for the system
   programs.zsh.enable = true;

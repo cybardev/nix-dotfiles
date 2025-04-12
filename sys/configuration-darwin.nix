@@ -24,6 +24,19 @@ in
     shell = pkgs.zsh;
   };
 
+  nix = {
+    optimise.interval = {
+      Hour = 0;
+      Minute = 0;
+      Weekday = 0;
+    };
+    gc.interval = {
+      Hour = 0;
+      Minute = 0;
+      Weekday = 0;
+    };
+  };
+
   environment = {
     variables = {
       HOMEBREW_NO_ANALYTICS = "1";
