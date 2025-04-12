@@ -28,22 +28,6 @@ in
     ];
     flake = "path:${extraArgs.home}${builtins.substring 1 (-1) userConfig.nixos}";
   };
-  nix = {
-    package = pkgs.nixVersions.stable;
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
-    };
-    settings = {
-      trusted-users = [ userName ];
-      auto-optimise-store = true;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
-  };
 
   # enable zsh for the system
   programs.zsh.enable = true;

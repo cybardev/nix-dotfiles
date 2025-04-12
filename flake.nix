@@ -98,6 +98,7 @@
 
       darwinConfigurations.${userConfig.darwinHost} = nix-darwin.lib.darwinSystem {
         modules = [
+          ./sys/nixcommand.nix
           ./sys/nonfree.nix
           ./sys/configuration-darwin.nix
           ./pkg/brew.nix
@@ -107,6 +108,7 @@
 
       nixosConfigurations.${userConfig.linuxHost} = nixpkgs.lib.nixosSystem {
         modules = [
+          ./sys/nixcommand.nix
           ./sys/nonfree.nix
           ./sys/configuration.nix
           ./sys/hardware-configuration.nix
