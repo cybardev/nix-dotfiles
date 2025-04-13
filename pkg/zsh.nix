@@ -1,21 +1,15 @@
 {
   pkgs,
+  inputs,
   flakePath,
   userConfig,
   ...
 }:
 let
+  cypkgs = import inputs.cypkgs { inherit pkgs; };
   nixConfigDir = userConfig.nixos;
 in
 {
-  # custom prompt
-  home.file.".config/zsh/zen".source = pkgs.fetchFromGitHub {
-    owner = "cybardev";
-    repo = "zen.zsh";
-    rev = "v2.0";
-    hash = "sha256-s/YLFdhCrJjcqvA6HuQtP0ADjBtOqAP+arjpFM2m4oQ=";
-  };
-
   # zshrc
   programs.zsh = {
     dotDir = ".config/zsh";
@@ -43,7 +37,7 @@ in
       path+=( "$(go env GOPATH)/bin" "$HOME/.local/bin" )
       cutefetch -m text
 
-      fpath+="$ZDOTDIR/zen"
+      fpath+="${cypkgs.zen}"
       autoload -Uz promptinit
       promptinit
       prompt zen
