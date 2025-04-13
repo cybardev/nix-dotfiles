@@ -16,10 +16,10 @@ in
       source = ../cfg/nvim;
       recursive = true;
     };
-    "lf" = {
-      source = ../cfg/lf;
-      recursive = true;
-    };
+    # "lf" = {
+    #   source = ../cfg/lf;
+    #   recursive = true;
+    # };
   };
 
   home = {
@@ -132,15 +132,15 @@ in
       ];
     };
 
-    lf = {
-      enable = true;
-      settings = {
-        number = true;
-        relativenumber = true;
-        icons = true;
-        sortby = "ext";
-      };
-    };
+    # lf = {
+    #   enable = true;
+    #   settings = {
+    #     number = true;
+    #     relativenumber = true;
+    #     icons = true;
+    #     sortby = "ext";
+    #   };
+    # };
 
     bottom = {
       enable = true;
