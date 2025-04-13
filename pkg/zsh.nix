@@ -1,4 +1,9 @@
-{ pkgs, userConfig, ... }:
+{
+  pkgs,
+  flakePath,
+  userConfig,
+  ...
+}:
 let
   nixConfigDir = userConfig.nixos;
 in
@@ -74,13 +79,13 @@ in
 
       # reloading configs
       zrc = ". $ZDOTDIR/.zshrc";
-      re-hm = "home-manager switch --flake ${nixConfigDir}";
+      re-hm = "nh home switch";
 
       # package management
       yin = "nix-shell -p";
-      yang = "nix-search";
+      yang = "nh search";
       wuji = "nix-collect-garbage -d && sudo -H nix-collect-garbage -d";
-      yup = "nix flake update --flake ${nixConfigDir} && re-nix";
+      yup = "nix flake update --flake ${flakePath} && re-nix";
     };
   };
 }

@@ -1,5 +1,6 @@
 {
   pkgs,
+  flakePath,
   userConfig,
   ...
 }:
@@ -22,7 +23,7 @@ in
       shellAliases = {
         lsblk = "diskutil list";
         edit-wm = "nvim ${nixConfigDir}/packages/config/aerospace.nix";
-        re-nix = "darwin-rebuild switch --flake ${nixConfigDir}";
+        re-nix = "darwin-rebuild switch --flake ${flakePath}";
       };
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"
