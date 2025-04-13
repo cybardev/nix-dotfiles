@@ -37,7 +37,7 @@ in
         ytgo
       ])
       ++ (with pkgs; [
-        signal-desktop
+        signal-desktop-bin
         gnome-mahjongg
         lazydocker
         babashka
