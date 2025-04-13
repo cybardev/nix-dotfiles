@@ -45,13 +45,20 @@
         nixos = "~/.config/nixos";
       };
       genArgs =
-        { host, ... }@extraArgs:
+        {
+          host,
+          home,
+          system,
+        }:
         {
           inherit inputs;
-          inherit extraArgs;
           inherit userConfig;
           hostName = host;
-          flakePath = "${extraArgs.home}${builtins.substring 1 (-1) userConfig.nixos}";
+          flakePath = "${home}${builtins.substring 1 (-1) userConfig.nixos}";
+          extraArgs = {
+            inherit home;
+            inherit system;
+          };
         };
       darwinArgs = genArgs {
         host = userConfig.darwinHost;
