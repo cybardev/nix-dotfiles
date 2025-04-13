@@ -69,6 +69,7 @@ in
       py = "ptpython";
       yt = "ytgo -i -m -p";
       cf = "cutefetch";
+      bf = "cutefetch -m bunny";
       tf = "cutefetch -m text";
       cd-os = "cd ${nixConfigDir}";
 
