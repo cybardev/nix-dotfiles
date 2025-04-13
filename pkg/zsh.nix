@@ -70,7 +70,7 @@ in
       yt = "ytgo -i -m -p";
       cf = "cutefetch";
       tf = "cutefetch -m text";
-      cd-os = "cd ~/.config/nixos";
+      cd-os = "cd ${nixConfigDir}";
 
       # editing related
       edit = "nvim";
