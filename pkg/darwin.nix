@@ -1,5 +1,4 @@
 {
-  pkgs,
   flakePath,
   userConfig,
   ...
@@ -8,15 +7,7 @@ let
   nixConfigDir = userConfig.nixos;
 in
 {
-  home = {
-    packages = with pkgs; [
-      # TIP: don't add GUI apps here; use brew instead
-    ];
-
-    file = {
-      ".config/karabiner".source = ../cfg/karabiner;
-    };
-  };
+  home.file.".config/karabiner".source = ../cfg/karabiner;
 
   programs = {
     zsh = {
