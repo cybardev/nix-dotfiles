@@ -5,22 +5,22 @@
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin?ref=master";
+      url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager?ref=master";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions?ref=master";
+      url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     cypkgs = {
-      url = "github:cybardev/nix-channel?ref=main";
+      url = "github:cybardev/nix-channel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

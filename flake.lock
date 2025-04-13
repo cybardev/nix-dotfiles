@@ -16,7 +16,6 @@
       },
       "original": {
         "owner": "cybardev",
-        "ref": "main",
         "repo": "nix-channel",
         "type": "github"
       }
@@ -55,7 +54,6 @@
       },
       "original": {
         "owner": "nix-community",
-        "ref": "master",
         "repo": "home-manager",
         "type": "github"
       }
@@ -76,7 +74,6 @@
       },
       "original": {
         "owner": "LnL7",
-        "ref": "master",
         "repo": "nix-darwin",
         "type": "github"
       }
@@ -98,7 +95,6 @@
       },
       "original": {
         "owner": "nix-community",
-        "ref": "master",
         "repo": "nix-vscode-extensions",
         "type": "github"
       }
