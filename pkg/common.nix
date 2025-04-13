@@ -1,10 +1,12 @@
 {
   pkgs,
   inputs,
+  userConfig,
   ...
 }:
 let
   cypkgs = import inputs.cypkgs { inherit pkgs; };
+  nixConfigDir = userConfig.nixos;
 in
 {
   xdg.configFile = {
@@ -53,7 +55,6 @@ in
 
         # >---< DO NOT REMOVE >---< #
         nixfmt-rfc-style
-        nix-search-cli
         imagemagick
         syncthing
         visidata
@@ -79,6 +80,11 @@ in
   };
 
   programs = {
+    nh = {
+      enable = true;
+      flake = nixConfigDir;
+    };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
