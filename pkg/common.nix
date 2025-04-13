@@ -1,12 +1,11 @@
 {
   pkgs,
   inputs,
-  userConfig,
+  flakePath,
   ...
 }:
 let
   cypkgs = import inputs.cypkgs { inherit pkgs; };
-  nixConfigDir = userConfig.nixos;
 in
 {
   xdg.configFile = {
@@ -82,7 +81,7 @@ in
   programs = {
     nh = {
       enable = true;
-      flake = nixConfigDir;
+      flake = flakePath;
     };
 
     direnv = {

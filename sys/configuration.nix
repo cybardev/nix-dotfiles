@@ -7,7 +7,7 @@
   pkgs,
   hostName,
   userConfig,
-  extraArgs,
+  flakePath,
   ...
 }:
 let
@@ -26,7 +26,7 @@ in
       "nixpkgs"
       "--commit-lock-file"
     ];
-    flake = "path:${extraArgs.home}${builtins.substring 1 (-1) userConfig.nixos}";
+    flake = "path:${flakePath}";
   };
   nix = {
     optimise.dates = [ "weekly" ];
