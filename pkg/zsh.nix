@@ -37,7 +37,7 @@ in
       path+=( "$(go env GOPATH)/bin" "$HOME/.local/bin" )
       cutefetch -m text
 
-      fpath+="${cypkgs.zen}"
+      fpath+="${cypkgs.zen-zsh}"
       autoload -Uz promptinit
       promptinit
       prompt zen
