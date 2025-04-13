@@ -46,8 +46,8 @@
       };
       genArgs =
         {
-          host,
           home,
+          host,
           system,
         }:
         {
