@@ -1,3 +1,4 @@
+# allowed unfree packages
 [
   "signal-desktop"
   "freej2me"

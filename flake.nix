@@ -71,7 +71,7 @@
         system = userConfig.linuxSystem;
       };
       allowedUnfreePkgs.nixpkgs.config.allowUnfreePredicate =
-        pkg: builtins.elem (nixpkgs.lib.getName pkg) (import ./sys/nonfree.nix);
+        pkg: builtins.elem (nixpkgs.lib.getName pkg) (import ./sys/unfree.nix);
       hmConfig =
         { configs, args }:
         let
