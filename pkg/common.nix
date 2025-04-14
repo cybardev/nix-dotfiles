@@ -1,6 +1,6 @@
 {
-  cypkgs,
   pkgs,
+  cypkgs,
   flakePath,
   ...
 }:
