@@ -1,5 +1,6 @@
 {
-  cypkgs,
+  pkgs,
+  # cypkgs,
   flakePath,
   userConfig,
   ...
@@ -35,7 +36,7 @@ in
       path+=( "$(go env GOPATH)/bin" "$HOME/.local/bin" )
       cutefetch -m text
 
-      fpath+="${cypkgs.zen-zsh}"
+      fpath+="${pkgs.cy.zen-zsh}"
       autoload -Uz promptinit
       promptinit
       prompt zen
