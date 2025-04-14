@@ -79,9 +79,7 @@ in
     # Enable the XFCE Desktop Environment.
     displayManager.lightdm = {
       enable = true;
-      greeters = {
-        imports = [ ./gtk.nix ];
-      };
+      greeters = import ./gtk.nix { inherit pkgs; };
     };
     desktopManager = {
       xterm.enable = false;
