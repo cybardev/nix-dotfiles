@@ -70,28 +70,20 @@
         home = "/home/${userConfig.username}";
         system = userConfig.linuxSystem;
       };
-      allowedUnfreePkgs.nixpkgs.config.allowUnfreePredicate =
-        pkg: builtins.elem (nixpkgs.lib.getName pkg) (import ./sys/unfree.nix);
       hmConfig =
         { configs, args }:
-        let
-          pkgs = import nixpkgs {
-            inherit (args.extraArgs) system;
-            inherit (allowedUnfreePkgs.nixpkgs) config;
-          };
-        in
         home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = nixpkgs.legacyPackages.${args.extraArgs.system};
           modules = [
             ./sys/home.nix
+            ./sys/unfree.nix
+            ./pkg/cypkgs.nix
             ./pkg/common.nix
             ./pkg/zsh.nix
             ./pkg/yazi.nix
             ./pkg/vscode.nix
           ] ++ configs;
-          extraSpecialArgs = args // {
-            cypkgs = import inputs.cypkgs { inherit pkgs; };
-          };
+          extraSpecialArgs = args;
         };
     in
     {
@@ -115,7 +107,7 @@
 
       darwinConfigurations.${userConfig.darwinHost} = nix-darwin.lib.darwinSystem {
         modules = [
-          allowedUnfreePkgs
+          ./sys/unfree.nix
           ./sys/nixcommand.nix
           ./sys/configuration-darwin.nix
           ./pkg/brew.nix
@@ -125,7 +117,7 @@
 
       nixosConfigurations.${userConfig.linuxHost} = nixpkgs.lib.nixosSystem {
         modules = [
-          allowedUnfreePkgs
+          ./sys/unfree.nix
           ./sys/nixcommand.nix
           ./sys/configuration.nix
           ./sys/hardware-configuration.nix
