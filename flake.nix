@@ -70,13 +70,14 @@
         home = "/home/${userConfig.username}";
         system = userConfig.linuxSystem;
       };
+      allowedUnfreePkgs.nixpkgs.config.allowUnfreePredicate =
+        pkg: builtins.elem (nixpkgs.lib.getName pkg) (import ./sys/nonfree.nix);
       hmConfig =
         { configs, args }:
         let
           pkgs = import nixpkgs {
             inherit (args.extraArgs) system;
-            config.allowUnfreePredicate =
-              (import ./sys/nonfree.nix { inherit (nixpkgs) lib; }).nixpkgs.config.allowUnfreePredicate;
+            inherit (allowedUnfreePkgs.nixpkgs) config;
           };
         in
         home-manager.lib.homeManagerConfiguration {
@@ -114,8 +115,8 @@
 
       darwinConfigurations.${userConfig.darwinHost} = nix-darwin.lib.darwinSystem {
         modules = [
+          allowedUnfreePkgs
           ./sys/nixcommand.nix
-          ./sys/nonfree.nix
           ./sys/configuration-darwin.nix
           ./pkg/brew.nix
         ];
@@ -124,8 +125,8 @@
 
       nixosConfigurations.${userConfig.linuxHost} = nixpkgs.lib.nixosSystem {
         modules = [
+          allowedUnfreePkgs
           ./sys/nixcommand.nix
-          ./sys/nonfree.nix
           ./sys/configuration.nix
           ./sys/hardware-configuration.nix
         ];
