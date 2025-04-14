@@ -1,12 +1,9 @@
 {
+  cypkgs,
   pkgs,
-  inputs,
   flakePath,
   ...
 }:
-let
-  cypkgs = import inputs.cypkgs { inherit pkgs; };
-in
 {
   xdg.configFile = {
     # Custom Kitty Icon

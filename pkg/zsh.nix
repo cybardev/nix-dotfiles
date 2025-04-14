@@ -1,12 +1,10 @@
 {
-  pkgs,
-  inputs,
+  cypkgs,
   flakePath,
   userConfig,
   ...
 }:
 let
-  cypkgs = import inputs.cypkgs { inherit pkgs; };
   nixConfigDir = userConfig.nixos;
 in
 {

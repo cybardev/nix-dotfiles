@@ -72,17 +72,25 @@
       };
       hmConfig =
         { configs, args }:
+        let
+          pkgs = import nixpkgs {
+            inherit (args.extraArgs) system;
+            config.allowUnfreePredicate =
+              (import ./sys/nonfree.nix { inherit (nixpkgs) lib; }).nixpkgs.config.allowUnfreePredicate;
+          };
+        in
         home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${args.extraArgs.system};
+          inherit pkgs;
           modules = [
-            ./sys/nonfree.nix
             ./sys/home.nix
             ./pkg/common.nix
             ./pkg/zsh.nix
             ./pkg/yazi.nix
             ./pkg/vscode.nix
           ] ++ configs;
-          extraSpecialArgs = args;
+          extraSpecialArgs = args // {
+            cypkgs = import inputs.cypkgs { inherit pkgs; };
+          };
         };
     in
     {
