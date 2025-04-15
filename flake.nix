@@ -75,10 +75,9 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${args.extraArgs.system};
           modules = [
-            ./sys/overlays.nix
             ./sys/home.nix
             ./sys/unfree.nix
-            # ./pkg/cypkgs.nix
+            ./pkg/cypkgs.nix
             ./pkg/common.nix
             ./pkg/zsh.nix
             ./pkg/yazi.nix
