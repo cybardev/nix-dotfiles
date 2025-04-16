@@ -64,6 +64,7 @@
         cmake
         ninja
         nixd
+        nurl
         wget
         unar
         go
