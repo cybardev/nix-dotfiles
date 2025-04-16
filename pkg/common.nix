@@ -53,6 +53,7 @@
         nixfmt-rfc-style
         imagemagick
         syncthing
+        alejandra
         nix-init
         visidata
         poppler
