@@ -53,6 +53,7 @@
         nixfmt-rfc-style
         imagemagick
         syncthing
+        nix-init
         visidata
         poppler
         cmatrix
