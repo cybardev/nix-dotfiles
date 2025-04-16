@@ -3,6 +3,9 @@
     enable = true;
     enableZshIntegration = true;
     shellWrapperName = "fm";
+    plugins = with pkgs.yaziPlugins; {
+      inherit relative-motions full-border yatline git;
+    };
     settings = {
       manager = {
         sort_by = "extension";
@@ -15,13 +18,32 @@
           for = "unix";
         }
       ];
+      plugin.prepend_fetchers = [
+        {
+          id = "git";
+          name = "*";
+          run = "git";
+        }
+        {
+          id = "git";
+          name = "*/";
+          run = "git";
+        }
+      ];
     };
-    plugins = with pkgs.yaziPlugins; {
-      inherit relative-motions;
+    flavors = {
+      onedark = pkgs.fetchFromGitHub {
+        owner = "BennyOe";
+        repo = "onedark.yazi";
+        rev = "668d71d967857392012684c7dd111605cfa36d1a";
+        hash = "sha256-tfkzVa+UdUVKF2DS1awEusfoJEjJh40Bx1cREPtewR0=";
+      };
     };
-    initLua = ''
-      require("relative-motions"):setup({ show_numbers="relative_absolute", show_motion = true })
-    '';
+    theme = {
+      flavor.dark = "onedark";
+      manager.border_style.fg = "#ABB2BF";
+    };
+    initLua = ../cfg/yazi.lua;
     keymap = {
       manager.prepend_keymap = [
         {
