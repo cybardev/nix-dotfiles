@@ -51,6 +51,13 @@ in {
         "idf.toolsPath" = "${extraArgs.home}/Documents/Git/esp/.espressif";
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
+        "nix.serverSettings" = {
+          nixd = {
+            formatting = {
+              command = ["alejandra"];
+            };
+          };
+        };
         "python.languageServer" = "Jedi";
         "vim.smartRelativeLine" = true;
         "update.showReleaseNotes" = false;
