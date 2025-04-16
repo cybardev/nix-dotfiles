@@ -50,19 +50,17 @@ require("yatline"):setup({
 
 	header_line = {
 		left = {
-			section_a = {
-				{ type = "line", custom = false, name = "tabs", params = { "left" } },
-			},
+			section_a = {},
 			section_b = {},
-			section_c = {},
+			section_c = {
+				{ type = "string", custom = false, name = "hovered_path" },
+			},
 		},
 		right = {
 			section_a = {
-				{ type = "string", custom = false, name = "date", params = { "%A, %d %B %Y" } },
+				{ type = "line", custom = false, name = "tabs", params = { "right" } },
 			},
-			section_b = {
-				{ type = "string", custom = false, name = "date", params = { "%X" } },
-			},
+			section_b = {},
 			section_c = {},
 		},
 	},
@@ -76,19 +74,18 @@ require("yatline"):setup({
 				{ type = "string", custom = false, name = "hovered_size" },
 			},
 			section_c = {
-				{ type = "string", custom = false, name = "hovered_path" },
 				{ type = "coloreds", custom = false, name = "count" },
 			},
 		},
 		right = {
 			section_a = {
-				{ type = "string", custom = false, name = "cursor_position" },
+				{ type = "string", custom = false, name = "hovered_file_extension", params = { true } },
 			},
 			section_b = {
 				{ type = "string", custom = false, name = "cursor_percentage" },
+				{ type = "string", custom = false, name = "cursor_position" },
 			},
 			section_c = {
-				{ type = "string", custom = false, name = "hovered_file_extension", params = { true } },
 				{ type = "coloreds", custom = false, name = "permissions" },
 			},
 		},
