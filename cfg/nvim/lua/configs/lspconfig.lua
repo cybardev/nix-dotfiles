@@ -22,7 +22,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- configuring single server, example: typescript
+-- configuring single server
 lspconfig.nixd.setup {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
