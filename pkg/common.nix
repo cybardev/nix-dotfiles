@@ -1,6 +1,5 @@
 {
   pkgs,
-  cypkgs,
   flakePath,
   ...
 }: {
@@ -26,7 +25,7 @@
     };
 
     packages =
-      (with cypkgs; [
+      (with pkgs.cy; [
         cutefetch
         jitterbugpair
         freej2me
