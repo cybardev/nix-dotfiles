@@ -9,14 +9,12 @@
   userConfig,
   flakePath,
   ...
-}:
-let
+}: let
   userName = userConfig.username;
   userNickname = userConfig.nickname;
   userLocale = userConfig.locale;
   userTZ = userConfig.timezone;
-in
-{
+in {
   system.autoUpgrade = {
     enable = true;
     dates = "weekly";
@@ -29,7 +27,7 @@ in
     flake = "path:${flakePath}";
   };
   nix = {
-    optimise.dates = [ "weekly" ];
+    optimise.dates = ["weekly"];
     gc.dates = "weekly";
   };
 
@@ -79,7 +77,7 @@ in
     # Enable the XFCE Desktop Environment.
     displayManager.lightdm = {
       enable = true;
-      greeters = import ./gtk.nix { inherit pkgs; };
+      greeters = import ./gtk.nix {inherit pkgs;};
     };
     desktopManager = {
       xterm.enable = false;
@@ -112,7 +110,7 @@ in
   };
 
   # for Zsh completions of system packages
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = ["/share/zsh"];
 
   # List services that you want to enable:
 

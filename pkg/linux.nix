@@ -3,11 +3,9 @@
   flakePath,
   userConfig,
   ...
-}:
-let
+}: let
   nixConfigDir = userConfig.nixos;
-in
-{
+in {
   home = {
     packages = with pkgs; [
       nerd-fonts.caskaydia-cove

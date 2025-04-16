@@ -1,4 +1,7 @@
-{ pkgs, inputs, ... }:
 {
-  _module.args.cypkgs = import inputs.cypkgs { inherit pkgs; };
+  pkgs,
+  inputs,
+  ...
+}: {
+  _module.args.cypkgs = import inputs.cypkgs {inherit pkgs;};
 }

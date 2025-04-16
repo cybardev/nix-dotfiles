@@ -3,8 +3,7 @@
   inputs,
   extraArgs,
   ...
-}:
-let
+}: let
   system = pkgs.system;
   extensions = inputs.nix-vscode-extensions.extensions.${system};
   openvsxExt = with extensions.open-vsx; [
@@ -30,8 +29,7 @@ let
     # add Open VSX Registry extensions (release)
     eamodio.gitlens
   ];
-in
-{
+in {
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;

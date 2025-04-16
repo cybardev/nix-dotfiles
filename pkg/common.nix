@@ -3,8 +3,7 @@
   cypkgs,
   flakePath,
   ...
-}:
-{
+}: {
   xdg.configFile = {
     # Custom Kitty Icon
     # License: MIT Copyright: 2024, Andrew Haust <https://github.com/sodapopcan/kitty-icon>

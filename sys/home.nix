@@ -5,11 +5,9 @@
   userConfig,
   extraArgs,
   ...
-}:
-let
+}: let
   userName = userConfig.username;
-in
-{
+in {
   nix = {
     package = pkgs.nixVersions.stable;
     gc = {
@@ -18,7 +16,7 @@ in
       options = "--delete-older-than 30d";
     };
     settings = {
-      trusted-users = [ userName ];
+      trusted-users = [userName];
       auto-optimise-store = true;
       experimental-features = [
         "nix-command"

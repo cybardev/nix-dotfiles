@@ -3,11 +3,9 @@
   flakePath,
   userConfig,
   ...
-}:
-let
+}: let
   nixConfigDir = userConfig.nixos;
-in
-{
+in {
   # zshrc
   programs.zsh = {
     dotDir = ".config/zsh";

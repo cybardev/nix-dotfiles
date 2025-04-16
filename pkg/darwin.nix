@@ -2,11 +2,9 @@
   flakePath,
   userConfig,
   ...
-}:
-let
+}: let
   nixConfigDir = userConfig.nixos;
-in
-{
+in {
   home.file.".config/karabiner".source = ../cfg/karabiner;
 
   programs = {

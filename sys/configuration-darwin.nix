@@ -6,12 +6,10 @@
   userConfig,
   extraArgs,
   ...
-}:
-let
+}: let
   userName = userConfig.username;
   nixConfigDir = userConfig.nixos;
-in
-{
+in {
   nixpkgs.hostPlatform = {
     system = extraArgs.system;
   };
