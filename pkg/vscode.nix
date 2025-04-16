@@ -19,6 +19,7 @@
     charliermarsh.ruff
     ms-vscode.live-server
     myriad-dreamin.tinymist
+    njpwerner.autodocstring
     echoapi.echoapi-for-vscode
     espressif.esp-idf-extension
     ms-azuretools.vscode-docker
