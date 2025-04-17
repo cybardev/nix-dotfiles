@@ -1,11 +1,4 @@
-{
-  pkgs,
-  flakePath,
-  userConfig,
-  ...
-}: let
-  nixConfigDir = userConfig.nixos;
-in {
+{pkgs, ...}: {
   # zshrc
   programs.zsh = {
     dotDir = ".config/zsh";
@@ -47,36 +40,7 @@ in {
       }
     '';
     shellAliases = {
-      # shell conveniences
-      x = "exit";
-      clr = "clear";
-      cls = "clear";
-      cat = "bat -pp";
-      icat = "kitten icat";
-      ls = "eza -1 --icons=never";
-      ll = "eza -1l";
-      tree = "eza --tree";
-      py = "ptpython";
-      yt = "ytgo -i -m -p";
-      cf = "cutefetch";
-      bf = "cutefetch -m bunny";
-      tf = "cutefetch -m text";
-      cd-os = "cd ${nixConfigDir}";
-
-      # editing related
-      edit = "nvim";
-      edit-vim = "(cd ${nixConfigDir}/cfg/nvim && nvim)";
-      edit-os = "nvim ${nixConfigDir}";
-
-      # reloading configs
       zrc = ". $ZDOTDIR/.zshrc";
-      re-hm = "nh home switch";
-
-      # package management
-      yin = "nix-shell -p";
-      yang = "nh search";
-      wuji = "nix-collect-garbage -d && sudo -H nix-collect-garbage -d";
-      yup = "nix flake update --flake ${flakePath} && re-nix";
     };
   };
 }

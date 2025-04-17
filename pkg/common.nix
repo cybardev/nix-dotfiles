@@ -1,8 +1,12 @@
 {
   pkgs,
+  config,
   flakePath,
+  userConfig,
   ...
-}: {
+}: let
+  nixConfigDir = userConfig.nixos;
+in {
   xdg.configFile = {
     # Custom Kitty Icon
     # License: MIT Copyright: 2024, Andrew Haust <https://github.com/sodapopcan/kitty-icon>
@@ -24,12 +28,48 @@
       PTPYTHON_CONFIG_HOME = "$HOME/.config/ptpython/";
     };
 
+    shellAliases = {
+      # shell conveniences
+      x = "exit";
+      clr = "clear";
+      cls = "clear";
+      cat = "bat -pp";
+      icat = "kitten icat";
+      ls = "eza -1 --icons=never";
+      ll = "eza -1l";
+      tree = "eza --tree";
+      py = "ptpython";
+      yt = "ytgo -i -m -p";
+      cf = "cutefetch";
+      bf = "cutefetch -m bunny";
+      tf = "cutefetch -m text";
+      cd-os = "cd ${nixConfigDir}";
+
+      # editing related
+      edit = "nvim";
+      edit-vim = "(cd ${nixConfigDir}/cfg/nvim && nvim)";
+      edit-os = "nvim ${nixConfigDir}";
+
+      # reloading configs
+      re-hm = "nh home switch";
+
+      # package management
+      yin = "nix-shell -p";
+      yang = "nh search";
+      wuji = "nix-collect-garbage -d && sudo -H nix-collect-garbage -d";
+      yup = "nix flake update --flake ${flakePath} && re-nix";
+
+      # misc
+      # civ = "mkdir -p ${config.xdg.configHome}/Unciv && unciv --data-dir=${config.xdg.configHome}/Unciv &";
+    };
+
     packages =
       (with pkgs.cy; [
         cutefetch
         jitterbugpair
         freej2me
         logseq
+        unciv
         ytgo
       ])
       ++ (with pkgs; [
