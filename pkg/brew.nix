@@ -14,9 +14,9 @@
       "Wavebar" = 6450398808;
       # "Xcode" = 497799835;
     };
-    # brews = [
-    #   "weasyprint"
-    # ];
+    brews = [
+      "handbrake"
+    ];
     casks = [
       "altserver"
       # "background-music"
@@ -35,6 +35,7 @@
       "obs"
       "prusaslicer"
       "raycast"
+      "shotcut"
       "sonic-pi"
       "steam"
       "whisky"
