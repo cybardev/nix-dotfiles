@@ -1,10 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  flakePath,
+  ...
+}: {
   # zshrc
   programs.zsh = {
     dotDir = ".config/zsh";
     enable = true;
     autocd = true;
     enableCompletion = true;
+    completionInit = "autoload -U compinit && compinit -u";
     defaultKeymap = "viins";
     autosuggestion.enable = true;
     autosuggestion.strategy = [
@@ -41,6 +46,11 @@
     '';
     shellAliases = {
       zrc = ". $ZDOTDIR/.zshrc";
+    };
+    dirHashes = {
+      nixos = flakePath;
+      gitd = "$HOME/Documents/Git";
+      testd = "$HOME/test";
     };
   };
 }
