@@ -35,14 +35,6 @@
       autoload -Uz promptinit
       promptinit
       prompt zen
-
-      function etch() {
-        sudo dd bs=4M if=$2 of=/dev/$1 status=progress oflag=sync
-      }
-
-      function unly() {
-        curl -Is "$1" | grep ^location | cut -d ' ' -f 2
-      }
     '';
     shellAliases = {
       zrc = ". $ZDOTDIR/.zshrc";

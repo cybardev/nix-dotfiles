@@ -28,7 +28,9 @@ in {
       PTPYTHON_CONFIG_HOME = "$HOME/.config/ptpython/";
     };
 
-    shellAliases = {
+    shellAliases = let
+      uncivDir = "${config.xdg.configHome}/Unciv";
+    in {
       # shell conveniences
       x = "exit";
       clr = "clear";
@@ -60,7 +62,9 @@ in {
       yup = "nix flake update --flake ${flakePath} && re-nix";
 
       # misc
-      civ = "mkdir -p ${config.xdg.configHome}/Unciv && unciv --data-dir=${config.xdg.configHome}/Unciv";
+      unly = "f() { curl -Is '$1' | grep ^location | cut -d ' ' -f 2 }; f";
+      etch = "f() { sudo dd bs=4M if=$2 of=/dev/$1 status=progress oflag=sync }; f";
+      civ = "mkdir -p ${uncivDir} && unciv --data-dir=${uncivDir}";
     };
 
     packages =
@@ -92,10 +96,12 @@ in {
         imagemagick
         syncthing
         alejandra
+        coreutils
         nix-init
         visidata
         poppler
         cmatrix
+        gnugrep
         openssl
         luajit
         ccache
@@ -104,6 +110,7 @@ in {
         ninja
         nixd
         nurl
+        curl
         wget
         unar
         go
