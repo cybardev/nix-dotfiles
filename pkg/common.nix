@@ -60,7 +60,7 @@ in {
       yup = "nix flake update --flake ${flakePath} && re-nix";
 
       # misc
-      # civ = "mkdir -p ${config.xdg.configHome}/Unciv && unciv --data-dir=${config.xdg.configHome}/Unciv &";
+      civ = "mkdir -p ${config.xdg.configHome}/Unciv && unciv --data-dir=${config.xdg.configHome}/Unciv";
     };
 
     packages =
