@@ -54,6 +54,7 @@ in {
 
       # reloading configs
       re-hm = "nh home switch";
+      re-hm-fast = "home-manager switch --flake ${nixConfigDir}";
 
       # package management
       yin = "nix-shell -p";
