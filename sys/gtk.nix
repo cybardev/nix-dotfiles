@@ -8,7 +8,7 @@
     cursorTheme = {
       name = "Bibata-Modern-Ice";
       package = pkgs.bibata-cursors;
-      size = 64;
+      size = 36;
     };
     iconTheme = {
       name = "WhiteSur-dark";
