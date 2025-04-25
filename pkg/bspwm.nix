@@ -7,10 +7,10 @@
   dconf.settings = {
     "org/gnome/desktop/wm/preferences".theme = "Qogir-dark";
     "org/gnome/desktop/interface" = {
-      gtk-theme = "Qogir-dark";
+      gtk-theme = "Qogir-Dark";
       icon-theme = "WhiteSur-dark";
-      cursor-theme = "Qogir-dark";
-      cursor-size = 64;
+      cursor-theme = "Bibata-Modern-Ice";
+      cursor-size = 36;
     };
   };
 
