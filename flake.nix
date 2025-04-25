@@ -115,6 +115,7 @@
 
     nixosConfigurations.${userConfig.linuxHost} = nixpkgs.lib.nixosSystem {
       modules = [
+        ./sys/unfree.nix
         ./sys/nixcommand.nix
         ./sys/configuration.nix
         ./sys/hardware-configuration.nix
