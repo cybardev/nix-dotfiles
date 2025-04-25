@@ -27,7 +27,7 @@
       ignoreAllDups = true;
       path = "$ZDOTDIR/history";
     };
-    initExtra = ''
+    initContent = ''
       path+=( "$(go env GOPATH)/bin" "$HOME/.local/bin" )
       cutefetch -m text
 
