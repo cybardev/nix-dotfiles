@@ -14,6 +14,7 @@
   userNickname = userConfig.nickname;
   userLocale = userConfig.locale;
   userTZ = userConfig.timezone;
+  sshKeyFile = "id_ed25519";
 in {
   system.autoUpgrade = {
     enable = true;
@@ -36,6 +37,7 @@ in {
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${userName} = {
+    uid = 1000;
     shell = pkgs.zsh;
     isNormalUser = true;
     description = userNickname;
@@ -44,6 +46,23 @@ in {
       "wheel"
       "uinput"
     ];
+  };
+
+  # needed for gitui: https://github.com/gitui-org/gitui/issues/495#issuecomment-2771242566
+  programs.ssh.startAgent = true;
+  # add ssh key on login
+  systemd.user.services.ssh-add-key = {
+    wantedBy = ["default.target"];
+    after = ["ssh-agent.service"];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStartPre = "${pkgs.coreutils-full}/bin/sleep 1";
+      ExecStart = [
+        "${pkgs.openssh}/bin/ssh-add ${config.users.users.${userName}.home}/.ssh/${sshKeyFile}"
+      ];
+      Restart = "on-failure";
+      RestartSec = 1;
+    };
   };
 
   # Set your time zone.
@@ -101,12 +120,17 @@ in {
     dpi = 96;
     upscaleDefaultCursor = true;
   };
-  environment.variables = {
-    # GDK_SCALE = "2.2";
-    # GDK_DPI_SCALE = "0.4";
-    # _JAVA_OPTIONS = "-sun.java2d.uiScale=2.2";
-    # QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    # XCURSOR_SIZE = 64;
+  environment = {
+    variables = {
+      # GDK_SCALE = "2.2";
+      # GDK_DPI_SCALE = "0.4";
+      # _JAVA_OPTIONS = "-sun.java2d.uiScale=2.2";
+      # QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      # XCURSOR_SIZE = 64;
+    };
+    sessionVariables = {
+      SSH_AUTH_SOCK = "/run/user/${builtins.toString userName}/ssh-agent";
+    };
   };
 
   # for Zsh completions of system packages
@@ -187,7 +211,7 @@ in {
   programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    enableSSHSupport = true;
+    # enableSSHSupport = true;
   };
 
   # This value determines the NixOS release from which the default
