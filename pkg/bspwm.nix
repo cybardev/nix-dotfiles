@@ -17,12 +17,15 @@
   xsession.windowManager.bspwm = {
     enable = true;
     monitors = {
-      eDP-1 = [
+      HDMI-1 = [
         "m"
         "e"
         "n"
         "u"
       ];
+      # eDP-1 = [
+      #   "s"
+      # ];
     };
     startupPrograms = [
       "xfce4-power-manager --daemon"
