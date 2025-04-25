@@ -6,8 +6,8 @@
 }: let
   system = pkgs.system;
   extensions = inputs.nix-vscode-extensions.extensions.${system};
-  openvsxExt = with extensions.open-vsx; [
-    # add Open VSX Registry extensions (pre-release)
+  ext = with extensions.vscode-marketplace; [
+    # add extensions (pre-release)
     zhuangtongfa.material-theme
     mkhl.direnv
     vscodevim.vim
@@ -26,16 +26,16 @@
     github.vscode-github-actions
     github.vscode-pull-request-github
   ];
-  openvsxReleaseExt = with extensions.open-vsx-release; [
-    # add Open VSX Registry extensions (release)
+  relExt = with extensions.vscode-marketplace-release; [
+    # add extensions (release)
     eamodio.gitlens
   ];
 in {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    # package = pkgs.vscodium;
     profiles.default = {
-      extensions = openvsxReleaseExt ++ openvsxExt;
+      extensions = relExt ++ ext;
       userSettings = {
         "editor.fontFamily" = "'CaskaydiaCove Nerd Font', Menlo, Monaco, 'Courier New', monospace";
         "editor.formatOnSave" = true;
