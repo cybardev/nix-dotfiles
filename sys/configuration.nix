@@ -98,7 +98,7 @@ in {
 
   # HiDPI display config
   services.xserver = {
-    dpi = 148;
+    dpi = 96;
     upscaleDefaultCursor = true;
   };
   environment.variables = {
@@ -106,7 +106,7 @@ in {
     # GDK_DPI_SCALE = "0.4";
     # _JAVA_OPTIONS = "-sun.java2d.uiScale=2.2";
     # QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    XCURSOR_SIZE = 64;
+    # XCURSOR_SIZE = 64;
   };
 
   # for Zsh completions of system packages
