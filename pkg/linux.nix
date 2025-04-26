@@ -13,6 +13,7 @@ in {
       nerd-fonts.fira-code
       xorg.xdpyinfo
       docker
+      xclip
       unzip
       rustc
       fondo

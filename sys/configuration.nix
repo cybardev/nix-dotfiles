@@ -88,6 +88,7 @@ in {
     xfce.xfce4-systemload-plugin
     xfce.xfce4-whiskermenu-plugin
     xfce.xfce4-weather-plugin
+    xfce.xfce4-clipman-plugin
   ];
 
   services.xserver = {
