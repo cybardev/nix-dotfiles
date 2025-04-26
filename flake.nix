@@ -99,6 +99,7 @@
           ./sys/gtk.nix
           ./pkg/linux.nix
           ./pkg/bspwm.nix
+          ./pkg/picom.nix
         ];
         args = linuxArgs;
       };

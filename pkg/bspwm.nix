@@ -18,14 +18,17 @@
     enable = true;
     monitors = {
       HDMI-1 = [
-        "m"
-        "e"
-        "n"
-        "u"
+        "m1"
+        "m2"
+        "m3"
+        "m4"
       ];
-      # eDP-1 = [
-      #   "s"
-      # ];
+      eDP-1 = [
+        "s1"
+        # "s2"
+        # "s3"
+        # "s4"
+      ];
     };
     startupPrograms = [
       "xfce4-power-manager --daemon"
@@ -49,21 +52,6 @@
         layer = "above";
       };
     };
-  };
-
-  services.picom = {
-    enable = true;
-    backend = "glx";
-    fade = true;
-    fadeDelta = 4;
-    activeOpacity = 0.86;
-    inactiveOpacity = 0.76;
-    menuOpacity = 1.0;
-    settings = {
-      blur.method = "dual_kawase";
-    };
-    shadow = true;
-    # vSync = true;
   };
 
   services.sxhkd = {
