@@ -14,7 +14,8 @@
   userNickname = userConfig.nickname;
   userLocale = userConfig.locale;
   userTZ = userConfig.timezone;
-  sshKeyFile = "id_ed25519";
+  userId = 1000;
+  # sshKeyFile = "id_ed25519";
 in {
   system.autoUpgrade = {
     enable = true;
@@ -37,7 +38,7 @@ in {
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${userName} = {
-    uid = 1000;
+    uid = userId;
     shell = pkgs.zsh;
     isNormalUser = true;
     description = userNickname;
@@ -48,22 +49,22 @@ in {
     ];
   };
 
-  # needed for gitui: https://github.com/gitui-org/gitui/issues/495#issuecomment-2771242566
-  programs.ssh.startAgent = true;
-  # add ssh key on login
-  systemd.user.services.ssh-add-key = {
-    wantedBy = ["default.target"];
-    after = ["ssh-agent.service"];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStartPre = "${pkgs.coreutils-full}/bin/sleep 1";
-      ExecStart = [
-        "${pkgs.openssh}/bin/ssh-add ${config.users.users.${userName}.home}/.ssh/${sshKeyFile}"
-      ];
-      Restart = "on-failure";
-      RestartSec = 1;
-    };
-  };
+  # # needed for gitui: https://github.com/gitui-org/gitui/issues/495#issuecomment-2771242566
+  # programs.ssh.startAgent = true;
+  # # add ssh key on login
+  # systemd.user.services.ssh-add-key = {
+  #   wantedBy = ["default.target"];
+  #   after = ["ssh-agent.service"];
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     ExecStartPre = "${pkgs.coreutils-full}/bin/sleep 1";
+  #     ExecStart = [
+  #       "${pkgs.openssh}/bin/ssh-add ${config.users.users.${userName}.home}/.ssh/${sshKeyFile}"
+  #     ];
+  #     Restart = "on-failure";
+  #     RestartSec = 1;
+  #   };
+  # };
 
   # Set your time zone.
   time.timeZone = userTZ;
@@ -129,7 +130,7 @@ in {
       # XCURSOR_SIZE = 64;
     };
     sessionVariables = {
-      SSH_AUTH_SOCK = "/run/user/${builtins.toString userName}/ssh-agent";
+      SSH_AUTH_SOCK = "/run/user/${builtins.toString userId}/ssh-agent";
     };
   };
 

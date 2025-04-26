@@ -255,5 +255,10 @@ in {
       enable = true;
       theme = ../cfg/gitui-catppuccin.ron;
     };
+
+    ssh = {
+      enable = true;
+      addKeysToAgent = "yes";
+    };
   };
 }
