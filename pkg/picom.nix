@@ -14,6 +14,7 @@
     vSync = true;
 
     opacityRules = [
+      "96:class_g = 'Wrapper-2.0'"
       "100:class_g = 'Brave-browser' && !_NET_WM_STATE@:32a"
       "100:class_g = 'mpv' && !_NET_WM_STATE@:32a"
       "0:_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"

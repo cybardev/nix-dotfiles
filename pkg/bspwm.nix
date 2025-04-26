@@ -35,6 +35,8 @@
       "xfce4-session"
     ];
     settings = {
+      focus_follows_pointer = true;
+      pointer_follows_focus = true;
       border_width = 2;
       window_gap = 12;
       split_ratio = 0.52;
@@ -46,8 +48,19 @@
       presel_feedback_color = "#6273a4";
     };
     rules = {
-      "xfce4-appfinder".state = "floating";
-      "xfce4-panel" = {
+      "Xfce4-appfinder" = {
+        state = "floating";
+        border = false;
+        focus = true;
+        layer = "above";
+      };
+      "Wrapper-2.0" = {
+        state = "floating";
+        border = false;
+        focus = true;
+        layer = "above";
+      };
+      "Xfce4-panel" = {
         state = "floating";
         layer = "above";
       };
