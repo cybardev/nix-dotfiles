@@ -12,6 +12,7 @@ in {
     # License: MIT Copyright: 2024, Andrew Haust <https://github.com/sodapopcan/kitty-icon>
     "kitty/kitty.app.png".source = ../cfg/kitty.app.png;
     "ptpython/config.py".source = ../cfg/ptpython.py;
+    "mpv/mpv.conf".source = ../cfg/mpv.conf;
     "nvim" = {
       source = ../cfg/nvim;
       recursive = true;
