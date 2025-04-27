@@ -4,7 +4,7 @@
     backend = "glx";
     fade = true;
     fadeDelta = 4;
-    activeOpacity = 0.86;
+    activeOpacity = 0.96;
     inactiveOpacity = 0.76;
     menuOpacity = 1.0;
     settings = {

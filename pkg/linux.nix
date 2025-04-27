@@ -51,4 +51,13 @@ in {
     };
     gnome-keyring.enable = true;
   };
+
+  # manage X session in home-manager
+  xsession.enable = true;
+  # config $XDG_CONFIG_HOME and such
+  xdg.userDirs.enable = true;
+
+  dconf.settings = {
+    "org/gnome/desktop/wm/preferences".theme = "Qogir-dark";
+  };
 }
