@@ -84,6 +84,7 @@ in {
         lazydocker
         babashka
         inkscape
+        audacity
         dfu-util
         zoom-us
         thonny
