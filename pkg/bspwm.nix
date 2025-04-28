@@ -61,6 +61,8 @@
       "super + space" = "xfce4-appfinder";
       # logoff dialogue
       "super + Escape" = "xfce4-session-logout";
+      # screeenshot (menu | region to clipboard)
+      "alt + {1,2}" = "xfce4-screenshooter -{-,r -c}";
       # restart hotkey daemon
       "super + alt + Escape" = "pkill -USR1 -x sxhkd";
       # quit/restart bspwm
