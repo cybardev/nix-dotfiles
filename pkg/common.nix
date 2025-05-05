@@ -185,6 +185,11 @@ in {
       ];
     };
 
+    fd = {
+      enable = true;
+      ignores = [ ".git/" "*.bak" ];
+    };
+
     # lf = {
     #   enable = true;
     #   settings = {
