@@ -18,7 +18,11 @@
       "match_prev_cmd"
     ];
     syntaxHighlighting.enable = true;
-    historySubstringSearch.enable = true;
+    historySubstringSearch = {
+      enable = true;
+      searchUpKey = ["^[OA"];
+      searchDownKey = ["^[OB"];
+    };
     history = {
       save = 1024;
       size = 2048;
