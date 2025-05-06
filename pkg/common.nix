@@ -40,6 +40,7 @@ in {
       icat = "kitten icat";
       ls = "eza -1 --icons=never";
       ll = "eza -1l";
+      lessr = "less -R";
       tree = "eza --tree";
       py = "ptpython";
       yt = "ytgo -i -m -p";
@@ -187,7 +188,8 @@ in {
 
     fd = {
       enable = true;
-      ignores = [ ".git/" "*.bak" ];
+      ignores = [".git/" "*.bak"];
+      extraOptions = ["--color=always"];
     };
 
     # lf = {
