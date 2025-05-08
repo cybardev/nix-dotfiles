@@ -1,13 +1,9 @@
 {
   pkgs,
-  inputs,
   extraArgs,
   ...
 }: let
-  system = pkgs.system;
-  extensions = inputs.nix-vscode-extensions.extensions.${system};
-  ext = with extensions.vscode-marketplace; [
-    # add extensions (pre-release)
+  ext = with pkgs.vscode-marketplace; [
     zhuangtongfa.material-theme
     mkhl.direnv
     vscodevim.vim
@@ -27,8 +23,7 @@
     github.vscode-pull-request-github
     ms-vscode-remote.remote-containers
   ];
-  relExt = with extensions.vscode-marketplace-release; [
-    # add extensions (release)
+  relExt = with pkgs.vscode-marketplace-release; [
     eamodio.gitlens
   ];
 in {
@@ -36,7 +31,7 @@ in {
     enable = true;
     # package = pkgs.vscodium;
     profiles.default = {
-      extensions = relExt ++ ext;
+      extensions = ext ++ relExt;
       userSettings = {
         "editor.fontFamily" = "'CaskaydiaCove Nerd Font', Menlo, Monaco, 'Courier New', monospace";
         "editor.formatOnSave" = true;
