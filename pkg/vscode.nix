@@ -25,6 +25,7 @@
     ms-azuretools.vscode-docker
     github.vscode-github-actions
     github.vscode-pull-request-github
+    ms-vscode-remote.remote-containers
   ];
   relExt = with extensions.vscode-marketplace-release; [
     # add extensions (release)
