@@ -87,7 +87,6 @@ in {
         inkscape
         audacity
         dfu-util
-        zoom-us
         thonny
         bruno
         gimp

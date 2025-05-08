@@ -19,6 +19,7 @@ in {
       fondo
       feh
       brave
+      zoom-us
       aseprite
       lunar-client
       altserver-linux

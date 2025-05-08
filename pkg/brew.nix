@@ -39,6 +39,7 @@
       "sonic-pi"
       "steam"
       "whisky"
+      "zoom"
     ];
   };
 }
