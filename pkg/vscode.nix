@@ -59,6 +59,7 @@ in {
         "vim.smartRelativeLine" = true;
         "update.showReleaseNotes" = false;
         "workbench.colorTheme" = "One Dark Pro Night Flat";
+        "workbench.startupEditor" = "none";
       };
     };
   };
