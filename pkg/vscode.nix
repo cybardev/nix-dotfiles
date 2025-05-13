@@ -33,6 +33,7 @@ in {
     profiles.default = {
       extensions = ext ++ relExt;
       userSettings = {
+        "editor.cursorBlinking" = "phase";
         "editor.fontFamily" = "'CaskaydiaCove Nerd Font', Menlo, Monaco, 'Courier New', monospace";
         "editor.formatOnSave" = true;
         "explorer.sortOrder" = "type";
