@@ -81,6 +81,7 @@
             ./pkg/zsh.nix
             ./pkg/yazi.nix
             ./pkg/vscode.nix
+            ./pkg/zed.nix
           ]
           ++ configs;
         extraSpecialArgs = args;
