@@ -52,7 +52,7 @@ in {
       # editing related
       edit = "nvim";
       edit-vim = "(cd ${nixConfigDir}/cfg/nvim && nvim)";
-      edit-os = "nvim ${nixConfigDir}";
+      edit-os = "nvim ${nixConfigDir}/flake.nix";
 
       # reloading configs
       re-hm = "nh home switch";
