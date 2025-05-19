@@ -16,6 +16,8 @@ in {
   networking.computerName = hostName;
   networking.hostName = hostName;
 
+  system.primaryUser = userName;
+
   users.users.${userName} = {
     name = userName;
     home = /. + extraArgs.home;
