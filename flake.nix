@@ -2,15 +2,15 @@
   description = "cybardev/nix-dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-25.05";
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin?ref=master";
+      url = "github:nix-darwin/nix-darwin?ref=nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager?ref=master";
+      url = "github:nix-community/home-manager?ref=release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
