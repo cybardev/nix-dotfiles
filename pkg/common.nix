@@ -80,7 +80,6 @@ in {
         ytgo
       ])
       ++ (with pkgs; [
-        signal-desktop-bin
         gnome-mahjongg
         lazydocker
         babashka
@@ -92,7 +91,6 @@ in {
         gimp
         hugo
         ncdu
-        # love
 
         # >---< DO NOT REMOVE >---< #
         nixfmt-rfc-style

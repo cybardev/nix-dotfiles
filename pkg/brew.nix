@@ -37,6 +37,7 @@
       "prusaslicer"
       "raycast"
       "shotcut"
+      "signal"
       "sonic-pi"
       "steam"
       "whisky"

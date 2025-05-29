@@ -22,6 +22,7 @@ in {
       aseprite
       lunar-client
       altserver-linux
+      signal-desktop-bin
     ];
   };
 
