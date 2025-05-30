@@ -76,7 +76,6 @@ in {
         jitterbugpair
         freej2me
         logseq
-        unciv
         ytgo
       ])
       ++ (with pkgs; [
@@ -91,6 +90,7 @@ in {
         gimp
         hugo
         ncdu
+        unciv
 
         # >---< DO NOT REMOVE >---< #
         nixfmt-rfc-style
