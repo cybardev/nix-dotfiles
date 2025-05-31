@@ -61,7 +61,7 @@ in {
       # package management
       yin = "nix-shell -p";
       yang = "nh search";
-      wuji = "nix-collect-garbage -d && sudo -H nix-collect-garbage -d";
+      wuji = "sudo -H nix-collect-garbage -d && nix-collect-garbage -d";
       yup = "nix flake update --flake ${flakePath} && re-nix";
 
       # misc
