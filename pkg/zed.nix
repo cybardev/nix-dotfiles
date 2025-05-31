@@ -6,6 +6,7 @@ in {
     extensions = [
       "nix"
       "pylsp"
+      # "pyrefly"
       "warp-one-dark"
     ];
     extraPackages = with pkgs; [
@@ -42,6 +43,13 @@ in {
             "!nil"
           ];
         };
+        # Python = {
+        #   language_servers = [
+        #     "pyrefly"
+        #     "!pyright"
+        #     "!pylsp"
+        #   ];
+        # };
       };
 
       lsp = {
