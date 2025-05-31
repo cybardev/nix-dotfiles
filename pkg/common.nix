@@ -75,6 +75,7 @@ in {
         cutefetch
         jitterbugpair
         freej2me
+        pyrefly
         logseq
         ytgo
       ])

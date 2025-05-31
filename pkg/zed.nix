@@ -5,14 +5,13 @@ in {
     enable = true;
     extensions = [
       "nix"
-      "pylsp"
-      # "pyrefly"
+      "pyrefly"
       "warp-one-dark"
     ];
     extraPackages = with pkgs; [
       nixd
       alejandra
-      python3Packages.python-lsp-server
+      # cy.pyrefly # FIXME: https://github.com/zed-extensions/pyrefly/issues/1
     ];
     userSettings = {
       features = {
@@ -43,13 +42,13 @@ in {
             "!nil"
           ];
         };
-        # Python = {
-        #   language_servers = [
-        #     "pyrefly"
-        #     "!pyright"
-        #     "!pylsp"
-        #   ];
-        # };
+        Python = {
+          language_servers = [
+            "pyrefly"
+            "!pyright"
+            "!pylsp"
+          ];
+        };
       };
 
       lsp = {
