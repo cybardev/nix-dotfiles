@@ -4,9 +4,11 @@
   flakePath,
   userConfig,
   ...
-}: let
+}:
+let
   nixConfigDir = userConfig.nixos;
-in {
+in
+{
   xdg.configFile = {
     # Custom Kitty Icon
     # License: MIT Copyright: 2024, Andrew Haust <https://github.com/sodapopcan/kitty-icon>
@@ -29,46 +31,48 @@ in {
       PTPYTHON_CONFIG_HOME = "$HOME/.config/ptpython/";
     };
 
-    shellAliases = let
-      uncivDir = "${config.xdg.configHome}/Unciv";
-    in {
-      # shell conveniences
-      x = "exit";
-      clr = "clear";
-      cls = "clear";
-      cat = "bat -pp";
-      icat = "kitten icat";
-      ls = "eza -1 --icons=never";
-      ll = "eza -1l";
-      lessr = "less -R";
-      tree = "eza --tree";
-      py = "ptpython";
-      yt = "ytgo -i -m -p";
-      cf = "cutefetch";
-      bf = "cutefetch -m bunny";
-      tf = "cutefetch -m text";
-      cd-os = "cd ${nixConfigDir}";
+    shellAliases =
+      let
+        uncivDir = "${config.xdg.configHome}/Unciv";
+      in
+      {
+        # shell conveniences
+        x = "exit";
+        clr = "clear";
+        cls = "clear";
+        cat = "bat -pp";
+        icat = "kitten icat";
+        ls = "eza -1 --icons=never";
+        ll = "eza -1l";
+        lessr = "less -R";
+        tree = "eza --tree";
+        py = "ptpython";
+        yt = "ytgo -i -m -p";
+        cf = "cutefetch";
+        bf = "cutefetch -m bunny";
+        tf = "cutefetch -m text";
+        cd-os = "cd ${nixConfigDir}";
 
-      # editing related
-      edit = "nvim";
-      edit-vim = "(cd ${nixConfigDir}/cfg/nvim && nvim)";
-      edit-os = "nvim ${nixConfigDir}/flake.nix";
+        # editing related
+        edit = "nvim";
+        edit-vim = "(cd ${nixConfigDir}/cfg/nvim && nvim)";
+        edit-os = "nvim ${nixConfigDir}/flake.nix";
 
-      # reloading configs
-      re-hm = "nh home switch";
-      re-hm-fast = "home-manager switch --flake ${nixConfigDir}";
+        # reloading configs
+        re-hm = "nh home switch";
+        re-hm-fast = "home-manager switch --flake ${nixConfigDir}";
 
-      # package management
-      yin = "nix-shell -p";
-      yang = "nh search";
-      wuji = "sudo -H nix-collect-garbage -d && nix-collect-garbage -d";
-      yup = "nix flake update --flake ${flakePath} && re-nix";
+        # package management
+        yin = "nix-shell -p";
+        yang = "nh search";
+        wuji = "sudo -H nix-collect-garbage -d && nix-collect-garbage -d";
+        yup = "nix flake update --flake ${flakePath} && re-nix";
 
-      # misc
-      unly = "f() { curl -Is '$1' | grep ^location | cut -d ' ' -f 2 }; f";
-      etch = "f() { sudo dd bs=4M if=$2 of=/dev/$1 status=progress oflag=sync }; f";
-      civ = "mkdir -p ${uncivDir} && unciv --data-dir=${uncivDir}";
-    };
+        # misc
+        unly = "f() { curl -Is '$1' | grep ^location | cut -d ' ' -f 2 }; f";
+        etch = "f() { sudo dd bs=4M if=$2 of=/dev/$1 status=progress oflag=sync }; f";
+        civ = "mkdir -p ${uncivDir} && unciv --data-dir=${uncivDir}";
+      };
 
     packages =
       (with pkgs.cy; [
@@ -95,9 +99,9 @@ in {
 
         # >---< DO NOT REMOVE >---< #
         nixfmt-rfc-style
+        nixfmt-tree
         imagemagick
         syncthing
-        alejandra
         coreutils
         nix-init
         visidata
@@ -186,8 +190,11 @@ in {
 
     fd = {
       enable = true;
-      ignores = [".git/" "*.bak"];
-      extraOptions = ["--color=always"];
+      ignores = [
+        ".git/"
+        "*.bak"
+      ];
+      extraOptions = [ "--color=always" ];
     };
 
     # lf = {

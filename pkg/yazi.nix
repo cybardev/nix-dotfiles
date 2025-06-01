@@ -1,10 +1,16 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
     shellWrapperName = "fm";
     plugins = with pkgs.yaziPlugins; {
-      inherit relative-motions full-border yatline git;
+      inherit
+        relative-motions
+        full-border
+        yatline
+        git
+        ;
     };
     settings = {
       manager = {
@@ -48,39 +54,39 @@
       manager.prepend_keymap = [
         {
           run = "plugin relative-motions 1";
-          on = ["1"];
+          on = [ "1" ];
         }
         {
           run = "plugin relative-motions 2";
-          on = ["2"];
+          on = [ "2" ];
         }
         {
           run = "plugin relative-motions 3";
-          on = ["3"];
+          on = [ "3" ];
         }
         {
           run = "plugin relative-motions 4";
-          on = ["4"];
+          on = [ "4" ];
         }
         {
           run = "plugin relative-motions 5";
-          on = ["5"];
+          on = [ "5" ];
         }
         {
           run = "plugin relative-motions 6";
-          on = ["6"];
+          on = [ "6" ];
         }
         {
           run = "plugin relative-motions 7";
-          on = ["7"];
+          on = [ "7" ];
         }
         {
           run = "plugin relative-motions 8";
-          on = ["8"];
+          on = [ "8" ];
         }
         {
           run = "plugin relative-motions 9";
-          on = ["9"];
+          on = [ "9" ];
         }
       ];
     };

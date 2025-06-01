@@ -8,12 +8,12 @@
       # You can use it to add commands that run after login to macOS user session.
       # "start-at-login" needs to be "true" for "after-login-command" to work
       # Available commands: https://nikitabobko.github.io/AeroSpace/commands
-      after-login-command = [];
+      after-login-command = [ ];
 
       # You can use it to add commands that run after AeroSpace startup.
       # "after-startup-command" is run after "after-login-command"
       # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-      after-startup-command = [];
+      after-startup-command = [ ];
 
       # Start AeroSpace at login
       start-at-login = true;
@@ -40,7 +40,7 @@
       # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
       # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
       # Fallback value (if you omit the key): on-focused-monitor-changed = []
-      on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
+      on-focused-monitor-changed = [ "move-mouse monitor-lazy-center" ];
 
       # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
       # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key

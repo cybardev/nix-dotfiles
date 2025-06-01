@@ -1,6 +1,8 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   OLLAMA_MODEL = "qwen2.5-coder:1.5b";
-in {
+in
+{
   programs.zed-editor = {
     enable = true;
     extensions = [
@@ -10,7 +12,7 @@ in {
     ];
     extraPackages = with pkgs; [
       nixd
-      alejandra
+      nixfmt-rfc-style
       # cy.pyrefly # FIXME: https://github.com/zed-extensions/pyrefly/issues/1
     ];
     userSettings = {
@@ -55,10 +57,10 @@ in {
         nixd = {
           settings = {
             formatting = {
-              command = ["alejandra"];
+              command = [ "nixfmt" ];
             };
             diagnostics = {
-              ignored = ["sema-extra-with"];
+              ignored = [ "sema-extra-with" ];
             };
           };
         };

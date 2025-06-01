@@ -2,9 +2,11 @@
   flakePath,
   userConfig,
   ...
-}: let
+}:
+let
   nixConfigDir = userConfig.nixos;
-in {
+in
+{
   home.file.".config/karabiner".source = ../cfg/karabiner;
 
   programs = {
@@ -13,6 +15,9 @@ in {
         lsblk = "diskutil list";
         edit-wm = "nvim ${nixConfigDir}/packages/config/aerospace.nix";
         re-nix = "sudo darwin-rebuild switch --flake ${flakePath}";
+
+        flux = "/Applications/Pokemon\\ Flux/Flux.app/Contents/MacOS/Z-universal";
+        flux-up = "/Applications/Pokemon\\ Flux/Flux\\ Patcher.app/Contents/MacOS/Flux\\ Patcher";
       };
       profileExtra = ''
         eval "$(/opt/homebrew/bin/brew shellenv)"

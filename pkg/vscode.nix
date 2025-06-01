@@ -2,7 +2,8 @@
   pkgs,
   extraArgs,
   ...
-}: let
+}:
+let
   ext = with pkgs.vscode-marketplace; [
     zhuangtongfa.material-theme
     mkhl.direnv
@@ -26,7 +27,8 @@
   relExt = with pkgs.vscode-marketplace-release; [
     eamodio.gitlens
   ];
-in {
+in
+{
   programs.vscode = {
     enable = true;
     # package = pkgs.vscodium;
@@ -52,7 +54,7 @@ in {
         "nix.serverSettings" = {
           nixd = {
             formatting = {
-              command = ["alejandra"];
+              command = [ "alejandra" ];
             };
           };
         };

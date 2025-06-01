@@ -2,7 +2,8 @@
   pkgs,
   flakePath,
   ...
-}: {
+}:
+{
   # zshrc
   programs.zsh = {
     dotDir = ".config/zsh";
@@ -20,8 +21,8 @@
     syntaxHighlighting.enable = true;
     historySubstringSearch = {
       enable = true;
-      searchUpKey = ["^[OA"];
-      searchDownKey = ["^[OB"];
+      searchUpKey = [ "^[OA" ];
+      searchDownKey = [ "^[OB" ];
     };
     history = {
       save = 1024;

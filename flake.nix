@@ -30,55 +30,59 @@
     };
   };
 
-  outputs = {
-    nixpkgs,
-    nix-darwin,
-    home-manager,
-    ...
-  } @ inputs: let
-    userConfig = {
-      nickname = "Sheikh";
-      username = "sage";
-      darwinHost = "blade";
-      linuxHost = "forest";
-      darwinSystem = "aarch64-darwin";
-      linuxSystem = "x86_64-linux";
-      locale = "en_CA.UTF-8";
-      timezone = "America/Halifax";
-      nixos = "~/.config/nixos";
-    };
-    genArgs = {
-      home,
-      host,
-      system,
-    }: {
-      inherit inputs;
-      inherit userConfig;
-      hostName = host;
-      flakePath = "${home}${builtins.substring 1 (-1) userConfig.nixos}";
-      extraArgs = {
-        inherit home;
-        inherit system;
+  outputs =
+    {
+      nixpkgs,
+      nix-darwin,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      userConfig = {
+        nickname = "Sheikh";
+        username = "sage";
+        darwinHost = "blade";
+        linuxHost = "forest";
+        darwinSystem = "aarch64-darwin";
+        linuxSystem = "x86_64-linux";
+        locale = "en_CA.UTF-8";
+        timezone = "America/Halifax";
+        nixos = "~/.config/nixos";
       };
-    };
-    darwinArgs = genArgs {
-      host = userConfig.darwinHost;
-      home = "/Users/${userConfig.username}";
-      system = userConfig.darwinSystem;
-    };
-    linuxArgs = genArgs {
-      host = userConfig.linuxHost;
-      home = "/home/${userConfig.username}";
-      system = userConfig.linuxSystem;
-    };
-    hmConfig = {
-      configs,
-      args,
-    }:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${args.extraArgs.system};
-        modules =
-          [
+      genArgs =
+        {
+          home,
+          host,
+          system,
+        }:
+        {
+          inherit inputs;
+          inherit userConfig;
+          hostName = host;
+          flakePath = "${home}${builtins.substring 1 (-1) userConfig.nixos}";
+          extraArgs = {
+            inherit home;
+            inherit system;
+          };
+        };
+      darwinArgs = genArgs {
+        host = userConfig.darwinHost;
+        home = "/Users/${userConfig.username}";
+        system = userConfig.darwinSystem;
+      };
+      linuxArgs = genArgs {
+        host = userConfig.linuxHost;
+        home = "/home/${userConfig.username}";
+        system = userConfig.linuxSystem;
+      };
+      hmConfig =
+        {
+          configs,
+          args,
+        }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${args.extraArgs.system};
+          modules = [
             ./sys/overlays.nix
             ./sys/home.nix
             ./sys/unfree.nix
@@ -87,47 +91,47 @@
             ./pkg/yazi.nix
             ./pkg/vscode.nix
             ./pkg/zed.nix
-          ]
-          ++ configs;
-        extraSpecialArgs = args;
+          ] ++ configs;
+          extraSpecialArgs = args;
+        };
+    in
+    {
+      homeConfigurations = {
+        "${userConfig.username}@${userConfig.darwinHost}" = hmConfig {
+          configs = [
+            ./pkg/darwin.nix
+            ./pkg/aerospace.nix
+          ];
+          args = darwinArgs;
+        };
+        "${userConfig.username}@${userConfig.linuxHost}" = hmConfig {
+          configs = [
+            ./sys/gtk.nix
+            ./pkg/linux.nix
+            ./pkg/bspwm.nix
+            ./pkg/picom.nix
+          ];
+          args = linuxArgs;
+        };
       };
-  in {
-    homeConfigurations = {
-      "${userConfig.username}@${userConfig.darwinHost}" = hmConfig {
-        configs = [
-          ./pkg/darwin.nix
-          ./pkg/aerospace.nix
-        ];
-        args = darwinArgs;
-      };
-      "${userConfig.username}@${userConfig.linuxHost}" = hmConfig {
-        configs = [
-          ./sys/gtk.nix
-          ./pkg/linux.nix
-          ./pkg/bspwm.nix
-          ./pkg/picom.nix
-        ];
-        args = linuxArgs;
-      };
-    };
 
-    darwinConfigurations.${userConfig.darwinHost} = nix-darwin.lib.darwinSystem {
-      modules = [
-        ./sys/nixcommand.nix
-        ./sys/configuration-darwin.nix
-        ./pkg/brew.nix
-      ];
-      specialArgs = darwinArgs;
-    };
+      darwinConfigurations.${userConfig.darwinHost} = nix-darwin.lib.darwinSystem {
+        modules = [
+          ./sys/nixcommand.nix
+          ./sys/configuration-darwin.nix
+          ./pkg/brew.nix
+        ];
+        specialArgs = darwinArgs;
+      };
 
-    nixosConfigurations.${userConfig.linuxHost} = nixpkgs.lib.nixosSystem {
-      modules = [
-        ./sys/unfree.nix
-        ./sys/nixcommand.nix
-        ./sys/configuration.nix
-        ./sys/hardware-configuration.nix
-      ];
-      specialArgs = linuxArgs;
+      nixosConfigurations.${userConfig.linuxHost} = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./sys/unfree.nix
+          ./sys/nixcommand.nix
+          ./sys/configuration.nix
+          ./sys/hardware-configuration.nix
+        ];
+        specialArgs = linuxArgs;
+      };
     };
-  };
 }
