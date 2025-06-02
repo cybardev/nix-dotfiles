@@ -40,6 +40,8 @@
       autoload -Uz promptinit
       promptinit
       prompt zen
+
+      ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
     '';
     shellAliases = {
       zrc = ". $ZDOTDIR/.zshrc";
@@ -49,5 +51,25 @@
       gitd = "$HOME/Documents/Git";
       testd = "$HOME/test";
     };
+    zsh-abbr = {
+      enable = true;
+      abbreviations = {
+        ga = "git add";
+        gc = "git commit";
+        gaa = "git add --all";
+        gca = "git commit --amend";
+        gcf = "git commit --fixup";
+        gcm = "git commit --message";
+        grb = "git rebase --interactive";
+        gcam = "git commit --amend --message";
+        grbs = "git rebase --interactive --autosquash";
+      };
+    };
+    plugins = [
+      {
+        name = pkgs.zsh-autosuggestions-abbreviations-strategy.name;
+        src = pkgs.zsh-autosuggestions-abbreviations-strategy;
+      }
+    ];
   };
 }

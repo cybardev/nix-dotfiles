@@ -8,6 +8,7 @@
       "lunarclient"
       "freej2me"
       "aseprite"
+      "zsh-abbr"
       "raycast"
       "vscode"
       "zoom"
