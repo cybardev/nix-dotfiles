@@ -3,6 +3,14 @@
   flakePath,
   ...
 }:
+let
+  zshPlugin = plugin: {
+    name = plugin;
+    src = pkgs.${plugin};
+    file = "share/zsh/site-functions/${plugin}.plugin.zsh";
+  };
+  zshPlugins = plugins: map zshPlugin plugins;
+in
 {
   # zshrc
   programs.zsh = {
@@ -65,11 +73,8 @@
         grbs = "git rebase --interactive --autosquash";
       };
     };
-    plugins = [
-      {
-        name = pkgs.zsh-autosuggestions-abbreviations-strategy.name;
-        src = pkgs.zsh-autosuggestions-abbreviations-strategy;
-      }
+    plugins = zshPlugins [
+      "zsh-autosuggestions-abbreviations-strategy"
     ];
   };
 }
