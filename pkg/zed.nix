@@ -36,6 +36,9 @@ in
       vim = {
         toggle_relative_line_numbers = true;
       };
+      terminal = {
+        dock = "right";
+      };
 
       languages = {
         Nix = {
