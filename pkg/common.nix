@@ -153,17 +153,6 @@ in
       };
     };
 
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      withNodeJs = true;
-      extraPackages = with pkgs; [
-        gcc
-        gnumake
-        ripgrep
-      ];
-    };
-
     zoxide = {
       enable = true;
       options = [

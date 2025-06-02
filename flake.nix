@@ -89,6 +89,7 @@
             ./pkg/common.nix
             ./pkg/zsh.nix
             ./pkg/yazi.nix
+            ./pkg/neovim.nix
             ./pkg/vscode.nix
             ./pkg/zed.nix
           ] ++ configs;
