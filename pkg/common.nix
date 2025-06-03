@@ -193,8 +193,8 @@ in
         sortby = "ext";
       };
       keybindings = {
-        x = "cut";
         D = "delete";
+        x = "cut";
       };
     };
 
