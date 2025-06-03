@@ -53,9 +53,9 @@
           rev = "668d71d967857392012684c7dd111605cfa36d1a";
           hash = "sha256-tfkzVa+UdUVKF2DS1awEusfoJEjJh40Bx1cREPtewR0=";
         };
-        dracula = yazi_flavors + /dracula.yazi/.;
-        catpuccin-mocha = yazi_flavors + /catppuccin-mocha.yazi/.;
         catpuccin-frappe = yazi_flavors + /catppuccin-frappe.yazi/.;
+        catpuccin-mocha = yazi_flavors + /catppuccin-mocha.yazi/.;
+        dracula = yazi_flavors + /dracula.yazi/.;
         nord = pkgs.yaziPlugins.nord;
       };
     theme = {
