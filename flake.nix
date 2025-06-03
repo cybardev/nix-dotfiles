@@ -19,8 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -83,6 +83,7 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${args.extraArgs.system};
           modules = [
+            inputs.nixvim.homeModules.nixvim
             ./sys/overlays.nix
             ./sys/home.nix
             ./sys/unfree.nix

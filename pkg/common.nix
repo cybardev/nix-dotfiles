@@ -15,10 +15,6 @@ in
     "kitty/kitty.app.png".source = ../cfg/kitty.app.png;
     "ptpython/config.py".source = ../cfg/ptpython.py;
     "mpv/mpv.conf".source = ../cfg/mpv.conf;
-    "nvim" = {
-      source = ../cfg/nvim;
-      recursive = true;
-    };
     # "lf" = {
     #   source = ../cfg/lf;
     #   recursive = true;
