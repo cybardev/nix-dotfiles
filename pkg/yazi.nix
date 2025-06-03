@@ -13,7 +13,7 @@
         ;
     };
     settings = {
-      manager = {
+      mgr = {
         sort_by = "extension";
         sort_dir_first = true;
       };
@@ -44,14 +44,23 @@
         rev = "668d71d967857392012684c7dd111605cfa36d1a";
         hash = "sha256-tfkzVa+UdUVKF2DS1awEusfoJEjJh40Bx1cREPtewR0=";
       };
+      catpuccin-mocha = pkgs.fetchFromGitHub {
+        owner = "yazi-rs";
+        repo = "flavors";
+        rev = "d04a298a8d4ada755816cb1a8cfb74dd46ef7124";
+        hash = "sha256-8jMu8Kx88gw74f9e5h0Nk3g5mquZwS9Nt0Ff+5ERLHM=";
+        sparseCheckout = [
+          "catppuccin-mocha.yazi"
+        ];
+      };
     };
     theme = {
-      flavor.dark = "onedark";
-      manager.border_style.fg = "#ABB2BF";
+      flavor.dark = "catpuccin-mocha";
+      mgr.border_style.fg = "#ABB2BF";
     };
     initLua = ../cfg/yazi.lua;
     keymap = {
-      manager.prepend_keymap = [
+      mgr.prepend_keymap = [
         {
           run = "plugin relative-motions 1";
           on = [ "1" ];
