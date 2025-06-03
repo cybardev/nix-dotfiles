@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   config,
   flakePath,
@@ -15,10 +16,10 @@ in
     "kitty/kitty.app.png".source = ../cfg/kitty.app.png;
     "ptpython/config.py".source = ../cfg/ptpython.py;
     "mpv/mpv.conf".source = ../cfg/mpv.conf;
-    # "lf" = {
-    #   source = ../cfg/lf;
-    #   recursive = true;
-    # };
+    "lf" = {
+      source = ../cfg/lf;
+      recursive = true;
+    };
   };
 
   home = {
@@ -38,6 +39,7 @@ in
         cls = "clear";
         cat = "bat -pp";
         icat = "kitten icat";
+        lf = "f() { cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$@\")\" }; f";
         ls = "eza -1 --icons=never";
         ll = "eza -1l";
         lessr = "less -R";
@@ -182,15 +184,19 @@ in
       extraOptions = [ "--color=always" ];
     };
 
-    # lf = {
-    #   enable = true;
-    #   settings = {
-    #     number = true;
-    #     relativenumber = true;
-    #     icons = true;
-    #     sortby = "ext";
-    #   };
-    # };
+    lf = {
+      enable = true;
+      settings = {
+        number = true;
+        relativenumber = true;
+        icons = true;
+        sortby = "ext";
+      };
+      keybindings = {
+        x = "cut";
+        D = "delete";
+      };
+    };
 
     bottom = {
       enable = true;
