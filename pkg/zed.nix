@@ -6,6 +6,7 @@ in
   programs.zed-editor = {
     enable = true;
     extensions = [
+      "lua"
       "nix"
       "pyrefly"
       "warp-one-dark"
