@@ -37,23 +37,27 @@
         }
       ];
     };
-    flavors = {
-      onedark = pkgs.fetchFromGitHub {
-        owner = "BennyOe";
-        repo = "onedark.yazi";
-        rev = "668d71d967857392012684c7dd111605cfa36d1a";
-        hash = "sha256-tfkzVa+UdUVKF2DS1awEusfoJEjJh40Bx1cREPtewR0=";
+    flavors =
+      let
+        yazi_flavors = pkgs.fetchFromGitHub {
+          owner = "yazi-rs";
+          repo = "flavors";
+          rev = "d04a298a8d4ada755816cb1a8cfb74dd46ef7124";
+          hash = "sha256-m3yk6OcJ9vbCwtxkMRVUDhMMTOwaBFlqWDxGqX2Kyvc=";
+        };
+      in
+      {
+        onedark = pkgs.fetchFromGitHub {
+          owner = "BennyOe";
+          repo = "onedark.yazi";
+          rev = "668d71d967857392012684c7dd111605cfa36d1a";
+          hash = "sha256-tfkzVa+UdUVKF2DS1awEusfoJEjJh40Bx1cREPtewR0=";
+        };
+        dracula = yazi_flavors + /dracula.yazi/.;
+        catpuccin-mocha = yazi_flavors + /catppuccin-mocha.yazi/.;
+        catpuccin-frappe = yazi_flavors + /catppuccin-frappe.yazi/.;
+        nord = pkgs.yaziPlugins.nord;
       };
-      catpuccin-mocha = pkgs.fetchFromGitHub {
-        owner = "yazi-rs";
-        repo = "flavors";
-        rev = "d04a298a8d4ada755816cb1a8cfb74dd46ef7124";
-        hash = "sha256-8jMu8Kx88gw74f9e5h0Nk3g5mquZwS9Nt0Ff+5ERLHM=";
-        sparseCheckout = [
-          "catppuccin-mocha.yazi"
-        ];
-      };
-    };
     theme = {
       flavor.dark = "catpuccin-mocha";
       mgr.border_style.fg = "#ABB2BF";
