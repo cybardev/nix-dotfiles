@@ -3,7 +3,6 @@
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
-    shellWrapperName = "fm";
     plugins = with pkgs.yaziPlugins; {
       inherit
         relative-motions

@@ -39,7 +39,7 @@ in
         cls = "clear";
         cat = "bat -pp";
         icat = "kitten icat";
-        lf = "f() { cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$@\")\" }; f";
+        fm = "f() { cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$@\")\" }; f";
         ls = "eza -1 --icons=never";
         ll = "eza -1l";
         lessr = "less -R";
