@@ -19,11 +19,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     cypkgs = {
       url = "github:cybardev/nix-channel?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -83,14 +78,13 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${args.extraArgs.system};
           modules = [
-            inputs.nixvim.homeModules.nixvim
             ./sys/overlays.nix
             ./sys/home.nix
             ./sys/unfree.nix
             ./pkg/common.nix
             ./pkg/zsh.nix
             ./pkg/yazi.nix
-            ./pkg/neovim.nix
+            ./pkg/helix.nix
             ./pkg/vscode.nix
             ./pkg/zed.nix
           ] ++ configs;

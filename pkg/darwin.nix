@@ -13,7 +13,7 @@ in
     zsh = {
       shellAliases = {
         lsblk = "diskutil list";
-        edit-wm = "nvim ${nixConfigDir}/packages/config/aerospace.nix";
+        edit-wm = "edit ${nixConfigDir}/packages/config/aerospace.nix";
         re-nix = "sudo darwin-rebuild switch --flake ${flakePath}";
 
         flux = "/Applications/Pokemon\\ Flux/Flux.app/Contents/MacOS/Z-universal";

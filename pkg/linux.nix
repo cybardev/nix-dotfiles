@@ -31,7 +31,7 @@ in
   programs = {
     zsh.shellAliases = {
       fondo = "com.github.calo001.fondo";
-      edit-wm = "nvim ${nixConfigDir}/packages/config/bspwm.nix";
+      edit-wm = "edit ${nixConfigDir}/packages/config/bspwm.nix";
       re-nix = "nixos-rebuild switch --use-remote-sudo --flake ${flakePath}";
     };
 

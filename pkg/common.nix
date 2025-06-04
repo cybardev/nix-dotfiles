@@ -52,9 +52,8 @@ in
         cd-os = "cd ${nixConfigDir}";
 
         # editing related
-        edit = "nvim";
-        edit-vim = "(cd ${nixConfigDir}/cfg/nvim && nvim)";
-        edit-os = "nvim ${nixConfigDir}/flake.nix";
+        edit = "hx";
+        edit-os = "edit ${nixConfigDir}/flake.nix";
 
         # reloading configs
         re-hm = "nh home switch";
@@ -128,6 +127,8 @@ in
   };
 
   programs = {
+    neovim.enable = true;
+
     nh = {
       enable = true;
       flake = flakePath;
