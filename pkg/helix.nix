@@ -10,6 +10,10 @@
         line-number = "relative";
         lsp.display-messages = true;
       };
+      keys.normal = {
+        ":" = "collapse_selection";
+        ";" = "command_mode";
+      };
     };
     languages = {
       language-server = {
