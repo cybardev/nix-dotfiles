@@ -33,11 +33,11 @@
           bg2 = "#2b353a";
           bg3 = "#323e44";
           bg4 = "#3a474b";
-          bg5 = "#435150";
-          bg_visual = "#3f2935";
-          bg_red = "#3d2d32";
-          bg_green = "#2f3c33";
-          bg_blue = "#293e4b";
+          # bg5 = "#435150";
+          # bg_visual = "#3f2935";
+          # bg_red = "#3d2d32";
+          # bg_green = "#2f3c33";
+          # bg_blue = "#293e4b";
           bg_yellow = "#39382f";
 
           fg = "#dbcdac";
