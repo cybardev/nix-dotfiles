@@ -66,8 +66,8 @@ in
         yup = "nix flake update --flake ${flakePath} && re-nix";
 
         # misc
-        fan = "f() { du -hd1 '$1' | sort -hr }; f";
-        unly = "f() { curl -Is '$1' | grep ^location | cut -d ' ' -f 2 }; f";
+        fan = "f() { du -hd1 \"$1\" | sort -hr }; f";
+        unly = "f() { curl -Is \"$1\" | grep ^location | cut -d \" \" -f 2 }; f";
         etch = "f() { sudo dd bs=4M if=$2 of=/dev/$1 status=progress oflag=sync }; f";
         civ = "mkdir -p ${uncivDir} && unciv --data-dir=${uncivDir}";
       };
