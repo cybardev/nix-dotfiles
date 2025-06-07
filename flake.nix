@@ -106,6 +106,7 @@
             ./pkg/linux.nix
             ./pkg/bspwm.nix
             ./pkg/picom.nix
+            ./pkg/browser.nix
           ];
           args = linuxArgs;
         };

@@ -34,22 +34,6 @@ in
       edit-wm = "edit ${nixConfigDir}/packages/config/bspwm.nix";
       re-nix = "nixos-rebuild switch --use-remote-sudo --flake ${flakePath}";
     };
-
-    chromium = {
-      enable = true;
-      package = pkgs.brave;
-      dictionaries = with pkgs.hunspellDictsChromium; [
-        en_US
-        en_GB
-      ];
-      extensions = [
-        "dmghijelimhndkbmpgbldicpogfkceaj" # dark mode
-        "pejdijmoenmkgeppbflobdenhhabjlaj" # iCloud passwords
-        "ponfpcnoihfmfllpaingbgckeeldkhle" # enhancer for youtube
-        "gebbhagfogifgggkldgodflihgfeippi" # return youtube dislike
-        "mnjggcdmjocbbbhaepdhchncahnbgone" # sponsorblock for youtube
-      ];
-    };
   };
 
   services = {
