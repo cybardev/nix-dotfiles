@@ -52,7 +52,7 @@ in
       ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
     '';
     shellAliases = {
-      zrc = ". $ZDOTDIR/.zshrc";
+      zrc = "exec zsh";
     };
     dirHashes = {
       nixos = flakePath;
