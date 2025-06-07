@@ -9,11 +9,10 @@
       ];
       extensions = [
         "dmghijelimhndkbmpgbldicpogfkceaj" # dark mode
-        "pejdijmoenmkgeppbflobdenhhabjlaj" # iCloud passwords
+        "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock origin lite
         "ponfpcnoihfmfllpaingbgckeeldkhle" # enhancer for youtube
         "gebbhagfogifgggkldgodflihgfeippi" # return youtube dislike
         "mnjggcdmjocbbbhaepdhchncahnbgone" # sponsorblock for youtube
-        "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock origin lite
       ];
       commandLineArgs = [
         # chromium
