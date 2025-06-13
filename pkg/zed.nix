@@ -6,6 +6,11 @@ in
   programs.zed-editor = {
     enable = true;
     extensions = [
+      "clojure"
+      "csharp"
+      "dart"
+      "flutter-snippets"
+      "git-firefly"
       "lua"
       "nix"
       "pyrefly"
