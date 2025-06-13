@@ -49,6 +49,14 @@ in
       promptinit
       prompt zen
 
+      mkdev() {
+        [[ -f .gitignore ]] && echo "\n" >> .gitignore
+        cat ${../cfg/devshell/gitignore} >> .gitignore
+        cat ${../cfg/devshell/shell.nix} >   shell.nix
+        echo "use nix"                   >> .envrc
+        direnv allow
+      }
+
       ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
     '';
     shellAliases = {
