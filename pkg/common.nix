@@ -83,6 +83,7 @@ in
       ])
       ++ (with pkgs; [
         gnome-mahjongg
+        dotnet-sdk_9
         lazydocker
         babashka
         inkscape
