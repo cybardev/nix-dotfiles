@@ -15,6 +15,7 @@
       "Xcode" = 497799835;
     };
     brews = [
+      "cocoapods"
       "handbrake"
     ];
     casks = [
@@ -22,6 +23,7 @@
       # "background-music"
       "brave-browser"
       "docker"
+      "flutter"
       "font-caskaydia-cove-nerd-font"
       "font-fira-code-nerd-font"
       "font-jetbrains-mono-nerd-font"
