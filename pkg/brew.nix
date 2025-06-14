@@ -29,7 +29,7 @@
     casks = [
       "altserver"
       # "background-music"
-      "brave-browser"
+      # "brave-browser"
       "docker"
       "flutter"
       "font-caskaydia-cove-nerd-font"
@@ -51,6 +51,7 @@
       "sonic-pi"
       "steam"
       "whisky"
+      "zen"
       "zoom"
     ];
   };
