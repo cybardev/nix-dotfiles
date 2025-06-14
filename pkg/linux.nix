@@ -8,6 +8,14 @@ let
   nixConfigDir = userConfig.nixos;
 in
 {
+  imports = [
+    ../sys/gtk.nix
+    ./common.nix
+    ./bspwm.nix
+    ./picom.nix
+    ./browser.nix
+  ];
+
   home = {
     packages = with pkgs; [
       nerd-fonts.caskaydia-cove

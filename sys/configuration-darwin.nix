@@ -1,7 +1,6 @@
 {
-  config,
-  lib,
   pkgs,
+  inputs,
   hostName,
   userConfig,
   extraArgs,
@@ -12,6 +11,12 @@ let
   nixConfigDir = userConfig.nixos;
 in
 {
+  imports = [
+    inputs.nix-homebrew.darwinModules.nix-homebrew
+    ../pkg/brew.nix
+    ./nixcommand.nix
+  ];
+
   nixpkgs.hostPlatform = {
     system = extraArgs.system;
   };

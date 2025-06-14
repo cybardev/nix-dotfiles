@@ -10,6 +10,17 @@ let
   nixConfigDir = userConfig.nixos;
 in
 {
+  imports = [
+    ../sys/overlays.nix
+    ../sys/unfree.nix
+    ../sys/home.nix
+    ./zsh.nix
+    ./yazi.nix
+    ./helix.nix
+    ./vscode.nix
+    ./zed.nix
+  ];
+
   xdg.configFile = {
     # Custom Kitty Icon
     # License: MIT Copyright: 2024, Andrew Haust <https://github.com/sodapopcan/kitty-icon>

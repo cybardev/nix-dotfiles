@@ -7,6 +7,11 @@ let
   nixConfigDir = userConfig.nixos;
 in
 {
+  imports = [
+    ./common.nix
+    ./aerospace.nix
+  ];
+
   home.file.".config/karabiner".source = ../cfg/karabiner;
 
   programs = {

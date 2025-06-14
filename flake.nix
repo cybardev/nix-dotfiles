@@ -14,6 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew?ref=main";
+
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions?ref=master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -70,64 +72,28 @@
         home = "/home/${userConfig.username}";
         system = userConfig.linuxSystem;
       };
-      hmConfig =
-        {
-          configs,
-          args,
-        }:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${args.extraArgs.system};
-          modules = [
-            ./sys/overlays.nix
-            ./sys/home.nix
-            ./sys/unfree.nix
-            ./pkg/common.nix
-            ./pkg/zsh.nix
-            ./pkg/yazi.nix
-            ./pkg/helix.nix
-            ./pkg/vscode.nix
-            ./pkg/zed.nix
-          ] ++ configs;
-          extraSpecialArgs = args;
-        };
     in
     {
       homeConfigurations = {
-        "${userConfig.username}@${userConfig.darwinHost}" = hmConfig {
-          configs = [
-            ./pkg/darwin.nix
-            ./pkg/aerospace.nix
-          ];
-          args = darwinArgs;
+        "${userConfig.username}@${userConfig.darwinHost}" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${darwinArgs.extraArgs.system};
+          modules = [ ./pkg/darwin.nix ];
+          extraSpecialArgs = darwinArgs;
         };
-        "${userConfig.username}@${userConfig.linuxHost}" = hmConfig {
-          configs = [
-            ./sys/gtk.nix
-            ./pkg/linux.nix
-            ./pkg/bspwm.nix
-            ./pkg/picom.nix
-            ./pkg/browser.nix
-          ];
-          args = linuxArgs;
+        "${userConfig.username}@${userConfig.linuxHost}" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${linuxArgs.extraArgs.system};
+          modules = [ ./pkg/linux.nix ];
+          extraSpecialArgs = linuxArgs;
         };
       };
 
       darwinConfigurations.${userConfig.darwinHost} = nix-darwin.lib.darwinSystem {
-        modules = [
-          ./sys/nixcommand.nix
-          ./sys/configuration-darwin.nix
-          ./pkg/brew.nix
-        ];
+        modules = [ ./sys/configuration-darwin.nix ];
         specialArgs = darwinArgs;
       };
 
       nixosConfigurations.${userConfig.linuxHost} = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./sys/unfree.nix
-          ./sys/nixcommand.nix
-          ./sys/configuration.nix
-          ./sys/hardware-configuration.nix
-        ];
+        modules = [ ./sys/configuration.nix ];
         specialArgs = linuxArgs;
       };
     };
