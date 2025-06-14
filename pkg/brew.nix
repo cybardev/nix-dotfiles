@@ -1,10 +1,10 @@
-{ userConfig, ... }:
+{ config, ... }:
 {
   nix-homebrew = {
     enable = true;
     autoMigrate = true;
     enableRosetta = true;
-    user = userConfig.username;
+    user = config.userConfig.username;
   };
 
   homebrew = {

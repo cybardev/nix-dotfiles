@@ -1,24 +1,26 @@
 {
+  config,
   pkgs,
   inputs,
-  hostName,
-  userConfig,
-  extraArgs,
   ...
 }:
 let
-  userName = userConfig.username;
-  nixConfigDir = userConfig.nixos;
+  hostName = config.userConfig.hostname;
+  userName = config.userConfig.username;
+  nixConfigDir = config.userConfig.configDir;
 in
 {
   imports = [
     inputs.nix-homebrew.darwinModules.nix-homebrew
     ../pkg/brew.nix
     ./nixcommand.nix
+    ../mod/userconfig.nix
   ];
 
+  userConfig.isDarwin = true;
+
   nixpkgs.hostPlatform = {
-    system = extraArgs.system;
+    system = config.userConfig.system;
   };
   networking.computerName = hostName;
   networking.hostName = hostName;
@@ -27,7 +29,7 @@ in
 
   users.users.${userName} = {
     name = userName;
-    home = /. + extraArgs.home;
+    home = /. + config.userConfig.homeDir;
     shell = pkgs.zsh;
   };
 
@@ -51,8 +53,8 @@ in
 
     # List packages installed in system profile. To search by name, run:
     # $ nix-env -qaP | grep wget
-    systemPackages = with pkgs; [
-      # vim
+    systemPackages = [
+      # pkgs.vim
     ];
 
     # Use custom location for configuration.nix.

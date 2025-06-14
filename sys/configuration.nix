@@ -2,17 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
+  config,
   pkgs,
-  hostName,
-  userConfig,
-  flakePath,
   ...
 }:
 let
-  userName = userConfig.username;
-  userNickname = userConfig.nickname;
-  userLocale = userConfig.locale;
-  userTZ = userConfig.timezone;
+  inherit (config.userConfig) flakePath;
+  hostName = config.userConfig.hostname;
+  userName = config.userConfig.username;
+  userNickname = config.userConfig.nickname;
+  userLocale = config.userConfig.locale;
+  userTZ = config.userConfig.timezone;
   userId = 1000;
   # sshKeyFile = "id_ed25519";
 in
@@ -21,6 +21,7 @@ in
     ./hardware-configuration.nix
     ./nixcommand.nix
     ./unfree.nix
+    ../mod/userconfig.nix
   ];
 
   system.autoUpgrade = {

@@ -1,13 +1,11 @@
 {
+  config,
   lib,
   pkgs,
-  config,
-  flakePath,
-  userConfig,
   ...
 }:
 let
-  nixConfigDir = userConfig.nixos;
+  inherit (config.userConfig) flakePath;
 in
 {
   imports = [
@@ -60,15 +58,15 @@ in
         cf = "cutefetch";
         bf = "cutefetch -m bunny";
         tf = "cutefetch -m text";
-        cd-os = "cd ${nixConfigDir}";
+        cd-os = "cd ${flakePath}";
 
         # editing related
         edit = "hx";
-        edit-os = "edit ${nixConfigDir}/flake.nix";
+        edit-os = "edit ${flakePath}/flake.nix";
 
         # reloading configs
         re-hm = "nh home switch";
-        re-hm-fast = "home-manager switch --flake ${nixConfigDir}";
+        re-hm-fast = "home-manager switch --flake ${flakePath}";
 
         # package management
         yin = "nix-shell -p";

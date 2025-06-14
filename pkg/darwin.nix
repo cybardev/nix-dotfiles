@@ -1,16 +1,19 @@
 {
-  flakePath,
-  userConfig,
+  config,
   ...
 }:
 let
-  nixConfigDir = userConfig.nixos;
+  inherit (config.userConfig) flakePath;
+  nixConfigDir = config.userConfig.configDir;
 in
 {
   imports = [
     ./common.nix
     ./aerospace.nix
+    ../mod/userconfig.nix
   ];
+
+  userConfig.isDarwin = true;
 
   home.file.".config/karabiner".source = ../cfg/karabiner;
 
