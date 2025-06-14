@@ -38,63 +38,60 @@
       userConfig = {
         nickname = "Sheikh";
         username = "sage";
-        darwinHost = "blade";
-        linuxHost = "forest";
-        darwinSystem = "aarch64-darwin";
-        linuxSystem = "x86_64-linux";
         locale = "en_CA.UTF-8";
         timezone = "America/Halifax";
-        nixos = "~/.config/nixos";
+        configDir = "~/.config/nixos";
+        hostname = "forest";
+        system = "x86_64-linux";
       };
-      genArgs =
-        {
-          home,
-          host,
-          system,
-        }:
-        {
-          inherit inputs;
-          inherit userConfig;
-          hostName = host;
-          flakePath = "${home}${builtins.substring 1 (-1) userConfig.nixos}";
-          extraArgs = {
-            inherit home;
-            inherit system;
-          };
-        };
-      darwinArgs = genArgs {
-        host = userConfig.darwinHost;
-        home = "/Users/${userConfig.username}";
-        system = userConfig.darwinSystem;
-      };
-      linuxArgs = genArgs {
-        host = userConfig.linuxHost;
-        home = "/home/${userConfig.username}";
-        system = userConfig.linuxSystem;
+      userConfigDarwin = userConfig // {
+        isDarwin = true;
+        hostname = "blade";
+        system = "aarch64-darwin";
       };
     in
     {
       homeConfigurations = {
-        "${userConfig.username}@${userConfig.darwinHost}" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${darwinArgs.extraArgs.system};
-          modules = [ ./pkg/darwin.nix ];
-          extraSpecialArgs = darwinArgs;
+        "${userConfig.username}@${userConfigDarwin.hostname}" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${userConfigDarwin.system};
+          modules = [
+            ./pkg/darwin.nix
+            { userConfig = userConfigDarwin; }
+          ];
+          extraSpecialArgs = {
+            inherit inputs;
+          };
         };
-        "${userConfig.username}@${userConfig.linuxHost}" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${linuxArgs.extraArgs.system};
-          modules = [ ./pkg/linux.nix ];
-          extraSpecialArgs = linuxArgs;
+        "${userConfig.username}@${userConfig.hostname}" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${userConfig.system};
+          modules = [
+            ./pkg/linux.nix
+            { inherit userConfig; }
+          ];
+          extraSpecialArgs = {
+            inherit inputs;
+          };
         };
       };
 
-      darwinConfigurations.${userConfig.darwinHost} = nix-darwin.lib.darwinSystem {
-        modules = [ ./sys/configuration-darwin.nix ];
-        specialArgs = darwinArgs;
+      darwinConfigurations.${userConfigDarwin.hostname} = nix-darwin.lib.darwinSystem {
+        modules = [
+          ./sys/configuration-darwin.nix
+          { userConfig = userConfigDarwin; }
+        ];
+        specialArgs = {
+          inherit inputs;
+        };
       };
 
-      nixosConfigurations.${userConfig.linuxHost} = nixpkgs.lib.nixosSystem {
-        modules = [ ./sys/configuration.nix ];
-        specialArgs = linuxArgs;
+      nixosConfigurations.${userConfig.hostname} = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./sys/configuration.nix
+          { inherit userConfig; }
+        ];
+        specialArgs = {
+          inherit inputs;
+        };
       };
     };
 }

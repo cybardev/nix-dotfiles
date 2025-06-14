@@ -1,10 +1,10 @@
 {
+  config,
   pkgs,
-  userConfig,
   ...
 }:
 let
-  userName = userConfig.username;
+  userName = config.userConfig.username;
 in
 {
   nix = {

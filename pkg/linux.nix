@@ -1,11 +1,11 @@
 {
+  config,
   pkgs,
-  flakePath,
-  userConfig,
   ...
 }:
 let
-  nixConfigDir = userConfig.nixos;
+  inherit (config.userConfig) flakePath;
+  nixConfigDir = config.userConfig.configDir;
 in
 {
   imports = [
@@ -14,6 +14,7 @@ in
     ./bspwm.nix
     ./picom.nix
     ./browser.nix
+    ../mod/userconfig.nix
   ];
 
   home = {

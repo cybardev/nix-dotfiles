@@ -1,9 +1,10 @@
 {
+  config,
   pkgs,
-  flakePath,
   ...
 }:
 let
+  inherit (config.userConfig) flakePath;
   zshPlugin = plugin: {
     name = plugin;
     src = pkgs.${plugin};

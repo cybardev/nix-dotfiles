@@ -1,13 +1,12 @@
 {
+  config,
   lib,
   pkgs,
-  config,
-  flakePath,
-  userConfig,
   ...
 }:
 let
-  nixConfigDir = userConfig.nixos;
+  inherit (config.userConfig) flakePath;
+  nixConfigDir = config.userConfig.configDir;
 in
 {
   imports = [

@@ -1,6 +1,6 @@
 {
+  config,
   pkgs,
-  extraArgs,
   ...
 }:
 let
@@ -51,11 +51,11 @@ in
         "git.autofetch" = true;
         "git.confirmSync" = false;
         "git.enableSmartCommit" = true;
-        "idf.espIdfPath" = "${extraArgs.home}/Documents/Git/esp/v5.4/esp-idf";
+        "idf.espIdfPath" = "${config.userConfig.homeDir}/Documents/Git/esp/v5.4/esp-idf";
         "idf.gitPath" = "git";
         "idf.hasWalkthroughBeenShown" = true;
         "idf.pythonInstallPath" = "/usr/bin/python3";
-        "idf.toolsPath" = "${extraArgs.home}/Documents/Git/esp/.espressif";
+        "idf.toolsPath" = "${config.userConfig.homeDir}/Documents/Git/esp/.espressif";
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
         "nix.serverSettings" = {
