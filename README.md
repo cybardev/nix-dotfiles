@@ -27,6 +27,10 @@
 
   _**System configs**_: Configure various system components, like home-manager, unfree software, system-wide packages, etc.
 
+- [`mod/`](./mod/) (directory)
+
+  _**Modules**_: Configuration modules. See [NixOS Manual: Writing NixOS Modules](https://nixos.org/manual/nixos/stable/index.html#sec-writing-modules).
+
 - [`pkg/`](./pkg/) (directory)
 
   _**Package configs**_: Install and configure various software for the user.
