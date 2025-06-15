@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -9,6 +10,8 @@ let
 in
 {
   imports = [
+    inputs.nur.modules.homeManager.default
+    inputs.zen-browser.homeModules.beta
     ../sys/gtk.nix
     ./common.nix
     ./bspwm.nix

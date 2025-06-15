@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin?ref=nix-darwin-25.05";
@@ -19,6 +20,16 @@
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions?ref=master";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     cypkgs = {
