@@ -11,10 +11,12 @@ let
     tomoki1207.pdf
     adpyke.codesnap
     ms-python.python
+    dart-code.flutter
     humao.rest-client
     # ms-toolsai.jupyter
     jnoortheen.nix-ide
     charliermarsh.ruff
+    dart-code.dart-code
     ms-vscode.live-server
     ms-dotnettools.csharp
     ms-dotnettools.csdevkit
