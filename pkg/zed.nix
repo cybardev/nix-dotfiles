@@ -9,16 +9,20 @@ in
       "clojure"
       "csharp"
       "dart"
+      "dockerfile"
       "flutter-snippets"
       "git-firefly"
       "lua"
       "nix"
       "pyrefly"
+      "typst.zed"
       "warp-one-dark"
+      "zed-docker-compose"
     ];
     extraPackages = with pkgs; [
       nixd
       nixfmt-rfc-style
+      tinymist
       # cy.pyrefly # FIXME: https://github.com/zed-extensions/pyrefly/issues/1
     ];
     userSettings = {
