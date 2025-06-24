@@ -57,6 +57,7 @@ in
         "idf.gitPath" = "git";
         "idf.hasWalkthroughBeenShown" = true;
         "idf.pythonInstallPath" = "/usr/bin/python3";
+        "idf.showOnboardingOnInit" = false;
         "idf.toolsPath" = "${config.userConfig.homeDir}/Documents/Git/esp/.espressif";
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
