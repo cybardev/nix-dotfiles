@@ -32,6 +32,10 @@ in
   };
 
   home = {
+    file = {
+      ".continue/config.yaml".source = ../cfg/continue.yaml;
+    };
+
     # environment variables
     sessionVariables = {
       PTPYTHON_CONFIG_HOME = "$HOME/.config/ptpython/";

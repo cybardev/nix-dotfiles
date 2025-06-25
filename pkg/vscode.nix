@@ -12,6 +12,7 @@ let
     adpyke.codesnap
     ms-python.python
     dart-code.flutter
+    continue.continue
     humao.rest-client
     # ms-toolsai.jupyter
     jnoortheen.nix-ide
