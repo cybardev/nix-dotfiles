@@ -1,10 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    inherit (pkgs) system;
+  };
   OLLAMA_MODEL = "qwen2.5-coder:1.5b";
 in
 {
   programs.zed-editor = {
     enable = true;
+    package = pkgs-unstable.zed-editor;
     extensions = [
       "clojure"
       "csharp"
