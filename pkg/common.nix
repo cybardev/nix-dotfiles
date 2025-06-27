@@ -95,8 +95,10 @@ in
         ytgo
       ])
       ++ (with pkgs; [
+        tree-sitter-grammars.tree-sitter-dart
         gnome-mahjongg
         dotnet-sdk_9
+        clojure-lsp
         lazydocker
         babashka
         inkscape
