@@ -46,6 +46,7 @@
       ...
     }@inputs:
     let
+      nixpkgs-unstable = system: inputs.nixpkgs-unstable.legacyPackages.${system};
       linuxConfig = {
         username = "sage";
         hostname = "forest";
@@ -64,7 +65,10 @@
             ./pkg/darwin.nix
             { userConfig = darwinConfig; }
           ];
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = {
+            inherit inputs;
+            pkgs-unstable = nixpkgs-unstable darwinConfig.system;
+          };
         };
         "${linuxConfig.username}@${linuxConfig.hostname}" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${linuxConfig.system};
@@ -72,7 +76,10 @@
             ./pkg/linux.nix
             { userConfig = linuxConfig; }
           ];
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = {
+            inherit inputs;
+            pkgs-unstable = nixpkgs-unstable linuxConfig.system;
+          };
         };
       };
 
@@ -81,7 +88,10 @@
           ./sys/configuration-darwin.nix
           { userConfig = darwinConfig; }
         ];
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = nixpkgs-unstable darwinConfig.system;
+        };
       };
 
       nixosConfigurations.${linuxConfig.hostname} = nixpkgs.lib.nixosSystem {
@@ -89,7 +99,10 @@
           ./sys/configuration.nix
           { userConfig = linuxConfig; }
         ];
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = nixpkgs-unstable linuxConfig.system;
+        };
       };
     };
 }

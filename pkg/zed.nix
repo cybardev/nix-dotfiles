@@ -1,8 +1,5 @@
-{ pkgs, inputs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable {
-    inherit (pkgs) system;
-  };
   OLLAMA_MODEL = "qwen2.5-coder:1.5b";
 in
 {
