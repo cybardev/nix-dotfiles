@@ -43,7 +43,6 @@
       "lulu"
       "lunar-client"
       "obs"
-      "ollama"
       "prusaslicer"
       "raycast"
       "shotcut"

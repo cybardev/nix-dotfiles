@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-unstable,
   ...
 }:
 let
@@ -282,6 +283,14 @@ in
     ssh = {
       enable = true;
       addKeysToAgent = "yes";
+    };
+  };
+
+  services = {
+    ollama = {
+      enable = true;
+      package = pkgs-unstable.ollama;
+      host = "0.0.0.0";
     };
   };
 }
