@@ -14,6 +14,7 @@ in
       "flutter-snippets"
       "git-firefly"
       "lua"
+      "mcp-server-context7"
       "nix"
       "pyrefly"
       "typst.zed"
