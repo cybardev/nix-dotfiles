@@ -94,12 +94,37 @@ in
         };
       };
 
-      assistant = {
+      agent = {
         enabled = true;
         version = "2";
         default_model = {
           provider = "ollama";
           model = OLLAMA_MODEL;
+        };
+        default_profile = "create";
+        profiles = {
+          create = {
+            name = "Create";
+            enable_all_context_servers = true;
+            tools = {
+              copy_path = true;
+              create_directory = true;
+              delete_path = true;
+              diagnostics = true;
+              edit_file = true;
+              fetch = true;
+              list_directory = true;
+              move_path = true;
+              now = true;
+              find_path = true;
+              read_file = true;
+              open = true;
+              grep = true;
+              terminal = true;
+              thinking = true;
+              web_search = true;
+            };
+          };
         };
       };
     };
