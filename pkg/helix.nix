@@ -7,6 +7,7 @@
     settings = {
       theme = "catppuccin_macchiato";
       editor = {
+        auto-format = true;
         line-number = "relative";
         lsp.display-messages = true;
       };
