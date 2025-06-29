@@ -102,6 +102,7 @@ in
         clojure-lsp
         lazydocker
         babashka
+        tinymist
         inkscape
         audacity
         dfu-util
@@ -138,6 +139,9 @@ in
       ])
       ++ (with pkgs.python3Packages; [
         ptpython
+      ])
+      ++ (with pkgs.nodePackages; [
+        prettier
       ])
       ++ (with pkgs.luajitPackages; [
         luarocks
