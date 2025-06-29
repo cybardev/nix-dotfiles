@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs-unstable, ... }:
 let
   OLLAMA_MODEL = "qwen2.5-coder:1.5b";
 in
@@ -20,12 +20,6 @@ in
       "typst.zed"
       "warp-one-dark"
       "zed-docker-compose"
-    ];
-    extraPackages = with pkgs; [
-      nixd
-      nixfmt-rfc-style
-      tinymist
-      # cy.pyrefly # FIXME: https://github.com/zed-extensions/pyrefly/issues/1
     ];
     userSettings = {
       features = {
@@ -51,6 +45,19 @@ in
       terminal = {
         dock = "right";
       };
+      calls = {
+        mute_on_join = true;
+      };
+
+      minimap = {
+        show = "auto";
+        thumb = "hover";
+      };
+
+      prettier = {
+        tabWidth = 2;
+        singleQuote = false;
+      };
 
       languages = {
         Nix = {
@@ -65,6 +72,11 @@ in
             "!pyright"
             "!pylsp"
           ];
+        };
+        JavaScript = {
+          prettier = {
+            tabWidth = 4;
+          };
         };
       };
 
@@ -97,6 +109,7 @@ in
       agent = {
         enabled = true;
         version = "2";
+        enable_feedback = false;
         default_model = {
           provider = "ollama";
           model = OLLAMA_MODEL;
