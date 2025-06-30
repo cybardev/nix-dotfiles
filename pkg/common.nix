@@ -107,6 +107,7 @@ in
         audacity
         dfu-util
         thonny
+        black
         bruno
         gimp
         hugo

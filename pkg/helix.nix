@@ -27,6 +27,10 @@
         {
           name = "python";
           language-servers = [ "pyrefly" ];
+          formatter = {
+            command = "black";
+            args = [ "-" ];
+          };
         }
       ];
     };
