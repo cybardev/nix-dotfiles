@@ -26,7 +26,17 @@
       language = [
         {
           name = "python";
-          language-servers = [ "pyrefly" ];
+          language-servers = [
+            "pyrefly"
+            {
+              name = "jedi";
+              only-features = [
+                "rename-symbol"
+                "goto-definition"
+                "workspace-symbols"
+              ];
+            }
+          ];
           formatter = {
             command = "black";
             args = [ "-" ];

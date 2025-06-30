@@ -139,6 +139,7 @@ in
         go
       ])
       ++ (with pkgs.python3Packages; [
+        jedi-language-server
         ptpython
       ])
       ++ (with pkgs.nodePackages; [
