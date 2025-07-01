@@ -20,6 +20,7 @@ let
     dart-code.dart-code
     ms-vscode.live-server
     ms-dotnettools.csharp
+    esbenp.prettier-vscode
     ms-dotnettools.csdevkit
     myriad-dreamin.tinymist
     njpwerner.autodocstring
@@ -82,6 +83,15 @@ in
         "telemetry.feedback.enabled" = false;
         "rest-client.enableTelemetry" = false;
         "dotnetAcquisitionExtension.enableTelemetry" = false;
+        "[html]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[css]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[javascript]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
       };
     };
   };
