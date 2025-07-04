@@ -17,6 +17,7 @@ in
       "mcp-server-context7"
       "nix"
       "pyrefly"
+      "terraform"
       "typst.zed"
       "warp-one-dark"
       "zed-docker-compose"
