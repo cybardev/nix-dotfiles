@@ -66,7 +66,7 @@ in
         "nix.serverSettings" = {
           nixd = {
             formatting = {
-              command = [ "alejandra" ];
+              command = [ "nixfmt" ];
             };
           };
         };
