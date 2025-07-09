@@ -18,7 +18,7 @@ in
       "nix"
       "pyrefly"
       "terraform"
-      "typst.zed"
+      "typst"
       "warp-one-dark"
       "zed-docker-compose"
     ];
@@ -90,6 +90,12 @@ in
             diagnostics = {
               ignored = [ "sema-extra-with" ];
             };
+          };
+        };
+        tinymist = {
+          settings = {
+            exportPdf = "onSave";
+            outputPath = "$root/$name";
           };
         };
       };
