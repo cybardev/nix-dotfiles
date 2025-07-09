@@ -14,6 +14,7 @@
       keys.normal = {
         ":" = "collapse_selection";
         ";" = "command_mode";
+        "Meta-f" = ":format";
       };
     };
     languages = {
