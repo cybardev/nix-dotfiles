@@ -23,6 +23,13 @@
           command = lib.getExe pkgs.cy.pyrefly;
           args = [ "lsp" ];
         };
+        tinymist = {
+          config = {
+            exportPdf = "onSave";
+            outputPath = "$root/.preview/$name";
+            formatterMode = "typstyle";
+          };
+        };
       };
       language = [
         {
