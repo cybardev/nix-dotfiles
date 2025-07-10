@@ -115,17 +115,19 @@ in
         unciv
 
         # >---< DO NOT REMOVE >---< #
+        ffmpegthumbnailer
         nixfmt-rfc-style
+        poppler-utils
         nixfmt-tree
         imagemagick
         syncthing
         coreutils
         nix-init
         visidata
-        poppler
         cmatrix
         gnugrep
         openssl
+        pistol
         luajit
         ccache
         p7zip
@@ -216,6 +218,8 @@ in
         relativenumber = true;
         icons = true;
         sortby = "ext";
+        cleaner = "~/.config/lf/cleaner";
+        previewer = "~/.config/lf/previewer";
       };
       keybindings = {
         D = "delete";
