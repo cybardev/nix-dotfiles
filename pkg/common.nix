@@ -179,7 +179,7 @@ in
         enable_audio_bell = false;
         background_opacity = 0.96;
         update_check_interval = 0;
-        enabled_layouts = "tall:bias=56;full_size=1";
+        enabled_layouts = "tall:bias=64;full_size=1";
       };
     };
 
