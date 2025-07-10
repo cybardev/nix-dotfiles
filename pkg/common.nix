@@ -117,6 +117,7 @@ in
         ffmpegthumbnailer
         nixfmt-rfc-style
         poppler-utils
+        ripgrep-all
         nixfmt-tree
         imagemagick
         syncthing
@@ -125,6 +126,7 @@ in
         visidata
         cmatrix
         gnugrep
+        ripgrep
         openssl
         pistol
         luajit
@@ -137,6 +139,7 @@ in
         curl
         wget
         unar
+        fzf
         go
       ])
       ++ (with pkgs.python3Packages; [
