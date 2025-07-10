@@ -179,7 +179,12 @@ in
         enable_audio_bell = false;
         background_opacity = 0.96;
         update_check_interval = 0;
-        enabled_layouts = "tall:bias=64";
+        enabled_layouts = "splits:split_axis=auto";
+      };
+      keybindings = {
+        "super+." = "layout_action bias 64";
+        "super+[" = "previous_window";
+        "super+]" = "next_window";
       };
     };
 
