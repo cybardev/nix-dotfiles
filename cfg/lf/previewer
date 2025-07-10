@@ -14,6 +14,7 @@ y="$5"
 case "$(file -Lb --mime-type "$file")" in
   text/* | application/json | application/javascript)
     bat --color=always --style=plain --pager=never "$file"
+    exit 0
     ;;
   image/*)
     draw "$file"
