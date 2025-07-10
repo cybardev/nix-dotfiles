@@ -183,6 +183,22 @@ in
       };
     };
 
+    lf = {
+      enable = true;
+      settings = {
+        number = true;
+        relativenumber = true;
+        icons = true;
+        sortby = "ext";
+        cleaner = "~/.config/lf/cleaner";
+        previewer = "~/.config/lf/previewer";
+      };
+      keybindings = {
+        D = "delete";
+        x = "cut";
+      };
+    };
+
     zoxide = {
       enable = true;
       options = [
@@ -214,22 +230,6 @@ in
         "*.bak"
       ];
       extraOptions = [ "--color=always" ];
-    };
-
-    lf = {
-      enable = true;
-      settings = {
-        number = true;
-        relativenumber = true;
-        icons = true;
-        sortby = "ext";
-        cleaner = "~/.config/lf/cleaner";
-        previewer = "~/.config/lf/previewer";
-      };
-      keybindings = {
-        D = "delete";
-        x = "cut";
-      };
     };
 
     bottom = {
