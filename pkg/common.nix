@@ -167,13 +167,19 @@ in
     kitty = {
       enable = true;
       themeFile = "Doom_Vibrant";
+      enableGitIntegration = true;
+      font = {
+        package = pkgs.nerd-fonts.caskaydia-cove;
+        name = "CaskaydiaCove Nerd Font Mono";
+        size = 14;
+      };
       settings = {
         shell = "zsh";
-        font_family = "CaskaydiaCove Nerd Font Mono";
-        font_size = 14;
-        enable_audio_bell = false;
         tab_bar_edge = "top";
+        enable_audio_bell = false;
         background_opacity = 0.96;
+        update_check_interval = 0;
+        enabled_layouts = "tall:bias=56;full_size=1";
       };
     };
 
