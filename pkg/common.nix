@@ -14,7 +14,6 @@ in
     ../sys/unfree.nix
     ../sys/home.nix
     ./zsh.nix
-    ./yazi.nix
     ./helix.nix
     ./vscode.nix
     ./zed.nix
