@@ -54,7 +54,8 @@ in
         [[ -f .gitignore ]] && echo "\n" >> .gitignore
         cat ${../cfg/devshell/gitignore} >> .gitignore
         cat ${../cfg/devshell/shell.nix} >   shell.nix
-        echo "use nix"                   >> .envrc
+        cat ${../cfg/devshell/flake.nix} >   flake.nix
+        echo "use flake"                 >> .envrc
         direnv allow
       }
 
