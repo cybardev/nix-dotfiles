@@ -52,12 +52,5 @@
         }
       ];
     };
-    themes = {
-      edge = ../cfg/helix/edge.toml;
-      everforest = ../cfg/helix/everforest.toml;
-      rose_pine = ../cfg/helix/rose_pine.toml;
-      rose_pine_moon = ../cfg/helix/rose_pine_moon.toml;
-      catppuccin_macchiato = ../cfg/helix/catppuccin_macchiato.toml;
-    };
   };
 }
