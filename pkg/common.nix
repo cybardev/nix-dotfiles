@@ -109,7 +109,7 @@ in
         black
         bruno
         gimp
-        hugo
+        tdf
         ncdu
         unciv
 
