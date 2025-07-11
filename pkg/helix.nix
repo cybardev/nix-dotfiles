@@ -5,7 +5,7 @@
     package = pkgs.evil-helix;
     defaultEditor = true;
     settings = {
-      theme = "catppuccin_macchiato";
+      theme = "kanagawa-dragon";
       editor = {
         auto-format = true;
         line-number = "relative";
