@@ -177,10 +177,11 @@ in
       settings = {
         shell = "zsh";
         tab_bar_edge = "top";
+        enabled_layouts = "tall";
         enable_audio_bell = false;
         background_opacity = 0.96;
         update_check_interval = 0;
-        enabled_layouts = "splits:split_axis=auto";
+        startup_session = builtins.toString ../cfg/kitty-session.sh;
       };
       keybindings = {
         "super+." = "layout_action bias 64";
