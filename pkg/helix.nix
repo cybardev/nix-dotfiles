@@ -26,7 +26,7 @@
         tinymist = {
           config = {
             exportPdf = "onSave";
-            outputPath = "$root/.preview/$name";
+            outputPath = "$root/_preview/$name";
             formatterMode = "typstyle";
           };
         };
