@@ -116,7 +116,6 @@ in
         # >---< DO NOT REMOVE >---< #
         ffmpegthumbnailer
         nixfmt-rfc-style
-        poppler-utils
         ripgrep-all
         nixfmt-tree
         imagemagick
@@ -134,6 +133,7 @@ in
         p7zip
         cmake
         ninja
+        mupdf
         nixd
         nurl
         curl

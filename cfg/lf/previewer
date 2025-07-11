@@ -24,8 +24,8 @@ case "$(file -Lb --mime-type "$file")" in
     draw "/tmp/thumb.png"
     ;;
   application/pdf)
-    pdftoppm -f 1 -l 1 -scale-to-x 512 -scale-to-y -1 -singlefile -jpeg "$file" /tmp/pdf_preview 2>/dev/null
-    draw "/tmp/pdf_preview.jpg"
+    mutool draw -o "/tmp/pdf_preview_$$.png" -w 512 "$file" 1 2>/dev/null
+    draw "/tmp/pdf_preview_$$.png"
     ;;
 esac
 
