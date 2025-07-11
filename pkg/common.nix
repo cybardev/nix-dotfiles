@@ -204,6 +204,14 @@ in
         D = "delete";
         x = "cut";
       };
+      commands.open = ''
+        ''${{
+          case $(file --mime-type -Lb $f) in
+            application/pdf) ${lib.getExe pkgs.tdf} $fx;;
+            *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+          esac
+        }}
+      '';
     };
 
     zoxide = {
