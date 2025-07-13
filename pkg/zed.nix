@@ -95,7 +95,7 @@ in
         tinymist = {
           settings = {
             exportPdf = "onSave";
-            outputPath = "$root/$name";
+            outputPath = "$root/_preview/$name";
           };
         };
       };
