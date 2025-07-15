@@ -18,7 +18,6 @@ let
 in
 {
   imports = [
-    ./hardware-configuration.nix
     ./nixcommand.nix
     ./unfree.nix
     ../mod/userconfig.nix
@@ -183,7 +182,8 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = false; # disabled for ISO builds
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

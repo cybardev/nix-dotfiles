@@ -40,6 +40,7 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       nix-darwin,
       home-manager,
@@ -94,15 +95,46 @@
         };
       };
 
-      nixosConfigurations.${linuxConfig.hostname} = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./sys/configuration.nix
-          { userConfig = linuxConfig; }
-        ];
-        specialArgs = {
-          inherit inputs;
-          pkgs-unstable = nixpkgs-unstable linuxConfig.system;
+      nixosConfigurations = {
+        "${linuxConfig.hostname}" = nixpkgs.lib.nixosSystem {
+          modules = [
+            ./sys/hardware-configuration.nix
+            ./sys/configuration.nix
+            { userConfig = linuxConfig; }
+          ];
+          specialArgs = {
+            inherit inputs;
+            pkgs-unstable = nixpkgs-unstable linuxConfig.system;
+          };
+        };
+        isoConfig = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            (
+              { modulesPath, ... }:
+              {
+                imports = [
+                  (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+                ];
+              }
+            )
+            ./sys/configuration.nix
+            { userConfig = linuxConfig; }
+          ];
+          specialArgs = {
+            inherit inputs;
+            pkgs-unstable = nixpkgs-unstable linuxConfig.system;
+          };
         };
       };
+
+      packages = (
+        nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (
+          _:
+          {
+            default = self.nixosConfigurations.isoConfig.config.system.build.isoImage;
+          }
+        )
+      );
     };
 }
