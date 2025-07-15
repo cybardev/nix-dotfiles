@@ -34,7 +34,7 @@ in
 
     cava.settings.input = {
       method = "portaudio";
-      source = "'Background Music'";
+      source = "BlackHole 2ch";
     };
   };
 }

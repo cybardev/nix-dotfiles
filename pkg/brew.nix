@@ -29,6 +29,7 @@
     casks = [
       "altserver"
       # "background-music"
+      "blackhole-2ch"
       "docker-desktop"
       "flutter"
       "font-caskaydia-cove-nerd-font"
