@@ -17,6 +17,7 @@ in
     ./helix.nix
     ./vscode.nix
     ./zed.nix
+    ./cava.nix
   ];
 
   xdg.configFile = {
@@ -268,25 +269,6 @@ in
           ];
         }
       );
-    };
-
-    cava = {
-      enable = true;
-      settings = {
-        general = {
-          bars = 0;
-          bar_width = 6;
-          bar_spacing = 2;
-        };
-        color = {
-          gradient = 1;
-          gradient_count = 2;
-          gradient_color_1 = "'#bb7ebb'";
-          gradient_color_2 = "'#ffbeff'";
-        };
-        output.method = "ncurses";
-        smoothing.gravity = 42;
-      };
     };
 
     poetry = {
