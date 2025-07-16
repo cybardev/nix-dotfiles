@@ -181,6 +181,7 @@ in
         enable_audio_bell = false;
         background_opacity = 0.96;
         update_check_interval = 0;
+        hide_window_decorations = "yes";
         startup_session = builtins.toString ../cfg/kitty-session.sh;
       };
       keybindings = {
