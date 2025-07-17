@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 let
@@ -63,6 +64,10 @@ in
     '';
     shellAliases = {
       zrc = "exec zsh";
+      fm = "f() { cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$@\")\" }; f";
+      fan = "f() { du -hd1 \"$1\" | sort -hr }; f";
+      unly = "f() { curl -Is \"$1\" | grep ^location | cut -d \" \" -f 2 }; f";
+      etch = "f() { sudo dd bs=4M if=$2 of=/dev/$1 status=progress oflag=sync }; f";
     };
     dirHashes = {
       nixos = flakePath;

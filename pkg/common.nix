@@ -14,6 +14,7 @@ in
     ../sys/unfree.nix
     ../sys/home.nix
     ./zsh.nix
+    # ./fish.nix
     ./helix.nix
     ./vscode.nix
     ./zed.nix
@@ -53,7 +54,6 @@ in
         cls = "clear";
         cat = "bat -pp";
         icat = "kitten icat";
-        fm = "f() { cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$@\")\" }; f";
         ls = "eza -1 --icons=never";
         ll = "eza -1l";
         lessr = "less -R";
@@ -80,9 +80,6 @@ in
         yup = "nix flake update --flake ${flakePath} && re-nix";
 
         # misc
-        fan = "f() { du -hd1 \"$1\" | sort -hr }; f";
-        unly = "f() { curl -Is \"$1\" | grep ^location | cut -d \" \" -f 2 }; f";
-        etch = "f() { sudo dd bs=4M if=$2 of=/dev/$1 status=progress oflag=sync }; f";
         civ = "mkdir -p ${uncivDir} && unciv --data-dir=${uncivDir}";
       };
 
@@ -176,7 +173,7 @@ in
         size = 14;
       };
       settings = {
-        shell = "zsh";
+        shell = lib.getExe pkgs.zsh;
         tab_bar_edge = "top";
         enabled_layouts = "tall";
         enable_audio_bell = false;
