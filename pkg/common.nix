@@ -98,6 +98,7 @@ in
         dotnet-sdk_9
         clojure-lsp
         lazydocker
+        tailscale
         babashka
         tinymist
         inkscape
