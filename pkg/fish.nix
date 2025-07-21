@@ -10,9 +10,15 @@
         fm = {
           body = "cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$argv\")\"";
         };
-        # fan = "f() { du -hd1 \"$1\" | sort -hr }; f";
-        # unly = "f() { curl -Is \"$1\" | grep ^location | cut -d \" \" -f 2 }; f";
-        # etch = "f() { sudo dd bs=4M if=$2 of=/dev/$1 status=progress oflag=sync }; f";
+        fan = {
+          body = "du -hd1 \"$argv[1]\" | sort -hr";
+        };
+        unly = {
+          body = "curl -Is \"$argv[1]\" | grep ^location | cut -d \" \" -f 2";
+        };
+        etch = {
+          body = "sudo dd bs=4M if=$argv[2] of=/dev/$argv[1] status=progress oflag=sync";
+        };
       };
     };
     starship = {
