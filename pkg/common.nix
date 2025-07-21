@@ -14,7 +14,7 @@ in
     ../sys/unfree.nix
     ../sys/home.nix
     ./zsh.nix
-    # ./fish.nix
+    ./fish.nix
     ./helix.nix
     ./vscode.nix
     ./zed.nix
@@ -174,7 +174,8 @@ in
         size = 14;
       };
       settings = {
-        shell = lib.getExe pkgs.zsh;
+        # shell = lib.getExe pkgs.zsh;
+        shell = lib.getExe pkgs.zsh + " -c " + lib.getExe pkgs.fish;
         tab_bar_edge = "top";
         enabled_layouts = "tall";
         enable_audio_bell = false;
