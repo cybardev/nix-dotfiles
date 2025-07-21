@@ -96,6 +96,7 @@ in
           settings = {
             exportPdf = "onSave";
             outputPath = "$root/_preview/$name";
+            formatterMode = "typstyle";
           };
         };
       };
