@@ -75,6 +75,8 @@ in
         "update.showReleaseNotes" = false;
         "workbench.colorTheme" = "One Dark Pro Night Flat";
         "workbench.startupEditor" = "none";
+        "terminal.integrated.defaultProfile.osx" = "fish";
+        "terminal.integrated.defaultProfile.linux" = "fish";
 
         # disable telemetry
         "idf.telemetry" = false;
