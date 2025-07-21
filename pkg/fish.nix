@@ -3,8 +3,8 @@
   programs = {
     fish = {
       enable = true;
-      interactiveShellInit = ''
-        fish_add_path /opt/homebrew/bin /opt/homebrew/sbin ~/.local/bin
+      shellInit = ''
+        fish_add_path ~/.local/bin
         fish_vi_key_bindings
         set fish_greeting
         cutefetch -m text

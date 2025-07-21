@@ -28,9 +28,12 @@ in
         flux-up = "/Applications/Pokemon\\ Flux/Flux\\ Patcher.app/Contents/MacOS/Flux\\ Patcher";
       };
       profileExtra = ''
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+        eval "$(/opt/homebrew/bin/brew shellenv zsh)"
       '';
     };
+    fish.shellInit = ''
+      eval "$(/opt/homebrew/bin/brew shellenv fish)"
+    '';
 
     cava.settings.input = {
       method = "portaudio";
