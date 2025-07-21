@@ -1,10 +1,18 @@
-{
-  config,
-  ...
-}:
+{ config, ... }:
 let
   inherit (config.userConfig) flakePath;
   nixConfigDir = config.userConfig.configDir;
+  brewInit = shell: ''
+    eval "$(/opt/homebrew/bin/brew shellenv ${shell})"
+  '';
+  shellAliases = {
+    lsblk = "diskutil list";
+    edit-wm = "edit ${nixConfigDir}/packages/config/aerospace.nix";
+    re-nix = "sudo darwin-rebuild switch --flake ${flakePath}";
+
+    flux = "/Applications/Pokemon\\ Flux/Flux.app/Contents/MacOS/Z-universal";
+    flux-up = "/Applications/Pokemon\\ Flux/Flux\\ Patcher.app/Contents/MacOS/Flux\\ Patcher";
+  };
 in
 {
   imports = [
@@ -19,21 +27,17 @@ in
 
   programs = {
     zsh = {
-      shellAliases = {
-        lsblk = "diskutil list";
-        edit-wm = "edit ${nixConfigDir}/packages/config/aerospace.nix";
-        re-nix = "sudo darwin-rebuild switch --flake ${flakePath}";
-
-        flux = "/Applications/Pokemon\\ Flux/Flux.app/Contents/MacOS/Z-universal";
-        flux-up = "/Applications/Pokemon\\ Flux/Flux\\ Patcher.app/Contents/MacOS/Flux\\ Patcher";
-      };
+      inherit shellAliases;
       profileExtra = ''
-        eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+        ${brewInit "zsh"}
       '';
     };
-    fish.shellInit = ''
-      eval "$(/opt/homebrew/bin/brew shellenv fish)"
-    '';
+    fish = {
+      inherit shellAliases;
+      shellInit = ''
+        ${brewInit "fish"}
+      '';
+    };
 
     cava.settings.input = {
       method = "portaudio";
