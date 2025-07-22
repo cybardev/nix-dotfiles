@@ -63,7 +63,7 @@ in
       ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
     '';
     shellAliases = {
-      zrc = "exec zsh";
+      src = "exec zsh";
       fm = "f() { cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$@\")\" }; f";
       fan = "f() { du -hd1 \"$1\" | sort -hr }; f";
       unly = "f() { curl -Is \"$1\" | grep ^location | cut -d \" \" -f 2 }; f";

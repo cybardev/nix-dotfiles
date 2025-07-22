@@ -10,7 +10,7 @@
         cutefetch -m text
       '';
       shellAliases = {
-        frc = "exec fish";
+        src = "exec fish";
       };
       functions = {
         fm = {
