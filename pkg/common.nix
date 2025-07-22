@@ -80,6 +80,7 @@ in
         yup = "nix flake update --flake ${flakePath} && re-nix";
 
         # misc
+        ldk = lib.getExe pkgs.lazydocker;
         civ = "mkdir -p ${uncivDir} && unciv --data-dir=${uncivDir}";
       };
 
