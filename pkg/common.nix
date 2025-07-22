@@ -81,6 +81,7 @@ in
 
         # misc
         ldk = lib.getExe pkgs.lazydocker;
+        lck = lib.getExe pkgs.localstack;
         civ = "mkdir -p ${uncivDir} && unciv --data-dir=${uncivDir}";
       };
 
@@ -99,6 +100,7 @@ in
         dotnet-sdk_9
         clojure-lsp
         lazydocker
+        localstack
         tailscale
         babashka
         tinymist
