@@ -18,7 +18,6 @@ in
   imports = [
     ./common.nix
     ./aerospace.nix
-    ../mod/userconfig.nix
   ];
 
   userConfig.isDarwin = true;

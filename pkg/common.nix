@@ -10,6 +10,7 @@ let
 in
 {
   imports = [
+    ../mod/userconfig.nix
     ../sys/overlays.nix
     ../sys/unfree.nix
     ../sys/home.nix
@@ -287,6 +288,9 @@ in
         init.defaultBranch = "main";
         credential.helper = "store";
         pull.rebase = false;
+        gpg.format = "ssh";
+        user.signingKey = "~/.ssh/id_ed25519.pub";
+        commit.gpgSign = true;
       };
     };
 

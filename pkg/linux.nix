@@ -17,7 +17,6 @@ in
     ./bspwm.nix
     ./picom.nix
     ./browser.nix
-    ../mod/userconfig.nix
   ];
 
   home = {
