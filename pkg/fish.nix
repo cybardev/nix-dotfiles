@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{config, pkgs, lib, ... }:
 {
   programs = {
     fish = {
@@ -28,7 +28,7 @@
       };
     };
     starship = {
-      enable = true;
+      enable = config.programs.fish.enable;
       enableZshIntegration = false;
       settings = {
         add_newline = false;
