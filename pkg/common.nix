@@ -136,6 +136,7 @@ in
         p7zip
         cmake
         ninja
+        gopls
         mupdf
         nixd
         nurl
