@@ -40,7 +40,7 @@ in
 
     cava.settings.input = {
       method = "portaudio";
-      source = "BlackHole 2ch";
+      source = "BlackHole 16ch";
     };
   };
 }

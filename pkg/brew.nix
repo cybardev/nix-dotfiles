@@ -28,7 +28,7 @@
     ];
     casks = [
       "altserver"
-      "blackhole-2ch"
+      "blackhole-16ch"
       "docker-desktop"
       "flutter"
       "font-caskaydia-cove-nerd-font"
