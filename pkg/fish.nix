@@ -6,10 +6,10 @@
       shellInit = ''
         fish_add_path ~/.local/bin
         fish_vi_key_bindings
-        set fish_greeting
-        cutefetch -m text
       '';
       shellAliases = {
+        fish_greeting = "cutefetch -m text";
+        cssh = "kitten ssh";
         src = "exec fish";
       };
       functions = {
