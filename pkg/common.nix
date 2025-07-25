@@ -53,6 +53,7 @@ in
         cls = "clear";
         cat = "bat -pp";
         icat = "kitten icat";
+        cssh = "kitten ssh";
         ls = "eza -1 --icons=never";
         ll = "eza -1l";
         lessr = "less -R";

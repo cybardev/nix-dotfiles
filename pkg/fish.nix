@@ -12,12 +12,9 @@
         fish_add_path ~/.local/bin
         fish_vi_key_bindings
       '';
-      shellAliases = {
-        fish_greeting = "cutefetch -m text";
-        cssh = "kitten ssh";
-        src = "exec fish";
-      };
       functions = {
+        fish_greeting.body = "cutefetch -m text";
+        src.body = "exec fish";
         fm.body = "cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$argv\")\"";
         fan.body = "du -hd1 \"$argv[1]\" | sort -hr";
         unly.body = "curl -Is \"$argv[1]\" | grep ^location | cut -d \" \" -f 2";
@@ -52,6 +49,10 @@
           format = "[$path]($style)[$read_only]($read_only_style) ";
         };
         git_branch.format = "[<$branch(:$remote_branch)>]($style) ";
+        status = {
+          disabled = false;
+          format = "[\\[$status\\] ]($style)";
+        };
         format = lib.concatStrings [
           "$status"
           "$character"
