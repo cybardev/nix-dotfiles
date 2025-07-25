@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   programs.helix = {
     enable = true;
@@ -20,7 +20,7 @@
     languages = {
       language-server = {
         pyrefly = {
-          command = lib.getExe pkgs.cy.pyrefly;
+          command = "pyrefly";
           args = [ "lsp" ];
         };
         tinymist = {
