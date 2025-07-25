@@ -11,8 +11,6 @@ in
 {
   imports = [
     ../mod/userconfig.nix
-    ../sys/overlays.nix
-    ../sys/unfree.nix
     ../sys/home.nix
     ./zsh.nix
     ./fish.nix
@@ -87,7 +85,7 @@ in
       };
 
     packages =
-      (with pkgs.cy; [
+      (with pkgs-unstable.cy; [
         cutefetch
         jitterbugpair
         freej2me

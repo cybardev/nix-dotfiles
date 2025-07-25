@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -23,6 +24,11 @@ in
         "flakes"
       ];
     };
+  };
+
+  nixpkgs = {
+    config.allowUnfreePredicate = import ./unfree.nix { inherit lib; };
+    overlays = import ./overlays.nix { inherit inputs; };
   };
 
   home = {

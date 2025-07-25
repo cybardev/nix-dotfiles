@@ -34,7 +34,7 @@
 
     cypkgs = {
       url = "github:cybardev/nix-channel?ref=main";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -46,7 +46,13 @@
       ...
     }@inputs:
     let
-      nixpkgs-unstable = system: inputs.nixpkgs-unstable.legacyPackages.${system};
+      nixpkgs-unstable =
+        system:
+        import inputs.nixpkgs-unstable {
+          inherit system;
+          config.allowUnfreePredicate = import ./sys/unfree.nix { inherit (inputs.nixpkgs-unstable) lib; };
+          overlays = import ./sys/overlays.nix { inherit inputs; };
+        };
       linuxConfig = {
         username = "sage";
         hostname = "forest";

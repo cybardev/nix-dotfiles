@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -20,7 +21,6 @@ in
   imports = [
     ./hardware-configuration.nix
     ./nixcommand.nix
-    ./unfree.nix
     ../mod/userconfig.nix
   ];
 
@@ -39,6 +39,7 @@ in
     optimise.dates = [ "weekly" ];
     gc.dates = "weekly";
   };
+  nixpkgs.config.allowUnfreePredicate = import ./unfree.nix { inherit lib; };
 
   # enable zsh for the system
   programs.zsh.enable = true;
