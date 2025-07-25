@@ -1,4 +1,9 @@
-{config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   programs = {
     fish = {
@@ -47,7 +52,10 @@
           format = "[$path]($style)[$read_only]($read_only_style) ";
         };
         git_branch.format = "[<$branch(:$remote_branch)>]($style) ";
-        format = "$character";
+        format = lib.concatStrings [
+          "$status"
+          "$character"
+        ];
         right_format = lib.concatStrings [
           "$cmd_duration"
           "$git_status"
