@@ -229,7 +229,10 @@ in
 
     bat = {
       enable = true;
-      config.theme = "OneHalfDark";
+      config.theme = "kanagawa-dragon";
+      themes = {
+        kanagawa-dragon.src = ../cfg/kanagawa-dragon.tmTheme;
+      };
     };
 
     eza = {
