@@ -36,6 +36,11 @@
       url = "github:cybardev/nix-channel?ref=main";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    secrets = {
+      url = "path:/Users/sage/.secrets";
+      flake = false;
+    };
   };
 
   outputs =

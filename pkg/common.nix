@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -10,6 +11,7 @@ let
 in
 {
   imports = [
+    inputs.cypkgs.homeModules.ytgo-bot
     ../mod/userconfig.nix
     ../sys/home.nix
     ./zsh.nix
@@ -313,6 +315,10 @@ in
       enable = true;
       package = pkgs-unstable.ollama;
       host = "0.0.0.0";
+    };
+    ytgo-bot = {
+      enable = true;
+      token = builtins.readFile "${inputs.secrets}/ytgo-bot-token.txt";
     };
   };
 }

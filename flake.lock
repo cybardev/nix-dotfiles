@@ -24,11 +24,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1753553304,
-        "narHash": "sha256-LXTTFYmpw6/vLs6XPJ2u9OsAk44M3I8rnpXZFeKgP4E=",
+        "lastModified": 1753912385,
+        "narHash": "sha256-OfsXuuUHCt9jbrP8eumX76eecV6ELmC3Y7yB+6WDVSs=",
         "owner": "cybardev",
         "repo": "nix-channel",
-        "rev": "fd8d66fbce2de6ed58e810162d81f3bdc8470c14",
+        "rev": "8506adcc4f45ec19aa2194e7575d32a5998ff63b",
         "type": "github"
       },
       "original": {
@@ -244,7 +244,21 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
+        "secrets": "secrets",
         "zen-browser": "zen-browser"
+      }
+    },
+    "secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1753913828,
+        "narHash": "sha256-R/kDj228e5yWFxbe34n6poQ8kRAfX7Qq2TGpGIHEa18=",
+        "path": "/Users/sage/.secrets",
+        "type": "path"
+      },
+      "original": {
+        "path": "/Users/sage/.secrets",
+        "type": "path"
       }
     },
     "systems": {
