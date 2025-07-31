@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs-unstable, ... }:
 {
   programs.helix = {
     enable = true;
-    package = pkgs.evil-helix;
+    package = pkgs-unstable.evil-helix;
     defaultEditor = true;
     settings = {
       theme = "kanagawa-dragon";
