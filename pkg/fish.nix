@@ -27,6 +27,28 @@
           echo "use flake"                 >> .envrc
           direnv allow
         '';
+        weiqi.body = ''
+          argparse "h/help" "s/size=?!_validate_int --min 5 --max 52" -- $argv
+          or return
+
+          if set -ql _flag_help
+            echo "Usage: weiqi [-h | --help] [-s | --size=NUM] COLOUR"
+            return
+          end
+
+          set colour "black"
+          if set -ql argv[-1]; and test $argv[-1] = "black"
+            set colour "white"
+          end
+
+          if set -ql _flag_size
+            set size $_flag_size
+          else
+            set size 9
+          end
+
+          gogui -computer-$colour -size $size -program "gnugo --mode gtp"
+        '';
       };
     };
     starship = {

@@ -112,6 +112,8 @@ in
         thonny
         black
         bruno
+        gnugo
+        gogui
         gimp
         tdf
         ncdu
