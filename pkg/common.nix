@@ -11,7 +11,7 @@ let
 in
 {
   imports = [
-    inputs.cypkgs.homeModules.ytgo-bot
+    inputs.cypkgs.modules.ytgo-bot
     ../mod/userconfig.nix
     ../sys/home.nix
     ./zsh.nix
