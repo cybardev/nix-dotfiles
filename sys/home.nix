@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   inputs,
   ...
 }:
@@ -9,22 +8,7 @@ let
   userName = config.userConfig.username;
 in
 {
-  nix = {
-    package = pkgs.nixVersions.stable;
-    gc = {
-      automatic = true;
-      frequency = "weekly";
-      options = "--delete-older-than 30d";
-    };
-    settings = {
-      trusted-users = [ userName ];
-      auto-optimise-store = true;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
-  };
+  nix.gc.frequency = "weekly";
 
   nixpkgs = {
     config.allowUnfreePredicate = import ./unfree.nix { inherit lib; };

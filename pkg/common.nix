@@ -13,6 +13,7 @@ in
   imports = [
     inputs.cypkgs.modules.ytgo-bot
     ../mod/userconfig.nix
+    ../sys/nixcommand.nix
     ../sys/home.nix
     ./zsh.nix
     ./fish.nix

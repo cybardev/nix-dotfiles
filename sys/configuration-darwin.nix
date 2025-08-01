@@ -34,10 +34,13 @@ in
   };
 
   nix = {
-    optimise.interval = {
-      Hour = 0;
-      Minute = 0;
-      Weekday = 0;
+    optimise = {
+      automatic = false; # FIXME: https://github.com/NixOS/nix/issues/7273
+      interval = {
+        Hour = 0;
+        Minute = 0;
+        Weekday = 0;
+      };
     };
     gc.interval = {
       Hour = 0;

@@ -36,7 +36,10 @@ in
     flake = "path:${flakePath}";
   };
   nix = {
-    optimise.dates = [ "weekly" ];
+    optimise = {
+      automatic = false; # FIXME: https://github.com/NixOS/nix/issues/7273
+      dates = [ "weekly" ];
+    };
     gc.dates = "weekly";
   };
   nixpkgs.config.allowUnfreePredicate = import ./unfree.nix { inherit lib; };
