@@ -9,6 +9,7 @@ let
     lsblk = "diskutil list";
     edit-wm = "edit ${nixConfigDir}/packages/config/aerospace.nix";
     re-nix = "sudo darwin-rebuild switch --flake ${flakePath}";
+    icloud = "cd ~/Library/Mobile\\ Documents/com~apple~CloudDocs";
 
     flux = "/Applications/Pokemon\\ Flux/Flux.app/Contents/MacOS/Z-universal";
     flux-up = "/Applications/Pokemon\\ Flux/Flux\\ Patcher.app/Contents/MacOS/Flux\\ Patcher";
