@@ -38,7 +38,7 @@
     };
 
     secrets = {
-      url = "git+ssh://git@localhost:222/cybardev/secrets.git?shallow=1";
+      url = "git+ssh://git@localhost:222/cybardev/.secrets.git?shallow=1";
       flake = false;
     };
   };

@@ -24,11 +24,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754092023,
-        "narHash": "sha256-olROaz/27zVmtiX5t/JwhpXQ6mkQF4D7qDQzayzrzTY=",
+        "lastModified": 1754112833,
+        "narHash": "sha256-nz8jx7HHTwj/QQqXgIeEuBjUvcOJULh8XSkoCiCSgC8=",
         "owner": "cybardev",
         "repo": "nix-channel",
-        "rev": "11f30d3cc9a34b4d2bfcfa2a3687f381c1f283a1",
+        "rev": "51d428c9bb452b305211f3779ebfb9780823a448",
         "type": "github"
       },
       "original": {
@@ -257,12 +257,12 @@
         "rev": "ad861f3bd145289cba5de98cca0625216216508a",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@localhost:222/cybardev/secrets.git"
+        "url": "ssh://git@localhost:222/cybardev/.secrets.git"
       },
       "original": {
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@localhost:222/cybardev/secrets.git"
+        "url": "ssh://git@localhost:222/cybardev/.secrets.git"
       }
     },
     "systems": {
