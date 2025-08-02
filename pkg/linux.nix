@@ -31,6 +31,7 @@ in
       rustc
       fondo
       feh
+      logseq
       zoom-us
       aseprite
       lunar-client

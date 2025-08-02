@@ -40,6 +40,7 @@
       "hiddenbar"
       "karabiner-elements"
       "keyclu"
+      "logseq"
       "lulu"
       "lunar-client"
       "obs"

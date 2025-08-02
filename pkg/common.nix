@@ -93,9 +93,10 @@ in
         cutefetch
         jitterbugpair
         freej2me
-        pyrefly
-        logseq
         ytgo
+      ])
+      ++ (with pkgs-unstable; [
+        pyrefly
       ])
       ++ (with pkgs; [
         tree-sitter-grammars.tree-sitter-dart
