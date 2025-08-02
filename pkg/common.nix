@@ -43,6 +43,7 @@ in
     # environment variables
     sessionVariables = {
       PTPYTHON_CONFIG_HOME = "$HOME/.config/ptpython/";
+      OLLAMA_HOST = "0.0.0.0:11434";
     };
 
     shellAliases =
