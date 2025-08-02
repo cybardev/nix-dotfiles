@@ -251,14 +251,18 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1753913828,
-        "narHash": "sha256-R/kDj228e5yWFxbe34n6poQ8kRAfX7Qq2TGpGIHEa18=",
-        "path": "/Users/sage/.secrets",
-        "type": "path"
+        "lastModified": 1754108321,
+        "narHash": "sha256-v25ExR+q36YpNMwktNHHe9rrD/b03muNUZAYlVHFsVw=",
+        "ref": "refs/heads/main",
+        "rev": "ad861f3bd145289cba5de98cca0625216216508a",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@localhost:222/cybardev/secrets.git"
       },
       "original": {
-        "path": "/Users/sage/.secrets",
-        "type": "path"
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@localhost:222/cybardev/secrets.git"
       }
     },
     "systems": {
