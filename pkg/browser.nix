@@ -383,6 +383,50 @@ in
           "browser.urlbar.shortcuts.bookmarks" = false;
           "browser.urlbar.shortcuts.history" = false;
           "browser.urlbar.shortcuts.tabs" = false;
+
+          # top bar
+          "browser.uiCustomization.state" = builtins.toJSON {
+            placements = {
+              widget-overflow-fixed-list = [ "sidebar-button" ];
+              unified-extensions-area = [
+                "sponsorblocker_ajay_app-browser-action"
+                "_762f9885-5a13-4abd-9c77-433dcd38b8fd_-browser-action"
+                "enhancerforyoutube_maximerf_addons_mozilla_org-browser-action"
+              ];
+              nav-bar = [
+                "alltabs-button"
+                "back-button"
+                "forward-button"
+                "vertical-spacer"
+                "urlbar-container"
+                "_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action"
+                "ublock0_raymondhill_net-browser-action"
+                "unified-extensions-button"
+              ];
+              TabsToolbar = [ ];
+              vertical-tabs = [ "tabbrowser-tabs" ];
+              PersonalToolbar = [ "personal-bookmarks" ];
+            };
+            seen = [
+              "developer-button"
+              "screenshot-button"
+              "_762f9885-5a13-4abd-9c77-433dcd38b8fd_-browser-action"
+              "ublock0_raymondhill_net-browser-action"
+              "_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action"
+              "enhancerforyoutube_maximerf_addons_mozilla_org-browser-action"
+              "sponsorblocker_ajay_app-browser-action"
+            ];
+            dirtyAreaCache = [
+              "nav-bar"
+              "TabsToolbar"
+              "vertical-tabs"
+              "unified-extensions-area"
+              "PersonalToolbar"
+              "widget-overflow-fixed-list"
+            ];
+            currentVersion = 23;
+            newElementCount = 6;
+          };
         };
 
         # Extensions
