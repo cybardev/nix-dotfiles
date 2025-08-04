@@ -52,7 +52,6 @@
       "steam"
       "ungoogled-chromium"
       "whisky"
-      "zen"
       "zoom"
     ];
   };

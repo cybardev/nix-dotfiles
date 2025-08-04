@@ -15,6 +15,7 @@ in
     ../mod/userconfig.nix
     ../sys/nixcommand.nix
     ../sys/home.nix
+    ./browser.nix
     ./zsh.nix
     ./fish.nix
     ./helix.nix

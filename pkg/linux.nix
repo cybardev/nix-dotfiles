@@ -16,7 +16,6 @@ in
     ./common.nix
     ./bspwm.nix
     ./picom.nix
-    ./browser.nix
   ];
 
   home = {
@@ -46,6 +45,7 @@ in
       edit-wm = "edit ${nixConfigDir}/packages/config/bspwm.nix";
       re-nix = "nixos-rebuild switch --use-remote-sudo --flake ${flakePath}";
     };
+    chromium.enable = true;
   };
 
   services = {
