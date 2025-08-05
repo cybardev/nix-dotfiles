@@ -1,6 +1,5 @@
 { config, ... }:
 let
-  inherit (config.userConfig) flakePath;
   nixConfigDir = config.userConfig.configDir;
   brewInit = shell: ''
     eval "$(/opt/homebrew/bin/brew shellenv ${shell})"
@@ -8,7 +7,7 @@ let
   shellAliases = {
     lsblk = "diskutil list";
     edit-wm = "edit ${nixConfigDir}/packages/config/aerospace.nix";
-    re-nix = "sudo darwin-rebuild switch --flake ${flakePath}";
+    re-nix = "nh darwin switch";
     icloud = "cd ~/Library/Mobile\\ Documents/com~apple~CloudDocs";
 
     flux = "/Applications/Pokemon\\ Flux/Flux.app/Contents/MacOS/Z-universal";

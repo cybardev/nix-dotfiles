@@ -5,7 +5,6 @@
   ...
 }:
 let
-  inherit (config.userConfig) flakePath;
   nixConfigDir = config.userConfig.configDir;
 in
 {
@@ -43,7 +42,7 @@ in
     zsh.shellAliases = {
       fondo = "com.github.calo001.fondo";
       edit-wm = "edit ${nixConfigDir}/packages/config/bspwm.nix";
-      re-nix = "nixos-rebuild switch --use-remote-sudo --flake ${flakePath}";
+      re-nix = "nh os switch";
     };
     chromium.enable = true;
   };
