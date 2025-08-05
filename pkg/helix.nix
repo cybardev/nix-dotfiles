@@ -10,6 +10,7 @@
         auto-format = true;
         line-number = "relative";
         lsp.display-messages = true;
+        soft-wrap.enable = true;
       };
       keys.normal = {
         ":" = "collapse_selection";
