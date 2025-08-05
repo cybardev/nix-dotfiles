@@ -6,6 +6,11 @@
 }:
 let
   nixConfigDir = config.userConfig.configDir;
+  shellAliases = {
+    fondo = "com.github.calo001.fondo";
+    edit-wm = "edit ${nixConfigDir}/packages/config/bspwm.nix";
+    re-nix = "nh os switch";
+  };
 in
 {
   imports = [
@@ -39,11 +44,8 @@ in
   };
 
   programs = {
-    zsh.shellAliases = {
-      fondo = "com.github.calo001.fondo";
-      edit-wm = "edit ${nixConfigDir}/packages/config/bspwm.nix";
-      re-nix = "nh os switch";
-    };
+    zsh = { inherit shellAliases; };
+    fish = { inherit shellAliases; };
     chromium.enable = true;
   };
 
