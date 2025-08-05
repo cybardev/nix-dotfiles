@@ -1,49 +1,43 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 let
-  ext = with pkgs.vscode-marketplace; [
-    zhuangtongfa.material-theme
-    mkhl.direnv
-    vscodevim.vim
-    tomoki1207.pdf
-    adpyke.codesnap
-    ms-python.python
-    dart-code.flutter
-    continue.continue
-    humao.rest-client
-    # ms-toolsai.jupyter
-    jnoortheen.nix-ide
-    charliermarsh.ruff
-    dart-code.dart-code
-    ms-vscode.live-server
-    ms-dotnettools.csharp
-    esbenp.prettier-vscode
-    ms-dotnettools.csdevkit
-    myriad-dreamin.tinymist
-    njpwerner.autodocstring
-    echoapi.echoapi-for-vscode
-    espressif.esp-idf-extension
-    # ms-azuretools.vscode-docker
-    github.vscode-github-actions
-    ms-azuretools.vscode-containers
-    github.vscode-pull-request-github
-    ms-vscode-remote.remote-containers
+  extensions = with pkgs.vscode-extensions; [
+    # ms-dotnettools.dotnet-interactive-vscode
     ms-dotnettools.vscode-dotnet-runtime
-    ms-dotnettools.dotnet-interactive-vscode
-  ];
-  relExt = with pkgs.vscode-marketplace-release; [
+    ms-vscode-remote.remote-containers
+    github.vscode-pull-request-github
+    # ms-azuretools.vscode-containers
+    github.vscode-github-actions
+    ms-azuretools.vscode-docker
+    zhuangtongfa.material-theme
+    # espressif.esp-idf-extension
+    # echoapi.echoapi-for-vscode
+    njpwerner.autodocstring
+    myriad-dreamin.tinymist
+    ms-dotnettools.csdevkit
+    esbenp.prettier-vscode
+    ms-dotnettools.csharp
+    ms-vscode.live-server
+    dart-code.dart-code
+    charliermarsh.ruff
+    jnoortheen.nix-ide
+    ms-toolsai.jupyter
+    humao.rest-client
+    continue.continue
+    dart-code.flutter
+    ms-python.python
     eamodio.gitlens
+    adpyke.codesnap
+    tomoki1207.pdf
+    vscodevim.vim
+    mkhl.direnv
   ];
 in
 {
   programs.vscode = {
     enable = true;
-    # package = pkgs.vscodium;
+    package = pkgs.vscodium;
     profiles.default = {
-      extensions = ext ++ relExt;
+      inherit extensions;
       userSettings = {
         "dotnetAcquisitionExtension.sharedExistingDotnetPath" = "${pkgs.dotnet-sdk_9}/share/dotnet/dotnet";
         "editor.cursorBlinking" = "phase";

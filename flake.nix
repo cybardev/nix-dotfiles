@@ -17,11 +17,6 @@
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew?ref=main";
 
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions?ref=master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     cypkgs = {
       url = "github:cybardev/nix-channel?ref=main";
       inputs.nixpkgs.follows = "nixpkgs-unstable";

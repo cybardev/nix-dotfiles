@@ -134,7 +134,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "hmp" ];
+              definedAliases = [ "ngl" ];
             };
 
             hm-opts = {
