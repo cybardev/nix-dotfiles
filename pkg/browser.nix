@@ -395,9 +395,10 @@ in
               ];
               nav-bar = [
                 "alltabs-button"
+                "vertical-spacer"
                 "back-button"
                 "forward-button"
-                "vertical-spacer"
+                "stop-reload-button"
                 "urlbar-container"
                 "_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action"
                 "ublock0_raymondhill_net-browser-action"
