@@ -1,43 +1,40 @@
 { config, pkgs, ... }:
-let
-  extensions = with pkgs.vscode-extensions; [
-    # ms-dotnettools.dotnet-interactive-vscode
-    ms-dotnettools.vscode-dotnet-runtime
-    ms-vscode-remote.remote-containers
-    github.vscode-pull-request-github
-    # ms-azuretools.vscode-containers
-    github.vscode-github-actions
-    ms-azuretools.vscode-docker
-    zhuangtongfa.material-theme
-    # espressif.esp-idf-extension
-    # echoapi.echoapi-for-vscode
-    njpwerner.autodocstring
-    myriad-dreamin.tinymist
-    ms-dotnettools.csdevkit
-    esbenp.prettier-vscode
-    ms-dotnettools.csharp
-    ms-vscode.live-server
-    dart-code.dart-code
-    charliermarsh.ruff
-    jnoortheen.nix-ide
-    ms-toolsai.jupyter
-    humao.rest-client
-    continue.continue
-    dart-code.flutter
-    ms-python.python
-    eamodio.gitlens
-    adpyke.codesnap
-    tomoki1207.pdf
-    vscodevim.vim
-    mkhl.direnv
-  ];
-in
 {
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
     profiles.default = {
-      inherit extensions;
+      extensions = with pkgs.vscode-extensions; [
+        # ms-dotnettools.dotnet-interactive-vscode
+        ms-dotnettools.vscode-dotnet-runtime
+        ms-vscode-remote.remote-containers
+        github.vscode-pull-request-github
+        # ms-azuretools.vscode-containers
+        github.vscode-github-actions
+        ms-azuretools.vscode-docker
+        zhuangtongfa.material-theme
+        # espressif.esp-idf-extension
+        # echoapi.echoapi-for-vscode
+        njpwerner.autodocstring
+        myriad-dreamin.tinymist
+        ms-dotnettools.csdevkit
+        esbenp.prettier-vscode
+        ms-dotnettools.csharp
+        ms-vscode.live-server
+        dart-code.dart-code
+        charliermarsh.ruff
+        jnoortheen.nix-ide
+        ms-toolsai.jupyter
+        humao.rest-client
+        continue.continue
+        dart-code.flutter
+        ms-python.python
+        eamodio.gitlens
+        adpyke.codesnap
+        tomoki1207.pdf
+        vscodevim.vim
+        mkhl.direnv
+      ];
       userSettings = {
         "dotnetAcquisitionExtension.sharedExistingDotnetPath" = "${pkgs.dotnet-sdk_9}/share/dotnet/dotnet";
         "editor.cursorBlinking" = "phase";
