@@ -3,11 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-25.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs?ref=nixpkgs-unstable";
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs?ref=nixpkgs-25.05-darwin";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin?ref=nix-darwin-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
 
     home-manager = {
@@ -43,6 +44,13 @@
           config.allowUnfreePredicate = import ./sys/unfree.nix { inherit (inputs.nixpkgs-unstable) lib; };
           overlays = import ./sys/overlays.nix { inherit inputs; };
         };
+      nixpkgs-darwin =
+        system:
+        import inputs.nixpkgs-darwin {
+          inherit system;
+          config.allowUnfreePredicate = import ./sys/unfree.nix { inherit (inputs.nixpkgs-unstable) lib; };
+          overlays = import ./sys/overlays.nix { inherit inputs; };
+        };
       linuxConfig = {
         username = "sage";
         hostname = "forest";
@@ -56,7 +64,7 @@
     {
       homeConfigurations = {
         "${darwinConfig.username}@${darwinConfig.hostname}" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${darwinConfig.system};
+          pkgs = nixpkgs-darwin darwinConfig.system;
           modules = [
             ./pkg/darwin.nix
             { userConfig = darwinConfig; }
