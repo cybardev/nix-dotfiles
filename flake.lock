@@ -162,10 +162,10 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1754108321,
-        "narHash": "sha256-v25ExR+q36YpNMwktNHHe9rrD/b03muNUZAYlVHFsVw=",
+        "lastModified": 1754610044,
+        "narHash": "sha256-6ECvK+y7tVN1rtmycfI6OdP5SHPvhgsql+SXleYxuMM=",
         "ref": "refs/heads/main",
-        "rev": "ad861f3bd145289cba5de98cca0625216216508a",
+        "rev": "ca8b099f5ac08a637b7730a5d83669147ca32e7b",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@localhost:222/cybardev/.secrets.git"
