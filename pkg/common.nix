@@ -85,6 +85,7 @@ in
         yup = "nix flake update --flake ${flakePath} && re-nix";
 
         # misc
+        lg = lib.getExe pkgs.lazygit;
         ldk = lib.getExe pkgs.lazydocker;
         lck = lib.getExe pkgs.localstack;
         civ = "mkdir -p ${uncivDir} && unciv --data-dir=${uncivDir}";
@@ -305,9 +306,31 @@ in
       };
     };
 
-    gitui = {
+    lazygit = {
       enable = true;
-      theme = ../cfg/gitui-catppuccin.ron;
+      settings = {
+        promptToReturnFromSubprocess = false;
+        gui = {
+          theme = {
+            activeBorderColor = [
+              "#f5bde6"
+              "bold"
+            ];
+            inactiveBorderColor = [ "#a5adcb" ];
+            optionsTextColor = [ "#8aadf4" ];
+            selectedLineBgColor = [ "#363a4f" ];
+            cherryPickedCommitBgColor = [ "#494d64" ];
+            cherryPickedCommitFgColor = [ "#f5bde6" ];
+            unstagedChangesColor = [ "#ed8796" ];
+            defaultFgColor = [ "#cad3f5" ];
+            searchingActiveBorderColor = [ "#eed49f" ];
+          };
+
+          authorColors = {
+            "*" = "#b7bdf8";
+          };
+        };
+      };
     };
 
     ssh = {
