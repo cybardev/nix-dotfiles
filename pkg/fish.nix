@@ -44,7 +44,7 @@
           if set -ql _flag_size
             set size $_flag_size
           else
-            set size 9
+            set size 19
           end
 
           gogui -computer-$colour -size $size -program "gnugo --mode gtp"
