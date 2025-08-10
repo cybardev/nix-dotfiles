@@ -44,7 +44,7 @@ in
     };
     initContent = ''
       path+=( "$(go env GOPATH)/bin" "$HOME/.local/bin" )
-      cutefetch -m text
+      cutefetch -m simple
 
       fpath+="${pkgs.cy.zen-zsh}"
       autoload -Uz promptinit

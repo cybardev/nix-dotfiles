@@ -67,6 +67,7 @@ in
         yt = "ytgo -i -m -p";
         cf = "cutefetch";
         bf = "cutefetch -m bunny";
+        sf = "cutefetch -m simple";
         tf = "cutefetch -m text";
         cd-os = "cd ${flakePath}";
 
