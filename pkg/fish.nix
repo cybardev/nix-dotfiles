@@ -28,11 +28,11 @@
           direnv allow
         '';
         weiqi.body = ''
-          argparse "h/help" "s/size=?!_validate_int --min 5 --max 52" -- $argv
+          argparse "h/help" "s/size=?!_validate_int --min 5 --max 52" "l/level=?!_validate_int --min 0 --max 10" -- $argv
           or return
 
           if set -ql _flag_help
-            echo "Usage: weiqi [-h | --help] [-s | --size=NUM] COLOUR"
+            echo "Usage: weiqi [-h | --help] [-s | --size=NUM] [-l | --level=NUM] COLOUR"
             return
           end
 
@@ -47,7 +47,13 @@
             set size 19
           end
 
-          gogui -computer-$colour -size $size -program "gnugo --mode gtp"
+          if set -ql _flag_level
+            set level $_flag_level
+          else
+            set level 10
+          end
+
+          gogui -computer-$colour -size $size -program "gnugo --mode gtp --level $level"
         '';
       };
       shellAbbrs = {
