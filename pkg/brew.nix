@@ -39,6 +39,7 @@
       "gb-studio"
       "hiddenbar"
       "karabiner-elements"
+      "katrain"
       "keyclu"
       "logseq"
       "lulu"
