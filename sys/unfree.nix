@@ -10,6 +10,7 @@ builtins.elem (lib.getName pkg) [
   "aseprite"
   "zsh-abbr"
   "raycast"
+  "cursor"
   "vscode"
   "zoom"
   "rar"

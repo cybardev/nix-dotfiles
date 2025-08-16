@@ -2,7 +2,7 @@
 {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.code-cursor;
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
         # ms-dotnettools.dotnet-interactive-vscode
