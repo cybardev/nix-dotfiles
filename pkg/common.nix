@@ -39,6 +39,10 @@ in
   home = {
     file = {
       ".continue/config.yaml".source = ../cfg/continue.yaml;
+      ".katrain" = {
+        source = ../cfg/katrain-theme/woodstone;
+        recursive = true;
+      };
     };
 
     # environment variables
