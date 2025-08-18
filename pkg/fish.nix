@@ -13,7 +13,7 @@
         fish_vi_key_bindings
       '';
       functions = {
-        fish_greeting.body = "cutefetch -m simple";
+        fish_greeting.body = "cutefetch -m text";
         src.body = "exec fish";
         fm.body = "cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$argv\")\"";
         fan.body = "du -hd1 \"$argv[1]\" | sort -hr";
