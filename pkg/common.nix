@@ -12,6 +12,7 @@ in
 {
   imports = [
     inputs.cypkgs.modules.ytgo-bot
+    inputs.cypkgs.modules.soft-serve
     ../mod/userconfig.nix
     ../sys/nixcommand.nix
     ../sys/home.nix
@@ -348,6 +349,12 @@ in
     ollama = {
       enable = true;
       host = "0.0.0.0";
+    };
+    soft-serve = {
+      enable = true;
+      environmentVariables = {
+        SOFT_SERVE_DATA_PATH = "~/.config/soft-serve";
+      };
     };
     ytgo-bot = {
       enable = true;
