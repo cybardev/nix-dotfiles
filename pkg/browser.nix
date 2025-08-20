@@ -150,7 +150,7 @@ in
                   ];
                 }
               ];
-              definedAliases = [ "hmp" ];
+              definedAliases = [ "hop" ];
             };
 
             wikipedia = {
@@ -183,6 +183,16 @@ in
                 }
               ];
               definedAliases = [ "yt" ];
+            };
+
+            youtube-thumbnail = {
+              name = "YouTube Thumbnail";
+              urls = [
+                {
+                  template = "https://img.youtube.com/vi/{searchTerms}/maxresdefault.jpg";
+                }
+              ];
+              definedAliases = [ "yti" ];
             };
 
             mdn = {
