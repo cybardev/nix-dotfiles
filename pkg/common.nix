@@ -349,6 +349,13 @@ in
     ollama = {
       enable = true;
       host = "0.0.0.0";
+      environmentVariables = {
+        OLLAMA_ORIGINS = lib.concatStringsSep "," [
+          "http://0.0.0.0"
+          "http://localhost"
+          "https://airi.moeru.ai"
+        ];
+      };
     };
     soft-serve = {
       enable = true;
