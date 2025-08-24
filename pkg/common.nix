@@ -12,7 +12,6 @@ in
 {
   imports = [
     inputs.cypkgs.modules.ytgo-bot
-    inputs.cypkgs.modules.soft-serve
     ../mod/userconfig.nix
     ../sys/nixcommand.nix
     ../sys/home.nix
@@ -355,12 +354,6 @@ in
           "http://localhost"
           "https://airi.moeru.ai"
         ];
-      };
-    };
-    soft-serve = {
-      enable = true;
-      environmentVariables = {
-        SOFT_SERVE_DATA_PATH = "~/.config/soft-serve";
       };
     };
     ytgo-bot = {
