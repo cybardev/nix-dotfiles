@@ -114,6 +114,7 @@ in
         lazydocker
         localstack
         tailscale
+        opencode
         babashka
         tinymist
         inkscape
