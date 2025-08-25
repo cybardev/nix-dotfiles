@@ -117,7 +117,6 @@ in
         opencode
         babashka
         tinymist
-        inkscape
         audacity
         dfu-util
         thonny
