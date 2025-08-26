@@ -11,8 +11,6 @@ let
 in
 {
   imports = [
-    inputs.cypkgs.modules.opencode
-    inputs.cypkgs.modules.ytgo-bot
     ../mod/userconfig.nix
     ../sys/nixcommand.nix
     ../sys/home.nix
@@ -23,7 +21,11 @@ in
     ./vscode.nix
     ./zed.nix
     ./cava.nix
-  ];
+  ]
+  ++ (with inputs.cypkgs.modules; [
+    opencode
+    ytgo-bot
+  ]);
 
   xdg.configFile = {
     # Custom Kitty Icon
