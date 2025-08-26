@@ -11,6 +11,7 @@ let
 in
 {
   imports = [
+    inputs.cypkgs.modules.opencode
     inputs.cypkgs.modules.ytgo-bot
     ../mod/userconfig.nix
     ../sys/nixcommand.nix
@@ -114,7 +115,6 @@ in
         lazydocker
         localstack
         tailscale
-        opencode
         babashka
         tinymist
         audacity
@@ -341,6 +341,34 @@ in
     ssh = {
       enable = true;
       addKeysToAgent = "yes";
+    };
+
+    opencode = {
+      enable = true;
+      config = {
+        "$schema" = "https://opencode.ai/config.json";
+        autoupdate = false;
+        theme = "aura";
+        instructions = [
+          "CONTRIBUTING.md"
+          "docs/guidelines.md"
+          ".cursor/rules/*.md"
+        ];
+        provider = {
+          ollama = {
+            npm = "@ai-sdk/openai-compatible";
+            name = "Ollama";
+            options = {
+              baseURL = "http://localhost:11434/v1";
+            };
+            models = {
+              "cogito:3b" = {
+                name = "Cogito 3B";
+              };
+            };
+          };
+        };
+      };
     };
   };
 
