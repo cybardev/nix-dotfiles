@@ -347,6 +347,7 @@ in
 
     opencode = {
       enable = true;
+      package = pkgs-unstable.opencode;
       config = {
         "$schema" = "https://opencode.ai/config.json";
         autoupdate = false;
