@@ -368,7 +368,23 @@ in
               "cogito:8b" = {
                 name = "Cogito";
               };
+              "cogito:3b" = {
+                name = "Cogito Mini";
+              };
             };
+          };
+        };
+        model = "ollama/cogito:8b";
+        small_model = "ollama/cogito:3b";
+        mcp = {
+          context7 = {
+            enabled = true;
+            type = "local";
+            command = [
+              "bun"
+              "x"
+              "@upstash/context7-mcp"
+            ];
           };
         };
       };
