@@ -365,8 +365,8 @@ in
               baseURL = "http://localhost:11434/v1";
             };
             models = {
-              "cogito:3b" = {
-                name = "Cogito 3B";
+              "cogito:8b" = {
+                name = "Cogito";
               };
             };
           };
