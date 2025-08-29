@@ -1,10 +1,19 @@
-{ config, ... }:
+{ config, inputs, ... }:
+let
+  tap-set = with inputs; {
+    "homebrew/homebrew-core" = homebrew-core;
+    "homebrew/homebrew-cask" = homebrew-cask;
+    "sst/homebrew-tap" = opencode-tap;
+  };
+in
 {
   nix-homebrew = {
     enable = true;
     autoMigrate = true;
     enableRosetta = true;
     user = config.userConfig.username;
+    mutableTaps = false;
+    taps = tap-set;
   };
 
   homebrew = {
@@ -14,6 +23,7 @@
       autoUpdate = true;
       upgrade = true;
     };
+    taps = builtins.attrNames tap-set;
     masApps = {
       "iMovie" = 408981434;
       "KeyNote" = 409183694;
@@ -26,6 +36,7 @@
     brews = [
       "cocoapods"
       "handbrake"
+      "opencode"
     ];
     casks = [
       "altserver"

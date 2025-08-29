@@ -26,6 +26,13 @@ in
 
   home.file.".config/karabiner".source = ../cfg/karabiner;
 
+  xdg.configFile = {
+    "opencode" = {
+      source = ../cfg/opencode;
+      recursive = true;
+    };
+  };
+
   programs = {
     zsh = {
       inherit shellAliases;

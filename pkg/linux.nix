@@ -20,6 +20,7 @@ in
     ./common.nix
     ./bspwm.nix
     ./picom.nix
+    ./opencode.nix
   ];
 
   home = {

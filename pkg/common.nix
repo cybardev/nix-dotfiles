@@ -23,7 +23,6 @@ in
     ./cava.nix
   ]
   ++ (with inputs.cypkgs.modules; [
-    opencode
     ytgo-bot
   ]);
 
@@ -158,6 +157,7 @@ in
         curl
         wget
         unar
+        bun
         fzf
         go
       ])
@@ -343,62 +343,6 @@ in
     ssh = {
       enable = true;
       addKeysToAgent = "yes";
-    };
-
-    opencode = {
-      enable = true;
-      package = pkgs-unstable.opencode;
-      config = {
-        "$schema" = "https://opencode.ai/config.json";
-        autoupdate = false;
-        theme = "aura";
-        instructions = [
-          "CONTRIBUTING.md"
-          "docs/guidelines.md"
-          ".cursor/rules/*.md"
-        ];
-        provider = {
-          ollama = {
-            npm = "@ai-sdk/openai-compatible";
-            name = "Ollama";
-            options = {
-              baseURL = "http://localhost:11434/v1";
-            };
-            models = {
-              "cogito:14b" = {
-                name = "Cogito";
-              };
-              "cogito:3b" = {
-                name = "Cogito Mini";
-              };
-            };
-          };
-        };
-        model = "ollama/cogito:14b";
-        small_model = "ollama/cogito:3b";
-        mcp = {
-          context7 = {
-            enabled = true;
-            type = "local";
-            command = [
-              "bun"
-              "x"
-              "@upstash/context7-mcp"
-            ];
-          };
-        };
-        # FIXME: uncomment when nixpkgs unstable has opencode >= 0.5.15
-        # command = {
-        #   hi = {
-        #     template = "say hi";
-        #     description = "Say hi. Confirms readiness.";
-        #   };
-        #   ctx = {
-        #     template = "$ARGUMENTS. use context7";
-        #     description = "Prompt with context7 MCP server.";
-        #   };
-        # };
-      };
     };
   };
 
