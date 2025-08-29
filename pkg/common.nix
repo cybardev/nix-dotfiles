@@ -365,7 +365,7 @@ in
               baseURL = "http://localhost:11434/v1";
             };
             models = {
-              "cogito:8b" = {
+              "cogito:14b" = {
                 name = "Cogito";
               };
               "cogito:3b" = {
@@ -374,7 +374,7 @@ in
             };
           };
         };
-        model = "ollama/cogito:8b";
+        model = "ollama/cogito:14b";
         small_model = "ollama/cogito:3b";
         mcp = {
           context7 = {
@@ -385,6 +385,16 @@ in
               "x"
               "@upstash/context7-mcp"
             ];
+          };
+        };
+        command = {
+          hi = {
+            template = "say hi";
+            description = "Say hi. Confirms readiness.";
+          };
+          ctx = {
+            template = "$ARGUMENTS. use context7";
+            description = "Prompt with context7 MCP server.";
           };
         };
       };

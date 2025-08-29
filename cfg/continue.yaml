@@ -4,7 +4,7 @@ schema: v1
 models:
   - name: Cogito
     provider: ollama
-    model: cogito:8b
+    model: cogito:14b
     roles:
       - chat
       - edit

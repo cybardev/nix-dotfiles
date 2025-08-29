@@ -1,6 +1,6 @@
 { pkgs-unstable, ... }:
 let
-  OLLAMA_MODEL = "cogito:8b";
+  OLLAMA_MODEL = "cogito:14b";
 in
 {
   programs.zed-editor = {
