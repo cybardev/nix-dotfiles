@@ -59,6 +59,38 @@
         "type": "github"
       }
     },
+    "homebrew-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756432814,
+        "narHash": "sha256-slYinI2d8Jzrz4dQNgY/HeIx36hoqa+gDxTIL2/BBBE=",
+        "owner": "homebrew",
+        "repo": "homebrew-cask",
+        "rev": "f9ef19ea89dc714e72a4c1de2b0bd8304d5b18a5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-cask",
+        "type": "github"
+      }
+    },
+    "homebrew-core": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756432803,
+        "narHash": "sha256-OMDutaGjhuj4blVzl9dBUGmYFmeKYO2AHuJJKOQcYNU=",
+        "owner": "homebrew",
+        "repo": "homebrew-core",
+        "rev": "d95a8596bdc29bc261011fff7d45b21a0eed8f9b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-core",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -147,15 +179,34 @@
         "type": "github"
       }
     },
+    "opencode-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756239803,
+        "narHash": "sha256-GDmqs9NEBLoSOiaPMDrteODsKO/sgkgKkfC+kfCJn4s=",
+        "owner": "sst",
+        "repo": "homebrew-tap",
+        "rev": "5ab1ba1c9d13c714b36ecf958012c0581b76dd4e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sst",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "cypkgs": "cypkgs",
         "home-manager": "home-manager",
+        "homebrew-cask": "homebrew-cask",
+        "homebrew-core": "homebrew-core",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
         "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "opencode-tap": "opencode-tap",
         "secrets": "secrets"
       }
     },
