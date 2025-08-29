@@ -387,16 +387,17 @@ in
             ];
           };
         };
-        command = {
-          hi = {
-            template = "say hi";
-            description = "Say hi. Confirms readiness.";
-          };
-          ctx = {
-            template = "$ARGUMENTS. use context7";
-            description = "Prompt with context7 MCP server.";
-          };
-        };
+        # FIXME: uncomment when nixpkgs unstable has opencode >= 0.5.15
+        # command = {
+        #   hi = {
+        #     template = "say hi";
+        #     description = "Say hi. Confirms readiness.";
+        #   };
+        #   ctx = {
+        #     template = "$ARGUMENTS. use context7";
+        #     description = "Prompt with context7 MCP server.";
+        #   };
+        # };
       };
     };
   };
