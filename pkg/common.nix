@@ -119,6 +119,7 @@ in
         babashka
         tinymist
         audacity
+        gdevelop
         dfu-util
         thonny
         black
