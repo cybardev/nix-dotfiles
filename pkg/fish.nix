@@ -18,7 +18,7 @@
         fm.body = "cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$argv\")\"";
         fan.body = "du -hd1 \"$argv[1]\" | sort -hr";
         unly.body = "curl -Is \"$argv[1]\" | grep ^location | cut -d \" \" -f 2";
-        etch.body = "sudo dd bs=4M if=$argv[2] of=/dev/$argv[1] status=progress oflag=sync";
+        etch.body = "sudo dd bs=4M if=$argv[2] of=/dev/r$argv[1] status=progress oflag=sync";
         mkdev.body = ''
           [[ -f .gitignore ]] && echo "\n" >> .gitignore
           cat ${../cfg/devshell/gitignore} >> .gitignore
