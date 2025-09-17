@@ -352,8 +352,9 @@ in
         DNSOverHTTPS = {
           Enabled = true;
           Fallback = false;
-          # ProviderURL = "https://dns.nextdns.io/2853cb";
-          ProviderURL = "https://family.cloudflare-dns.com/dns-query";
+          # ProviderURL = "https://dns.nextdns.io/2853cb"; # NextDNS
+          ProviderURL = "https://family.dns.mullvad.net/dns-query"; # Mullvad
+          # ProviderURL = "https://family.cloudflare-dns.com/dns-query"; # Cloudflare
           ExcludedDomains = [
             "0.0.0.0"
             "localhost"
