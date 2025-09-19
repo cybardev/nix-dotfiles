@@ -18,6 +18,7 @@ let
 in
 {
   imports = [
+    ../sys/darwin-link-apps.nix
     ./common.nix
     ./aerospace.nix
   ];
