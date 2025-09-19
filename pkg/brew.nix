@@ -63,6 +63,7 @@ in
       "signal"
       "sonic-pi"
       "steam"
+      "stremio"
       "ungoogled-chromium"
       "whisky"
       "zoom"
