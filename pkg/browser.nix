@@ -303,12 +303,15 @@ in
         DisplayBookmarksToolbar = "newtab";
         DontCheckDefaultBrowser = true;
         HardwareAcceleration = true;
-        OfferToSaveLogins = true;
+        OfferToSaveLogins = false;
+        OfferToSaveLoginsDefault = false;
         DefaultDownloadDirectory = "${homeDir}/Downloads";
         PromptForDownloadLocation = true;
         AutofillAddressEnabled = true;
         AutofillCreditCardEnabled = false;
+        PostQuantumKeyAgreementEnabled = true;
         TranslateEnabled = true;
+        SkipTermsOfUse = true;
         HttpsOnlyMode = "enabled";
         Homepage.StartPage = "previous-session";
         FirefoxHome = {
@@ -380,6 +383,8 @@ in
           "gfx.webrender.all" = true;
           "layers.acceleration.force-enabled" = true;
 
+          "privacy.globalprivacycontrol.enabled" = true;
+
           "browser.tabs.closeWindowWithLastTab" = false;
           "browser.warnOnQuitShortcut" = true;
           "browser.aboutConfig.showWarning" = false; # No warning when going to config
@@ -448,6 +453,12 @@ in
           in
           {
             "*".installation_mode = "blocked";
+
+            "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+              install_url = moz "bitwarden-password-manager";
+              installation_mode = "force_installed";
+              updates_disabled = true;
+            };
 
             "uBlock0@raymondhill.net" = {
               install_url = moz "ublock-origin";
