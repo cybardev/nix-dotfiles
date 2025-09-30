@@ -30,6 +30,9 @@ in
         copilot = false;
         edit_prediction_provider = "supermaven";
       };
+      edit_predictions = {
+        mode = "subtle";
+      };
       telemetry = {
         diagnostics = false;
         metrics = false;
