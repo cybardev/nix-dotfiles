@@ -16,11 +16,14 @@ in
       "lua"
       "mcp-server-context7"
       "nix"
+      "postgres-context-server"
       "pyrefly"
+      "sql"
       "terraform"
       "typst"
       "warp-one-dark"
       "zed-docker-compose"
+      "zed-mcp-server-supabase"
     ];
     userSettings = {
       features = {
