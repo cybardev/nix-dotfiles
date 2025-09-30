@@ -32,6 +32,7 @@ in
       "Pages" = 409201541;
       "Wavebar" = 6450398808;
       "Xcode" = 497799835;
+      "Reins" = 6739738501;
     };
     brews = [
       "cocoapods"
