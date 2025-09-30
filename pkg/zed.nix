@@ -31,6 +31,7 @@ in
         edit_prediction_provider = "supermaven";
       };
       telemetry = {
+        diagnostics = false;
         metrics = false;
       };
       theme = {
