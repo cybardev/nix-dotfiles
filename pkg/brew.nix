@@ -59,7 +59,6 @@ in
       "lunar-client"
       "obs"
       "prusaslicer"
-      "raycast"
       "shotcut"
       "signal"
       "sonic-pi"
