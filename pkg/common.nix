@@ -74,7 +74,7 @@ in
         cf = "cutefetch";
         bf = "cutefetch -m bunny";
         sf = "cutefetch -m simple";
-        tf = "cutefetch -m text";
+        nf = "cutefetch -m text";
         cd-os = "cd ${flakePath}";
 
         # editing related
@@ -92,6 +92,7 @@ in
         yup = "nix flake update --flake ${flakePath} && re-nix";
 
         # misc
+        tf = lib.getExe pkgs.opentofu;
         lg = lib.getExe pkgs.lazygit;
         ldk = lib.getExe pkgs.lazydocker;
         lck = lib.getExe pkgs.localstack;
@@ -116,6 +117,7 @@ in
         lazydocker
         localstack
         tailscale
+        opentofu
         babashka
         tinymist
         audacity
