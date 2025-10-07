@@ -41,6 +41,7 @@ in
     ];
     casks = [
       "altserver"
+      "android-studio"
       "blackhole-16ch"
       "blender"
       "docker-desktop"
