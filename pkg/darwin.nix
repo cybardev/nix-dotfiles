@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   userName = config.userConfig.username;
   nixConfigDir = config.userConfig.configDir;
@@ -25,7 +25,15 @@ in
 
   userConfig.isDarwin = true;
 
-  home.file.".config/karabiner".source = ../cfg/karabiner;
+  home = {
+    file = {
+      ".config/karabiner".source = ../cfg/karabiner;
+    };
+
+    packages = with pkgs; [
+      # utm
+    ];
+  };
 
   xdg.configFile = {
     "opencode" = {
