@@ -23,6 +23,7 @@ in
     ./cava.nix
   ]
   ++ (with inputs.cypkgs.modules; [
+    websurfx
     ytgo-bot
   ]);
 
@@ -360,6 +361,11 @@ in
           "https://airi.moeru.ai"
         ];
       };
+    };
+    websurfx = {
+      enable = true;
+      package = pkgs-unstable.websurfx;
+      configFile = ../cfg/websurfx.lua;
     };
     ytgo-bot = {
       enable = true;

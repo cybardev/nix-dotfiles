@@ -31,6 +31,22 @@ in
             amazondotcom.metaData.hidden = true;
             wikipedia.metaData.hidden = true;
 
+            websurfx = {
+              name = "Websurfx";
+              urls = [
+                {
+                  template = "http://0.0.0.0:8080/search";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              definedAliases = [ "wx" ];
+            };
+
             startpage = {
               name = "Startpage";
               urls = [
