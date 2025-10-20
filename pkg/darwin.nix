@@ -35,13 +35,6 @@ in
     ];
   };
 
-  xdg.configFile = {
-    "opencode" = {
-      source = ../cfg/opencode;
-      recursive = true;
-    };
-  };
-
   programs = {
     zsh = {
       inherit shellAliases;

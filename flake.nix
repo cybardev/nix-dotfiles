@@ -28,11 +28,6 @@
       flake = false;
     };
 
-    opencode-tap = {
-      url = "github:sst/homebrew-tap";
-      flake = false;
-    };
-
     cypkgs = {
       url = "github:cybardev/nix-channel?ref=main";
       inputs.nixpkgs.follows = "nixpkgs-unstable";

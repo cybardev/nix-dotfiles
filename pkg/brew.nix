@@ -3,7 +3,6 @@ let
   tap-set = with inputs; {
     "homebrew/homebrew-core" = homebrew-core;
     "homebrew/homebrew-cask" = homebrew-cask;
-    "sst/homebrew-tap" = opencode-tap;
   };
 in
 {
@@ -25,51 +24,51 @@ in
     };
     taps = builtins.attrNames tap-set;
     masApps = {
-      "iMovie" = 408981434;
+      # "iMovie" = 408981434;
       "KeyNote" = 409183694;
       "MuteKey" = 1509590766;
       "OwlFiles" = 510282524;
-      "Pages" = 409201541;
-      "Wavebar" = 6450398808;
+      # "Pages" = 409201541;
+      # "Wavebar" = 6450398808;
       "Xcode" = 497799835;
       "Reins" = 6739738501;
     };
     brews = [
       "cocoapods"
-      "handbrake"
-      "opencode"
+      # "handbrake"
     ];
     casks = [
       "altserver"
-      "android-studio"
+      # "android-studio"
       "blackhole-16ch"
-      "blender"
+      # "blender"
       "discord"
       "docker-desktop"
-      "flutter"
+      # "flutter"
       "font-caskaydia-cove-nerd-font"
       "font-fira-code-nerd-font"
       "font-jetbrains-mono-nerd-font"
       "font-open-dyslexic-nerd-font"
       "gb-studio"
-      "gimp"
+      # "gimp"
       "hiddenbar"
       "karabiner-elements"
       "katrain"
       "keyclu"
+      # "lm-studio"
       "logseq"
       "lulu"
       "lunar-client"
-      "obs"
-      "prusaslicer"
-      "shotcut"
+      # "obs"
+      # "prusaslicer"
+      # "shotcut"
       "signal"
       "sonic-pi"
       "steam"
       "stremio"
-      "ungoogled-chromium"
+      # "ungoogled-chromium"
       "whisky"
-      "zoom"
+      # "zoom"
     ];
   };
 }

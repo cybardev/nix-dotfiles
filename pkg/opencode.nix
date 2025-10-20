@@ -37,7 +37,7 @@
           };
         };
       };
-      model = "ollama/cogito:14b";
+      model = "ollama/cogito:3b";
       small_model = "ollama/cogito:3b";
       mcp = {
         context7 = {
@@ -50,18 +50,17 @@
           ];
         };
       };
-      # FIXME: uncomment when nixpkgs unstable has opencode >= 0.5.15
-      # command = {
-      #   hi = {
-      #     template = "echo hi";
-      #     description = "Say hi. Confirms readiness.";
-      #     agent = "build";
-      #   };
-      #   ctx = {
-      #     template = "$ARGUMENTS. use context7";
-      #     description = "Prompt with context7 MCP server.";
-      #   };
-      # };
+      command = {
+        hi = {
+          template = "echo hi";
+          description = "Say hi. Confirms readiness.";
+          agent = "plan";
+        };
+        ctx = {
+          template = "$ARGUMENTS. use context7";
+          description = "Prompt with context7 MCP server.";
+        };
+      };
     };
   };
 }

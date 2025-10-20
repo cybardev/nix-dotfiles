@@ -18,6 +18,7 @@ in
     ./zsh.nix
     ./fish.nix
     ./helix.nix
+    ./opencode.nix
     ./vscode.nix
     ./zed.nix
     ./cava.nix
@@ -112,21 +113,21 @@ in
       ])
       ++ (with pkgs; [
         tree-sitter-grammars.tree-sitter-dart
-        gnome-mahjongg
+        # gnome-mahjongg
         dotnet-sdk_9
         clojure-lsp
         lazydocker
-        localstack
-        tailscale
+        # localstack
+        # tailscale
         opentofu
         babashka
         tinymist
-        audacity
-        gdevelop
+        # audacity
+        # gdevelop
         dfu-util
-        thonny
+        # thonny
         black
-        bruno
+        # bruno
         gnugo
         gogui
         gimp
