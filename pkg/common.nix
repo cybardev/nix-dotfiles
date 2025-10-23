@@ -113,6 +113,7 @@ in
       ])
       ++ (with pkgs; [
         tree-sitter-grammars.tree-sitter-dart
+        typescript-language-server
         # gnome-mahjongg
         dotnet-sdk_9
         clojure-lsp

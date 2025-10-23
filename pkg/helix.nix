@@ -52,6 +52,16 @@
             args = [ "-" ];
           };
         }
+        {
+          name = "typescript";
+          formatter = {
+            command = "prettier";
+            args = [
+              "--parser"
+              "typescript"
+            ];
+          };
+        }
       ];
     };
   };
