@@ -110,10 +110,12 @@ in
       ])
       ++ (with pkgs-unstable; [
         pyrefly
+        pgformatter
+        postgres-lsp
+        typescript-language-server
       ])
       ++ (with pkgs; [
         tree-sitter-grammars.tree-sitter-dart
-        typescript-language-server
         # gnome-mahjongg
         dotnet-sdk_9
         clojure-lsp

@@ -32,6 +32,10 @@
             formatterMode = "typstyle";
           };
         };
+        pgtools = {
+          command = "postgrestools";
+          args = [ "lsp-proxy" ];
+        };
       };
       language = [
         {
@@ -60,6 +64,36 @@
               "--parser"
               "typescript"
             ];
+          };
+        }
+        {
+          name = "sql";
+          language-servers = [
+            "pgtools"
+          ];
+          formatter = {
+            command = "pg_format";
+            args = [
+              # "--wrap-limit"
+              # "80"
+              "--spaces"
+              "2"
+              "--keyword-case"
+              "1"
+              "--function-case"
+              "1"
+              "--type-case"
+              "1"
+              "--format-type"
+              "--comma-break"
+              "--keep-newline"
+              "--no-extra-line"
+              "--no-space-function"
+            ];
+          };
+          indent = {
+            tab-width = 2;
+            unit = "  ";
           };
         }
       ];
