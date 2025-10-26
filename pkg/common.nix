@@ -318,6 +318,16 @@ in
         gpg.format = "ssh";
         user.signingKey = "~/.ssh/id_ed25519.pub";
         commit.gpgSign = true;
+        merge.conflictStyle = "zdiff3";
+      };
+      delta = {
+        enable = true;
+        options = {
+          dark = true;
+          line-numbers = true;
+          syntax-theme = "kanagawa-dragon";
+          hyperlinks = true;
+        };
       };
     };
 
@@ -325,6 +335,11 @@ in
       enable = true;
       settings = {
         promptToReturnFromSubprocess = false;
+        git = {
+          paging = {
+            pager = "${lib.getExe pkgs.delta} --paging=never --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+          };
+        };
         gui = {
           theme = {
             activeBorderColor = [
