@@ -31,7 +31,7 @@ in
       # "Pages" = 409201541;
       # "Wavebar" = 6450398808;
       "Xcode" = 497799835;
-      "Reins" = 6739738501;
+      # "Reins" = 6739738501;
     };
     brews = [
       "cocoapods"
@@ -55,7 +55,7 @@ in
       "karabiner-elements"
       "katrain"
       "keyclu"
-      # "lm-studio"
+      "lm-studio"
       "logseq"
       "lulu"
       "lunar-client"

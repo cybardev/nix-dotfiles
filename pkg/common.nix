@@ -371,7 +371,7 @@ in
 
   services = {
     ollama = {
-      enable = true;
+      enable = false;
       host = "0.0.0.0";
       environmentVariables = {
         OLLAMA_ORIGINS = lib.concatStringsSep "," [

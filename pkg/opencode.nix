@@ -20,25 +20,32 @@
         "docs/guidelines.md"
         ".cursor/rules/*.md"
       ];
+      disabled_providers = [
+        # "github-copilot"
+        "opencode"
+        "ollama"
+      ];
       provider = {
-        ollama = {
+        lmstudio = {
           npm = "@ai-sdk/openai-compatible";
-          name = "Ollama";
+          name = "LM Studio";
           options = {
-            baseURL = "http://localhost:11434/v1";
+            baseURL = "http://localhost:1234/v1";
           };
           models = {
-            "cogito:14b" = {
-              name = "Cogito";
-            };
-            "cogito:3b" = {
+            "deepcogito/cogito:3b" = {
               name = "Cogito Mini";
+              limit = {
+                context = 131072;
+                output = 32768;
+              };
             };
           };
         };
       };
-      model = "ollama/cogito:3b";
-      small_model = "ollama/cogito:3b";
+      # model = "github-copilot/gpt-5-mini";
+      model = "lmstudio/deepcogito/cogito:3b";
+      # small_model = "lmstudio/deepcogito/cogito:3b";
       mcp = {
         context7 = {
           enabled = true;
