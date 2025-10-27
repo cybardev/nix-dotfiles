@@ -383,7 +383,7 @@ in
     };
     websurfx = {
       enable = true;
-      package = pkgs-unstable.websurfx;
+      package = pkgs-unstable.cy.websurfx;
       configFile = ../cfg/websurfx.lua;
     };
     ytgo-bot = {

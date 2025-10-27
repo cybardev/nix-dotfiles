@@ -8,10 +8,10 @@ colorscheme = "catppuccin-mocha"
 animation = "simple-frosted-glow"
 
 upstream_search_engines = {
-	DuckDuckGo = true,
+	DuckDuckGo = false,
 	Searx = false,
 	Brave = false,
-	Startpage = false,
+	Startpage = true,
 	LibreX = false,
 	Mojeek = false,
 	Bing = false,
