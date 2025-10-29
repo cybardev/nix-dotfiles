@@ -26,6 +26,7 @@ in
   ++ (with inputs.cypkgs.modules; [
     websurfx
     ytgo-bot
+    tenere
   ]);
 
   xdg.configFile = {
@@ -359,6 +360,19 @@ in
           authorColors = {
             "*" = "#7fb4ca";
           };
+        };
+      };
+    };
+
+    tenere = {
+      enable = true;
+      package = pkgs-unstable.tenere;
+      config = {
+        llm = "chatgpt";
+        chatgpt = {
+          model = "deepcogito-cogito-v1-preview-llama-3b";
+          url = "http://localhost:1234/v1/chat/completions";
+          openai_api_key = "";
         };
       };
     };
