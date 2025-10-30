@@ -33,7 +33,7 @@
             baseURL = "http://localhost:1234/v1";
           };
           models = {
-            "deepcogito/cogito:3b" = {
+            "deepcogito-cogito-v1-preview-llama-3b" = {
               name = "Cogito Mini";
               limit = {
                 context = 131072;
@@ -44,8 +44,8 @@
         };
       };
       # model = "github-copilot/gpt-5-mini";
-      model = "lmstudio/deepcogito/cogito:3b";
-      # small_model = "lmstudio/deepcogito/cogito:3b";
+      model = "lmstudio/deepcogito-cogito-v1-preview-llama-3b";
+      # small_model = "lmstudio/deepcogito-cogito-v1-preview-llama-3b";
       mcp = {
         context7 = {
           enabled = true;
