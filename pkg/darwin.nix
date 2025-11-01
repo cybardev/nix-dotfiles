@@ -31,6 +31,7 @@ in
     };
 
     packages = with pkgs; [
+      raycast
       # utm
     ];
   };
