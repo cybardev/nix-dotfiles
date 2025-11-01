@@ -17,6 +17,9 @@
         ":" = "collapse_selection";
         ";" = "command_mode";
         "Meta-f" = ":format";
+        "Meta-s" = ":write";
+        "Meta-x" = ":write-quit";
+        "Meta-z" = ":quit";
       };
     };
     languages = {

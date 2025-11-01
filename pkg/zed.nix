@@ -1,7 +1,4 @@
 { pkgs-unstable, ... }:
-let
-  OLLAMA_MODEL = "cogito:14b";
-in
 {
   programs.zed-editor = {
     enable = true;
@@ -13,6 +10,7 @@ in
       "dockerfile"
       "flutter-snippets"
       "git-firefly"
+      "kanagawa-themes"
       "lua"
       "mcp-server-context7"
       "nix"
@@ -26,21 +24,21 @@ in
       "zed-mcp-server-supabase"
     ];
     userSettings = {
+      auto_update = false;
+      telemetry = {
+        diagnostics = false;
+        metrics = false;
+      };
       features = {
-        copilot = false;
         edit_prediction_provider = "supermaven";
       };
       edit_predictions = {
         mode = "subtle";
       };
-      telemetry = {
-        diagnostics = false;
-        metrics = false;
-      };
       theme = {
         mode = "dark";
-        dark = "Warp One Dark";
-        light = "One Light";
+        dark = "Kanagawa Dragon";
+        light = "Kanagawa Lotus";
       };
       buffer_font_family = "CaskaydiaCove Nerd Font";
       buffer_font_size = 13;
@@ -110,25 +108,52 @@ in
       };
 
       language_models = {
+        lmstudio = {
+          api_url = "http://localhost:1234/v1";
+          available_models = [
+            {
+              display_name = "Cogito Mini";
+              name = "deepcogito-cogito-v1-preview-llama-3b";
+              max_tokens = 131072;
+              supports_tool_calls = true;
+              supports_images = false;
+            }
+          ];
+        };
         ollama = {
           api_url = "http://localhost:11434";
           available_models = [
             {
-              name = OLLAMA_MODEL;
-              supports_tools = true;
+              display_name = "Cogito Mini";
+              name = "cogito:3b";
+              max_tokens = 131072;
               keep_alive = "5m";
+              supports_tools = true;
+              supports_images = false;
             }
           ];
         };
       };
 
+      context_servers = {
+        mcp-server-context7 = {
+          enabled = true;
+          source = "extension";
+          settings = { };
+        };
+        postgres-context-server = {
+          enabled = true;
+          source = "extension";
+          settings = { };
+        };
+      };
+
       agent = {
         enabled = true;
-        version = "2";
         enable_feedback = false;
         default_model = {
-          provider = "ollama";
-          model = OLLAMA_MODEL;
+          provider = "lmstudio";
+          model = "deepcogito-cogito-v1-preview-llama-3b";
         };
         default_profile = "create";
         profiles = {
@@ -142,13 +167,14 @@ in
               diagnostics = true;
               edit_file = true;
               fetch = true;
+              find_path = true;
+              grep = true;
               list_directory = true;
               move_path = true;
               now = true;
-              find_path = true;
-              read_file = true;
               open = true;
-              grep = true;
+              project_notifications = true;
+              read_file = true;
               terminal = true;
               thinking = true;
               web_search = true;
