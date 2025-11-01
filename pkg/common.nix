@@ -370,7 +370,7 @@ in
       config = {
         llm = "chatgpt";
         chatgpt = {
-          model = "deepcogito-cogito-v1-preview-llama-3b";
+          model = "neuraldaredevil-8b-abliterated";
           url = "http://localhost:1234/v1/chat/completions";
           openai_api_key = "";
         };
