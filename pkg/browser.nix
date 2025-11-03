@@ -20,8 +20,8 @@ in
         };
         search = {
           force = true;
-          default = "websurfx";
-          privateDefault = "websurfx";
+          default = "startpage";
+          privateDefault = "startpage";
           engines = {
             # Disable "search with" icons
             ddg.metaData.hidden = true;
