@@ -42,6 +42,7 @@ in
       # "android-studio"
       "blackhole-16ch"
       # "blender"
+      "coderabbit"
       "discord"
       "docker-desktop"
       # "flutter"

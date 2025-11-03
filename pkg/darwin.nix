@@ -11,6 +11,7 @@ let
     re-nix = "nh darwin switch";
     icloud = "cd ~/Library/Mobile\\ Documents/com~apple~CloudDocs";
     disclr = "ncdu /System/Volumes/Data/Users/${userName}";
+    cr = "coderabbit";
 
     flux = "/Applications/Pokemon\\ Flux/Flux.app/Contents/MacOS/Z-universal";
     flux-up = "/Applications/Pokemon\\ Flux/Flux\\ Patcher.app/Contents/MacOS/Flux\\ Patcher";
