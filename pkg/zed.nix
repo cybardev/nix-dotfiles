@@ -183,5 +183,14 @@
         };
       };
     };
+    userKeymaps = [
+      {
+        context = "Workspace";
+        bindings = {
+          "secondary-b" = "workspace::ToggleRightDock";
+          "secondary-alt-b" = "workspace::ToggleLeftDock";
+        };
+      }
+    ];
   };
 }
