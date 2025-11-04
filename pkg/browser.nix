@@ -20,8 +20,8 @@ in
         };
         search = {
           force = true;
-          default = "startpage";
-          privateDefault = "startpage";
+          default = "searxng";
+          privateDefault = "searxng";
           engines = {
             # Disable "search with" icons
             ddg.metaData.hidden = true;
@@ -31,8 +31,8 @@ in
             amazondotcom.metaData.hidden = true;
             wikipedia.metaData.hidden = true;
 
-            websurfx = {
-              name = "Websurfx";
+            searxng = {
+              name = "SearXNG";
               urls = [
                 {
                   template = "http://0.0.0.0:8080/search";
@@ -43,8 +43,29 @@ in
                     }
                   ];
                 }
+                # {
+                #   template = "http://0.0.0.0:8080/autocompleter";
+                #   params = [
+                #     {
+                #       name = "q";
+                #       value = "{searchTerms}";
+                #     }
+                #   ];
+                #   type = "application/x-suggestions+json";
+                # }
+                # suggestions fallback
+                {
+                  template = "https://www.startpage.com/osuggestions";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                  type = "application/x-suggestions+json";
+                }
               ];
-              definedAliases = [ "wx" ];
+              definedAliases = [ "sx" ];
             };
 
             startpage = {

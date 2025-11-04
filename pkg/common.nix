@@ -24,7 +24,7 @@ in
     ./cava.nix
   ]
   ++ (with inputs.cypkgs.modules; [
-    websurfx
+    searxng
     ytgo-bot
     tenere
   ]);
@@ -384,6 +384,47 @@ in
   };
 
   services = {
+    searxng = {
+      enable = true;
+      # FIXME: stable searxng fails to build
+      package = pkgs-unstable.searxng;
+      settings = {
+        use_default_settings = {
+          engines = {
+            keep_only = [
+              "brave"
+              "duckduckgo"
+              "google"
+              "qwant"
+              "startpage"
+              "wikipedia"
+            ];
+          };
+        };
+        general = {
+          debug = false;
+          enable_metrics = false;
+        };
+        ui = {
+          theme_args.simple_style = "auto";
+          url_formatting = "full";
+          infinite_scroll = true;
+          default_locale = "en";
+          hotkeys = "vim";
+        };
+        search = {
+          safe_search = 0;
+          default_lang = "en-CA";
+          autocomplete = "duckduckgo";
+        };
+        server = {
+          port = 8080;
+          bind_address = "0.0.0.0";
+          image_proxy = true;
+          method = "GET";
+        };
+      };
+    };
     ollama = {
       enable = false;
       host = "0.0.0.0";
@@ -394,11 +435,6 @@ in
           "https://airi.moeru.ai"
         ];
       };
-    };
-    websurfx = {
-      enable = true;
-      package = pkgs-unstable.cy.websurfx;
-      configFile = ../cfg/websurfx.lua;
     };
     ytgo-bot = {
       enable = true;

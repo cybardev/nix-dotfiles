@@ -24,11 +24,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761768429,
-        "narHash": "sha256-qJTWI8s+nD+iroHnbHerl0i/aRX1KZCkiQ1Iwy1jrq0=",
+        "lastModified": 1762254746,
+        "narHash": "sha256-S8A5evZYVL7jrTbKarwQy4spc2x9VBAOsx8glHAUYy4=",
         "owner": "cybardev",
         "repo": "nix-channel",
-        "rev": "5b533d05a98bdfcc4449f661f1f1542d7246e047",
+        "rev": "48ec69afc6fdb422297e4cf1258f13590a4e4547",
         "type": "github"
       },
       "original": {
