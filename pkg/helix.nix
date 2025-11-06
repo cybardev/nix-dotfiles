@@ -40,6 +40,10 @@
       };
       language = [
         {
+          name = "nix";
+          language-servers = [ "nixd" ];
+        }
+        {
           name = "python";
           language-servers = [
             "pyrefly"
