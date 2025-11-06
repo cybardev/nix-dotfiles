@@ -67,7 +67,7 @@ in
       "sonic-pi"
       "steam"
       "stremio"
-      # "ungoogled-chromium"
+      "ungoogled-chromium"
       "whisky"
       # "zoom"
     ];

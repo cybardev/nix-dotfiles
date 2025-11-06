@@ -107,33 +107,20 @@
         };
       };
 
-      language_models = {
-        lmstudio = {
-          api_url = "http://localhost:1234/v1";
-          available_models = [
-            {
-              display_name = "Cogito Mini";
-              name = "deepcogito-cogito-v1-preview-llama-3b";
-              max_tokens = 131072;
-              supports_tool_calls = true;
-              supports_images = false;
-            }
-          ];
-        };
-        ollama = {
-          api_url = "http://localhost:11434";
-          available_models = [
-            {
-              display_name = "Cogito Mini";
-              name = "cogito:3b";
-              max_tokens = 131072;
-              keep_alive = "5m";
-              supports_tools = true;
-              supports_images = false;
-            }
-          ];
-        };
-      };
+      # language_models = {
+      #   lmstudio = {
+      #     api_url = "http://localhost:1234/v1";
+      #     available_models = [
+      #       {
+      #         display_name = "Cogito Mini";
+      #         name = "deepcogito-cogito-v1-preview-llama-3b";
+      #         max_tokens = 131072;
+      #         supports_tool_calls = true;
+      #         supports_images = false;
+      #       }
+      #     ];
+      #   };
+      # };
 
       context_servers = {
         mcp-server-context7 = {
@@ -142,9 +129,11 @@
           settings = { };
         };
         postgres-context-server = {
-          enabled = true;
+          enabled = false;
           source = "extension";
-          settings = { };
+          settings = {
+            database_url = "http://localhost:54322";
+          };
         };
       };
 
@@ -155,7 +144,7 @@
           provider = "lmstudio";
           model = "deepcogito-cogito-v1-preview-llama-3b";
         };
-        default_profile = "create";
+        default_profile = "minimal";
         profiles = {
           create = {
             name = "Create";
@@ -189,6 +178,7 @@
         bindings = {
           "secondary-b" = "workspace::ToggleRightDock";
           "secondary-alt-b" = "workspace::ToggleLeftDock";
+          "secondary-`" = "terminal_panel::Toggle";
         };
       }
     ];
