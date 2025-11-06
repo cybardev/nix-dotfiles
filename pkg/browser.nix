@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }:
@@ -16,7 +15,11 @@ in
         settings = {
           "sidebar.verticalTabs" = true;
           "sidebar.visibility" = "expand-on-hover";
-          "sidebar.main.tools" = "history,bookmarks";
+          "sidebar.main.tools" = builtins.concatStringsSep "," [
+            "bookmarks"
+            "history"
+            "aichat"
+          ];
         };
         search = {
           force = true;
@@ -393,19 +396,14 @@ in
           Enabled = true;
           Fallback = false;
           # ProviderURL = "https://dns.nextdns.io/2853cb"; # NextDNS
-          ProviderURL = "https://family.dns.mullvad.net/dns-query"; # Mullvad
+          ProviderURL = "https://base.dns.mullvad.net/dns-query"; # Mullvad
           # ProviderURL = "https://family.cloudflare-dns.com/dns-query"; # Cloudflare
           ExcludedDomains = [
             "0.0.0.0"
             "localhost"
           ];
         };
-        EnableTrackingProtection = {
-          Value = true;
-          Cryptomining = true;
-          EmailTracking = true;
-          Fingerprinting = true;
-        };
+        EnableTrackingProtection.Category = "standard"; # required by adnauseam
         SanitizeOnShutdown = {
           Cache = true;
           Cookies = false;
@@ -440,11 +438,13 @@ in
           # top bar
           "browser.uiCustomization.state" = builtins.toJSON {
             placements = {
-              widget-overflow-fixed-list = [ "sidebar-button" ];
+              widget-overflow-fixed-list = [
+                "developer-button"
+                "screenshot-button"
+              ];
               unified-extensions-area = [
-                "sponsorblocker_ajay_app-browser-action"
-                "_762f9885-5a13-4abd-9c77-433dcd38b8fd_-browser-action"
                 "enhancerforyoutube_maximerf_addons_mozilla_org-browser-action"
+                "sponsorblocker_ajay_app-browser-action"
               ];
               nav-bar = [
                 "alltabs-button"
@@ -454,22 +454,12 @@ in
                 "stop-reload-button"
                 "urlbar-container"
                 "_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action"
-                "ublock0_raymondhill_net-browser-action"
+                "adnauseam_rednoise_org-browser-action"
                 "unified-extensions-button"
               ];
-              TabsToolbar = [ ];
               vertical-tabs = [ "tabbrowser-tabs" ];
               PersonalToolbar = [ "personal-bookmarks" ];
             };
-            seen = [
-              "developer-button"
-              "screenshot-button"
-              "_762f9885-5a13-4abd-9c77-433dcd38b8fd_-browser-action"
-              "ublock0_raymondhill_net-browser-action"
-              "_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action"
-              "enhancerforyoutube_maximerf_addons_mozilla_org-browser-action"
-              "sponsorblocker_ajay_app-browser-action"
-            ];
             dirtyAreaCache = [
               "nav-bar"
               "TabsToolbar"
@@ -491,17 +481,11 @@ in
           {
             "*".installation_mode = "blocked";
 
-            "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-              install_url = moz "bitwarden-password-manager";
-              installation_mode = "force_installed";
-              updates_disabled = true;
-            };
-
-            "uBlock0@raymondhill.net" = {
-              install_url = moz "ublock-origin";
-              installation_mode = "force_installed";
-              updates_disabled = true;
-            };
+            # "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+            #   install_url = moz "bitwarden-password-manager";
+            #   installation_mode = "force_installed";
+            #   updates_disabled = true;
+            # };
 
             "{73a6fe31-595d-460b-a920-fcc0f8843232}" = {
               install_url = moz "noscript";
@@ -509,8 +493,8 @@ in
               updates_disabled = true;
             };
 
-            "sponsorBlocker@ajay.app" = {
-              install_url = moz "sponsorblock";
+            "adnauseam@rednoise.org" = {
+              install_url = moz "adnauseam";
               installation_mode = "force_installed";
               updates_disabled = true;
             };
@@ -521,47 +505,10 @@ in
               updates_disabled = true;
             };
 
-            "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" = {
-              install_url = moz "return-youtube-dislikes";
+            "sponsorBlocker@ajay.app" = {
+              install_url = moz "sponsorblock";
               installation_mode = "force_installed";
               updates_disabled = true;
-            };
-
-            "3rdparty".Extensions = {
-              "uBlock0@raymondhill.net".adminSettings = {
-                userSettings = rec {
-                  uiTheme = "dark";
-                  uiAccentCustom = true;
-                  uiAccentCustom0 = "#8300ff";
-                  cloudStorageEnabled = lib.mkForce false;
-
-                  importedLists = [
-                    "https:#filters.adtidy.org/extension/ublock/filters/3.txt"
-                    "https:#github.com/DandelionSprout/adfilt/raw/master/LegitimateURLShortener.txt"
-                  ];
-
-                  externalLists = lib.concatStringsSep "\n" importedLists;
-                };
-
-                selectedFilterLists = [
-                  "CZE-0"
-                  "adguard-generic"
-                  "adguard-annoyance"
-                  "adguard-social"
-                  "adguard-spyware-url"
-                  "easylist"
-                  "easyprivacy"
-                  "https:#github.com/DandelionSprout/adfilt/raw/master/LegitimateURLShortener.txt"
-                  "plowe-0"
-                  "ublock-abuse"
-                  "ublock-badware"
-                  "ublock-filters"
-                  "ublock-privacy"
-                  "ublock-quick-fixes"
-                  "ublock-unbreak"
-                  "urlhaus-1"
-                ];
-              };
             };
           };
       };
@@ -574,10 +521,10 @@ in
         en_GB
       ];
       extensions = [
-        "dmghijelimhndkbmpgbldicpogfkceaj" # dark mode
+        # "nngceckbapebfimnlniiiahkandclblb" # bitwarden
+        "doojmbjmlfjjnbmnoijecmcbfeoakpjm" # noscript
         "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock origin lite
         "ponfpcnoihfmfllpaingbgckeeldkhle" # enhancer for youtube
-        "gebbhagfogifgggkldgodflihgfeippi" # return youtube dislike
         "mnjggcdmjocbbbhaepdhchncahnbgone" # sponsorblock for youtube
       ];
       commandLineArgs = [
