@@ -50,6 +50,7 @@ in
         ${brewInit "fish"}
       '';
     };
+    kitty.settings.background_blur = 4;
 
     cava.settings.input = {
       method = "portaudio";
