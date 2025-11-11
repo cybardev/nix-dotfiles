@@ -30,7 +30,7 @@
         metrics = false;
       };
       features = {
-        edit_prediction_provider = "supermaven";
+        edit_prediction_provider = "none";
       };
       edit_predictions = {
         mode = "subtle";
@@ -137,6 +137,12 @@
         };
       };
 
+      agent_servers = {
+        opencode = {
+          command = "opencode";
+          args = [ "acp" ];
+        };
+      };
       agent = {
         enabled = true;
         enable_feedback = false;
@@ -176,9 +182,13 @@
       {
         context = "Workspace";
         bindings = {
+          "secondary-`" = "terminal_panel::Toggle";
           "secondary-b" = "workspace::ToggleRightDock";
           "secondary-alt-b" = "workspace::ToggleLeftDock";
-          "secondary-`" = "terminal_panel::Toggle";
+          # "secondary-alt-o" = [
+          #   "agent::NewExternalAgentThread"
+          #   { agent = "opencode"; }
+          # ];
         };
       }
     ];

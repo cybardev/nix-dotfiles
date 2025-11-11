@@ -56,6 +56,7 @@ in
       "karabiner-elements"
       "katrain"
       "keyclu"
+      # "krita"
       "lm-studio"
       "logseq"
       "lulu"

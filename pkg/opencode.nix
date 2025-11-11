@@ -43,8 +43,8 @@
           };
         };
       };
-      # model = "github-copilot/gpt-5-mini";
-      model = "lmstudio/deepcogito-cogito-v1-preview-llama-3b";
+      model = "github-copilot/gpt-5-mini";
+      # model = "lmstudio/deepcogito-cogito-v1-preview-llama-3b";
       # small_model = "lmstudio/deepcogito-cogito-v1-preview-llama-3b";
       mcp = {
         context7 = {

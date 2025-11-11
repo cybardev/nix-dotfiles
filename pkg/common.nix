@@ -112,7 +112,7 @@ in
       ++ (with pkgs-unstable; [
         pyrefly
         pgformatter
-        postgres-lsp
+        postgres-language-server
         typescript-language-server
       ])
       ++ (with pkgs; [
@@ -248,7 +248,7 @@ in
       enable = true;
       options = [
         "--cmd"
-        "cd"
+        "d"
       ];
     };
 
@@ -365,7 +365,7 @@ in
     };
 
     tenere = {
-      enable = true;
+      enable = false;
       package = pkgs-unstable.tenere;
       config = {
         llm = "chatgpt";
@@ -429,6 +429,7 @@ in
       enable = false;
       host = "0.0.0.0";
       environmentVariables = {
+        OLLAMA_CONTEXT_LENGTH = 131072;
         OLLAMA_ORIGINS = lib.concatStringsSep "," [
           "http://0.0.0.0"
           "http://localhost"
