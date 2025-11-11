@@ -30,7 +30,7 @@
         metrics = false;
       };
       features = {
-        edit_prediction_provider = "supermaven";
+        edit_prediction_provider = "none";
       };
       edit_predictions = {
         mode = "subtle";
@@ -44,6 +44,7 @@
       buffer_font_size = 13;
 
       vim_mode = true;
+      helix_mode = true;
       cursor_blink = false;
       vim = {
         toggle_relative_line_numbers = true;
@@ -112,8 +113,8 @@
       #     api_url = "http://localhost:1234/v1";
       #     available_models = [
       #       {
-      #         display_name = "Cogito Mini";
-      #         name = "deepcogito-cogito-v1-preview-llama-3b";
+      #         display_name = "IBM Granite Tiny";
+      #         name = "granite-4.0-h-tiny-mlx";
       #         max_tokens = 131072;
       #         supports_tool_calls = true;
       #         supports_images = false;
@@ -137,12 +138,18 @@
         };
       };
 
+      agent_servers = {
+        opencode = {
+          command = "opencode";
+          args = [ "acp" ];
+        };
+      };
       agent = {
         enabled = true;
         enable_feedback = false;
         default_model = {
           provider = "lmstudio";
-          model = "deepcogito-cogito-v1-preview-llama-3b";
+          model = "granite-4.0-h-tiny-mlx";
         };
         default_profile = "minimal";
         profiles = {
@@ -176,9 +183,13 @@
       {
         context = "Workspace";
         bindings = {
+          "secondary-`" = "terminal_panel::Toggle";
           "secondary-b" = "workspace::ToggleRightDock";
           "secondary-alt-b" = "workspace::ToggleLeftDock";
-          "secondary-`" = "terminal_panel::Toggle";
+          # "secondary-alt-o" = [
+          #   "agent::NewExternalAgentThread"
+          #   { agent = "opencode"; }
+          # ];
         };
       }
     ];
