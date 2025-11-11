@@ -33,8 +33,8 @@
             baseURL = "http://localhost:1234/v1";
           };
           models = {
-            "deepcogito-cogito-v1-preview-llama-3b" = {
-              name = "Cogito Mini";
+            "granite-4.0-h-tiny-mlx" = {
+              name = "IBM Granite Tiny";
               limit = {
                 context = 131072;
                 output = 32768;
@@ -43,9 +43,9 @@
           };
         };
       };
-      # model = "github-copilot/gpt-5-mini";
-      model = "lmstudio/deepcogito-cogito-v1-preview-llama-3b";
-      # small_model = "lmstudio/deepcogito-cogito-v1-preview-llama-3b";
+      model = "github-copilot/gpt-5-mini";
+      # model = "lmstudio/granite-4.0-h-tiny-mlx";
+      # small_model = "lmstudio/granite-4.0-h-tiny-mlx";
       mcp = {
         context7 = {
           enabled = true;

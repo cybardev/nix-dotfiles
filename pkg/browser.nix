@@ -38,7 +38,7 @@ in
               name = "SearXNG";
               urls = [
                 {
-                  template = "http://0.0.0.0:8080/search";
+                  template = "http://localhost:8080/search";
                   params = [
                     {
                       name = "q";
@@ -46,19 +46,8 @@ in
                     }
                   ];
                 }
-                # {
-                #   template = "http://0.0.0.0:8080/autocompleter";
-                #   params = [
-                #     {
-                #       name = "q";
-                #       value = "{searchTerms}";
-                #     }
-                #   ];
-                #   type = "application/x-suggestions+json";
-                # }
-                # suggestions fallback
                 {
-                  template = "https://www.startpage.com/osuggestions";
+                  template = "http://localhost:8080/autocompleter";
                   params = [
                     {
                       name = "q";
@@ -67,6 +56,17 @@ in
                   ];
                   type = "application/x-suggestions+json";
                 }
+                # suggestions fallback
+                # {
+                #   template = "https://www.startpage.com/osuggestions";
+                #   params = [
+                #     {
+                #       name = "q";
+                #       value = "{searchTerms}";
+                #     }
+                #   ];
+                #   type = "application/x-suggestions+json";
+                # }
               ];
               definedAliases = [ "sx" ];
             };

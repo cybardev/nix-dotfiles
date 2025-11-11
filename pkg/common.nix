@@ -68,6 +68,7 @@ in
         cat = "bat -pp";
         icat = "kitten icat";
         cssh = "kitten ssh";
+        top = "btm --basic";
         ls = "eza -1 --icons=never";
         ll = "eza -1l";
         lessr = "less -R";
@@ -78,11 +79,10 @@ in
         bf = "cutefetch -m bunny";
         sf = "cutefetch -m simple";
         nf = "cutefetch -m text";
-        cd-os = "cd ${flakePath}";
 
         # editing related
-        edit = "hx";
-        edit-os = "edit ${flakePath}/flake.nix";
+        e = "hx";
+        eos = "e ${flakePath}";
 
         # reloading configs
         re-hm = "nh home switch";
@@ -112,7 +112,7 @@ in
       ++ (with pkgs-unstable; [
         pyrefly
         pgformatter
-        postgres-lsp
+        postgres-language-server
         typescript-language-server
       ])
       ++ (with pkgs; [
@@ -132,6 +132,7 @@ in
         # thonny
         black
         # bruno
+        gifski
         gnugo
         gogui
         gimp
@@ -248,7 +249,7 @@ in
       enable = true;
       options = [
         "--cmd"
-        "cd"
+        "c"
       ];
     };
 
@@ -365,7 +366,7 @@ in
     };
 
     tenere = {
-      enable = true;
+      enable = false;
       package = pkgs-unstable.tenere;
       config = {
         llm = "chatgpt";
@@ -392,12 +393,15 @@ in
         use_default_settings = {
           engines = {
             keep_only = [
-              "brave"
+              # web
               "duckduckgo"
-              "google"
-              "qwant"
               "startpage"
               "wikipedia"
+              # image
+              "startpage images"
+              # video
+              "odysee"
+              "youtube"
             ];
           };
         };
@@ -429,6 +433,7 @@ in
       enable = false;
       host = "0.0.0.0";
       environmentVariables = {
+        OLLAMA_CONTEXT_LENGTH = 131072;
         OLLAMA_ORIGINS = lib.concatStringsSep "," [
           "http://0.0.0.0"
           "http://localhost"
