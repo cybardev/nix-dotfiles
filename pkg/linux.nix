@@ -34,6 +34,7 @@ in
       rustc
       fondo
       feh
+      gimp
       logseq
       zoom-us
       aseprite

@@ -3,7 +3,6 @@
   config,
   lib,
   pkgs,
-  pkgs-unstable,
   ...
 }:
 let
@@ -25,7 +24,6 @@ in
   ]
   ++ (with inputs.cypkgs.modules; [
     searxng
-    ytgo-bot
     tenere
   ]);
 
@@ -103,22 +101,19 @@ in
       };
 
     packages =
-      (with pkgs-unstable.cy; [
+      (with pkgs.cy; [
         cutefetch
         jitterbugpair
         freej2me
         ytgo
       ])
-      ++ (with pkgs-unstable; [
-        pyrefly
-        pgformatter
-        postgres-language-server
-        typescript-language-server
-      ])
       ++ (with pkgs; [
         tree-sitter-grammars.tree-sitter-dart
+        typescript-language-server
+        postgres-language-server
         # gnome-mahjongg
         dotnet-sdk_9
+        pgformatter
         clojure-lsp
         lazydocker
         # localstack
@@ -130,15 +125,15 @@ in
         # gdevelop
         dfu-util
         # thonny
+        pyrefly
         black
         # bruno
         gifski
         gnugo
         gogui
-        gimp
-        tdf
-        ncdu
         unciv
+        ncdu
+        tdf
 
         # >---< DO NOT REMOVE >---< #
         ffmpegthumbnailer
@@ -311,9 +306,11 @@ in
     git = {
       enable = true;
       package = pkgs.gitFull;
-      userName = "cybardev";
-      userEmail = "50134239+cybardev@users.noreply.github.com";
-      extraConfig = {
+      settings = {
+        user = {
+          name = "cybardev";
+          email = "50134239+cybardev@users.noreply.github.com";
+        };
         init.defaultBranch = "main";
         credential.helper = "store";
         pull.rebase = false;
@@ -322,14 +319,16 @@ in
         commit.gpgSign = true;
         merge.conflictStyle = "zdiff3";
       };
-      delta = {
-        enable = true;
-        options = {
-          dark = true;
-          line-numbers = true;
-          syntax-theme = "kanagawa-dragon";
-          hyperlinks = true;
-        };
+    };
+
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
+        dark = true;
+        line-numbers = true;
+        syntax-theme = "kanagawa-dragon";
+        hyperlinks = true;
       };
     };
 
@@ -338,9 +337,11 @@ in
       settings = {
         promptToReturnFromSubprocess = false;
         git = {
-          paging = {
-            pager = "${lib.getExe pkgs.delta} --paging=never --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
-          };
+          pagers = [
+            {
+              pager = "${lib.getExe pkgs.delta} --paging=never --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+            }
+          ];
         };
         gui = {
           theme = {
@@ -361,13 +362,14 @@ in
           authorColors = {
             "*" = "#7fb4ca";
           };
+
+          useHunkModeInStagingView = true;
         };
       };
     };
 
     tenere = {
       enable = false;
-      package = pkgs-unstable.tenere;
       config = {
         llm = "chatgpt";
         chatgpt = {
@@ -380,15 +382,16 @@ in
 
     ssh = {
       enable = true;
-      addKeysToAgent = "yes";
+      enableDefaultConfig = false;
+      matchBlocks."*" = {
+        addKeysToAgent = "yes";
+      };
     };
   };
 
   services = {
     searxng = {
       enable = true;
-      # FIXME: stable searxng fails to build
-      package = pkgs-unstable.searxng;
       settings = {
         use_default_settings = {
           engines = {
@@ -440,10 +443,6 @@ in
           "https://airi.moeru.ai"
         ];
       };
-    };
-    ytgo-bot = {
-      enable = true;
-      token = builtins.readFile "${inputs.secrets}/ytgo-bot-token.txt";
     };
   };
 }

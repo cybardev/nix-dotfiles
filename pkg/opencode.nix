@@ -1,17 +1,8 @@
 {
-  inputs,
-  pkgs-unstable,
-  ...
-}:
-{
-  imports = [
-    inputs.cypkgs.modules.opencode
-  ];
-
   programs.opencode = {
     enable = true;
-    package = pkgs-unstable.opencode;
-    config = {
+    enableMcpIntegration = true;
+    settings = {
       "$schema" = "https://opencode.ai/config.json";
       autoupdate = false;
       theme = "aura";

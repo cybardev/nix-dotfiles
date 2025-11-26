@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -383,7 +384,7 @@ in
         DisableProfileRefresh = true;
         DisableSetDesktopBackground = true;
         DisableTelemetry = true;
-        NoDefaultBookmarks = true;
+        NoDefaultBookmarks = lib.mkForce true;
         PictureInPicture.Enabled = false;
         FirefoxSuggest = {
           WebSuggestions = false;

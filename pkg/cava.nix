@@ -48,7 +48,7 @@ let
 in
 {
   programs.cava = {
-    enable = true;
+    enable = false;
     settings = {
       general = {
         bars = 0;

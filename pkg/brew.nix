@@ -51,7 +51,7 @@ in
       "font-jetbrains-mono-nerd-font"
       "font-open-dyslexic-nerd-font"
       "gb-studio"
-      # "gimp"
+      "gimp"
       "hiddenbar"
       "karabiner-elements"
       "katrain"

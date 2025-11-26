@@ -8,7 +8,7 @@ let
   userName = config.userConfig.username;
 in
 {
-  nix.gc.frequency = "weekly";
+  nix.gc.dates = "weekly";
 
   nixpkgs = {
     config.allowUnfreePredicate = import ./unfree.nix { inherit lib; };
