@@ -115,6 +115,7 @@ in
         dotnet-sdk_9
         pgformatter
         clojure-lsp
+        cloudflared
         lazydocker
         # localstack
         # tailscale
