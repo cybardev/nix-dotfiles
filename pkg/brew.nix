@@ -43,6 +43,7 @@ in
       "blackhole-16ch"
       # "blender"
       "coderabbit"
+      # "diffusionbee"
       "discord"
       "docker-desktop"
       # "flutter"
