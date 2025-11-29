@@ -203,7 +203,7 @@ in
         # shell = lib.getExe pkgs.zsh;
         shell = lib.getExe pkgs.zsh + " -c " + lib.getExe pkgs.fish;
         tab_bar_edge = "top";
-        enabled_layouts = "tall";
+        enabled_layouts = "splits";
         enable_audio_bell = false;
         background_opacity = 0.96;
         update_check_interval = 0;
@@ -211,6 +211,7 @@ in
         startup_session = builtins.toString ../cfg/kitty-session.sh;
       };
       keybindings = {
+        "super+enter" = "launch --location=split";
         "super+." = "layout_action bias 64";
         "super+[" = "previous_window";
         "super+]" = "next_window";
