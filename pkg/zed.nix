@@ -126,7 +126,7 @@
         enable_feedback = false;
         default_model = {
           provider = "lmstudio";
-          model = "granite-4.0-h-tiny-mlx";
+          model = "qwen/qwen3-4b-thinking-2507";
         };
         default_profile = "minimal";
         profiles = {

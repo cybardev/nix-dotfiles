@@ -24,19 +24,18 @@
             baseURL = "http://localhost:1234/v1";
           };
           models = {
-            "granite-4.0-h-tiny-mlx" = {
-              name = "IBM Granite Tiny";
+            "qwen/qwen3-4b-thinking-2507" = {
+              name = "Qwen3 2507";
               limit = {
-                context = 131072;
-                output = 32768;
+                context = 262144;
+                output = 65536;
               };
             };
           };
         };
       };
-      model = "github-copilot/gpt-5-mini";
-      # model = "lmstudio/granite-4.0-h-tiny-mlx";
-      # small_model = "lmstudio/granite-4.0-h-tiny-mlx";
+      # model = "github-copilot/gpt-5-mini";
+      model = "lmstudio/qwen/qwen3-4b-thinking-2507";
       mcp = {
         context7 = {
           enabled = true;
