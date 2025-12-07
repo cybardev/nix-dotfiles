@@ -2,33 +2,36 @@
   config,
   pkgs,
   lib,
+  ...
 }:
 let
-  fish.shellAbbrs = {
-    # Git
-    ga = "git add";
-    gc = "git commit";
-    gaa = "git add --all";
-    gca = "git commit --amend";
-    gcf = "git commit --fixup";
-    gcm = "git commit --message";
-    grb = "git rebase --interactive";
-    gcam = "git commit --amend --message";
-    grbs = "git rebase --interactive --autosquash";
-
-    # Jujutsu
-    jic = "jj git init --colocate";
-    ji = "jj git init";
-    jcl = "jj git clone";
-    jn = "jj new";
-    ju = "jj undo";
-    jc = "jj commit";
-    jd = "jj describe -m";
-    js = "jj squash";
-    jp = "jj git push";
-    jbm = "jj bookmark move main --to @-";
-    jbmh = "jj bookmark move main --to @";
-  };
+  fish.shellAbbrs =
+    lib.mkIf config.programs.git.enable {
+      # Git
+      ga = "git add";
+      gc = "git commit";
+      gaa = "git add --all";
+      gca = "git commit --amend";
+      gcf = "git commit --fixup";
+      gcm = "git commit --message";
+      grb = "git rebase --interactive";
+      gcam = "git commit --amend --message";
+      grbs = "git rebase --interactive --autosquash";
+    }
+    // lib.mkIf config.programs.jujutsu.enable {
+      # Jujutsu
+      jic = "jj git init --colocate";
+      ji = "jj git init";
+      jcl = "jj git clone";
+      jn = "jj new";
+      ju = "jj undo";
+      jc = "jj commit";
+      jd = "jj describe -m";
+      js = "jj squash";
+      jp = "jj git push";
+      jbm = "jj bookmark move main --to @-";
+      jbmh = "jj bookmark move main --to @";
+    };
 
   git = {
     enable = true;
@@ -48,7 +51,7 @@ let
   };
 
   lazygit = {
-    enable = true;
+    enable = config.programs.git.enable;
     settings = {
       promptToReturnFromSubprocess = false;
       git = {
@@ -82,7 +85,7 @@ let
   };
 
   jujutsu = {
-    enable = true;
+    enable = false;
     settings = {
       user = { inherit (git.settings.user) name email; };
       remotes = {
@@ -156,7 +159,7 @@ let
   };
 
   jjui = {
-    enable = true;
+    enable = config.programs.jujutsu.enable;
     configDir = "${config.xdg.configHome}/jjui";
     settings.ui.theme = "base16-kanagawa-dragon";
   };
