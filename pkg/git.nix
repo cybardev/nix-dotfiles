@@ -19,9 +19,10 @@ let
     # Jujutsu
     jic = "jj git init --colocate";
     ji = "jj git init";
-    jc = "jj git clone";
+    jcl = "jj git clone";
     jn = "jj new";
     ju = "jj undo";
+    jc = "jj commit";
     jd = "jj describe -m";
     js = "jj squash";
     jp = "jj git push";
@@ -147,8 +148,7 @@ let
       };
       revset-aliases = {
         "immutable_heads()" = lib.concatStringsSep " | " [
-          "tags()"
-          "untracked_remote_bookmarks()"
+          "builtin_immutable_heads()"
           "(trunk().. & ~mine())"
         ];
       };
