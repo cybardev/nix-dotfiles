@@ -56,17 +56,6 @@
           gogui -computer-$colour -size $size -program "gnugo --mode gtp --level $level"
         '';
       };
-      shellAbbrs = {
-        ga = "git add";
-        gc = "git commit";
-        gaa = "git add --all";
-        gca = "git commit --amend";
-        gcf = "git commit --fixup";
-        gcm = "git commit --message";
-        grb = "git rebase --interactive";
-        gcam = "git commit --amend --message";
-        grbs = "git rebase --interactive --autosquash";
-      };
     };
     starship = {
       enable = config.programs.fish.enable;
