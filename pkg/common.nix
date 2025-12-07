@@ -7,6 +7,11 @@
 }:
 let
   inherit (config.userConfig) flakePath;
+  gitUser = {
+    name = "cybardev";
+    email = "50134239+cybardev@users.noreply.github.com";
+    signingKey = "~/.ssh/id_ed25519.pub";
+  };
 in
 {
   imports = [
@@ -37,6 +42,7 @@ in
       source = ../cfg/lf;
       recursive = true;
     };
+    "jjui/themes/base16-kanagawa-dragon.toml".source = ../cfg/jjui-kanagawa-dragon.toml;
   };
 
   home = {
@@ -77,6 +83,7 @@ in
         bf = "cutefetch -m bunny";
         sf = "cutefetch -m simple";
         nf = "cutefetch -m text";
+        gf = "grep -rn . -e";
 
         # editing related
         e = "hx";
@@ -127,12 +134,14 @@ in
         dfu-util
         # thonny
         pyrefly
-        black
-        # bruno
+        gofumpt
+        rustup
         gifski
         gnugo
         gogui
         unciv
+        # bruno
+        ruff
         ncdu
         tdf
 
@@ -309,23 +318,96 @@ in
       enable = true;
       package = pkgs.gitFull;
       settings = {
-        user = {
-          name = "cybardev";
-          email = "50134239+cybardev@users.noreply.github.com";
-        };
+        user = gitUser;
         init.defaultBranch = "main";
         credential.helper = "store";
         pull.rebase = false;
         gpg.format = "ssh";
-        user.signingKey = "~/.ssh/id_ed25519.pub";
         commit.gpgSign = true;
-        merge.conflictStyle = "zdiff3";
       };
     };
+
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = { inherit (gitUser) name email; };
+        remotes = {
+          origin.auto-track-bookmarks = "glob:*";
+          upstream.auto-track-bookmarks = "main";
+        };
+        git = {
+          executable-path = lib.getExe config.programs.git.package;
+          sign-on-push = true;
+        };
+        signing = {
+          behavior = "own";
+          backend = "ssh";
+          key = gitUser.signingKey;
+          backends.ssh.program = lib.getExe' pkgs.openssh "ssh-keygen";
+        };
+        fix.tools = {
+          nixfmt = {
+            patterns = [ "glob:'**/*.nix'" ];
+            command = [ "nixfmt" ];
+          };
+          ruff = {
+            command = [
+              "ruff"
+              "-"
+              "--stdin-filename=$path"
+            ];
+            patterns = [ "glob:'**/*.py'" ];
+          };
+          gofumpt = {
+            patterns = [ "glob:'**/*.go'" ];
+            command = [ "gofumpt" ];
+          };
+          rustfmt = {
+            command = [
+              "rustfmt"
+              "--emit"
+              "stdout"
+              "--edition"
+              "2024"
+            ];
+            patterns = [ "glob:'**/*.rs'" ];
+          };
+          prettier = {
+            command = [
+              (lib.getExe pkgs.nodePackages.prettier)
+              "--stdin-filepath=$path"
+            ];
+            patterns = [
+              "glob:'**/*.html'"
+              "glob:'**/*.css'"
+              "glob:'**/*.scss'"
+              "glob:'**/*.js'"
+              "glob:'**/*.ts'"
+              "glob:'**/*.jsx'"
+              "glob:'**/*.tsx'"
+            ];
+          };
+        };
+        ui = {
+          editor = lib.getExe config.programs.helix.package;
+          merge-editor = "mergiraf";
+        };
+        revset-aliases = {
+          "immutable_heads()" = lib.concatStringsSep " | " [
+            "tags()"
+            "untracked_remote_bookmarks()"
+            "(trunk().. & ~mine())"
+          ];
+        };
+      };
+    };
+
+    mergiraf.enable = true;
 
     delta = {
       enable = true;
       enableGitIntegration = true;
+      enableJujutsuIntegration = true;
       options = {
         dark = true;
         line-numbers = true;
@@ -360,14 +442,18 @@ in
             defaultFgColor = [ "#c5c9c5" ];
             searchingActiveBorderColor = [ "#c4b28a" ];
           };
-
           authorColors = {
             "*" = "#7fb4ca";
           };
-
           useHunkModeInStagingView = true;
         };
       };
+    };
+
+    jjui = {
+      enable = true;
+      configDir = "${config.xdg.configHome}/jjui";
+      settings.ui.theme = "base16-kanagawa-dragon";
     };
 
     tenere = {

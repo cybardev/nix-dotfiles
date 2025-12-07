@@ -31,7 +31,6 @@ in
       docker
       xclip
       unzip
-      rustc
       fondo
       feh
       gimp

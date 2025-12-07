@@ -57,7 +57,7 @@
             }
           ];
           formatter = {
-            command = "black";
+            command = "ruff";
             args = [ "-" ];
           };
         }
