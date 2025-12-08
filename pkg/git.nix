@@ -7,7 +7,6 @@
 let
   fish.shellAbbrs =
     lib.mkIf config.programs.git.enable {
-      # Git
       ga = "git add";
       gc = "git commit";
       gaa = "git add --all";
@@ -19,7 +18,6 @@ let
       grbs = "git rebase --interactive --autosquash";
     }
     // lib.mkIf config.programs.jujutsu.enable {
-      # Jujutsu
       jic = "jj git init --colocate";
       ji = "jj git init";
       jcl = "jj git clone";
@@ -104,24 +102,24 @@ let
       };
       fix.tools = {
         nixfmt = {
+          command = [ (lib.getExe pkgs.nixfmt) ];
           patterns = [ "glob:'**/*.nix'" ];
-          command = [ "nixfmt" ];
         };
         ruff = {
           command = [
-            "ruff"
+            (lib.getExe pkgs.ruff)
             "-"
             "--stdin-filename=$path"
           ];
           patterns = [ "glob:'**/*.py'" ];
         };
         gofumpt = {
+          command = [ (lib.getExe pkgs.gofumpt) ];
           patterns = [ "glob:'**/*.go'" ];
-          command = [ "gofumpt" ];
         };
         rustfmt = {
           command = [
-            "rustfmt"
+            (lib.getExe' pkgs.rustup "rustfmt")
             "--emit"
             "stdout"
             "--edition"
