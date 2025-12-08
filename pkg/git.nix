@@ -164,8 +164,8 @@ let
 
   delta = {
     enable = true;
-    enableGitIntegration = true;
-    enableJujutsuIntegration = true;
+    enableGitIntegration = config.programs.git.enable;
+    enableJujutsuIntegration = config.programs.jujutsu.enable;
     options = {
       dark = true;
       line-numbers = true;
@@ -174,7 +174,7 @@ let
     };
   };
 
-  mergiraf.enable = true;
+  mergiraf.enable = config.programs.git.enable;
 in
 {
   programs = {
