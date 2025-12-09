@@ -9,6 +9,7 @@ let
     lib.mkIf config.programs.git.enable {
       ga = "git add";
       gc = "git commit";
+      gcl = "git clone";
       gaa = "git add --all";
       gca = "git commit --amend";
       gcf = "git commit --fixup";
