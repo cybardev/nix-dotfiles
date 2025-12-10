@@ -329,6 +329,8 @@ in
         addKeysToAgent = "yes";
       };
     };
+
+    man.generateCaches = false;
   };
 
   services = {

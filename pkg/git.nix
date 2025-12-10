@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
@@ -178,6 +179,10 @@ let
   mergiraf.enable = config.programs.git.enable;
 in
 {
+  imports = with inputs.cypkgs.modules; [
+    git-xet
+  ];
+
   programs = {
     inherit
       fish
@@ -188,5 +193,11 @@ in
       delta
       mergiraf
       ;
+
+    git-xet = {
+      enable = true;
+      package = pkgs.cy.git-xet;
+      concurrency = 3;
+    };
   };
 }
