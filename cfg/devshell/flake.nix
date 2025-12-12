@@ -1,14 +1,17 @@
 {
   description = "Flake-based Nix devshell";
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-25.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs?ref=nixpkgs-unstable";
   outputs =
     { nixpkgs, ... }:
     let
       forEachSystem =
         f:
-        nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (
-          system: f { pkgs = import nixpkgs { inherit system; }; }
-        );
+        nixpkgs.lib.genAttrs [
+          "x86_64-linux"
+          "aarch64-linux"
+          "x86_64-darwin"
+          "aarch64-darwin"
+        ] (system: f { pkgs = import nixpkgs { inherit system; }; });
     in
     {
       devShells = forEachSystem (
