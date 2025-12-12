@@ -1,4 +1,2 @@
 # Nix dev shell
 .direnv
-.envrc
-shell.nix
