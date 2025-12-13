@@ -1,4 +1,9 @@
 {
+  lib,
+  pkgs,
+  ...
+}:
+{
   programs.opencode = {
     enable = true;
     enableMcpIntegration = true;
@@ -37,6 +42,14 @@
       # model = "github-copilot/gpt-5-mini";
       model = "lmstudio/qwen/qwen3-4b-thinking-2507";
       mcp = {
+        github = {
+          enabled = false;
+          type = "local";
+          command = [
+            (lib.getExe' pkgs.github-mcp-server "github-mcp-server")
+            "stdio"
+          ];
+        };
         context7 = {
           enabled = true;
           type = "local";
