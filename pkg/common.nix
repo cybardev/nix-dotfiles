@@ -374,6 +374,11 @@ in
           image_proxy = true;
           method = "GET";
         };
+        hostnames = {
+          replace = {
+            "(.*\.)?nixos.wiki$" = "wiki.nixos.org";
+          };
+        };
       };
     };
     ollama = {
