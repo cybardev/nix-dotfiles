@@ -249,9 +249,14 @@ in
 
     fzf = {
       enable = true;
+      defaultOptions = [
+        "--height 40%"
+        "--border rounded"
+        "--layout reverse"
+      ];
       changeDirWidgetCommand = "zoxide query --list --score";
       changeDirWidgetOptions = [
-        "--height 40% --layout reverse --border rounded --nth 2.. --accept-nth 2.. --scheme=path --exact --tiebreak='pathname,index'"
+        "--nth 2.. --accept-nth 2.. --scheme=path --exact --tiebreak='pathname,index'"
       ];
     };
 
