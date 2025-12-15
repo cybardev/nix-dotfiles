@@ -247,6 +247,14 @@ in
       '';
     };
 
+    fzf = {
+      enable = true;
+      changeDirWidgetCommand = "zoxide query --list --score";
+      changeDirWidgetOptions = [
+        "--height 40% --layout reverse --border rounded --nth 2.. --accept-nth 2.. --scheme=path --exact --tiebreak='pathname,index'"
+      ];
+    };
+
     zoxide = {
       enable = true;
       options = [

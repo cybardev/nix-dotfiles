@@ -12,6 +12,13 @@
         fish_add_path ~/.local/bin
         fish_vi_key_bindings
       '';
+      binds = {
+        # macOS [ Opt-c = ç ] in terminal
+        "ç" = {
+          mode = "insert";
+          command = "fzf-cd-widget";
+        };
+      };
       functions = {
         fish_greeting.body = "cutefetch -m text";
         src.body = "exec fish";
