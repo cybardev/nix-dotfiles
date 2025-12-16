@@ -3,10 +3,11 @@ let
   active_engines = [
     # web
     "startpage"
-    "duckduckgo"
+    "qwant"
     "wikipedia"
     # image
     "startpage images"
+    "qwant images"
     # video
     "odysee"
     "youtube"
