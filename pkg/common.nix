@@ -14,6 +14,7 @@ in
     ../sys/nixcommand.nix
     ../sys/home.nix
     ./browser.nix
+    ./searxng.nix
     ./git.nix
     ./zsh.nix
     ./fish.nix
@@ -24,7 +25,6 @@ in
     ./cava.nix
   ]
   ++ (with inputs.cypkgs.modules; [
-    searxng
     tenere
   ]);
 
@@ -347,53 +347,6 @@ in
   };
 
   services = {
-    searxng = {
-      enable = true;
-      settings = {
-        use_default_settings = {
-          engines = {
-            keep_only = [
-              # web
-              "duckduckgo"
-              "startpage"
-              "wikipedia"
-              # image
-              "startpage images"
-              # video
-              "odysee"
-              "youtube"
-            ];
-          };
-        };
-        general = {
-          debug = false;
-          enable_metrics = false;
-        };
-        ui = {
-          theme_args.simple_style = "auto";
-          url_formatting = "full";
-          infinite_scroll = true;
-          default_locale = "en";
-          hotkeys = "vim";
-        };
-        search = {
-          safe_search = 0;
-          default_lang = "en-CA";
-          autocomplete = "duckduckgo";
-        };
-        server = {
-          port = 8080;
-          bind_address = "0.0.0.0";
-          image_proxy = true;
-          method = "GET";
-        };
-        hostnames = {
-          replace = {
-            "(.*\.)?nixos.wiki$" = "wiki.nixos.org";
-          };
-        };
-      };
-    };
     ollama = {
       enable = false;
       host = "0.0.0.0";
