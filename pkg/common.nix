@@ -143,7 +143,6 @@ in
 
         # >---< DO NOT REMOVE >---< #
         ffmpegthumbnailer
-        nixfmt-rfc-style
         ripgrep-all
         nixfmt-tree
         imagemagick
@@ -158,6 +157,7 @@ in
         pistol
         luajit
         ccache
+        nixfmt
         p7zip
         cmake
         ninja
