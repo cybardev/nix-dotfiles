@@ -7,12 +7,19 @@
 }:
 let
   inherit (config.userConfig) flakePath;
+  uncivDir = "${config.xdg.configHome}/Unciv";
+  extraBinScripts = {
+    wuji = pkgs.writeShellScriptBin "wuji" "sudo -H nix-collect-garbage -d && nix-collect-garbage -d";
+    yup = pkgs.writeShellScriptBin "yup" "nix flake update --flake ${flakePath} && re-nix";
+    civ = pkgs.writeShellScriptBin "civ" "mkdir -p ${uncivDir} && unciv --data-dir=${uncivDir}";
+  };
 in
 {
   imports = [
     ../mod/userconfig.nix
     ../sys/nixcommand.nix
     ../sys/home.nix
+    ./starship.nix
     ./browser.nix
     ./searxng.nix
     ./git.nix
@@ -56,52 +63,48 @@ in
       OLLAMA_HOST = "0.0.0.0:11434";
     };
 
-    shellAliases =
-      let
-        uncivDir = "${config.xdg.configHome}/Unciv";
-      in
-      {
-        # shell conveniences
-        x = "exit";
-        clr = "clear";
-        cls = "clear";
-        cat = "bat -pp";
-        icat = "kitten icat";
-        cssh = "kitten ssh";
-        top = "btm --basic";
-        ls = "eza -1 --icons=never";
-        ll = "eza -1l";
-        lessr = "less -R";
-        tree = "eza --tree";
-        py = "ptpython";
-        yt = "ytgo -i -m -p";
-        cf = "cutefetch";
-        bf = "cutefetch -m bunny";
-        sf = "cutefetch -m simple";
-        nf = "cutefetch -m text";
-        gf = "grep -rn . -e";
+    shellAliases = {
+      # shell conveniences
+      x = "exit";
+      clr = "clear";
+      cls = "clear";
+      cat = "bat -pp";
+      icat = "kitten icat";
+      cssh = "kitten ssh";
+      top = "btm --basic";
+      ls = "eza -1 --icons=never";
+      ll = "eza -1l";
+      lessr = "less -R";
+      tree = "eza --tree";
+      py = "ptpython";
+      yt = "ytgo -i -m -p";
+      cf = "cutefetch";
+      bf = "cutefetch -m bunny";
+      sf = "cutefetch -m simple";
+      nf = "cutefetch -m text";
+      gf = "grep -rn . -e";
 
-        # editing related
-        e = "hx";
-        eos = "e ${flakePath}";
+      # editing related
+      e = "hx";
+      eos = "e ${flakePath}";
 
-        # reloading configs
-        re-hm = "nh home switch";
-        re-hm-fast = "home-manager switch --flake ${flakePath}";
+      # reloading configs
+      re-hm = "nh home switch";
+      re-hm-fast = "home-manager switch --flake ${flakePath}";
 
-        # package management
-        yin = "nix-shell -p";
-        yang = "nh search";
-        wuji = "sudo -H nix-collect-garbage -d && nix-collect-garbage -d";
-        yup = "nix flake update --flake ${flakePath} && re-nix";
+      # package management
+      yin = "nix-shell -p";
+      yang = "nh search";
+      yup = lib.getExe extraBinScripts.yup;
+      wuji = lib.getExe extraBinScripts.wuji;
 
-        # misc
-        tf = lib.getExe pkgs.opentofu;
-        lg = lib.getExe pkgs.lazygit;
-        ldk = lib.getExe pkgs.lazydocker;
-        lck = lib.getExe pkgs.localstack;
-        civ = "mkdir -p ${uncivDir} && unciv --data-dir=${uncivDir}";
-      };
+      # misc
+      tf = lib.getExe pkgs.opentofu;
+      lg = lib.getExe pkgs.lazygit;
+      ldk = lib.getExe pkgs.lazydocker;
+      lck = lib.getExe pkgs.localstack;
+      civ = lib.getExe extraBinScripts.civ;
+    };
 
     packages =
       (with pkgs.cy; [
@@ -195,6 +198,25 @@ in
       nix-direnv.enable = true;
     };
 
+    carapace.enable = true;
+
+    nushell = {
+      enable = true;
+      loginFile.text = "cutefetch -m text";
+      settings = {
+        show_banner = false;
+        edit_mode = "vi";
+        cursor_shape = {
+          vi_insert = "line";
+          vi_normal = "block";
+        };
+      };
+      environmentVariables = {
+        PROMPT_INDICATOR_VI_NORMAL = "";
+        PROMPT_INDICATOR_VI_INSERT = "";
+      };
+    };
+
     kitty = {
       enable = true;
       themeFile = "Kanagawa_dragon";
@@ -206,7 +228,7 @@ in
       };
       settings = {
         # shell = lib.getExe pkgs.zsh;
-        shell = lib.getExe pkgs.zsh + " -c " + lib.getExe pkgs.fish;
+        shell = "${lib.getExe pkgs.zsh} -c '${lib.getExe pkgs.nushell} -l'";
         tab_bar_edge = "top";
         enabled_layouts = "splits";
         enable_audio_bell = false;

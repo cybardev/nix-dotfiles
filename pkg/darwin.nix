@@ -50,7 +50,10 @@ in
         ${brewInit "fish"}
       '';
     };
-    kitty.settings.background_blur = 4;
+    kitty.settings = {
+      background_blur = 4;
+      macos_option_as_alt = "yes";
+    };
 
     cava.settings.input = {
       method = "portaudio";
