@@ -49,7 +49,7 @@
       };
       terminal = {
         dock = "right";
-        shell.program = "nu -l";
+        shell.program = "fish";
       };
       calls = {
         mute_on_join = true;
