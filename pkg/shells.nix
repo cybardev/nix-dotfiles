@@ -34,7 +34,7 @@ let
         echo "use flake"                 >> .envrc
         direnv allow
       '';
-      weiqi = "gogui -computer-black -size $1 -program 'gnugo --mode gtp --level 0'";
+      weiqi = "gogui -computer-black -size 13 -program 'gnugo --mode gtp --level 0'";
     };
 in
 {
