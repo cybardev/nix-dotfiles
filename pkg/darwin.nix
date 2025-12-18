@@ -9,7 +9,7 @@ let
     lsblk = "diskutil list";
     edit-wm = "edit ${nixConfigDir}/packages/config/aerospace.nix";
     re-nix = "nh darwin switch";
-    icloud = "cd ~/Library/Mobile\\ Documents/com~apple~CloudDocs";
+    icloud = "cd '~/Library/Mobile Documents/com~apple~CloudDocs'";
     disclr = "ncdu /System/Volumes/Data/Users/${userName}";
     cr = "coderabbit";
 
@@ -49,6 +49,9 @@ in
       shellInit = ''
         ${brewInit "fish"}
       '';
+    };
+    nushell = {
+      inherit shellAliases;
     };
     kitty.settings = {
       background_blur = 4;

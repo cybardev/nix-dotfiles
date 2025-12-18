@@ -6,7 +6,7 @@
   ...
 }:
 let
-  fish.shellAbbrs =
+  shellAbbrs =
     lib.mkIf config.programs.git.enable {
       ga = "git add";
       gc = "git commit";
@@ -185,7 +185,6 @@ in
 
   programs = {
     inherit
-      fish
       git
       lazygit
       jujutsu
@@ -193,6 +192,9 @@ in
       delta
       mergiraf
       ;
+
+    fish.shellAbbrs = shellAbbrs;
+    zsh.zsh-abbr.abbreviations = shellAbbrs;
 
     git-xet = {
       enable = true;

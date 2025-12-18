@@ -4,20 +4,24 @@
   outputs =
     { nixpkgs, ... }:
     let
-      forEachSystem =
-        f:
-        nixpkgs.lib.genAttrs [
-          "x86_64-linux"
-          "aarch64-linux"
-          "x86_64-darwin"
-          "aarch64-darwin"
-        ] (system: f { pkgs = import nixpkgs { inherit system; }; });
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+      forEachSupportedSystem =
+        f: nixpkgs.lib.genAttrs supportedSystems (system: f { pkgs = import nixpkgs { inherit system; }; });
     in
     {
-      devShells = forEachSystem (
+      devShells = forEachSupportedSystem (
         { pkgs }:
         {
-          default = import ./shell.nix { inherit pkgs; };
+          default = pkgs.mkShellNoCC {
+            packages = with pkgs; [
+              # TODO: add dependencies
+            ];
+          };
         }
       );
     };
