@@ -28,7 +28,7 @@ in
 
   home = {
     file = {
-      ".config/karabiner".source = ../cfg/karabiner;
+      # ".config/karabiner".source = ../cfg/karabiner;
     };
 
     packages = with pkgs; [
