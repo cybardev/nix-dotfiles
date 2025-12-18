@@ -102,7 +102,7 @@ in
               name = "Nixpkgs PR";
               urls = [
                 {
-                  template = "https://nixpk.gs/pr-tracker.html";
+                  template = "https://nixpkgs-tracker.ocfox.me/";
                   params = [
                     {
                       name = "pr";
