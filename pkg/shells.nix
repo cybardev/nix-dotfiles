@@ -217,7 +217,7 @@ in
     };
 
     nushell = {
-      enable = false;
+      enable = true;
       loginFile.text = "cutefetch -m text";
       shellAliases = {
         src = "exec 'nu -l'";
