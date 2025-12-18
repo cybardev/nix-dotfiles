@@ -157,8 +157,6 @@ in
         size = 14;
       };
       settings = {
-        # shell = lib.getExe pkgs.zsh;
-        shell = "${lib.getExe pkgs.zsh} -c '${lib.getExe pkgs.fish}'";
         tab_bar_edge = "top";
         enabled_layouts = "splits";
         enable_audio_bell = false;

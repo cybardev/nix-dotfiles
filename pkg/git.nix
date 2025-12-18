@@ -6,8 +6,8 @@
   ...
 }:
 let
-  shellAbbrs =
-    lib.mkIf config.programs.git.enable {
+  shellAbbrs = lib.mkMerge [
+    (lib.mkIf config.programs.git.enable {
       ga = "git add";
       gc = "git commit";
       gcl = "git clone";
@@ -18,8 +18,8 @@ let
       grb = "git rebase --interactive";
       gcam = "git commit --amend --message";
       grbs = "git rebase --interactive --autosquash";
-    }
-    // lib.mkIf config.programs.jujutsu.enable {
+    })
+    (lib.mkIf config.programs.jujutsu.enable {
       jic = "jj git init --colocate";
       ji = "jj git init";
       jcl = "jj git clone";
@@ -31,7 +31,8 @@ let
       jp = "jj git push";
       jbm = "jj bookmark move main --to @-";
       jbmh = "jj bookmark move main --to @";
-    };
+    })
+  ];
 
   git = {
     enable = true;

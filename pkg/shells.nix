@@ -79,6 +79,9 @@ in
   };
 
   programs = {
+    kitty.settings.shell = "${lib.getExe pkgs.zsh} -c '${lib.getExe pkgs.nushell} -l'";
+    zed-editor.userSettings.terminal.shell.program = "nu";
+
     carapace.enable = true;
 
     starship = {
@@ -175,7 +178,7 @@ in
     };
 
     fish = {
-      enable = true;
+      enable = false;
       inherit shellAbbrs;
       shellInit = ''
         fish_add_path ~/.local/bin
@@ -185,47 +188,32 @@ in
         fish_greeting.body = "cutefetch -m text";
         src.body = "exec fish";
         fm.body = "cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$argv\")\"";
-        weiqi.body = ''
-          argparse "h/help" "s/size=?!_validate_int --min 5 --max 52" "l/level=?!_validate_int --min 0 --max 10" -- $argv
-          or return
-
-          if set -ql _flag_help
-            echo "Usage: weiqi [-h | --help] [-s | --size=NUM] [-l | --level=NUM] COLOUR"
-            return
-          end
-
-          set colour "black"
-          if set -ql argv[-1]; and test $argv[-1] = "black"
-            set colour "white"
-          end
-
-          if set -ql _flag_size
-            set size $_flag_size
-          else
-            set size 19
-          end
-
-          if set -ql _flag_level
-            set level $_flag_level
-          else
-            set level 10
-          end
-
-          gogui -computer-$colour -size $size -program "gnugo --mode gtp --level $level"
-        '';
       };
     };
 
     nushell = {
       enable = true;
-      loginFile.text = "cutefetch -m text";
       shellAliases = {
         src = "exec 'nu -l'";
       };
-      environmentVariables = {
-        PROMPT_INDICATOR_VI_NORMAL = "";
-        PROMPT_INDICATOR_VI_INSERT = "";
-      };
+      configFile.text = ''
+        cutefetch -m cat
+
+        def --env --wrapped fm [...args: string] { 
+          cd (${lib.getExe pkgs.lf} -print-last-dir ...$args)
+        }
+
+        $env.config.keybindings ++= [{
+          name: abbr
+          modifier: shift
+          keycode: space
+          mode: [emacs, vi_insert]
+          event: [
+            { send: menu name: abbr_menu }
+            { edit: insertchar, value: ' '}
+          ]
+        }]
+      '';
       settings = {
         show_banner = false;
         edit_mode = "vi";
@@ -233,6 +221,10 @@ in
           vi_insert = "line";
           vi_normal = "block";
         };
+      };
+      environmentVariables = {
+        PROMPT_INDICATOR_VI_NORMAL = "";
+        PROMPT_INDICATOR_VI_INSERT = "";
       };
     };
   };

@@ -49,7 +49,6 @@
       };
       terminal = {
         dock = "right";
-        shell.program = "fish";
       };
       calls = {
         mute_on_join = true;
