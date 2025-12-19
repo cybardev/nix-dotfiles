@@ -14,6 +14,7 @@ let
   zshPlugins = plugins: map zshPlugin plugins;
 
   shellAbbrs = { };
+  shellBanner = "cutefetch -m cat";
 
   uncivDir = "${config.xdg.configHome}/Unciv";
   extraBinScripts =
@@ -79,13 +80,107 @@ in
   };
 
   programs = {
-    kitty.settings.shell = "${lib.getExe pkgs.zsh} -c '${lib.getExe pkgs.nushell} -l'";
-    zed-editor.userSettings.terminal.shell.program = "nu";
+    kitty.settings.shell = lib.getExe pkgs.zsh;
+    zed-editor.userSettings.terminal.shell.program = "zsh";
 
-    carapace.enable = true;
+    zsh = {
+      dotDir = "${config.xdg.configHome}/zsh";
+      enable = true;
+      autocd = true;
+      enableCompletion = true;
+      completionInit = "autoload -U compinit && compinit -u";
+      defaultKeymap = "viins";
+      autosuggestion.enable = true;
+      autosuggestion.strategy = [
+        "history"
+        "completion"
+        "match_prev_cmd"
+      ];
+      syntaxHighlighting.enable = true;
+      historySubstringSearch = {
+        enable = true;
+        searchUpKey = [ "^[OA" ];
+        searchDownKey = [ "^[OB" ];
+      };
+      history = {
+        save = 1024;
+        size = 2048;
+        share = true;
+        append = true;
+        ignoreAllDups = true;
+        path = "$ZDOTDIR/history";
+      };
+      initContent = ''
+        path+=( "$(go env GOPATH)/bin" "$HOME/.local/bin" )
+        ${shellBanner}
+
+        fpath+="${pkgs.cy.zen-zsh}"
+        autoload -Uz promptinit
+        promptinit
+        prompt zen
+
+        ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
+      '';
+      shellAliases = {
+        src = "exec zsh";
+        fm = "f() { cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$@\")\" }; f";
+      };
+      dirHashes = {
+        nixos = flakePath;
+        gitd = "$HOME/Documents/Git";
+        testd = "$HOME/test";
+      };
+      zsh-abbr = {
+        enable = true;
+        abbreviations = shellAbbrs;
+      };
+      plugins = zshPlugins [
+        "zsh-autosuggestions-abbreviations-strategy"
+      ];
+    };
+
+    fish = {
+      enable = false;
+      inherit shellAbbrs;
+      shellInit = ''
+        fish_add_path ~/.local/bin
+        fish_vi_key_bindings
+      '';
+      functions = {
+        fish_greeting.body = shellBanner;
+        src.body = "exec fish";
+        fm.body = "cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$argv\")\"";
+      };
+    };
+
+    nushell = {
+      enable = false;
+      shellAliases = {
+        src = "exec 'nu -l'";
+      };
+      configFile.text = ''
+        ${shellBanner}
+
+        def --env --wrapped fm [...args: string] { 
+          cd (${lib.getExe pkgs.lf} -print-last-dir ...$args)
+        }
+      '';
+      settings = {
+        show_banner = false;
+        edit_mode = "vi";
+        cursor_shape = {
+          vi_insert = "line";
+          vi_normal = "block";
+        };
+      };
+      environmentVariables = {
+        PROMPT_INDICATOR_VI_NORMAL = "";
+        PROMPT_INDICATOR_VI_INSERT = "";
+      };
+    };
 
     starship = {
-      enable = true;
+      enable = with config.programs; fish.enable || nushell.enable;
       enableZshIntegration = false;
       settings = {
         add_newline = false;
@@ -121,111 +216,6 @@ in
       };
     };
 
-    zsh = {
-      dotDir = "${config.xdg.configHome}/zsh";
-      enable = true;
-      autocd = true;
-      enableCompletion = true;
-      completionInit = "autoload -U compinit && compinit -u";
-      defaultKeymap = "viins";
-      autosuggestion.enable = true;
-      autosuggestion.strategy = [
-        "history"
-        "completion"
-        "match_prev_cmd"
-      ];
-      syntaxHighlighting.enable = true;
-      historySubstringSearch = {
-        enable = true;
-        searchUpKey = [ "^[OA" ];
-        searchDownKey = [ "^[OB" ];
-      };
-      history = {
-        save = 1024;
-        size = 2048;
-        share = true;
-        append = true;
-        ignoreAllDups = true;
-        path = "$ZDOTDIR/history";
-      };
-      initContent = ''
-        path+=( "$(go env GOPATH)/bin" "$HOME/.local/bin" )
-        cutefetch -m text
-
-        fpath+="${pkgs.cy.zen-zsh}"
-        autoload -Uz promptinit
-        promptinit
-        prompt zen
-
-        ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
-      '';
-      shellAliases = {
-        src = "exec zsh";
-        fm = "f() { cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$@\")\" }; f";
-      };
-      dirHashes = {
-        nixos = flakePath;
-        gitd = "$HOME/Documents/Git";
-        testd = "$HOME/test";
-      };
-      zsh-abbr = {
-        enable = true;
-        abbreviations = shellAbbrs;
-      };
-      plugins = zshPlugins [
-        "zsh-autosuggestions-abbreviations-strategy"
-      ];
-    };
-
-    fish = {
-      enable = false;
-      inherit shellAbbrs;
-      shellInit = ''
-        fish_add_path ~/.local/bin
-        fish_vi_key_bindings
-      '';
-      functions = {
-        fish_greeting.body = "cutefetch -m text";
-        src.body = "exec fish";
-        fm.body = "cd \"$(${lib.getExe pkgs.lf} -print-last-dir \"$argv\")\"";
-      };
-    };
-
-    nushell = {
-      enable = true;
-      shellAliases = {
-        src = "exec 'nu -l'";
-      };
-      configFile.text = ''
-        cutefetch -m cat
-
-        def --env --wrapped fm [...args: string] { 
-          cd (${lib.getExe pkgs.lf} -print-last-dir ...$args)
-        }
-
-        $env.config.keybindings ++= [{
-          name: abbr
-          modifier: shift
-          keycode: space
-          mode: [emacs, vi_insert]
-          event: [
-            { send: menu name: abbr_menu }
-            { edit: insertchar, value: ' '}
-          ]
-        }]
-      '';
-      settings = {
-        show_banner = false;
-        edit_mode = "vi";
-        cursor_shape = {
-          vi_insert = "line";
-          vi_normal = "block";
-        };
-      };
-      environmentVariables = {
-        PROMPT_INDICATOR_VI_NORMAL = "";
-        PROMPT_INDICATOR_VI_INSERT = "";
-      };
-    };
+    carapace.enable = true;
   };
 }
