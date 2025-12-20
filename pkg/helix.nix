@@ -5,11 +5,21 @@
     settings = {
       theme = "kanagawa-dragon";
       editor = {
+        auto-save = {
+          focus-lost = true;
+          after-delay = {
+            enable = true;
+            timeout = 5000;
+          };
+        };
         auto-format = true;
         line-number = "relative";
         lsp.display-messages = true;
         soft-wrap.enable = true;
         file-picker.hidden = false;
+        cursor-shape.insert = "bar";
+        end-of-line-diagnostics = "hint";
+        inline-diagnostics.cursor-line = "warning";
       };
       keys.normal = {
         ":" = "collapse_selection";
