@@ -48,6 +48,13 @@ let
       pull.rebase = false;
       gpg.format = "ssh";
       commit.gpgSign = true;
+      core.excludesfile =
+        (pkgs.writeText "gitignore" ''
+          .DS_Store
+          .direnv
+          .venv
+          node_modules
+        '').outPath;
     };
   };
 
@@ -56,6 +63,7 @@ let
     settings = {
       promptToReturnFromSubprocess = false;
       git = {
+        overrideGpg = true;
         pagers = [
           {
             pager = "${lib.getExe pkgs.delta} --paging=never --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
