@@ -27,7 +27,7 @@ let
       civ = "mkdir -p ${uncivDir} && unciv --data-dir=${uncivDir}";
       fan = "du -hd1 \"$1\" | sort -hr";
       unly = "curl -Is \"$1\" | grep ^location | cut -d \" \" -f 2";
-      etch = "sudo dd bs=4M if=$2 of=/dev/r$1 status=progress oflag=sync";
+      etch = "sudo dd bs=4M if=$2 of=/dev/$1 status=progress oflag=direct conv=fsync";
       mkdev = ''
         [[ -f .gitignore ]] && echo "\n" >> .gitignore
         cat ${../cfg/devshell/gitignore} >> .gitignore
