@@ -203,6 +203,7 @@ in
       ;
 
     fish.shellAbbrs = shellAbbrs;
+    nushell.shellAliases = shellAbbrs;
     zsh.zsh-abbr.abbreviations = shellAbbrs;
 
     git-xet = {
