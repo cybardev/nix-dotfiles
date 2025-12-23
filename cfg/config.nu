@@ -30,7 +30,7 @@ $env.config = {
       name: abbr_menu
       modifier: none
       keycode: space
-      mode: [emacs, vi_normal, vi_insert]
+      mode: [emacs, vi_insert]
       event: [
         { send: menu name: abbr_menu }
         { edit: insertchar value: ' '}
@@ -40,7 +40,7 @@ $env.config = {
       name: fzf_cd_widget
       modifier: alt
       keycode: char_c
-      mode: [emacs, vi_normal, vi_insert]
+      mode: [emacs, vi_insert]
       event: [
         {
           send: ExecuteHostCommand
