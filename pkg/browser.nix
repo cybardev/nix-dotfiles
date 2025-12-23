@@ -477,40 +477,23 @@ in
         # Extensions
         ExtensionSettings =
           let
-            moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
+            mkExt = name: id: {
+              "${id}" = {
+                install_url = "https://addons.mozilla.org/firefox/downloads/latest/${name}/latest.xpi";
+                installation_mode = "force_installed";
+                updates_disabled = true;
+              };
+            };
           in
           {
             "*".installation_mode = "blocked";
-
-            # "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-            #   install_url = moz "bitwarden-password-manager";
-            #   installation_mode = "force_installed";
-            #   updates_disabled = true;
-            # };
-
-            "{73a6fe31-595d-460b-a920-fcc0f8843232}" = {
-              install_url = moz "noscript";
-              installation_mode = "force_installed";
-              updates_disabled = true;
-            };
-
-            "adnauseam@rednoise.org" = {
-              install_url = moz "adnauseam";
-              installation_mode = "force_installed";
-              updates_disabled = true;
-            };
-
-            "enhancerforyoutube@maximerf.addons.mozilla.org" = {
-              install_url = moz "enhancer-for-youtube";
-              installation_mode = "force_installed";
-              updates_disabled = true;
-            };
-
-            "sponsorBlocker@ajay.app" = {
-              install_url = moz "sponsorblock";
-              installation_mode = "force_installed";
-              updates_disabled = true;
-            };
+          }
+          // lib.mapAttrs mkExt {
+            # bitwarden-password-manager = "{446900e4-71c2-419f-a6a7-df9c091e268b}";
+            noscript = "{73a6fe31-595d-460b-a920-fcc0f8843232}";
+            adnauseam = "adnauseam@rednoise.org";
+            enhancer-for-youtube = "sponsorBlocker@ajay.app";
+            sponsorblock = "sponsorBlocker@ajay.app";
           };
       };
     };
