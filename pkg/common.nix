@@ -206,7 +206,7 @@ in
       ];
       changeDirWidgetCommand = "zoxide query --list --score";
       changeDirWidgetOptions = [
-        "--nth 2.. --accept-nth 2.. --scheme=path --exact --tiebreak='pathname,index'"
+        "--nth 2.. --accept-nth 2.. --scheme=path --exact --tiebreak=pathname,index"
       ];
     };
 

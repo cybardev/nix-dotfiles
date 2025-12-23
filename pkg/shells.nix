@@ -80,8 +80,8 @@ in
   };
 
   programs = {
-    kitty.settings.shell = lib.getExe pkgs.zsh;
-    zed-editor.userSettings.terminal.shell.program = "zsh";
+    kitty.settings.shell = "${lib.getExe pkgs.zsh} -c '${lib.getExe pkgs.nushell} -l'";
+    zed-editor.userSettings.terminal.shell.program = "nu";
 
     zsh = {
       dotDir = "${config.xdg.configHome}/zsh";
@@ -154,17 +154,11 @@ in
     };
 
     nushell = {
-      enable = false;
+      enable = true;
       shellAliases = {
         src = "exec 'nu -l'";
       };
-      configFile.text = ''
-        ${shellBanner}
-
-        def --env --wrapped fm [...args: string] { 
-          cd (${lib.getExe pkgs.lf} -print-last-dir ...$args)
-        }
-      '';
+      configFile.text = shellBanner + "\n\n" + lib.readFile ../cfg/config.nu;
       settings = {
         show_banner = false;
         edit_mode = "vi";
