@@ -22,6 +22,7 @@ in
     ../sys/darwin-link-apps.nix
     ./common.nix
     ./aerospace.nix
+    ./rift.nix
   ];
 
   userConfig.isDarwin = true;
@@ -29,6 +30,7 @@ in
   home = {
     file = {
       # ".config/karabiner".source = ../cfg/karabiner;
+      # ".config/rift/config.toml".source = ../cfg/rift.toml;
     };
 
     packages = with pkgs; [

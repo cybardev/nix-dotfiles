@@ -3,6 +3,7 @@ let
   tap-set = with inputs; {
     "homebrew/homebrew-core" = homebrew-core;
     "homebrew/homebrew-cask" = homebrew-cask;
+    # "acsandmann/homebrew-tap" = rift-wm;
   };
 in
 {
@@ -36,6 +37,7 @@ in
     brews = [
       "cocoapods"
       # "handbrake"
+      # "rift"
     ];
     casks = [
       "altserver"

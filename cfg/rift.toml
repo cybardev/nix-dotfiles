@@ -1,0 +1,162 @@
+[keys]
+"Alt + Ctrl + E" = "unjoin_windows"
+"Alt + F" = "toggle_fullscreen"
+"Alt + Shift + Ctrl + Space" = "toggle_focus_floating"
+"Alt + Shift + Equal" = "resize_window_grow"
+"Alt + Shift + F" = "toggle_fullscreen_within_gaps"
+"Alt + Shift + Minus" = "resize_window_shrink"
+"Alt + Shift + Space" = "toggle_window_floating"
+"Alt + Slash" = "toggle_orientation"
+"Alt + Tab" = "switch_to_last_workspace"
+"Alt + Z" = "toggle_space_activated"
+
+[keys."Alt + 0"]
+switch_to_workspace = "10"
+
+[keys."Alt + 1"]
+switch_to_workspace = "1"
+
+[keys."Alt + 2"]
+switch_to_workspace = "2"
+
+[keys."Alt + 3"]
+switch_to_workspace = "3"
+
+[keys."Alt + 4"]
+switch_to_workspace = "4"
+
+[keys."Alt + 5"]
+switch_to_workspace = "5"
+
+[keys."Alt + 6"]
+switch_to_workspace = "6"
+
+[keys."Alt + 7"]
+switch_to_workspace = "7"
+
+[keys."Alt + 8"]
+switch_to_workspace = "8"
+
+[keys."Alt + 9"]
+switch_to_workspace = "9"
+
+[keys."Alt + H"]
+move_focus = "left"
+
+[keys."Alt + J"]
+move_focus = "down"
+
+[keys."Alt + K"]
+move_focus = "up"
+
+[keys."Alt + L"]
+move_focus = "right"
+
+[keys."Alt + Shift + Down"]
+join_window = "down"
+
+[keys."Alt + Shift + Left"]
+join_window = "left"
+
+[keys."Alt + Shift + Right"]
+join_window = "right"
+
+[keys."Alt + Shift + Up"]
+join_window = "up"
+
+[keys."Alt + `"]
+switch_to_workspace = "term"
+
+[modifier_combinations]
+
+[settings]
+animate = true
+animation_duration = 0.3
+animation_easing = "ease_in_out"
+animation_fps = 100.0
+auto_focus_blacklist = []
+focus_follows_mouse = true
+hot_reload = true
+mouse_follows_focus = true
+mouse_hides_on_focus = true
+run_on_start = []
+
+[settings.gestures]
+distance_pct = 0.08
+enabled = false
+fingers = 3
+haptic_pattern = "level_change"
+haptics_enabled = true
+invert_horizontal_swipe = false
+skip_empty = true
+swipe_vertical_tolerance = 0.4
+
+[settings.layout]
+mode = "bsp"
+
+[settings.layout.gaps.inner]
+horizontal = 0
+vertical = 0
+
+[settings.layout.gaps.outer]
+bottom = 0
+left = 0
+right = 0
+top = 0
+
+[settings.layout.stack]
+default_orientation = "perpendicular"
+stack_offset = 40.0
+
+[settings.ui.menu_bar]
+active_label = "name"
+display_style = "label"
+enabled = true
+mode = "active"
+show_empty = false
+
+[settings.ui.mission_control]
+enabled = false
+fade_duration_ms = 180.0
+fade_enabled = false
+
+[settings.ui.stack_line]
+enabled = false
+horiz_placement = "top"
+spacing = 0.0
+thickness = 0.0
+vert_placement = "left"
+
+[settings.window_snapping]
+drag_swap_fraction = 0.3
+
+[virtual_workspaces]
+auto_assign_windows = true
+default_workspace_count = 11
+enabled = true
+preserve_focus_per_workspace = true
+workspace_auto_back_and_forth = false
+workspace_names = [
+    "term",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+]
+[[virtual_workspaces.app_rules]]
+floating = true
+title_substring = "Preferences"
+
+[[virtual_workspaces.app_rules]]
+app_name = "kitty"
+workspace = "term"
+
+[[virtual_workspaces.app_rules]]
+app_name = "Firefox"
+workspace = 1
