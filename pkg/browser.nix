@@ -477,22 +477,26 @@ in
         # Extensions
         ExtensionSettings =
           let
-            mkExt = name: id: {
-              "${id}" = {
+            mkExt =
+              name: id:
+              lib.nameValuePair "${id}" {
                 install_url = "https://addons.mozilla.org/firefox/downloads/latest/${name}/latest.xpi";
                 installation_mode = "force_installed";
                 updates_disabled = true;
               };
-            };
           in
           {
             "*".installation_mode = "blocked";
+            "enhancerforyoutube@maximerf.addons.mozilla.org" = {
+              install_url = "https://www.mrfdev.com/downloads/enhancer_for_youtube-2.0.130.1.xpi";
+              installation_mode = "force_installed";
+              updates_disabled = true;
+            };
           }
-          // lib.mapAttrs mkExt {
+          // lib.mapAttrs' mkExt {
             # bitwarden-password-manager = "{446900e4-71c2-419f-a6a7-df9c091e268b}";
             noscript = "{73a6fe31-595d-460b-a920-fcc0f8843232}";
             adnauseam = "adnauseam@rednoise.org";
-            enhancer-for-youtube = "sponsorBlocker@ajay.app";
             sponsorblock = "sponsorBlocker@ajay.app";
           };
       };
