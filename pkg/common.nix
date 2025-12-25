@@ -170,6 +170,8 @@ in
         "super+." = "layout_action bias 64";
         "super+[" = "previous_window";
         "super+]" = "next_window";
+        "super+w" = "close_window";
+        "super+shift+w" = "close_tab";
       };
     };
 
