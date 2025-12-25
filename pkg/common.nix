@@ -166,7 +166,7 @@ in
         startup_session = builtins.toString ../cfg/kitty-session.sh;
       };
       keybindings = {
-        "super+enter" = "launch --location=split";
+        "super+enter" = "launch --cwd=current --location=split";
         "super+." = "layout_action bias 64";
         "super+[" = "previous_window";
         "super+]" = "next_window";
