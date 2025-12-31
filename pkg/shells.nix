@@ -17,26 +17,23 @@ let
   shellBanner = "cutefetch -m cat";
 
   uncivDir = "${config.xdg.configHome}/Unciv";
-  extraBinScripts =
-    let
-      mkBinScript = (name: command: lib.getExe (pkgs.writeShellScriptBin name command));
-    in
-    builtins.mapAttrs mkBinScript {
-      wuji = "sudo -H nix-collect-garbage -d && nix-collect-garbage -d";
-      yup = "nix flake update --flake ${flakePath} && re-nix";
-      civ = "mkdir -p ${uncivDir} && unciv --data-dir=${uncivDir}";
-      fan = "du -hd1 \"$1\" | sort -hr";
-      unly = "curl -Is \"$1\" | grep ^location | cut -d \" \" -f 2";
-      etch = "sudo dd bs=4M if=$2 of=/dev/$1 status=progress oflag=direct conv=fsync";
-      mkdev = ''
-        [[ -f .gitignore ]] && echo "\n" >> .gitignore
-        cat ${../cfg/devshell/gitignore} >> .gitignore
-        cat ${../cfg/devshell/flake.nix} >   flake.nix
-        echo "use flake"                 >> .envrc
-        direnv allow
-      '';
-      weiqi = "gogui -computer-black -size 13 -program 'gnugo --mode gtp --level 0'";
-    };
+  mkBinScript = (name: command: lib.getExe (pkgs.writeShellScriptBin name command));
+  extraBinScripts = builtins.mapAttrs mkBinScript {
+    wuji = "sudo -H nix-collect-garbage -d && nix-collect-garbage -d";
+    yup = "nix flake update --flake ${flakePath} && re-nix";
+    civ = "mkdir -p ${uncivDir} && unciv --data-dir=${uncivDir}";
+    fan = "du -hd1 \"$1\" | sort -hr";
+    unly = "curl -Is \"$1\" | grep ^location | cut -d \" \" -f 2";
+    etch = "sudo dd status=progress oflag=direct conv=fsync bs=4M of=/dev/$1 if=$2";
+    mkdev = ''
+      [[ -f .gitignore ]] && echo "\n" >> .gitignore
+      cat ${../cfg/devshell/gitignore} >> .gitignore
+      cat ${../cfg/devshell/flake.nix} >   flake.nix
+      echo "use flake"                 >> .envrc
+      direnv allow
+    '';
+    weiqi = "gogui -computer-black -size 13 -program 'gnugo --mode gtp --level 0'";
+  };
 in
 {
   home.shellAliases = extraBinScripts // {
