@@ -59,7 +59,7 @@ in
       "hiddenbar"
       # "karabiner-elements"
       "katrain"
-      "keyclu"
+      # "keyclu"
       # "krita"
       "lm-studio"
       "logseq"
