@@ -62,6 +62,9 @@ in
         replace = {
           "(.*\.)?nixos.wiki$" = "wiki.nixos.org";
         };
+        remove = [
+          "(.*\.)?mynixos.com$"
+        ];
       };
     };
   };
