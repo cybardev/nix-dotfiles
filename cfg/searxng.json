@@ -1,0 +1,83 @@
+{
+  "categories_as_tabs": {
+    "general": {},
+    "images": {},
+    "videos": {}
+  },
+  "engines": [
+    {
+      "disabled": false,
+      "name": "startpage"
+    },
+    {
+      "disabled": false,
+      "name": "qwant"
+    },
+    {
+      "disabled": false,
+      "name": "wikipedia"
+    },
+    {
+      "disabled": false,
+      "name": "startpage images"
+    },
+    {
+      "disabled": false,
+      "name": "qwant images"
+    },
+    {
+      "disabled": false,
+      "name": "odysee"
+    },
+    {
+      "disabled": false,
+      "name": "youtube"
+    }
+  ],
+  "general": {
+    "debug": false,
+    "enable_metrics": false
+  },
+  "hostnames": {
+    "remove": [
+      "(.*.)?mynixos.com$"
+    ],
+    "replace": {
+      "(.*.)?nixos.wiki$": "wiki.nixos.org"
+    }
+  },
+  "search": {
+    "autocomplete": "startpage",
+    "default_lang": "en-CA",
+    "safe_search": 0
+  },
+  "server": {
+    "bind_address": "0.0.0.0",
+    "image_proxy": true,
+    "method": "GET",
+    "port": 8888
+  },
+  "ui": {
+    "default_locale": "en",
+    "hotkeys": "vim",
+    "infinite_scroll": true,
+    "theme_args": {
+      "simple_style": "auto"
+    },
+    "url_formatting": "full"
+  },
+  "use_default_settings": {
+    "engines": {
+      "keep_only": [
+        "startpage",
+        "qwant",
+        "wikipedia",
+        "startpage images",
+        "qwant images",
+        "odysee",
+        "youtube",
+        "nixos wiki"
+      ]
+    }
+  }
+}
