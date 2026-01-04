@@ -298,6 +298,8 @@ in
     man.generateCaches = false;
   };
 
+  manual.manpages.enable = false;
+
   services = {
     ollama = {
       enable = false;
