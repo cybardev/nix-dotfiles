@@ -33,6 +33,10 @@ let
       direnv allow
     '';
     weiqi = "gogui -computer-black -size 13 -program 'gnugo --mode gtp --level 0'";
+    vizeval = ''
+      nix eval $1 --eval-profiler flamegraph
+      ${lib.getExe' pkgs.inferno "inferno-flamegraph"} --width 10000 < nix.profile > vizeval.svg
+    '';
   };
 in
 {
