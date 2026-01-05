@@ -23,7 +23,7 @@ in
 {
   imports = [ inputs.cypkgs.modules.searxng ];
   services.searxng = {
-    enable = true;
+    enable = false;
     settings = {
       use_default_settings = {
         engines = {

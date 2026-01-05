@@ -39,7 +39,7 @@ in
               name = "SearXNG";
               urls = [
                 {
-                  template = "http://localhost:8080/search";
+                  template = "https://search.cybar.dev/search";
                   params = [
                     {
                       name = "q";
@@ -48,7 +48,7 @@ in
                   ];
                 }
                 {
-                  template = "http://localhost:8080/autocompleter";
+                  template = "https://search.cybar.dev/autocompleter";
                   params = [
                     {
                       name = "q";
