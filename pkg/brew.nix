@@ -42,6 +42,7 @@ in
     casks = [
       "altserver"
       # "android-studio"
+      # "bitwarden"
       "blackhole-16ch"
       # "blender"
       "coderabbit"

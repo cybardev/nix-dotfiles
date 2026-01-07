@@ -456,6 +456,7 @@ in
                 "urlbar-container"
                 "_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action"
                 "adnauseam_rednoise_org-browser-action"
+                "_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action"
                 "unified-extensions-button"
               ];
               vertical-tabs = [ "tabbrowser-tabs" ];
@@ -494,7 +495,7 @@ in
             };
           }
           // lib.mapAttrs' mkExt {
-            # bitwarden-password-manager = "{446900e4-71c2-419f-a6a7-df9c091e268b}";
+            bitwarden-password-manager = "{446900e4-71c2-419f-a6a7-df9c091e268b}";
             noscript = "{73a6fe31-595d-460b-a920-fcc0f8843232}";
             adnauseam = "adnauseam@rednoise.org";
             sponsorblock = "sponsorBlocker@ajay.app";
@@ -509,7 +510,7 @@ in
         en_GB
       ];
       extensions = [
-        # "nngceckbapebfimnlniiiahkandclblb" # bitwarden
+        "nngceckbapebfimnlniiiahkandclblb" # bitwarden
         "doojmbjmlfjjnbmnoijecmcbfeoakpjm" # noscript
         "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock origin lite
         "ponfpcnoihfmfllpaingbgckeeldkhle" # enhancer for youtube
