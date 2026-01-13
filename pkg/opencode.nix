@@ -29,8 +29,8 @@
             baseURL = "http://localhost:1234/v1";
           };
           models = {
-            "qwen/qwen3-4b-thinking-2507" = {
-              name = "Qwen3 2507";
+            "qwen/qwen3-vl-4b" = {
+              name = "Qwen3";
               limit = {
                 context = 262144;
                 output = 65536;
@@ -40,7 +40,7 @@
         };
       };
       # model = "github-copilot/gpt-5-mini";
-      model = "lmstudio/qwen/qwen3-4b-thinking-2507";
+      model = "lmstudio/qwen/qwen3-vl-4b";
       mcp = {
         github = {
           enabled = false;
