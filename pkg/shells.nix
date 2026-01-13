@@ -45,12 +45,12 @@ in
     x = "exit";
     clr = "clear";
     cls = "clear";
-    cat = "bat -pp";
+    kat = "bat -pp";
     icat = "kitten icat";
-    cssh = "kitten ssh";
+    kssh = "kitten ssh";
     top = "btm --basic";
-    ls = "eza -1 --icons=never";
-    ll = "eza -1l";
+    ez = "eza -1 --icons=never";
+    ezl = "eza -1l";
     lessr = "less -R";
     tree = "eza --tree";
     py = "ptpython";
