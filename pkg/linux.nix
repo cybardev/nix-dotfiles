@@ -28,6 +28,7 @@ in
       nerd-fonts.jetbrains-mono
       nerd-fonts.fira-code
       xorg.xdpyinfo
+      tailscale
       docker
       xclip
       unzip

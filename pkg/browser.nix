@@ -39,7 +39,7 @@ in
               name = "SearXNG";
               urls = [
                 {
-                  template = "https://search.cybar.dev/search";
+                  template = "https://search.polydactyl-little.ts.net/search";
                   params = [
                     {
                       name = "q";
@@ -48,7 +48,7 @@ in
                   ];
                 }
                 {
-                  template = "https://search.cybar.dev/autocompleter";
+                  template = "https://search.polydactyl-little.ts.net/autocompleter";
                   params = [
                     {
                       name = "q";
@@ -353,7 +353,6 @@ in
         PostQuantumKeyAgreementEnabled = true;
         TranslateEnabled = true;
         SkipTermsOfUse = true;
-        HttpsOnlyMode = "enabled";
         Homepage.StartPage = "previous-session";
         FirefoxHome = {
           # Make new tab only show search
@@ -393,9 +392,13 @@ in
         };
 
         # Settings
+        HttpsOnlyMode = "force_enabled";
+        HttpAllowlist = lib.map (s: "http://" + s) [
+          "localhost:10101"
+        ];
         DNSOverHTTPS = {
           Enabled = true;
-          Fallback = false;
+          Fallback = true;
           # ProviderURL = "https://dns.nextdns.io/2853cb"; # NextDNS
           ProviderURL = "https://base.dns.mullvad.net/dns-query"; # Mullvad
           # ProviderURL = "https://family.cloudflare-dns.com/dns-query"; # Cloudflare
@@ -410,7 +413,7 @@ in
           Cookies = false;
           Downloads = true;
           FormData = true;
-          History = true;
+          History = false;
           Sessions = false;
           SiteSettings = false;
           OfflineApps = false;
@@ -429,6 +432,7 @@ in
           "extensions.autoDisableScopes" = 0; # Automatically enable extensions
           "extensions.update.enabled" = false;
 
+          "browser.urlbar.suggest.topsites" = false;
           "browser.urlbar.suggest.searches" = true; # Need this for basic search suggestions
           "browser.urlbar.suggest.calculator" = true;
           "browser.urlbar.unitConversion.enabled" = true;
