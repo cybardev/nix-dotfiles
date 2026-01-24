@@ -172,6 +172,9 @@ in
         PROMPT_INDICATOR_VI_NORMAL = "";
         PROMPT_INDICATOR_VI_INSERT = "";
       };
+      plugins = with pkgs.nushellPlugins; [
+        polars
+      ];
     };
 
     starship = {
