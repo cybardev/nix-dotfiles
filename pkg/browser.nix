@@ -383,6 +383,7 @@ in
         DisableProfileRefresh = true;
         DisableSetDesktopBackground = true;
         DisableTelemetry = true;
+        EnterprisePoliciesEnabled = true;
         NoDefaultBookmarks = lib.mkForce true;
         PictureInPicture.Enabled = false;
         FirefoxSuggest = {
@@ -390,8 +391,18 @@ in
           SponsoredSuggestions = false;
           ImproveSuggest = false;
         };
+        SearchEngines.Remove = [
+          "Perplexity"
+        ];
+        GenerativeAI = {
+          Enabled = false;
+          Locked = true;
+        };
 
         # Settings
+        RequestedLocales = [
+          "en-CA"
+        ];
         HttpsOnlyMode = "force_enabled";
         HttpAllowlist = lib.map (s: "http://" + s) [
           "localhost:10101"
@@ -499,6 +510,8 @@ in
             };
           }
           // lib.mapAttrs' mkExt {
+            english-ca-language-pack = "langpack-en-CA@firefox.mozilla.org";
+            canadian-english-dictionary = "en-CA@dictionaries.addons.mozilla.org";
             bitwarden-password-manager = "{446900e4-71c2-419f-a6a7-df9c091e268b}";
             noscript = "{73a6fe31-595d-460b-a920-fcc0f8843232}";
             adnauseam = "adnauseam@rednoise.org";
