@@ -256,8 +256,8 @@ in
     mpv = {
       enable = true;
       package = (
-        pkgs.mpv-unwrapped.wrapper {
-          mpv = pkgs.mpv-unwrapped.override {
+        pkgs.mpv.override {
+          mpv-unwrapped = pkgs.mpv-unwrapped.override {
             ffmpeg = pkgs.ffmpeg-full;
           };
           youtubeSupport = true;
