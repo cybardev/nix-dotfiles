@@ -208,7 +208,6 @@ in
 
     git-xet = {
       enable = true;
-      package = pkgs.cy.git-xet;
       concurrency = 3;
     };
   };
