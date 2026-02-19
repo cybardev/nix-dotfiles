@@ -255,19 +255,19 @@ in
 
     mpv = {
       enable = true;
-      package = (
-        pkgs.mpv.override {
-          mpv-unwrapped = pkgs.mpv-unwrapped.override {
-            ffmpeg = pkgs.ffmpeg-full;
-          };
-          youtubeSupport = true;
-          scripts = with pkgs.mpvScripts; [
-            sponsorblock-minimal
-            visualizer
-            uosc
-          ];
-        }
-      );
+      # package = (
+      #   pkgs.mpv.override {
+      #     mpv-unwrapped = pkgs.mpv-unwrapped.override {
+      #       ffmpeg = pkgs.ffmpeg-full;
+      #     };
+      #     youtubeSupport = true;
+      #     scripts = with pkgs.mpvScripts; [
+      #       sponsorblock-minimal
+      #       visualizer
+      #       uosc
+      #     ];
+      #   }
+      # );
     };
 
     poetry = {
