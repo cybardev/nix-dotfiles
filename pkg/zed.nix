@@ -1,3 +1,4 @@
+{ lib, pkgs, ... }:
 {
   programs.zed-editor = {
     enable = true;
@@ -8,6 +9,8 @@
       "dockerfile"
       "flutter-snippets"
       "git-firefly"
+      "java"
+      "java-debug"
       "kanagawa-themes"
       "lua"
       "mcp-server-context7"
@@ -87,46 +90,59 @@
       };
 
       lsp = {
-        nixd = {
-          settings = {
-            formatting = {
-              command = [ "nixfmt" ];
-            };
-            diagnostics = {
-              ignored = [ "sema-extra-with" ];
-            };
+        nixd.settings = {
+          formatting = {
+            command = [ "nixfmt" ];
+          };
+          diagnostics = {
+            ignored = [ "sema-extra-with" ];
           };
         };
-        tinymist = {
-          settings = {
-            exportPdf = "onSave";
-            outputPath = "$root/_preview/$name";
-            formatterMode = "typstyle";
-          };
+        tinymist.settings = {
+          exportPdf = "onSave";
+          outputPath = "$root/_preview/$name";
+          formatterMode = "typstyle";
+        };
+        jdtls.settings = {
+          java_home = pkgs.zulu;
+          lombok_support = true;
+          jdk_auto_download = false;
+          check_updates = "never";
+          jdtls_launcher = lib.getExe pkgs.jdt-language-server;
+          lombok_jar = "${pkgs.lombok}/share/java/lombok.jar";
         };
       };
 
       context_servers = {
         mcp-server-context7 = {
           enabled = true;
-          source = "extension";
           settings = { };
         };
         postgres-context-server = {
           enabled = false;
-          source = "extension";
           settings = {
             database_url = "http://localhost:54322";
           };
         };
       };
 
+      language_models.lmstudio.available_models = [
+        {
+          name = "qwen2.5-coder-7b-instruct-mlx";
+          display_name = "Qwen-Coder";
+          max_tokens = 32768;
+          supports_tool_calls = true;
+          supports_thinking = false;
+          supports_images = false;
+        }
+      ];
+
       agent = {
         enabled = true;
         enable_feedback = false;
         default_model = {
           provider = "lmstudio";
-          model = "qwen/qwen3-4b-thinking-2507";
+          model = "qwen2.5-coder-7b-instruct-mlx";
         };
         default_profile = "minimal";
         profiles = {
@@ -163,18 +179,7 @@
           "secondary-`" = "terminal_panel::Toggle";
           "secondary-b" = "workspace::ToggleRightDock";
           "secondary-alt-b" = "workspace::ToggleLeftDock";
-          "secondary-alt-o" = [
-            "agent::NewExternalAgentThread"
-            {
-              agent.custom = {
-                name = "OpenCode";
-                command = {
-                  command = "opencode";
-                  args = [ "acp" ];
-                };
-              };
-            }
-          ];
+          "secondary-alt-o" = "agent::ToggleFocus";
         };
       }
     ];
