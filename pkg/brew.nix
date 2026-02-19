@@ -29,7 +29,7 @@ in
       "KeyNote" = 409183694;
       "MuteKey" = 1509590766;
       "OwlFiles" = 510282524;
-      # "Pages" = 409201541;
+      "Pages" = 409201541;
       # "Wavebar" = 6450398808;
       "Tailscale" = 1475387142;
       "Xcode" = 497799835;
