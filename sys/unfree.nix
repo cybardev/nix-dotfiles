@@ -9,6 +9,7 @@ builtins.elem (lib.getName pkg) [
   "freej2me"
   "aseprite"
   "zsh-abbr"
+  "lmstudio"
   "raycast"
   "cursor"
   "vscode"
