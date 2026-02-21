@@ -86,7 +86,7 @@
         };
         JavaScript = {
           prettier = {
-            tabWidth = 4;
+            tabWidth = 2;
           };
         };
       };
