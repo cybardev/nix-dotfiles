@@ -71,7 +71,7 @@ in
       # "prusaslicer"
       # "shotcut"
       # "signal"
-      # "sonic-pi"
+      "sonic-pi"
       "steam"
       "stremio"
       "ungoogled-chromium"

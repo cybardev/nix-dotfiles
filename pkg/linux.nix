@@ -38,6 +38,7 @@ in
       logseq
       zoom-us
       aseprite
+      sonic-pi
       lunar-client
       altserver-linux
       signal-desktop-bin
