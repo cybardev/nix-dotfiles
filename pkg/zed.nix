@@ -1,5 +1,7 @@
 { lib, pkgs, ... }:
 {
+  home.sessionVariables.MLX_OMNI_SERVER_API_KEY = "placeholder";
+
   programs.zed-editor = {
     enable = true;
     extensions = [
@@ -128,16 +130,31 @@
         };
       };
 
-      language_models.lmstudio.available_models = [
-        {
-          name = "qwen2.5-coder-7b-instruct-mlx";
-          display_name = "Qwen-Coder";
-          max_tokens = 32768;
-          supports_tool_calls = true;
-          supports_thinking = false;
-          supports_images = false;
-        }
-      ];
+      language_models = {
+        lmstudio.available_models = [
+          {
+            name = "qwen2.5-coder-7b-instruct-mlx";
+            display_name = "Qwen-Coder";
+            max_tokens = 32768;
+            supports_tool_calls = true;
+            supports_thinking = false;
+            supports_images = false;
+          }
+        ];
+        openai_compatible.mlx-omni-server = {
+          api_url = "http://localhost:10240/v1";
+          available_models = [
+            {
+              name = "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit";
+              display_name = "Qwen-Coder MLX";
+              max_tokens = 131072;
+              supports_tool_calls = true;
+              supports_thinking = false;
+              supports_images = false;
+            }
+          ];
+        };
+      };
 
       agent = {
         enabled = true;
