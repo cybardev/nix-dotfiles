@@ -82,11 +82,11 @@
         main.binding =
           let
             ws =
-              k: v:
+              keybind: action:
               (lib.listToAttrs (
                 lib.map (n: {
-                  name = "${k}-${toString n}";
-                  value = "${v} ${toString n}";
+                  name = "${keybind}-${toString n}";
+                  value = "${action} ${toString n}";
                 }) (lib.range 0 9)
               ));
           in
