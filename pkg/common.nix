@@ -157,13 +157,14 @@ in
         size = 14;
       };
       settings = {
+        cursor_trail = 1;
         tab_bar_edge = "top";
         enabled_layouts = "splits";
         enable_audio_bell = false;
         background_opacity = 0.96;
         update_check_interval = 0;
         hide_window_decorations = "yes";
-        startup_session = builtins.toString ../cfg/kitty-session.sh;
+        startup_session = toString ../cfg/kitty-session.sh;
       };
       keybindings = {
         "super+enter" = "launch --cwd=current --location=split";
