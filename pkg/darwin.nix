@@ -11,6 +11,7 @@ let
     re-nix = "nh darwin switch";
     icloud = "cd '~/Library/Mobile Documents/com~apple~CloudDocs'";
     disclr = "ncdu /System/Volumes/Data/Users/${userName}";
+    ts = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
     cr = "coderabbit";
 
     flux = "/Applications/Pokemon\\ Flux/Flux.app/Contents/MacOS/Z-universal";
