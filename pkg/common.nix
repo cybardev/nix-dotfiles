@@ -59,19 +59,19 @@ in
       (with pkgs.cy; [
         cutefetch
         jitterbugpair
-        freej2me
-        ytgo
+        # freej2me
+        # ytgo
       ])
       ++ (with pkgs; [
         tree-sitter-grammars.tree-sitter-dart
         typescript-language-server
         postgres-language-server
         # gnome-mahjongg
-        dotnet-sdk_9
+        # dotnet-sdk_9
         pgformatter
         clojure-lsp
-        cloudflared
-        lazydocker
+        # cloudflared
+        # lazydocker
         # localstack
         # tailscale
         opentofu
@@ -102,6 +102,7 @@ in
         coreutils
         nix-init
         visidata
+        prettier
         cmatrix
         gnugrep
         ripgrep
@@ -127,9 +128,6 @@ in
       ++ (with pkgs.python3Packages; [
         jedi-language-server
         ptpython
-      ])
-      ++ (with pkgs.nodePackages; [
-        prettier
       ])
       ++ (with pkgs.luajitPackages; [
         luarocks
@@ -256,19 +254,19 @@ in
 
     mpv = {
       enable = true;
-      # package = (
-      #   pkgs.mpv.override {
-      #     mpv-unwrapped = pkgs.mpv-unwrapped.override {
-      #       ffmpeg = pkgs.ffmpeg-full;
-      #     };
-      #     youtubeSupport = true;
-      #     scripts = with pkgs.mpvScripts; [
-      #       sponsorblock-minimal
-      #       visualizer
-      #       uosc
-      #     ];
-      #   }
-      # );
+      package = (
+        pkgs.mpv.override {
+          mpv-unwrapped = pkgs.mpv-unwrapped.override {
+            ffmpeg = pkgs.ffmpeg-full;
+          };
+          youtubeSupport = false;
+          scripts = with pkgs.mpvScripts; [
+            # sponsorblock-minimal
+            # visualizer
+            uosc
+          ];
+        }
+      );
     };
 
     poetry = {

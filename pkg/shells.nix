@@ -76,8 +76,8 @@ in
     # misc
     tf = lib.getExe pkgs.opentofu;
     lg = lib.getExe pkgs.lazygit;
-    ldk = lib.getExe pkgs.lazydocker;
-    lck = lib.getExe pkgs.localstack;
+    # ldk = lib.getExe pkgs.lazydocker;
+    # lck = lib.getExe pkgs.localstack;
   };
 
   programs = {

@@ -37,6 +37,10 @@ let
   git = {
     enable = true;
     package = pkgs.gitFull;
+    signing = {
+      format = "ssh";
+      signByDefault = true;
+    };
     settings = {
       user = {
         name = "cybardev";
@@ -140,7 +144,7 @@ let
         };
         prettier = {
           command = [
-            (lib.getExe pkgs.nodePackages.prettier)
+            (lib.getExe pkgs.prettier)
             "--stdin-filepath=$path"
           ];
           patterns = [
@@ -185,7 +189,10 @@ let
     };
   };
 
-  mergiraf.enable = config.programs.git.enable;
+  mergiraf = {
+    enable = config.programs.git.enable;
+    enableGitIntegration = true;
+  };
 in
 {
   imports = with inputs.cypkgs.modules; [
