@@ -12,8 +12,10 @@ in
     autoMigrate = true;
     enableRosetta = true;
     user = config.userConfig.username;
-    mutableTaps = false;
-    taps = tap-set;
+    mutableTaps = true;
+    taps = tap-set // {
+      "jundot/omlx" = inputs.omlx-tap;
+    };
   };
 
   homebrew = {
@@ -23,22 +25,28 @@ in
       autoUpdate = true;
       upgrade = true;
     };
-    taps = builtins.attrNames tap-set;
-    masApps = {
-      # "iMovie" = 408981434;
-      "KeyNote" = 409183694;
-      "MuteKey" = 1509590766;
-      "OwlFiles" = 510282524;
-      "Pages" = 409201541;
-      # "Wavebar" = 6450398808;
-      "Tailscale" = 1475387142;
-      "Xcode" = 497799835;
-      # "Reins" = 6739738501;
-    };
+    taps = (builtins.attrNames tap-set) ++ [
+      {
+        name = "jundot/omlx";
+        clone_target = "https://github.com/jundot/omlx.git";
+      }
+    ];
+    # masApps = {
+    #   # "iMovie" = 408981434;
+    #   # "KeyNote" = 361285480;
+    #   "MuteKey" = 1509590766;
+    #   # "Pages" = 361309726;
+    #   # "Wavebar" = 6450398808;
+    #   "WebSSH" = 497714887;
+    #   "Tailscale" = 1475387142;
+    #   "Xcode" = 497799835;
+    # };
     brews = [
+      # "mas"
       "cocoapods"
       # "handbrake"
       # "rift"
+      "omlx"
     ];
     casks = [
       "altserver"
@@ -46,7 +54,7 @@ in
       # "bitwarden"
       "blackhole-16ch"
       # "blender"
-      "coderabbit"
+      # "coderabbit"
       # "diffusionbee"
       "discord"
       "docker-desktop"
@@ -63,7 +71,7 @@ in
       "katrain"
       # "keyclu"
       # "krita"
-      "lm-studio"
+      # "lm-studio"
       "logseq"
       "lulu"
       "lunar-client"

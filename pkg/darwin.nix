@@ -29,6 +29,10 @@ in
   userConfig.isDarwin = true;
 
   home = {
+    sessionVariables = {
+      OMLX_PORT = 1234;
+    };
+
     file = {
       # ".config/karabiner".source = ../cfg/karabiner;
       # ".config/rift/config.toml".source = ../cfg/rift.toml;
