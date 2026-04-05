@@ -24,8 +24,8 @@ in
         };
         search = {
           force = true;
-          default = "searxng";
-          privateDefault = "searxng";
+          default = "omnisearch";
+          privateDefault = "omnisearch";
           engines = {
             # Disable "search with" icons
             ddg.metaData.hidden = true;
@@ -34,6 +34,43 @@ in
             google.metaData.hidden = true;
             amazondotcom.metaData.hidden = true;
             wikipedia.metaData.hidden = true;
+
+            omnisearch = {
+              name = "OmniSearch";
+              urls = [
+                {
+                  template = "https://search.cybar.dev/search";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+                {
+                  template = "https://search.cybar.dev/autocompleter";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                  type = "application/x-suggestions+json";
+                }
+                # suggestions fallback
+                # {
+                #   template = "https://www.startpage.com/osuggestions";
+                #   params = [
+                #     {
+                #       name = "q";
+                #       value = "{searchTerms}";
+                #     }
+                #   ];
+                #   type = "application/x-suggestions+json";
+                # }
+              ];
+              definedAliases = [ "oi" ];
+            };
 
             searxng = {
               name = "SearXNG";
