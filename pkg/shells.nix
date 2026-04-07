@@ -29,6 +29,7 @@ let
       [[ -f .gitignore ]] && echo "\n" >> .gitignore
       cat ${../cfg/devshell/gitignore} >> .gitignore
       cat ${../cfg/devshell/flake.nix} >   flake.nix
+      cat ${../flake.lock}             >   flake.lock
       echo "use flake"                 >> .envrc
       direnv allow
     '';
