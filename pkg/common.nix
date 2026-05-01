@@ -37,6 +37,10 @@ in
       source = ../cfg/lf;
       recursive = true;
     };
+    # "wezterm" = {
+    #   source = ../cfg/wezterm;
+    #   recursive = true;
+    # };
     "jjui/themes/base16-kanagawa-dragon.toml".source = ../cfg/jjui-kanagawa-dragon.toml;
   };
 
@@ -144,6 +148,8 @@ in
       enable = true;
       nix-direnv.enable = true;
     };
+
+    wezterm.enable = false;
 
     kitty = {
       enable = true;
