@@ -75,6 +75,7 @@ in
     yang = "nh search";
 
     # misc
+    ytdl = "${lib.getExe pkgs.yt-dlp} --add-metadata --embed-thumbnail -f bestaudio --extract-audio --audio-format opus --audio-quality 0";
     tf = lib.getExe pkgs.opentofu;
     lg = lib.getExe pkgs.lazygit;
     # ldk = lib.getExe pkgs.lazydocker;

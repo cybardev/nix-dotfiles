@@ -3,7 +3,6 @@ let
   tap-set = with inputs; {
     "homebrew/homebrew-core" = homebrew-core;
     "homebrew/homebrew-cask" = homebrew-cask;
-    # "acsandmann/homebrew-tap" = rift-wm;
   };
 in
 {
@@ -13,24 +12,21 @@ in
     enableRosetta = true;
     user = config.userConfig.username;
     mutableTaps = true;
-    taps = tap-set // {
-      "jundot/omlx" = inputs.omlx-tap;
-    };
+    taps = tap-set;
   };
 
   homebrew = {
     enable = true;
+    global = {
+      autoUpdate = true;
+      brewfile = true;
+    };
     onActivation = {
       cleanup = "zap";
       autoUpdate = true;
       upgrade = true;
     };
-    taps = (builtins.attrNames tap-set) ++ [
-      {
-        name = "jundot/omlx";
-        clone_target = "https://github.com/jundot/omlx.git";
-      }
-    ];
+    taps = builtins.attrNames tap-set;
     # masApps = {
     #   # "iMovie" = 408981434;
     #   # "KeyNote" = 361285480;
@@ -46,7 +42,6 @@ in
       "cocoapods"
       # "handbrake"
       # "rift"
-      "omlx"
     ];
     casks = [
       "altserver"
@@ -56,7 +51,7 @@ in
       # "blender"
       # "coderabbit"
       # "diffusionbee"
-      "discord"
+      # "discord"
       "docker-desktop"
       # "flutter"
       # "fedora-media-writer"
@@ -66,6 +61,7 @@ in
       # "font-opendyslexic-nerd-font"
       "gb-studio"
       "gimp"
+      "helium-browser"
       "hiddenbar"
       # "karabiner-elements"
       "katrain"
@@ -80,9 +76,10 @@ in
       # "shotcut"
       # "signal"
       "sonic-pi"
+      # "soulseek"
       "steam"
       "stremio"
-      "ungoogled-chromium"
+      # "ungoogled-chromium"
       # "whisky"
       # "zoom"
     ];

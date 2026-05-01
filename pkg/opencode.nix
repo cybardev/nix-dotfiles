@@ -7,10 +7,10 @@
   programs.opencode = {
     enable = true;
     enableMcpIntegration = true;
+    tui.theme = "everforest";
     settings = {
       "$schema" = "https://opencode.ai/config.json";
       autoupdate = false;
-      theme = "aura";
       instructions = [
         "CONTRIBUTING.md"
         "docs/guidelines.md"

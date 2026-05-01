@@ -40,7 +40,7 @@ in
       automatic = false; # FIXME: https://github.com/NixOS/nix/issues/7273
       dates = [ "weekly" ];
     };
-    gc.dates = "weekly";
+    gc.interval = "weekly";
   };
   nixpkgs.config.allowUnfreePredicate = import ./unfree.nix { inherit lib; };
 

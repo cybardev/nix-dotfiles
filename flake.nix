@@ -26,16 +26,6 @@
       flake = false;
     };
 
-    # rift-wm = {
-    #   url = "github:acsandmann/homebrew-tap";
-    #   flake = false;
-    # };
-
-    omlx-tap = {
-      url = "github:jundot/omlx";
-      flake = false;
-    };
-
     cypkgs = {
       url = "github:cybardev/nix-channel?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";

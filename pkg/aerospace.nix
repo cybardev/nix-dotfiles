@@ -72,7 +72,23 @@
       };
 
       # See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
-      workspace-to-monitor-force-assignment."0" = "secondary";
+      workspace-to-monitor-force-assignment =
+        let
+          wsMap =
+            ws-start: ws-end: monitor:
+            (lib.listToAttrs (
+              lib.map (ws: {
+                name = lib.toString ws;
+                value = monitor;
+              }) (lib.range ws-start ws-end)
+            ));
+        in
+        {
+          "term" = "secondary";
+          "0" = "main";
+        }
+        // (wsMap 1 5 "secondary")
+        // (wsMap 6 9 "main");
 
       mode = {
         # "main" binding mode declaration
