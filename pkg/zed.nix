@@ -23,6 +23,7 @@
       "pyrefly"
       "sql"
       "terraform"
+      "toml"
       "typst"
       "warp-one-dark"
       "zed-docker-compose"
@@ -34,10 +35,8 @@
         diagnostics = false;
         metrics = false;
       };
-      features = {
-        edit_prediction_provider = "none";
-      };
       edit_predictions = {
+        provider = "none";
         mode = "subtle";
       };
       theme = {
@@ -137,20 +136,23 @@
             display_name = "Qwen-Coder";
             max_tokens = 32768;
             supports_tool_calls = true;
-            supports_thinking = false;
             supports_images = false;
           }
         ];
-        openai_compatible.mlx-omni-server = {
-          api_url = "http://localhost:10240/v1";
+        openai_compatible.omlx = {
+          api_url = "http://localhost:1234/v1";
           available_models = [
             {
               name = "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit";
               display_name = "Qwen-Coder MLX";
               max_tokens = 131072;
-              supports_tool_calls = true;
-              supports_thinking = false;
-              supports_images = false;
+              capabilities = {
+                tools = true;
+                images = false;
+                parallel_tool_calls = false;
+                prompt_cache_key = false;
+                chat_completions = true;
+              };
             }
           ];
         };
