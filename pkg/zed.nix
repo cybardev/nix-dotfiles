@@ -21,6 +21,7 @@
       "nix"
       "postgres-context-server"
       "pyrefly"
+      "scss"
       "sql"
       "terraform"
       "toml"

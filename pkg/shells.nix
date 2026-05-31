@@ -31,6 +31,8 @@ let
       cat ${../cfg/devshell/flake.nix} >   flake.nix
       cat ${../flake.lock}             >   flake.lock
       echo "use flake"                 >> .envrc
+      printf '\n'                      >> .envrc
+      echo "dotenv"                    >> .envrc
       direnv allow
     '';
     weiqi = "gogui -computer-black -size 13 -program 'gnugo --mode gtp --level 0'";
