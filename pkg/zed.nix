@@ -1,7 +1,5 @@
 { lib, pkgs, ... }:
 {
-  home.sessionVariables.MLX_OMNI_SERVER_API_KEY = "placeholder";
-
   programs.zed-editor = {
     enable = true;
     extensions = [
@@ -37,8 +35,15 @@
         metrics = false;
       };
       edit_predictions = {
-        provider = "none";
         mode = "subtle";
+        provider = "none";
+        # provider = "open_ai_compatible_api";
+        # open_ai_compatible_api = {
+        #   api_url = "http://localhost:1234/v1/completions";
+        #   model = "tongrow/MLX-Qwopus3.5-9B-Coder-oQ4-fp16-mtp";
+        #   prompt_format = "qwen";
+        #   max_output_tokens = 512;
+        # };
       };
       theme = {
         mode = "dark";
@@ -131,22 +136,13 @@
       };
 
       language_models = {
-        lmstudio.available_models = [
-          {
-            name = "qwen2.5-coder-7b-instruct-mlx";
-            display_name = "Qwen-Coder";
-            max_tokens = 32768;
-            supports_tool_calls = true;
-            supports_images = false;
-          }
-        ];
         openai_compatible.omlx = {
           api_url = "http://localhost:1234/v1";
           available_models = [
             {
-              name = "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit";
-              display_name = "Qwen-Coder MLX";
-              max_tokens = 131072;
+              name = "tongrow/MLX-Qwopus3.5-9B-Coder-oQ4-fp16-mtp";
+              display_name = "Clod";
+              max_tokens = 262144;
               capabilities = {
                 tools = true;
                 images = false;
@@ -162,9 +158,13 @@
       agent = {
         enabled = true;
         enable_feedback = false;
+        # default_model = {
+        #   provider = "openrouter";
+        #   model = "deepseek/deepseek-v4-flash";
+        # };
         default_model = {
-          provider = "lmstudio";
-          model = "qwen2.5-coder-7b-instruct-mlx";
+          provider = "omlx";
+          model = "tongrow/MLX-Qwopus3.5-9B-Coder-oQ4-fp16-mtp";
         };
         default_profile = "minimal";
         profiles = {

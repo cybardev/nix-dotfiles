@@ -22,15 +22,20 @@
         "ollama"
       ];
       provider = {
-        lmstudio = {
+        openrouter = {
+          models = {
+            "deepseek/deepseek-v4-flash" = { };
+          };
+        };
+        omlx = {
           npm = "@ai-sdk/openai-compatible";
-          name = "LM Studio";
+          name = "oMLX";
           options = {
             baseURL = "http://localhost:1234/v1";
           };
           models = {
-            "qwen/qwen3-vl-4b" = {
-              name = "Qwen3";
+            "tongrow/MLX-Qwopus3.5-9B-Coder-oQ4-fp16-mtp" = {
+              name = "Clod";
               limit = {
                 context = 262144;
                 output = 65536;
@@ -40,7 +45,8 @@
         };
       };
       # model = "github-copilot/gpt-5-mini";
-      model = "lmstudio/qwen/qwen3-vl-4b";
+      model = "openrouter/deepseek/deepseek-v4-flash";
+      # model = "omlx/tongrow/MLX-Qwopus3.5-9B-Coder-oQ4-fp16-mtp";
       mcp = {
         github = {
           enabled = false;
