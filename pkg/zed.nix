@@ -1,5 +1,7 @@
 { lib, pkgs, ... }:
 {
+  home.sessionVariables.OMLX_API_KEY = "placeholder";
+
   programs.zed-editor = {
     enable = true;
     extensions = [
