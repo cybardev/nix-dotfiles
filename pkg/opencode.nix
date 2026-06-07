@@ -5,7 +5,7 @@
 }:
 {
   programs.opencode = {
-    enable = true;
+    enable = false;
     enableMcpIntegration = true;
     tui.theme = "everforest";
     settings = {

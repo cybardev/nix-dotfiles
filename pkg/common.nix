@@ -24,6 +24,7 @@ in
     ./cava.nix
   ]
   ++ (with inputs.cypkgs.modules; [
+    pi-coding-agent
     tenere
   ]);
 
@@ -46,8 +47,6 @@ in
 
   home = {
     file = {
-      ".pi/agent/AGENTS.md".source = ../cfg/pi/AGENTS.md;
-      ".pi/agent/models.json".text = lib.toJSON (import ../cfg/pi/models.nix);
       ".katrain" = {
         source = ../cfg/katrain-theme/woodstone;
         recursive = true;
@@ -71,7 +70,6 @@ in
         tree-sitter-grammars.tree-sitter-dart
         typescript-language-server
         postgres-language-server
-        pi-coding-agent
         # gnome-mahjongg
         # dotnet-sdk_9
         pgformatter
@@ -281,6 +279,11 @@ in
     poetry = {
       enable = false;
       settings.virtualenvs.in-project = true;
+    };
+
+    pi-coding-agent = {
+      enable = true;
+      instructions = ../cfg/pi/AGENTS.md;
     };
 
     tenere = {
