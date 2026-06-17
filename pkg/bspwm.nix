@@ -1,8 +1,15 @@
+{ lib, pkgs, ... }:
+let
+  fix-touchscreen = pkgs.writeShellScriptBin "fix-touchscreen.sh" ''
+    ${lib.getExe pkgs.xinput} map-to-output "Wacom Pen and multitouch sensor Finger" eDP-1
+    ${lib.getExe pkgs.xinput} map-to-output "Wacom Pen and multitouch sensor Pen Pen (0xb110c613)" eDP-1
+  '';
+in
 {
   xsession.windowManager.bspwm = {
     enable = true;
     monitors = {
-      HDMI-1 = [
+      DP-1 = [
         "m1"
         "m2"
         "m3"
@@ -18,6 +25,7 @@
     startupPrograms = [
       "xfce4-power-manager --daemon"
       "xfce4-session"
+      (lib.getExe fix-touchscreen)
     ];
     settings = {
       focus_follows_pointer = true;
@@ -55,6 +63,8 @@
   services.sxhkd = {
     enable = true;
     keybindings = {
+      # fix touchscreen
+      "super + shift + grave" = lib.getExe fix-touchscreen;
       # terminal
       "super + grave" = "kitty";
       # app launcher

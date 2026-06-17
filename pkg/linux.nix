@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  inputs,
+  lib,
   ...
 }:
 let
@@ -14,8 +14,8 @@ let
 in
 {
   imports = [
-    inputs.nur.modules.homeManager.default
-    inputs.zen-browser.homeModules.beta
+    # inputs.nur.modules.homeManager.default
+    # inputs.zen-browser.homeModules.beta
     ../sys/gtk.nix
     ./common.nix
     ./bspwm.nix
@@ -27,21 +27,22 @@ in
       nerd-fonts.caskaydia-cove
       nerd-fonts.jetbrains-mono
       nerd-fonts.fira-code
-      xorg.xdpyinfo
-      tailscale
-      docker
+      xdpyinfo
+      # tailscale
+      # docker
       xclip
       unzip
-      fondo
+      # fondo
       feh
-      gimp
-      logseq
-      zoom-us
-      aseprite
-      sonic-pi
-      lunar-client
-      altserver-linux
-      signal-desktop-bin
+      # gimp
+      # logseq
+      # zoom-us
+      # aseprite
+      # sonic-pi
+      xournalpp
+      # lunar-client
+      # altserver-linux
+      # signal-desktop-bin
     ];
   };
 
@@ -91,7 +92,12 @@ in
   # manage X session in home-manager
   xsession.enable = true;
   # config $XDG_CONFIG_HOME and such
-  xdg.userDirs.enable = true;
+  xdg.userDirs = {
+    enable = true;
+    setSessionVariables = true;
+  };
+
+  gtk.gtk4.theme = config.gtk.theme;
 
   dconf.settings = {
     "org/gnome/desktop/wm/preferences".theme = "Qogir-dark";

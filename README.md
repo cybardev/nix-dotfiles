@@ -53,7 +53,7 @@ mv "$NIXOS_CONFIG_DIR/sys/hardware-configuration.nix" "$NIXOS_CONFIG_DIR/sys/har
 cp "/etc/nixos/hardware-configuration.nix" "$NIXOS_CONFIG_DIR/sys/"
 
 # rebuild system from config
-sudo -H nixos-rebuild --experimental-features "nix-command flakes" switch --flake "$NIXOS_CONFIG_DIR"
+sudo -H nixos-rebuild switch --flake "$NIXOS_CONFIG_DIR"
 nix run home-manager/master -- switch --flake "$NIXOS_CONFIG_DIR"
 ```
 

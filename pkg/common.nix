@@ -154,7 +154,7 @@ in
 
     kitty = {
       enable = true;
-      themeFile = "Kanagawa_dragon";
+      themeFile = "kanagawa_dragon";
       enableGitIntegration = true;
       font = {
         package = pkgs.nerd-fonts.caskaydia-cove;

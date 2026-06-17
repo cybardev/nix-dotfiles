@@ -8,8 +8,6 @@ let
   userName = config.userConfig.username;
 in
 {
-  nix.gc.dates = "weekly";
-
   nixpkgs = {
     config.allowUnfreePredicate = import ./unfree.nix { inherit lib; };
     overlays = import ./overlays.nix { inherit inputs; };

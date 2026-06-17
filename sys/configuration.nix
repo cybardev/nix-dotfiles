@@ -40,7 +40,6 @@ in
       automatic = false; # FIXME: https://github.com/NixOS/nix/issues/7273
       dates = [ "weekly" ];
     };
-    gc.interval = "weekly";
   };
   nixpkgs.config.allowUnfreePredicate = import ./unfree.nix { inherit lib; };
 
@@ -95,55 +94,67 @@ in
     qogir-theme
 
     # XFCE panel plugins
-    xfce.xfce4-verve-plugin
-    xfce.xfce4-systemload-plugin
-    xfce.xfce4-whiskermenu-plugin
-    xfce.xfce4-weather-plugin
-    xfce.xfce4-clipman-plugin
+    xfce4-verve-plugin
+    xfce4-systemload-plugin
+    xfce4-whiskermenu-plugin
+    xfce4-weather-plugin
+    xfce4-clipman-plugin
   ];
 
-  services.xserver = {
-    # Enable the X11 windowing system.
-    enable = true;
+  services = {
+    # desktopManager.plasma6.enable = true;
+    # displayManager.plasma-login-manager.enable = true;
 
-    # Enable the XFCE Desktop Environment.
-    displayManager.lightdm = {
+    xserver = {
+      # Enable the X11 windowing system.
       enable = true;
-      greeters = import ./gtk.nix { inherit pkgs; };
-    };
-    desktopManager = {
-      xterm.enable = false;
-      xfce = {
-        enable = true;
-        # noDesktop = true;
-        enableXfwm = false;
-        enableScreensaver = false;
-      };
-    };
 
-    # Configure keymap in X11
-    xkb = {
-      layout = "us";
-      variant = "";
+      # Enable the XFCE Desktop Environment.
+      displayManager = {
+        lightdm = {
+          enable = true;
+          greeters = import ./gtk.nix { inherit pkgs; };
+        };
+        importedVariables = [
+          "GDK_SCALE"
+          "GDK_DPI_SCALE"
+          "QT_AUTO_SCREEN_SCALE_FACTOR"
+        ];
+      };
+      desktopManager = {
+        xterm.enable = false;
+        xfce = {
+          enable = true;
+          # noDesktop = true;
+          enableXfwm = false;
+          enableScreensaver = false;
+        };
+      };
+
+      # Configure keymap in X11
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
     };
   };
 
   # HiDPI display config
-  services.xserver = {
-    dpi = 96;
-    upscaleDefaultCursor = true;
-  };
   environment = {
     variables = {
-      # GDK_SCALE = "2.2";
-      # GDK_DPI_SCALE = "0.4";
-      # _JAVA_OPTIONS = "-sun.java2d.uiScale=2.2";
-      # QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-      # XCURSOR_SIZE = 64;
+      GDK_SCALE = "2";
+      GDK_DPI_SCALE = "0.5";
+      _JAVA_OPTIONS = "-sun.java2d.uiScale=2";
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      XCURSOR_SIZE = 42;
     };
     sessionVariables = {
-      SSH_AUTH_SOCK = "/run/user/${builtins.toString userId}/ssh-agent";
+      SSH_AUTH_SOCK = "/run/user/${toString userId}/ssh-agent";
     };
+  };
+  services.xserver = {
+    dpi = 120;
+    upscaleDefaultCursor = true;
   };
 
   # for Zsh completions of system packages
@@ -153,6 +164,28 @@ in
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # Enable the Tailscale service and the firewall
+  services.tailscale.enable = true;
+  networking.nftables.enable = true;
+  networking.firewall = {
+    enable = true;
+    # Always allow traffic from your Tailscale network
+    trustedInterfaces = [ config.services.tailscale.interfaceName ];
+    # Allow the Tailscale UDP port through the firewall
+    allowedUDPPorts = [ config.services.tailscale.port ];
+  };
+
+  # Force tailscaled to use nftables (Critical for clean nftables-only systems)
+  # This avoids the "iptables-compat" translation layer issues.
+  systemd.services.tailscaled.serviceConfig.Environment = [
+    "TS_DEBUG_FIREWALL_MODE=nftables"
+  ];
+
+  # Optimization: Prevent systemd from waiting for network online
+  # (Optional but recommended for faster boot with VPNs)
+  systemd.network.wait-online.enable = false;
+  boot.initrd.systemd.network.wait-online.enable = false;
 
   # Enable and configure kanata
   services.kanata = {
@@ -184,7 +217,10 @@ in
   # networking.firewall.enable = false;
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 15;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -219,6 +255,8 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
   hardware.uinput.enable = true;
+
+  hardware.bluetooth.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -42,7 +42,7 @@
     let
       linuxConfig = {
         username = "sage";
-        hostname = "forest";
+        hostname = "point";
         system = "x86_64-linux";
       };
       darwinConfig = linuxConfig // {
