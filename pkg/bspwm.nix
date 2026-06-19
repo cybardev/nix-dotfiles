@@ -1,36 +1,21 @@
 { lib, pkgs, ... }:
 let
+  position-displays = pkgs.writeShellScriptBin "position-displays.sh" ''
+    ${lib.getExe pkgs.xrandr} --output DP-1 --mode 1920x1080 --pos 0x0 --rotate normal --primary &
+    ${lib.getExe pkgs.xrandr} --output DP-2 --mode 1920x1080 --pos 0x0 --rotate normal --primary &
+    ${lib.getExe pkgs.xrandr} --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal --primary &
+    ${lib.getExe pkgs.xrandr} --output HDMI-2 --mode 1920x1080 --pos 0x0 --rotate normal --primary &
+    wait
+    ${lib.getExe pkgs.xrandr} --output eDP-1 --mode 1920x1080 --pos 0x1080 --rotate normal
+  '';
   fix-touchscreen = pkgs.writeShellScriptBin "fix-touchscreen.sh" ''
-    if [ -n "$1" ]; then
-      # wait for devices to initialize
-      until ${lib.getExe pkgs.xinput} list | grep -q "Wacom Pen and multitouch sensor Finger" \
-        && ${lib.getExe pkgs.xrandr} --query | grep -q "^eDP-1 connected"; do
-        sleep 0.25
-      done
-
-      # wait for xrandr layout to stabilize
-      prev=""
-      stable_count=0
-      # check if 6 consecutive outputs are identical (over 3 seconds)
-      while [ "$stable_count" -lt 6 ]; do
-        current=$(${lib.getExe pkgs.xrandr} --query)
-        if [ "$current" = "$prev" ]; then
-          stable_count=$((stable_count + 1))
-        else
-          stable_count=0
-        fi
-        prev="$current"
-        sleep 0.5
-      done
-    fi
-
     ${lib.getExe pkgs.xinput} map-to-output "Wacom Pen and multitouch sensor Finger" eDP-1
     ${lib.getExe pkgs.xinput} map-to-output "Wacom Pen and multitouch sensor Pen Pen (0xb110c613)" eDP-1
   '';
+  set-screens = "${lib.getExe position-displays} && ${lib.getExe fix-touchscreen}";
   strange = start: end: lib.map lib.toString (lib.range start end);
 in
 {
-  home.packages = [ fix-touchscreen ];
   xsession.windowManager.bspwm = {
     enable = true;
     monitors = {
@@ -41,7 +26,7 @@ in
     startupPrograms = [
       "xfce4-session"
       "xfce4-power-manager --daemon"
-      "${lib.getExe fix-touchscreen} wait"
+      set-screens
     ];
     settings = {
       focus_follows_pointer = true;
@@ -80,7 +65,7 @@ in
     enable = true;
     keybindings = {
       # fix touchscreen
-      "super + shift + grave" = lib.getExe fix-touchscreen;
+      "super + shift + grave" = set-screens;
       # terminal
       "super + grave" = "kitty";
       # app launcher
