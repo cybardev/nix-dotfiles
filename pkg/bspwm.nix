@@ -1,31 +1,47 @@
 { lib, pkgs, ... }:
 let
   fix-touchscreen = pkgs.writeShellScriptBin "fix-touchscreen.sh" ''
+    if [ -n "$1" ]; then
+      # wait for devices to initialize
+      until ${lib.getExe pkgs.xinput} list | grep -q "Wacom Pen and multitouch sensor Finger" \
+        && ${lib.getExe pkgs.xrandr} --query | grep -q "^eDP-1 connected"; do
+        sleep 0.25
+      done
+
+      # wait for xrandr layout to stabilize
+      prev=""
+      stable_count=0
+      # check if 6 consecutive outputs are identical (over 3 seconds)
+      while [ "$stable_count" -lt 6 ]; do
+        current=$(${lib.getExe pkgs.xrandr} --query)
+        if [ "$current" = "$prev" ]; then
+          stable_count=$((stable_count + 1))
+        else
+          stable_count=0
+        fi
+        prev="$current"
+        sleep 0.5
+      done
+    fi
+
     ${lib.getExe pkgs.xinput} map-to-output "Wacom Pen and multitouch sensor Finger" eDP-1
     ${lib.getExe pkgs.xinput} map-to-output "Wacom Pen and multitouch sensor Pen Pen (0xb110c613)" eDP-1
   '';
+  strange = start: end: lib.map lib.toString (lib.range start end);
 in
 {
+  home.packages = [ fix-touchscreen ];
   xsession.windowManager.bspwm = {
     enable = true;
     monitors = {
-      DP-1 = [
-        "m1"
-        "m2"
-        "m3"
-        "m4"
-      ];
-      eDP-1 = [
-        "s1"
-        "s2"
-        "s3"
-        "s4"
-      ];
+      DP-1 = strange 1 5;
+      DP-2 = strange 1 5;
+      eDP-1 = (strange 6 9) ++ [ "0" ];
     };
     startupPrograms = [
-      "xfce4-power-manager --daemon"
       "xfce4-session"
-      (lib.getExe fix-touchscreen)
+      "xfce4-power-manager --daemon"
+      "${lib.getExe fix-touchscreen} wait"
     ];
     settings = {
       focus_follows_pointer = true;
