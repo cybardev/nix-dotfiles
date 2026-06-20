@@ -1,16 +1,18 @@
 { lib, pkgs, ... }:
 let
+  xrandr = lib.getExe pkgs.xrandr;
+  xinput = lib.getExe pkgs.xinput;
   position-displays = pkgs.writeShellScriptBin "position-displays.sh" ''
-    ${lib.getExe pkgs.xrandr} --output DP-1 --mode 1920x1080 --pos 0x0 --rotate normal --primary &
-    ${lib.getExe pkgs.xrandr} --output DP-2 --mode 1920x1080 --pos 0x0 --rotate normal --primary &
-    ${lib.getExe pkgs.xrandr} --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal --primary &
-    ${lib.getExe pkgs.xrandr} --output HDMI-2 --mode 1920x1080 --pos 0x0 --rotate normal --primary &
+    ${xrandr} --output DP-1 --mode 1920x1080 --pos 0x0 --rotate normal --primary &
+    ${xrandr} --output DP-2 --mode 1920x1080 --pos 0x0 --rotate normal --primary &
+    ${xrandr} --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal --primary &
+    ${xrandr} --output HDMI-2 --mode 1920x1080 --pos 0x0 --rotate normal --primary &
     wait
-    ${lib.getExe pkgs.xrandr} --output eDP-1 --mode 1920x1080 --pos 0x1080 --rotate normal
+    ${xrandr} --output eDP-1 --mode 1920x1080 --pos 0x1080 --rotate normal
   '';
   fix-touchscreen = pkgs.writeShellScriptBin "fix-touchscreen.sh" ''
-    ${lib.getExe pkgs.xinput} map-to-output "Wacom Pen and multitouch sensor Finger" eDP-1
-    ${lib.getExe pkgs.xinput} map-to-output "Wacom Pen and multitouch sensor Pen Pen (0xb110c613)" eDP-1
+    ${xinput} map-to-output "Wacom Pen and multitouch sensor Finger" eDP-1
+    ${xinput} map-to-output "Wacom Pen and multitouch sensor Pen Pen (0xb110c613)" eDP-1
   '';
   set-screens = "${lib.getExe position-displays} && ${lib.getExe fix-touchscreen}";
   strange = start: end: lib.map lib.toString (lib.range start end);
@@ -18,11 +20,18 @@ in
 {
   xsession.windowManager.bspwm = {
     enable = true;
-    monitors = {
-      DP-1 = strange 1 5;
-      DP-2 = strange 1 5;
-      eDP-1 = (strange 6 9) ++ [ "0" ];
-    };
+    monitors =
+      let
+        primary = strange 1 5;
+        secondary = (strange 6 9) ++ [ "0" ];
+      in
+      {
+        DP-1 = primary;
+        DP-2 = primary;
+        HDMI-1 = primary;
+        HDMI-2 = primary;
+        eDP-1 = secondary;
+      };
     startupPrograms = [
       "xfce4-session"
       "xfce4-power-manager --daemon"
