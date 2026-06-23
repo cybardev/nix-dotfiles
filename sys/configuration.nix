@@ -2,6 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -19,6 +20,7 @@ let
 in
 {
   imports = [
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x390
     ./hardware-configuration.nix
     ./nixcommand.nix
     ../mod/userconfig.nix
@@ -84,21 +86,59 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    gcc
+  environment.systemPackages =
+    let
+      xarchiver-wrapped = pkgs.symlinkJoin {
+        name = "xarchiver-wrapped";
+        paths = [ pkgs.xarchiver ];
+        nativeBuildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          rm "$out/bin/xarchiver"
+          makeWrapper "${pkgs.xarchiver}/bin/xarchiver" "$out/bin/xarchiver" \
+            --prefix PATH : ${
+              pkgs.lib.makeBinPath (
+                with pkgs;
+                [
+                  gnutar
+                  gzip
+                  bzip2
+                  xz
+                  zstd
+                  zip
+                  unzip
+                  p7zip
+                  unar
+                ]
+              )
+            }
+        '';
+      };
+    in
+    with pkgs;
+    [
+      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      gcc
+      xarchiver-wrapped
 
-    # default theme
-    whitesur-icon-theme
-    qogir-icon-theme
-    qogir-theme
+      # default theme
+      whitesur-icon-theme
+      qogir-icon-theme
+      qogir-theme
 
-    # XFCE panel plugins
-    xfce4-verve-plugin
-    xfce4-systemload-plugin
-    xfce4-whiskermenu-plugin
-    xfce4-weather-plugin
-    xfce4-clipman-plugin
+      # XFCE panel plugins
+      xfce4-verve-plugin
+      xfce4-systemload-plugin
+      xfce4-whiskermenu-plugin
+      xfce4-weather-plugin
+      xfce4-clipman-plugin
+    ];
+
+  programs.thunar.plugins = with pkgs; [
+    thunar-media-tags-plugin
+    thunar-archive-plugin
+    thunar-shares-plugin
+    thunar-vcs-plugin
+    thunar-volman
   ];
 
   services = {
