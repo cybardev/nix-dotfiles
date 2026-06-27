@@ -50,24 +50,6 @@ in
     zsh = { inherit shellAliases; };
     fish = { inherit shellAliases; };
     chromium.enable = true;
-
-    pi-coding-agent.models.providers.ollama = {
-      baseUrl = "http://localhost:11434/v1";
-      api = "openai-completions";
-      apiKey = "placeholder";
-      models = [
-        {
-          name = "Clod";
-          id = "negoncio/qwopus-coder";
-          input = [
-            "text"
-            "image"
-          ];
-          contextWindow = 262144;
-          maxTokens = 65536;
-        }
-      ];
-    };
   };
 
   services = {

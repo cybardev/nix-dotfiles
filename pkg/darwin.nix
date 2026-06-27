@@ -65,24 +65,6 @@ in
       macos_option_as_alt = "yes";
     };
 
-    pi-coding-agent.models.providers.omlx = {
-      baseUrl = "http://localhost:1234/v1";
-      api = "openai-completions";
-      apiKey = "placeholder";
-      models = [
-        {
-          name = "Clod";
-          id = "tongrow/MLX-Qwopus3.5-9B-Coder-oQ4-fp16-mtp";
-          input = [
-            "text"
-            "image"
-          ];
-          contextWindow = 262144;
-          maxTokens = 65536;
-        }
-      ];
-    };
-
     cava.settings.input = {
       method = "portaudio";
       source = "BlackHole 16ch";
