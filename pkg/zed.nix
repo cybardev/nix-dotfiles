@@ -52,8 +52,9 @@
         dark = "Kanagawa Dragon";
         light = "Kanagawa Lotus";
       };
+      ui_font_size = 20;
+      buffer_font_size = 16;
       buffer_font_family = "CaskaydiaCove Nerd Font";
-      buffer_font_size = 13;
       autosave.after_delay.milliseconds = 1000;
 
       vim_mode = true;
@@ -64,6 +65,7 @@
       };
       terminal = {
         dock = "right";
+        font_size = 16;
       };
       calls = {
         mute_on_join = true;
