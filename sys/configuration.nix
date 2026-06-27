@@ -227,6 +227,23 @@ in
   systemd.network.wait-online.enable = false;
   boot.initrd.systemd.network.wait-online.enable = false;
 
+  # https://wiki.nixos.org/wiki/Tailscale#DNS
+  services.resolved = {
+    enable = true;
+    settings.Resolve = {
+      DNSOverTLS = "true";
+      DNSSEC = "false";
+      FallbackDNS = [
+        "194.242.2.4#base.dns.mullvad.net"
+        "194.242.2.6#family.dns.mullvad.net"
+        "194.242.2.3#adblock.dns.mullvad.net"
+        "2a07:e340::4#base.dns.mullvad.net"
+        "2a07:e340::6#family.dns.mullvad.net"
+        "2a07:e340::3#adblock.dns.mullvad.net"
+      ];
+    };
+  };
+
   # Enable and configure kanata
   services.kanata = {
     enable = true;
@@ -271,7 +288,11 @@ in
 
   # Enable networking
   networking.hostName = hostName;
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    dns = "systemd-resolved";
+    wifi.powersave = true;
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = false;
