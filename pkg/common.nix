@@ -64,7 +64,7 @@ in
         cutefetch
         jitterbugpair
         # freej2me
-        # ytgo
+        ytgo
       ])
       ++ (with pkgs; [
         tree-sitter-grammars.tree-sitter-dart
@@ -147,7 +147,7 @@ in
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-      config.global.load_dotenv = true;
+      # config.global.load_dotenv = true;
     };
 
     wezterm.enable = false;

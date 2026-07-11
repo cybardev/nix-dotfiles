@@ -41,21 +41,21 @@ let
     }
     // (lib.listToAttrs (
       lib.imap1 (i: v: {
-        name = "gradient_color_${builtins.toString i}";
+        name = "gradient_color_${toString i}";
         value = "'#${v}'";
       }) colors
     ));
 in
 {
   programs.cava = {
-    enable = false;
+    enable = true;
     settings = {
       general = {
         bars = 0;
         bar_width = 6;
         bar_spacing = 2;
       };
-      color = mkColor colours.green; # set colour here
+      color = mkColor colours.pink; # set colour here
       output.method = "ncurses";
       smoothing.gravity = 42;
     };
