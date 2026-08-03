@@ -51,6 +51,7 @@ in
     kat = "bat -pp";
     icat = "kitten icat";
     kssh = "kitten ssh";
+    gssh = "ghostty +ssh --";
     top = "btm --basic";
     ez = "eza -1 --icons=never";
     ezl = "eza -1l";
@@ -85,6 +86,7 @@ in
   };
 
   programs = {
+    ghostty.settings.command = "zsh -c nu -l";
     kitty.settings.shell = "${lib.getExe pkgs.zsh} -c '${lib.getExe pkgs.nushell} -l'";
     zed-editor.userSettings.terminal.shell.program = "nu";
 

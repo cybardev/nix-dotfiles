@@ -17,6 +17,7 @@ in
     ./searxng.nix
     ./git.nix
     ./shells.nix
+    ./terminal.nix
     ./helix.nix
     ./opencode.nix
     ./pi.nix
@@ -29,19 +30,12 @@ in
   ]);
 
   xdg.configFile = {
-    # Custom Kitty Icon
-    # License: MIT Copyright: 2024, Andrew Haust <https://github.com/sodapopcan/kitty-icon>
-    "kitty/kitty.app.png".source = ../cfg/kitty.app.png;
     "ptpython/config.py".source = ../cfg/ptpython.py;
     "mpv/mpv.conf".source = ../cfg/mpv.conf;
     "lf" = {
       source = ../cfg/lf;
       recursive = true;
     };
-    # "wezterm" = {
-    #   source = ../cfg/wezterm;
-    #   recursive = true;
-    # };
     "jjui/themes/base16-kanagawa-dragon.toml".source = ../cfg/jjui-kanagawa-dragon.toml;
   };
 
@@ -82,7 +76,7 @@ in
         babashka
         tinymist
         # audacity
-        # gdevelop
+        gdevelop
         dfu-util
         # thonny
         pyrefly
@@ -124,7 +118,8 @@ in
         nurl
         curl
         wget
-        unar
+        # unar
+        # timg
         bun
         fzf
         go
@@ -148,37 +143,6 @@ in
       enable = true;
       nix-direnv.enable = true;
       # config.global.load_dotenv = true;
-    };
-
-    wezterm.enable = false;
-
-    kitty = {
-      enable = true;
-      themeFile = "kanagawa_dragon";
-      enableGitIntegration = true;
-      font = {
-        package = pkgs.nerd-fonts.caskaydia-cove;
-        name = "CaskaydiaCove Nerd Font Mono";
-        size = 14;
-      };
-      settings = {
-        cursor_trail = 1;
-        tab_bar_edge = "top";
-        enabled_layouts = "splits";
-        enable_audio_bell = false;
-        background_opacity = 0.96;
-        update_check_interval = 0;
-        hide_window_decorations = "yes";
-        startup_session = toString ../cfg/kitty-session.sh;
-      };
-      keybindings = {
-        "super+enter" = "launch --cwd=current --location=split";
-        "super+." = "layout_action bias 64";
-        "super+[" = "previous_window";
-        "super+]" = "next_window";
-        "super+w" = "close_window";
-        "super+shift+w" = "close_tab";
-      };
     };
 
     lf = {
@@ -205,6 +169,30 @@ in
       '';
     };
 
+    broot = {
+      enable = false;
+      settings = {
+        modal = true;
+        syntax_theme = "EightiesDark";
+        kitty_graphics_display = "direct";
+        default_flags = "--sort-by-type-dirs-first -c :open_preview";
+        preview_transformers = [
+          {
+            input_extensions = [ "pdf" ];
+            output_extension = "png";
+            mode = "image";
+            command = [ "mutool" "draw" "-w" "1000" "-o" "{output-path}" "{input-path}" ];
+          }
+          {
+            input_extensions = [ "mkv" "mp4" "webm" "avi" "mov" "flv" "wmv" "m4v" "mpg" "mpeg" "3gp" ];
+            output_extension = "png";
+            mode = "image";
+            command = [ "ffmpegthumbnailer" "-s" "1000" "-o" "{output-path}" "-i" "{input-path}" ];
+          }
+        ];
+      };
+    };
+
     fzf = {
       enable = true;
       defaultOptions = [
@@ -212,10 +200,12 @@ in
         "--border rounded"
         "--layout reverse"
       ];
-      changeDirWidgetCommand = "zoxide query --list --score";
-      changeDirWidgetOptions = [
-        "--nth 2.. --accept-nth 2.. --scheme=path --exact --tiebreak=pathname,index"
-      ];
+      changeDirWidget = {
+        command = "zoxide query --list --score";
+        options = [
+          "--nth 2.. --accept-nth 2.. --scheme=path --exact --tiebreak=pathname,index"
+        ];
+      };
     };
 
     zoxide = {
@@ -296,8 +286,10 @@ in
     ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks."*" = {
-        addKeysToAgent = "yes";
+      settings = {
+        "*" = {
+          AddKeysToAgent = "yes";
+        };
       };
     };
 

@@ -64,6 +64,13 @@ in
       background_blur = 4;
       macos_option_as_alt = "yes";
     };
+    ghostty = {
+      package = pkgs.ghostty-bin;
+      settings = {
+        auto-update = "off";
+        macos-option-as-alt = true;
+      };
+    };
 
     cava.settings.input = {
       method = "portaudio";

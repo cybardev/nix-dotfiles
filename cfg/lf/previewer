@@ -1,15 +1,16 @@
 #!/usr/bin/env sh
 
-draw() {
-  kitten icat --stdin no --transfer-mode memory --place "${w}x${h}@${x}x${y}" "$1" </dev/null >/dev/tty
-  exit 1
-}
-
 file="$1"
 w="$2"
 h="$3"
 x="$4"
 y="$5"
+
+draw() {
+  # timg -C -g "${w}x${h}" "$file" </dev/null >/dev/tty
+  kitten icat --stdin no --transfer-mode memory --place "${w}x${h}@${x}x${y}" "$file" </dev/null >/dev/tty
+  exit 1
+}
 
 case "$(file -Lb --mime-type "$file")" in
   text/* | application/json | application/javascript)
@@ -27,6 +28,8 @@ case "$(file -Lb --mime-type "$file")" in
     mutool draw -o "/tmp/pdf_preview_$$.png" -w 512 "$file" 1 2>/dev/null
     draw "/tmp/pdf_preview_$$.png"
     ;;
+  *)
+    pistol "$file"
+    exit 0
+    ;;
 esac
-
-pistol "$file"
