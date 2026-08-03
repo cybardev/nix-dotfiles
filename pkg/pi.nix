@@ -1,14 +1,11 @@
-{ inputs, ... }:
 {
-  imports = [ inputs.cypkgs.modules.pi-coding-agent ];
-
   home.file = {
     ".pi/agent/extensions/pi-permission-system/config.json".source = ../cfg/pi/permissions.json;
   };
 
   programs.pi-coding-agent = {
     enable = true;
-    instructions = ../cfg/pi/AGENTS.md;
+    context = ../cfg/pi/AGENTS.md;
     settings = {
       defaultProvider = "openrouter";
       defaultModel = "deepseek/deepseek-v4-flash";
