@@ -181,13 +181,41 @@ in
             input_extensions = [ "pdf" ];
             output_extension = "png";
             mode = "image";
-            command = [ "mutool" "draw" "-w" "1000" "-o" "{output-path}" "{input-path}" ];
+            command = [
+              "mutool"
+              "draw"
+              "-w"
+              "1000"
+              "-o"
+              "{output-path}"
+              "{input-path}"
+            ];
           }
           {
-            input_extensions = [ "mkv" "mp4" "webm" "avi" "mov" "flv" "wmv" "m4v" "mpg" "mpeg" "3gp" ];
+            input_extensions = [
+              "mkv"
+              "mp4"
+              "webm"
+              "avi"
+              "mov"
+              "flv"
+              "wmv"
+              "m4v"
+              "mpg"
+              "mpeg"
+              "3gp"
+            ];
             output_extension = "png";
             mode = "image";
-            command = [ "ffmpegthumbnailer" "-s" "1000" "-o" "{output-path}" "-i" "{input-path}" ];
+            command = [
+              "ffmpegthumbnailer"
+              "-s"
+              "1000"
+              "-o"
+              "{output-path}"
+              "-i"
+              "{input-path}"
+            ];
           }
         ];
       };
