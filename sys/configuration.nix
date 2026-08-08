@@ -23,6 +23,7 @@ in
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x390
     ./hardware-configuration.nix
     ./nixcommand.nix
+    ./containers.nix
     ../mod/userconfig.nix
   ];
 
