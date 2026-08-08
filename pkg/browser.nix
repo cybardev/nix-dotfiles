@@ -11,6 +11,7 @@ in
   programs = {
     firefox = {
       enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
       profiles.default = {
         isDefault = true;
         settings = {
@@ -24,8 +25,8 @@ in
         };
         search = {
           force = true;
-          default = "omnisearch";
-          privateDefault = "omnisearch";
+          default = "cysearch";
+          privateDefault = "cysearch";
           engines = {
             # Disable "search with" icons
             ddg.metaData.hidden = true;
@@ -35,8 +36,8 @@ in
             amazondotcom.metaData.hidden = true;
             wikipedia.metaData.hidden = true;
 
-            omnisearch = {
-              name = "OmniSearch";
+            cysearch = {
+              name = "Cy | Search";
               urls = [
                 {
                   template = "https://search.cybar.dev/search";
@@ -48,7 +49,7 @@ in
                   ];
                 }
                 {
-                  template = "https://search.cybar.dev/autocompleter";
+                  template = "https://search.cybar.dev/api/suggest/opensearch";
                   params = [
                     {
                       name = "q";
@@ -69,7 +70,7 @@ in
                 #   type = "application/x-suggestions+json";
                 # }
               ];
-              definedAliases = [ "oi" ];
+              definedAliases = [ "cy" ];
             };
 
             searxng = {
