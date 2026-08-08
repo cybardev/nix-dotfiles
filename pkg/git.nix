@@ -68,9 +68,9 @@ let
       promptToReturnFromSubprocess = false;
       git = {
         overrideGpg = true;
-        pagers = [
+        diffRenderers = [
           {
-            pager = "${lib.getExe pkgs.delta} --paging=never --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+            command = "${lib.getExe pkgs.delta} --paging=never --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
           }
         ];
       };
