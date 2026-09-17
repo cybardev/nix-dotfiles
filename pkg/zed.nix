@@ -11,6 +11,7 @@
       "dockerfile"
       "flutter-snippets"
       "git-firefly"
+      "html"
       "html-snippets"
       "java"
       "java-debug"
@@ -56,6 +57,7 @@
       buffer_font_size = 16;
       buffer_font_family = "CaskaydiaCove Nerd Font";
       autosave.after_delay.milliseconds = 1000;
+      format_on_save = "modifications_if_available";
 
       vim_mode = true;
       helix_mode = true;
@@ -66,6 +68,7 @@
       terminal = {
         dock = "right";
         font_size = 16;
+        font_family = "CaskaydiaCove Nerd Font";
       };
       calls = {
         mute_on_join = true;
@@ -94,11 +97,6 @@
             "!pyright"
             "!pylsp"
           ];
-        };
-        JavaScript = {
-          prettier = {
-            tabWidth = 2;
-          };
         };
       };
 
@@ -190,9 +188,9 @@
               open = true;
               project_notifications = true;
               read_file = true;
+              search_web = true;
               terminal = true;
               thinking = true;
-              web_search = true;
             };
           };
         };
@@ -206,6 +204,7 @@
           "secondary-b" = "workspace::ToggleRightDock";
           "secondary-alt-b" = "workspace::ToggleLeftDock";
           "secondary-alt-o" = "agent::ToggleFocus";
+          "secondary-shift-f" = "workspace::FormatAndSave";
         };
       }
     ];
