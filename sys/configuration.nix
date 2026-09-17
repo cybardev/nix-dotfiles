@@ -284,6 +284,7 @@ in
   hardware.uinput.enable = true;
 
   hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # Fingerprint Scanner
   services.fprintd.enable = false;

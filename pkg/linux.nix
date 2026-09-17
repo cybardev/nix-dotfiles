@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }:
 let
@@ -69,6 +68,7 @@ in
       };
     };
     gnome-keyring.enable = true;
+    blueman-applet.enable = true;
   };
 
   # manage X session in home-manager
