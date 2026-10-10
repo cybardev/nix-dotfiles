@@ -28,6 +28,7 @@
       "toml"
       "typst"
       "warp-one-dark"
+      "xml"
       "zed-docker-compose"
       "zed-mcp-server-supabase"
     ];
