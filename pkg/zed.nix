@@ -110,6 +110,13 @@
             ignored = [ "sema-extra-with" ];
           };
         };
+        rust-analyzer = {
+          initialization_options = {
+            check = {
+              command = "clippy";
+            };
+          };
+        };
         tinymist.settings = {
           exportPdf = "onSave";
           outputPath = "$root/_preview/$name";

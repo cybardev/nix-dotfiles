@@ -36,6 +36,13 @@
           command = "pyrefly";
           args = [ "lsp" ];
         };
+        rust-analyzer = {
+          config = {
+            check = {
+              command = "clippy";
+            };
+          };
+        };
         tinymist = {
           config = {
             exportPdf = "onSave";
