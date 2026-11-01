@@ -8,7 +8,7 @@
     context = ../cfg/pi/AGENTS.md;
     settings = {
       defaultProvider = "openrouter";
-      defaultModel = "deepseek/deepseek-v4-flash";
+      defaultModel = "~deepseek/deepseek-flash-latest";
       defaultThinkingLevel = "low";
       hideThinkingBlock = true;
       packages = [
@@ -26,7 +26,7 @@
     };
     models.providers = {
       cylm = {
-        baseUrl = "https://lm.polydactyl-little.ts.net/v1";
+        baseUrl = "http://127.0.0.1:1234/v1";
         api = "openai-completions";
         apiKey = "placeholder";
         models = [

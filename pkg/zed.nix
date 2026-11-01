@@ -168,15 +168,15 @@
       agent = {
         enabled = true;
         enable_feedback = false;
-        # default_model = {
-        #   provider = "openrouter";
-        #   model = "deepseek/deepseek-v4-flash";
-        # };
         default_model = {
-          provider = "omlx";
-          model = "tongrow/MLX-Qwopus3.5-9B-Coder-oQ4-fp16-mtp";
+          provider = "openrouter";
+          model = "deepseek/deepseek-flash-latest";
         };
-        default_profile = "minimal";
+        # default_model = {
+        #   provider = "omlx";
+        #   model = "tongrow/MLX-Qwopus3.5-9B-Coder-oQ4-fp16-mtp";
+        # };
+        default_profile = "create";
         profiles = {
           create = {
             name = "Create";
