@@ -76,8 +76,8 @@ in
     };
 
     cava.settings.input = {
-      method = "portaudio";
-      source = "BlackHole 16ch";
+      method = "coreaudio";
+      source = "tap";
     };
   };
 }
