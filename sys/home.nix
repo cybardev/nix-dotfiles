@@ -13,6 +13,8 @@ in
     overlays = import ./overlays.nix { inherit inputs; };
   };
 
+  nix.gc.dates = "weekly";
+
   home = {
     # Home Manager needs a bit of information about you and the paths it should
     # manage.

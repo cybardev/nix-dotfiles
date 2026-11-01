@@ -49,6 +49,7 @@ in
     zsh = { inherit shellAliases; };
     fish = { inherit shellAliases; };
     chromium.enable = true;
+    firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
   };
 
   services = {

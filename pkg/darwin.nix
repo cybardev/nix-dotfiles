@@ -71,6 +71,9 @@ in
         macos-option-as-alt = true;
       };
     };
+    firefox = {
+      configPath = "Library/Application Support/org.nixos.firefox";
+    };
 
     cava.settings.input = {
       method = "portaudio";

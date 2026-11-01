@@ -88,12 +88,12 @@ let
           unstagedChangesColor = [ "#c4746e" ];
           defaultFgColor = [ "#c5c9c5" ];
           searchingActiveBorderColor = [ "#c4b28a" ];
+          authorColors = {
+            "*" = "#7fb4ca";
+          };
         };
-        authorColors = {
-          "*" = "#7fb4ca";
-        };
-        useHunkModeInStagingView = true;
       };
+      useHunkModeInDiffView = true;
     };
   };
 

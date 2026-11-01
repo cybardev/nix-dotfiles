@@ -174,6 +174,7 @@ in
           vi_normal = "block";
         };
       };
+      loadSessionVariables = true;
       environmentVariables = {
         PROMPT_INDICATOR_VI_NORMAL = "";
         PROMPT_INDICATOR_VI_INSERT = "";

@@ -19,7 +19,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew?ref=main";
+    brew-src = {
+      url = "github:Homebrew/brew/main";
+      flake = false;
+    };
+
+    nix-homebrew = {
+      url = "github:zhaofengli/nix-homebrew?ref=main";
+      inputs.brew-src.follows = "brew-src";
+    };
 
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -28,6 +36,11 @@
 
     homebrew-cask = {
       url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
+    mac-brow-app = {
+      url = "github:Mac-Brow-App/homebrew-tap";
       flake = false;
     };
 

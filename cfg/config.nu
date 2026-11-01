@@ -19,7 +19,7 @@ $env.config = {
         selected_text: green_reverse
         description_text: yellow
       }
-      source: { |buffer, position|
+      source: { |buffer, place|
         let match = (scope aliases | where name == $buffer)
         if ($match | is-empty) { {value: $buffer} } else { $match | each { |it| {value: ($it.expansion) }} }
       }

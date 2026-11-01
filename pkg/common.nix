@@ -55,7 +55,6 @@ in
 
     packages =
       (with pkgs.cy; [
-        cutefetch
         jitterbugpair
         # freej2me
         ytgo
@@ -96,6 +95,7 @@ in
         ripgrep-all
         nixfmt-tree
         imagemagick
+        cutefetch
         syncthing
         coreutils
         nix-init
@@ -260,6 +260,7 @@ in
       extraOptions = [
         "--group-directories-last"
         "--sort=extension"
+        "--short-nix"
       ];
     };
 
