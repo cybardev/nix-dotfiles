@@ -1,11 +1,12 @@
 { lib, ... }:
 {
   programs.aerospace = {
-    enable = true;
+    enable = false;
     launchd.enable = true;
     settings = {
       # Place a copy of this config to ~/.aerospace.toml
       # After that, you can edit ~/.aerospace.toml to your liking
+      config-version = 2;
 
       # You can use it to add commands that run after login to macOS user session.
       # "start-at-login" needs to be "true" for "after-login-command" to work
@@ -70,6 +71,8 @@
         outer.top = 0;
         outer.right = 0;
       };
+
+      persistent-workspaces = lib.map lib.toString (lib.range 0 9);
 
       # See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
       workspace-to-monitor-force-assignment =

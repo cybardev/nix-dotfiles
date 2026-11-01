@@ -7,10 +7,11 @@
 {
   imports = [ inputs.cypkgs.modules.rift ];
   services.rift = {
-    enable = false;
-    package = pkgs.cy.rift;
+    enable = true;
+    package = pkgs.cy.rift-wm;
     config = {
       settings = {
+        default_disable = false;
         animate = true;
         animation_duration = 0.3;
         animation_fps = 100.0;
@@ -84,13 +85,16 @@
           haptic_pattern = "level_change";
         };
 
-        window_snapping = {
-          drag_swap_fraction = 0.3;
+        drag_drop = {
+          drop_action = "swap";
+          drop_zone_fraction = 0.25;
         };
       };
 
       virtual_workspaces = {
         enabled = true;
+        mode = "global";
+        default_workspace = 1;
         default_workspace_count = 11;
         auto_assign_windows = true;
         preserve_focus_per_workspace = true;
@@ -109,6 +113,17 @@
           "0"
         ];
 
+        workspace_rules =
+          let
+            wsRules =
+              ws-start: ws-end: display:
+              lib.map (ws: {
+                workspace = ws;
+                display = display;
+              }) (lib.range ws-start ws-end);
+          in
+          (wsRules 0 5 "top") ++ (wsRules 6 10 "builtin");
+
         app_rules = [
           {
             title_substring = "Preferences";
@@ -126,19 +141,28 @@
       };
 
       modifier_combinations = {
-        # comb1 = "Alt + Shift";
+        ModCombo = "Alt + Shift";
       };
 
       keys =
-        lib.genAttrs' (lib.map builtins.toString (lib.range 1 9)) (
+        (lib.genAttrs' (lib.map toString (lib.range 1 9)) (
           i: lib.nameValuePair "Alt + ${i}" { switch_to_workspace = i; }
-        )
+        ))
+        // (lib.genAttrs' (lib.map toString (lib.range 1 9)) (
+          i: lib.nameValuePair "ModCombo + ${i}" { move_window_to_workspace = i; }
+        ))
         // {
           "Alt + `" = {
             switch_to_workspace = "term";
           };
           "Alt + 0" = {
-            switch_to_workspace = "10";
+            switch_to_workspace = "0";
+          };
+          "ModCombo + `" = {
+            move_window_to_workspace = "term";
+          };
+          "ModCombo + 0" = {
+            move_window_to_workspace = "0";
           };
 
           "Alt + H" = {
@@ -154,34 +178,20 @@
             move_focus = "right";
           };
 
-          "Alt + Z" = "toggle_space_activated";
           "Alt + Tab" = "switch_to_last_workspace";
 
-          "Alt + Shift + Left" = {
-            join_window = "left";
-          };
-          "Alt + Shift + Right" = {
-            join_window = "right";
-          };
-          "Alt + Shift + Up" = {
-            join_window = "up";
-          };
-          "Alt + Shift + Down" = {
-            join_window = "down";
-          };
           # "Alt + Comma" = "toggle_stack";
           "Alt + Slash" = "toggle_orientation";
-          "Alt + Ctrl + E" = "unjoin_windows";
 
-          "Alt + Shift + Space" = "toggle_window_floating";
+          "ModCombo + Space" = "toggle_window_floating";
           "Alt + F" = "toggle_fullscreen";
-          "Alt + Shift + F" = "toggle_fullscreen_within_gaps";
-          "Alt + Shift + Ctrl + Space" = "toggle_focus_floating";
+          "ModCombo + F" = "toggle_fullscreen_within_gaps";
+          "ModCombo + Ctrl + Space" = "toggle_focus_floating";
 
-          "Alt + Shift + Equal" = "resize_window_grow";
-          "Alt + Shift + Minus" = "resize_window_shrink";
+          "ModCombo + Equal" = "resize_window_grow";
+          "ModCombo + Minus" = "resize_window_shrink";
 
-          # "Alt + Shift + D" = "debug";
+          # "ModCombo + D" = "debug";
           # "Alt + Ctrl + S" = "serialize";
           # "Alt + Ctrl + Q" = "save_and_exit";
         };
