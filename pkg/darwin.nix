@@ -39,7 +39,7 @@ in
     };
 
     packages = with pkgs; [
-      raycast
+      # raycast
       utm
     ];
   };

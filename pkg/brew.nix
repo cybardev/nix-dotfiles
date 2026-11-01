@@ -3,6 +3,7 @@ let
   tap-set = with inputs; {
     "homebrew/homebrew-core" = homebrew-core;
     "homebrew/homebrew-cask" = homebrew-cask;
+    "mac-brow-app/homebrew-tap" = mac-brow-app;
   };
 in
 {
@@ -11,8 +12,12 @@ in
     autoMigrate = true;
     enableRosetta = true;
     user = config.userConfig.username;
-    mutableTaps = true;
+    mutableTaps = false;
     taps = tap-set;
+    package = inputs.brew-src // {
+      name = "brew-${inputs.brew-src.shortRev}";
+      version = inputs.brew-src.shortRev;
+    };
   };
 
   homebrew = {
@@ -41,18 +46,19 @@ in
       # "mas"
       "cocoapods"
       # "handbrake"
+      # "hermes-agent"
       # "rift"
     ];
     casks = [
       "altserver"
       # "android-studio"
       # "bitwarden"
-      "blackhole-16ch"
+      # "blackhole-16ch"
       # "blender"
       # "coderabbit"
       # "diffusionbee"
       # "discord"
-      "docker-desktop"
+      # "docker-desktop"
       # "flutter"
       # "fedora-media-writer"
       "font-caskaydia-cove-nerd-font"
@@ -62,7 +68,7 @@ in
       "gb-studio"
       "gimp"
       "helium-browser"
-      "hiddenbar"
+      # "hiddenbar"
       # "karabiner-elements"
       "katrain"
       # "keyclu"
@@ -70,7 +76,8 @@ in
       # "lm-studio"
       "logseq"
       "lulu"
-      "lunar-client"
+      # "lunar-client"
+      "mac-brow-app/tap/brow"
       # "obs"
       # "prusaslicer"
       # "shotcut"
@@ -78,7 +85,7 @@ in
       "sonic-pi"
       # "soulseek"
       "steam"
-      "stremio"
+      # "stremio"
       # "ungoogled-chromium"
       # "whisky"
       # "zoom"
