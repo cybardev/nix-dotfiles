@@ -92,6 +92,7 @@ in
 
         # >---< DO NOT REMOVE >---< #
         ffmpegthumbnailer
+        nixpkgs-review
         ripgrep-all
         nixfmt-tree
         imagemagick
