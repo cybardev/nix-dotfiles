@@ -100,7 +100,7 @@
         preserve_focus_per_workspace = true;
         workspace_auto_back_and_forth = false;
         workspace_names = [
-          "term"
+          "T"
           "1"
           "2"
           "3"
@@ -134,11 +134,27 @@
           }
           {
             app_name = "kitty";
-            workspace = "term";
+            workspace = "T";
+          }
+          {
+            app_name = "Terminal";
+            workspace = "T";
           }
           {
             app_name = "Firefox";
             workspace = 1;
+          }
+          {
+            app_name = "Helium";
+            workspace = 1;
+          }
+          {
+            app_name = "Finder";
+            workspace = 2;
+          }
+          {
+            app_name = "Zed";
+            workspace = 10;
           }
         ];
       };
@@ -156,13 +172,13 @@
         ))
         // {
           "Alt + `" = {
-            switch_to_workspace = "term";
+            switch_to_workspace = "T";
           };
           "Alt + 0" = {
             switch_to_workspace = "0";
           };
           "ModCombo + `" = {
-            move_window_to_workspace = "term";
+            move_window_to_workspace = "T";
           };
           "ModCombo + 0" = {
             move_window_to_workspace = "0";
