@@ -89,6 +89,7 @@ in
         ruff
         ncdu
         tdf
+        gh
 
         # >---< DO NOT REMOVE >---< #
         ffmpegthumbnailer
