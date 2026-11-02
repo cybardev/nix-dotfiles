@@ -119,10 +119,13 @@
               ws-start: ws-end: display:
               lib.map (ws: {
                 workspace = ws;
-                display = display;
+                display = [
+                  display
+                  "builtin"
+                ];
               }) (lib.range ws-start ws-end);
           in
-          (wsRules 0 5 "top") ++ (wsRules 6 10 "builtin");
+          (wsRules 0 5 "top") ++ (wsRules 6 10 "bottom");
 
         app_rules = [
           {
