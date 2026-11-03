@@ -4,6 +4,32 @@
   lib,
   ...
 }:
+let
+  strange = first: last: (map toString (lib.range first last));
+  strangeAttrs = lib.genAttrs' (strange 1 9);
+
+  wsRules =
+    ws-start: ws-end: display:
+    map (ws: {
+      workspace = ws;
+      display = [
+        display
+        "builtin"
+      ];
+    }) (lib.range ws-start ws-end);
+
+  appRules =
+    rules:
+    lib.concatLists (
+      lib.mapAttrsToList (
+        ws: apps:
+        (map (app: {
+          app_name = app;
+          workspace = ws;
+        }) apps)
+      ) rules
+    );
+in
 {
   imports = [ inputs.cypkgs.modules.rift ];
   services.rift = {
@@ -99,64 +125,30 @@
         auto_assign_windows = true;
         preserve_focus_per_workspace = true;
         workspace_auto_back_and_forth = false;
-        workspace_names = [
-          "T"
-          "1"
-          "2"
-          "3"
-          "4"
-          "5"
-          "6"
-          "7"
-          "8"
-          "9"
-          "0"
-        ];
-
-        workspace_rules =
-          let
-            wsRules =
-              ws-start: ws-end: display:
-              lib.map (ws: {
-                workspace = ws;
-                display = [
-                  display
-                  "builtin"
-                ];
-              }) (lib.range ws-start ws-end);
-          in
-          (wsRules 0 5 "top") ++ (wsRules 6 10 "bottom");
-
+        workspace_names = [ "T" ] ++ (strange 1 9) ++ [ "0" ];
+        workspace_rules = (wsRules 0 5 "top") ++ (wsRules 6 10 "bottom");
         app_rules = [
           {
             title_substring = "Preferences";
             floating = true;
           }
-          {
-            app_name = "kitty";
-            workspace = "T";
-          }
-          {
-            app_name = "Terminal";
-            workspace = "T";
-          }
-          {
-            app_name = "Firefox";
-            workspace = 1;
-          }
-          {
-            app_name = "Helium";
-            workspace = 1;
-          }
-          {
-            app_name = "Finder";
-            workspace = 2;
-          }
-          {
-            app_name = "Zed";
-            workspace = 10;
-          }
-        ];
+        ]
+        ++ (appRules {
+          "T" = [
+            "kitty"
+            "Terminal"
+          ];
+          "1" = [
+            "Firefox"
+            "Helium"
+          ];
+          "2" = [
+            "Finder"
+          ];
+          "0" = [
+            "Zed"
+          ];
+        });
       };
 
       modifier_combinations = {
@@ -164,12 +156,8 @@
       };
 
       keys =
-        (lib.genAttrs' (lib.map toString (lib.range 1 9)) (
-          i: lib.nameValuePair "Alt + ${i}" { switch_to_workspace = i; }
-        ))
-        // (lib.genAttrs' (lib.map toString (lib.range 1 9)) (
-          i: lib.nameValuePair "ModCombo + ${i}" { move_window_to_workspace = i; }
-        ))
+        (strangeAttrs (i: lib.nameValuePair "Alt + ${i}" { switch_to_workspace = i; }))
+        // (strangeAttrs (i: lib.nameValuePair "ModCombo + ${i}" { move_window_to_workspace = i; }))
         // {
           "Alt + `" = {
             switch_to_workspace = "T";
