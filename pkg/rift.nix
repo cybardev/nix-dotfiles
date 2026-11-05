@@ -61,19 +61,23 @@ in
             default_orientation = "perpendicular";
           };
 
-          gaps = {
-            outer = {
-              top = 0;
-              left = 0;
-              bottom = 0;
-              right = 0;
-            };
+          gaps =
+            let
+              gap = 0;
+            in
+            {
+              outer = {
+                top = gap;
+                left = gap;
+                bottom = gap;
+                right = gap;
+              };
 
-            inner = {
-              horizontal = 0;
-              vertical = 0;
+              inner = {
+                horizontal = gap;
+                vertical = gap;
+              };
             };
-          };
         };
 
         ui = {
