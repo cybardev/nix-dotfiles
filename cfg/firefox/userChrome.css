@@ -1,0 +1,327 @@
+/* Source: Refined Firefox Autohide (Floating + Opacity) */
+
+
+/* 1. Shared theme colors */
+:root {
+  --ff-floating-surface: var(--lwt-sidebar-background-color, var(--sidebar-background-color, var(--toolbar-bgcolor, Canvas)));
+}
+
+
+/* 2. Main container - floating overlay */
+#navigator-toolbox {
+  position: fixed !important;
+  inset: 0 0 auto 0;
+  z-index: 2147483647 !important;
+  pointer-events: auto !important;
+  transition: transform 0.2s ease, opacity 0.2s ease !important;
+  transition-delay: 1s !important;
+  transform: translateY(calc(-100% + 4px)) !important; /* Leave a small edge visible while collapsed */
+  opacity: 0 !important;
+}
+
+
+/* Invisible hover strip to make the autohide area easier to trigger */
+#navigator-toolbox::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+  pointer-events: auto !important;
+  z-index: 2147483647 !important;
+}
+
+
+/* 3. Hide toolbar contents while collapsed */
+#nav-bar,
+#PersonalToolbar,
+#urlbar-container,
+#urlbar {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease !important;
+}
+
+
+/* 4. Expansion logic - toolbar only */
+#navigator-toolbox:hover {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  transition-delay: 0s !important;
+}
+
+
+/* Keep the website below the floating toolbar while it is expanded */
+#browser {
+  transition: margin-top 0.2s ease !important;
+}
+
+
+#navigator-toolbox:hover ~ #browser {
+  margin-top: 40px !important;
+}
+
+
+/* Reveal toolbar content when the bar is expanded */
+#navigator-toolbox:hover :is(#nav-bar, #PersonalToolbar, #urlbar-container, #urlbar) {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+
+/* 5. URL bar focus override */
+#urlbar[open] {
+  opacity: 1 !important;
+}
+
+
+/* Keep the URL field outline visible even when it is not focused */
+#urlbar-background {
+  background-color: color-mix(in srgb, var(--ff-floating-surface) 82%, black) !important;
+  border: 1px solid var(--toolbar-field-border-color, currentColor) !important;
+}
+
+
+#urlbar-input {
+  text-align: center !important;
+}
+
+
+/* 6. Navigation toolbar spacing and top edge */
+#nav-bar {
+  padding-top: 0 !important;
+  border-top: 4px solid var(--toolbar-color) !important;
+}
+
+
+/* Match the expanded toolbar to Firefox's sidebar theme color */
+#navigator-toolbox:hover,
+#navigator-toolbox:hover #TabsToolbar,
+#navigator-toolbox:hover #nav-bar,
+#navigator-toolbox:hover #PersonalToolbar,
+#PersonalToolbar,
+#PlacesToolbar,
+#PlacesToolbarItems {
+  background-color: var(--ff-floating-surface) !important;
+  background-image: none !important;
+}
+
+
+/* 7. Individual rounded backgrounds for navigation bar buttons */
+#nav-bar .toolbarbutton-1 {
+  border-radius: 999px !important;
+  background-color: var(--toolbar-bgcolor) !important;
+  transition: background-color 0.2s ease !important;
+}
+
+
+#nav-bar .toolbarbutton-1:hover {
+  background-color: color-mix(in srgb, var(--toolbar-bgcolor) 85%, var(--toolbar-color) 15%) !important;
+}
+
+
+#nav-bar .toolbarbutton-1:active {
+  background-color: color-mix(in srgb, var(--toolbar-bgcolor) 75%, var(--toolbar-color) 25%) !important;
+}
+
+
+/* 8. Tabs strip top spacing */
+#TabsToolbar {
+  padding-top: 4px !important; /* Keep the first tab off the top edge so it has room when the autohide toolbar expands */
+}
+
+
+/* 9. Vertical tabs top spacing */
+#vertical-tabs {
+  padding-top: 56px !important; /* Keep vertical tabs clear of the expanded floating toolbar */
+}
+
+
+/* 10. Firefox logo overlay */
+#vertical-tabs::before {
+  content: "";
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  width: 22px;
+  height: 22px;
+  background-color: currentColor;
+  mask-image: url("firefox-logo.svg");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  pointer-events: none;
+  z-index: 2147483647;
+}
+
+
+/* Rounded tab corners for a softer, iOS-like shape */
+.tab-background {
+  margin-block: 0 !important;
+  border-radius: 12px !important;
+  background-color: color-mix(in srgb, currentColor 13%, transparent);
+}/* Source: Refined Firefox Autohide (Floating + Opacity) */
+
+
+/* 1. Shared theme colors */
+:root {
+  --ff-floating-surface: var(--lwt-sidebar-background-color, var(--sidebar-background-color, var(--toolbar-bgcolor, Canvas)));
+}
+
+
+/* 2. Main container - floating overlay */
+#navigator-toolbox {
+  position: fixed !important;
+  inset: 0 0 auto 0;
+  z-index: 2147483647 !important;
+  pointer-events: auto !important;
+  transition: transform 0.2s ease, opacity 0.2s ease !important;
+  transition-delay: 1s !important;
+  transform: translateY(calc(-100% + 4px)) !important; /* Leave a small edge visible while collapsed */
+  opacity: 0 !important;
+}
+
+
+/* Invisible hover strip to make the autohide area easier to trigger */
+#navigator-toolbox::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+  pointer-events: auto !important;
+  z-index: 2147483647 !important;
+}
+
+
+/* 3. Hide toolbar contents while collapsed */
+#nav-bar,
+#PersonalToolbar,
+#urlbar-container,
+#urlbar {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease !important;
+}
+
+
+/* 4. Expansion logic - toolbar only */
+#navigator-toolbox:hover {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  transition-delay: 0s !important;
+}
+
+
+/* Keep the website below the floating toolbar while it is expanded */
+#browser {
+  transition: margin-top 0.2s ease !important;
+}
+
+
+#navigator-toolbox:hover ~ #browser {
+  margin-top: 40px !important;
+}
+
+
+/* Reveal toolbar content when the bar is expanded */
+#navigator-toolbox:hover :is(#nav-bar, #PersonalToolbar, #urlbar-container, #urlbar) {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+
+/* 5. URL bar focus override */
+#urlbar[open] {
+  opacity: 1 !important;
+}
+
+
+/* Keep the URL field outline visible even when it is not focused */
+#urlbar-background {
+  background-color: color-mix(in srgb, var(--ff-floating-surface) 82%, black) !important;
+  border: 1px solid var(--toolbar-field-border-color, currentColor) !important;
+}
+
+
+#urlbar-input {
+  text-align: center !important;
+}
+
+
+/* 6. Navigation toolbar spacing and top edge */
+#nav-bar {
+  padding-top: 0 !important;
+  border-top: 4px solid var(--toolbar-color) !important;
+}
+
+
+/* Match the expanded toolbar to Firefox's sidebar theme color */
+#navigator-toolbox:hover,
+#navigator-toolbox:hover #TabsToolbar,
+#navigator-toolbox:hover #nav-bar,
+#navigator-toolbox:hover #PersonalToolbar,
+#PersonalToolbar,
+#PlacesToolbar,
+#PlacesToolbarItems {
+  background-color: var(--ff-floating-surface) !important;
+  background-image: none !important;
+}
+
+
+/* 7. Individual rounded backgrounds for navigation bar buttons */
+#nav-bar .toolbarbutton-1 {
+  border-radius: 999px !important;
+  background-color: var(--toolbar-bgcolor) !important;
+  transition: background-color 0.2s ease !important;
+}
+
+
+#nav-bar .toolbarbutton-1:hover {
+  background-color: color-mix(in srgb, var(--toolbar-bgcolor) 85%, var(--toolbar-color) 15%) !important;
+}
+
+
+#nav-bar .toolbarbutton-1:active {
+  background-color: color-mix(in srgb, var(--toolbar-bgcolor) 75%, var(--toolbar-color) 25%) !important;
+}
+
+
+/* 8. Tabs strip top spacing */
+#TabsToolbar {
+  padding-top: 4px !important; /* Keep the first tab off the top edge so it has room when the autohide toolbar expands */
+}
+
+
+/* 9. Vertical tabs top spacing */
+#vertical-tabs {
+  padding-top: 56px !important; /* Keep vertical tabs clear of the expanded floating toolbar */
+}
+
+
+/* 10. Firefox logo overlay */
+#vertical-tabs::before {
+  content: "";
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  width: 22px;
+  height: 22px;
+  background-color: currentColor;
+  mask-image: url("firefox-logo.svg");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  pointer-events: none;
+  z-index: 2147483647;
+}
+
+
+/* Rounded tab corners for a softer, iOS-like shape */
+.tab-background {
+  margin-block: 0 !important;
+  border-radius: 12px !important;
+  background-color: color-mix(in srgb, currentColor 13%, transparent);
+}

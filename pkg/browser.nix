@@ -13,6 +13,7 @@ in
       enable = true;
       profiles.default = {
         isDefault = true;
+        userChrome = ../cfg/firefox/userChrome.css;
         settings = {
           "sidebar.verticalTabs" = true;
           "sidebar.visibility" = "expand-on-hover";
