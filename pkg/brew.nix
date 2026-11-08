@@ -79,6 +79,7 @@ in
       # "lunar-client"
       "mac-brow-app/tap/brow"
       # "obs"
+      "pcsx2"
       # "prusaslicer"
       # "shotcut"
       # "signal"
