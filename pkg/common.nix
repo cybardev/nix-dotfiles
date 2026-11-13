@@ -56,7 +56,7 @@ in
     packages =
       (with pkgs.cy; [
         jitterbugpair
-        # freej2me
+        freej2me
         ytgo
       ])
       ++ (with pkgs; [
@@ -67,6 +67,7 @@ in
         # dotnet-sdk_9
         pgformatter
         clojure-lsp
+        superhtml
         # cloudflared
         # lazydocker
         # localstack

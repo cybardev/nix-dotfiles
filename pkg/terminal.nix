@@ -56,6 +56,7 @@
         "super+]" = "next_window";
         "super+w" = "close_window";
         "super+shift+w" = "close_tab";
+        "super+l" = "send_text all λ";
       };
     };
   };
