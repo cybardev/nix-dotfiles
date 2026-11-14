@@ -29,9 +29,7 @@
   }
 
   /* reveal on hover, or when the url bar is opened from the keyboard */
-  &:is(:hover, :has(#urlbar[open])) {
-    transform: translateY(0) !important;
-  }
+  &:is(:hover, :has(#urlbar[open])) { transform: translateY(0) !important; }
 }
 
 .urlbar-background {
@@ -39,36 +37,18 @@
   border: 1px solid var(--toolbar-field-border-color, currentColor) !important;
 }
 
-#urlbar-input {
-  text-align: center !important;
-}
+#urlbar-input { text-align: center !important; }
 
-#nav-bar {
-  padding-top: 0 !important;
-
-  /* round the buttons; hover/active fills come from firefox's ghost tokens */
-  & .toolbarbutton-1 {
-    border-radius: 999px !important;
-  }
-}
+#nav-bar { padding-top: 0 !important; }
 
 /* keep the first tab clear of the top edge when the toolbar expands */
-#TabsToolbar {
-  padding-top: 4px !important;
-}
-
-.tab-background {
-  margin-block: 0 !important;
-  border-radius: 12px !important;
-  background-color: color-mix(in srgb, currentColor 13%, transparent) !important;
-}
+#TabsToolbar { padding-top: 4px !important; }
 
 /* vertical tab rail: collapse to an invisible hover strip */
 :root[sidebar-expand-on-hover] {
   #sidebar-container:not([sidebar-launcher-expanded], [sidebar-ongoing-animations]) {
     position: fixed !important;
-    inset-block: 0 !important;
-    inset-inline: 0 auto !important;
+    inset: 0 !important;
     inline-size: 12px !important;
     min-inline-size: 12px !important;
     max-inline-size: 12px !important;
@@ -83,13 +63,9 @@
       pointer-events: none !important;
     }
 
-    &[sidebar-positionend] {
-      inset-inline: auto 0 !important;
-    }
+    &[sidebar-positionend] { inset-inline: auto 0 !important; }
 
-    + #sidebar-launcher-splitter {
-      display: none !important;
-    }
+    + #sidebar-launcher-splitter { display: none !important; }
   }
 }
 
