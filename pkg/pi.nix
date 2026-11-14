@@ -1,6 +1,22 @@
 {
   home.file = {
-    ".pi/agent/extensions/pi-permission-system/config.json".source = ../cfg/pi/permissions.json;
+    ".pi/agent/extensions/pi-permission-system/config.json".text = builtins.toJSON {
+      permission = {
+        "*" = "allow";
+        path = {
+          "*" = "allow";
+          "*.env" = "deny";
+          "*.env.*" = "deny";
+          "*.env.example" = "allow";
+        };
+        bash = {
+          "*" = "ask";
+          "rm -rf *" = "deny";
+          "sudo *" = "ask";
+        };
+        external_directory = "ask";
+      };
+    };
   };
 
   programs.pi-coding-agent = {
