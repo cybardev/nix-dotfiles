@@ -25,7 +25,7 @@
     content: "";
     position: absolute;
     inset: 100% 0 auto;
-    height: 12px;
+    height: 8px;
   }
 
   /* reveal on hover, or when the url bar is opened from the keyboard */
