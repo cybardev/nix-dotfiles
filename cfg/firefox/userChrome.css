@@ -67,6 +67,11 @@
 
     + #sidebar-launcher-splitter { display: none !important; }
   }
+
+  /* prevent layout shift on sidebar expand */
+  #tabbrowser-tabbox:is([sidebar-launcher-expanded], [sidebar-ongoing-animations]):not([sidebar-panel-open]) {
+    margin-inline: 0 !important;
+  }
 }
 
 /* center the tabs vertically, degrading to normal scroll when they overflow */
